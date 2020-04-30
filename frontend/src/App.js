@@ -1,5 +1,10 @@
-import React from "react";
+import React from 'react'
+import RecipeList from './RecipeList'
 
 export default function App() {
-  return <div>Hello world</div>;
+  return (
+    <>
+      <RecipeList />
+    </>
+  )
 }
