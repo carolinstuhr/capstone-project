@@ -1,14 +1,38 @@
 [
   {
-    "title": "Spaghetti",
-    "tags": ["quick", "easy", "italian"]
+    "title": "Spanish Tortilla",
+    "tags": ["traditional", "easy", "snack"]
   },
   {
-    "title": "Pizza",
-    "tags": ["veggie", "treat", "italian"]
+    "title": "Roasted Squash And Couscous Salad",
+    "tags": ["veggie", "hearty", "side"]
   },
   {
-    "title": "Pad Thai",
-    "tags": ["quick", "meal-prep", "asian"]
+    "title": "Veggie noodle stir-fry",
+    "tags": ["quick", "cheap", "asian", "delicous"]
+  },
+  {
+    "title": "Greek Salad",
+    "tags": ["quick", "no-cooking", "healthy"]
+  },
+  {
+    "title": "Veggie noodle stir-fry",
+    "tags": ["quick", "healtyh", "asian"]
+  },
+  {
+    "title": "NYC-style pizza",
+    "tags": ["treat", "hearty", "pork"]
+  },
+  {
+    "title": "Prawn and courgette spaghetti",
+    "tags": ["light", "seafood", "italian"]
+  },
+  {
+    "title": "Minestrone soup",
+    "tags": ["meal-prep", "soup", "warming"]
+  },
+  {
+    "title": "Banana pancakes",
+    "tags": ["breakfast", "sweet", "treat"]
   }
 ]
