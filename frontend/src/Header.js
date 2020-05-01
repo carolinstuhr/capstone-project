@@ -7,7 +7,8 @@ export default function Header({ children }) {
 const HeaderStyled = styled.h1`
   text-align: center;
   margin-left: 0;
-  font-size: 30px;
-  text-transform: uppercase;
+  font-size: 32px;
   padding-top: 8px;
+  font-family: 'Nanum Myeongjo', serif;
+  font-weight: 400;
 `

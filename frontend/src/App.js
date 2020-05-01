@@ -5,7 +5,7 @@ import Header from './Header'
 export default function App() {
   return (
     <>
-      <Header>Recipes</Header>
+      <Header>recipes</Header>
       <RecipeList />
     </>
   )

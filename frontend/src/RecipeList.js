@@ -9,8 +9,8 @@ export default function RecipeList() {
         {recipeData.map((recipe) => (
           <RecipeSectionStyled key={recipe.name}>
             <TitleStyled>
-              {recipe.title.length > 25
-                ? recipe.title.substring(0, 25) + '...'
+              {recipe.title.length > 30
+                ? recipe.title.substring(0, 30) + '...'
                 : recipe.title}
             </TitleStyled>
             <ListStyled>
@@ -30,32 +30,34 @@ const SectionStyled = styled.main`
 `
 
 const RecipeSectionStyled = styled.section`
-  margin-bottom: 40px;
+  margin-bottom: 44px;
   margin-left: 16px;
 `
 
 const ListItemsStyled = styled.li`
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 200;
   display: inline;
   margin-right: 8px;
   margin-top: 8px;
-  background: #f1ece1;
-  padding: 8px;
+  background: #f2efe9;
+  padding: 6px;
   border-radius: 12px;
   font-size: 16px;
   text-transform: lowercase;
-  color: #6e5824;
+  color: #696660;
 `
 
 const ListStyled = styled.ul`
   list-style: none;
   padding-left: 0;
-  margin-top: 12px;
+  margin-top: 4px;
   margin-left: 0;
 `
 
 const TitleStyled = styled.h3`
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 22px;
   text-transform: capitalize;
+  font-weight: 300;
 `
