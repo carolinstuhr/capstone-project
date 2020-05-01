@@ -8,6 +8,7 @@ const HeaderStyled = styled.h1`
   text-align: center;
   margin-left: 0;
   font-size: 32px;
+  margin-top: 0;
   padding-top: 8px;
   font-family: 'Nanum Myeongjo', serif;
   font-weight: 400;

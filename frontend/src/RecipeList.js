@@ -8,11 +8,7 @@ export default function RecipeList() {
       <SectionStyled>
         {recipeData.map((recipe) => (
           <RecipeSectionStyled key={recipe.name}>
-            <TitleStyled>
-              {recipe.title.length > 30
-                ? recipe.title.substring(0, 30) + '...'
-                : recipe.title}
-            </TitleStyled>
+            <TitleStyled>{recipe.title}</TitleStyled>
             <ListStyled>
               {recipe.tags.slice(0, 3).map((tag, index) => (
                 <ListItemsStyled key={index}>{tag}</ListItemsStyled>
@@ -60,4 +56,10 @@ const TitleStyled = styled.h3`
   font-size: 22px;
   text-transform: capitalize;
   font-weight: 300;
+  margin-top: 0;
+  margin-bottom: 8px;
+  width: 325px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
