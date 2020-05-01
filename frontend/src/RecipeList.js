@@ -7,15 +7,15 @@ export default function RecipeList() {
     <main>
       <SectionStyled>
         {recipeData.map((recipe) => (
-          <RecipeSectionStyled>
+          <RecipeSectionStyled key={recipe.name}>
             <TitleStyled>
               {recipe.title.length > 25
                 ? recipe.title.substring(0, 25) + '...'
                 : recipe.title}
             </TitleStyled>
             <ListStyled>
-              {recipe.tags.slice(0, 3).map((tag) => (
-                <ListItemsStyled>{tag}</ListItemsStyled>
+              {recipe.tags.slice(0, 3).map((tag, index) => (
+                <ListItemsStyled key={index}>{tag}</ListItemsStyled>
               ))}
             </ListStyled>
           </RecipeSectionStyled>
