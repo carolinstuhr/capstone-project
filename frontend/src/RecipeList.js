@@ -6,8 +6,8 @@ export default function RecipeList() {
   return (
     <main>
       <SectionStyled>
-        {recipeData.map((recipe) => (
-          <RecipeSectionStyled key={recipe.name}>
+        {recipeData.map((recipe, index) => (
+          <RecipeSectionStyled key={index}>
             <TitleStyled>{recipe.title}</TitleStyled>
             <ListStyled>
               {recipe.tags.slice(0, 3).map((tag, index) => (
