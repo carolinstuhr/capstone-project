@@ -9,7 +9,7 @@ const HeaderStyled = styled.h1`
   margin-left: 0;
   font-size: 32px;
   margin-top: 0;
-  padding-top: 8px;
+  padding-top: 4px;
   font-family: 'Nanum Myeongjo', serif;
   font-weight: 400;
 `
