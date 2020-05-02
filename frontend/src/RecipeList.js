@@ -23,7 +23,7 @@ export default function RecipeList() {
 }
 
 const SectionStyled = styled.main`
-  margin-top: 30px;
+  margin-top: 32px;
 `
 
 const RecipeSectionStyled = styled.section`
