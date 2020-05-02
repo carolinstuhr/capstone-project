@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Spanish Tortilla",
+    "tags": ["traditional", "easy", "snack"]
+  },
+  {
+    "title": "Roasted Squash And Couscous Salad",
+    "tags": ["veggie", "hearty", "side"]
+  },
+  {
+    "title": "Veggie noodle stir-fry",
+    "tags": ["quick", "cheap", "asian", "delicous"]
+  },
+  {
+    "title": "Greek Salad",
+    "tags": ["quick", "no-cooking", "healthy"]
+  },
+  {
+    "title": "Indian Curry",
+    "tags": ["meal-prep", "rice", "spicy"]
+  },
+  {
+    "title": "NYC-style pizza",
+    "tags": ["treat", "hearty", "pork"]
+  },
+  {
+    "title": "Prawn and courgette spaghetti",
+    "tags": ["light", "seafood", "italian"]
+  },
+  {
+    "title": "Minestrone soup",
+    "tags": ["meal-prep", "soup", "warming"]
+  },
+  {
+    "title": "Banana pancakes",
+    "tags": ["breakfast", "sweet", "treat"]
+  }
+]

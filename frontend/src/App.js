@@ -1,5 +1,12 @@
-import React from "react";
+import React from 'react'
+import RecipeList from './RecipeList'
+import Header from './Header'
 
 export default function App() {
-  return <div>Hello world</div>;
+  return (
+    <>
+      <Header>recipes</Header>
+      <RecipeList />
+    </>
+  )
 }
