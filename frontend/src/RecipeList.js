@@ -1,15 +1,20 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import recipeData from './RecipeList.json'
 import styled from 'styled-components/macro'
 
-export default function RecipeList() {
+export default function RecipeList({ showRecipeDetails }) {
   return (
     <main>
       <SectionStyled>
         {recipeData.map((recipe, index) => (
           <RecipeSectionStyled key={index}>
             <ImageStyled src={recipe.image} alt="Recipe" />
-            <TitleStyled>{recipe.title}</TitleStyled>
+            <TitleStyled
+              onClick={() => showRecipeDetails('recipeID', recipe.id)}
+            >
+              <LinkStyled to="/recipe">{recipe.title}</LinkStyled>
+            </TitleStyled>
             <TagSectionStyled>
               {recipe.tags.slice(0, 3).map((tag, index) => (
                 <TagsStyled key={index}>{tag}</TagsStyled>
@@ -54,6 +59,11 @@ const TitleStyled = styled.h3`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+`
+
+const LinkStyled = styled(Link)`
+  text-decoration: none;
+  color: #514f4b;
 `
 
 const TagSectionStyled = styled.section`
