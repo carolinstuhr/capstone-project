@@ -1,38 +1,97 @@
 [
   {
-    "title": "Spanish Tortilla",
-    "tags": ["traditional", "easy", "snack"]
+    "title": "Chocolate chip cookies",
+    "tags": ["baking", "snack", "treat"],
+    "image": "./images/chocolate_chip_cookies.jpg"
   },
   {
-    "title": "Roasted Squash And Couscous Salad",
-    "tags": ["veggie", "hearty", "side"]
+    "title": "Homemade Granola",
+    "tags": ["breakfast", "quick", "meal-prep"],
+    "image": "./images/granola.jpg"
   },
   {
     "title": "Veggie noodle stir-fry",
-    "tags": ["quick", "cheap", "asian", "delicous"]
+    "tags": ["quick", "cheap", "asian", "delicous"],
+    "image": "./images/stir_fry.jpg"
   },
   {
-    "title": "Greek Salad",
-    "tags": ["quick", "no-cooking", "healthy"]
+    "title": "Strawberry Salad",
+    "tags": ["summer", "no-cooking", "healthy"],
+    "image": "./images/strawberry_salad.jpg"
   },
   {
     "title": "Indian Curry",
-    "tags": ["meal-prep", "rice", "spicy"]
+    "tags": ["meal-prep", "vegan", "spicy"],
+    "image": "./images/vegan_curry.jpg"
   },
   {
-    "title": "NYC-style pizza",
-    "tags": ["treat", "hearty", "pork"]
+    "title": "American Pancakes",
+    "tags": ["breakfast", "weekend", "sweet"],
+    "image": "./images/pancakes.jpg"
   },
   {
-    "title": "Prawn and courgette spaghetti",
-    "tags": ["light", "seafood", "italian"]
+    "title": "Pizza Siciliana",
+    "tags": ["treat", "cheese", "italian"],
+    "image": "./images/pizza.jpg"
   },
   {
-    "title": "Minestrone soup",
-    "tags": ["meal-prep", "soup", "warming"]
+    "title": "Prawn spaghetti",
+    "tags": ["light", "seafood", "italian"],
+    "image": "./images/prawn_spaghetti.jpg"
   },
   {
-    "title": "Banana pancakes",
-    "tags": ["breakfast", "sweet", "treat"]
+    "title": "Apple pie",
+    "tags": ["baking", "sweet", "american"],
+    "image": "./images/apple_pie.jpg"
+  },
+  {
+    "title": "Beef Tacos",
+    "tags": ["quick", "spicy", "mexican"],
+    "image": "./images/beef_tacos.jpg"
+  },
+  {
+    "title": "Tomato soup",
+    "tags": ["meal-prep", "soup", "winter"],
+    "image": "./images/tomato_soup.jpg"
+  },
+  {
+    "title": "Banana bread",
+    "tags": ["baking", "sweet", "treat"],
+    "image": "./images/banana_bread.jpg"
+  },
+  {
+    "title": "Sourdough Bread",
+    "tags": ["baking", "sourdough", "traditional"],
+    "image": "./images/sourdough_bread.jpg"
+  },
+  {
+    "title": "Seafood Paella",
+    "tags": ["seafood", "rice", "spanish"],
+    "image": "./images/paella.jpg"
+  },
+  {
+    "title": "Vegtable Dumplings",
+    "tags": ["veggie", "snack", "asian"],
+    "image": "./images/dumplings.jpg"
+  },
+  {
+    "title": "French Toast",
+    "tags": ["breakfast", "weekend", "sweet"],
+    "image": "./images/french_toast.jpg"
+  },
+  {
+    "title": "Mushroom tagliatelle",
+    "tags": ["quick", "dinner", "italian"],
+    "image": "./images/mushroom_tagliatelle.jpg"
+  },
+  {
+    "title": "French croissants",
+    "tags": ["breakfast", "butter", "puff pastry"],
+    "image": "./images/croissants.jpg"
+  },
+  {
+    "title": "Salmon on a vegetable bed",
+    "tags": ["low-carb", "fish", "healthy"],
+    "image": "./images/salmon_and_vegetables.jpg"
   }
 ]
