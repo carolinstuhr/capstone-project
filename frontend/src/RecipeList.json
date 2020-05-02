@@ -90,6 +90,21 @@
     "image": "./images/croissants.jpg"
   },
   {
+    "title": "Pumpkin Soup",
+    "tags": ["vegetarian", "easy", "autumn"],
+    "image": "./images/pumpkin_soup.jpg"
+  },
+  {
+    "title": "Smoothie Bowl",
+    "tags": ["breakfast", "healthy", "summer"],
+    "image": "./images/smoothie_bowl.jpg"
+  },
+  {
+    "title": "Pho",
+    "tags": ["dinner", "pork", "asian"],
+    "image": "./images/pho.jpg"
+  },
+  {
     "title": "Salmon on a vegetable bed",
     "tags": ["low-carb", "fish", "healthy"],
     "image": "./images/salmon_and_vegetables.jpg"

@@ -10,11 +10,11 @@ export default function RecipeList() {
           <RecipeSectionStyled key={index}>
             <ImageStyled src={recipe.image} alt="Recipe" />
             <TitleStyled>{recipe.title}</TitleStyled>
-            <ListStyled>
+            <TagSectionStyled>
               {recipe.tags.slice(0, 3).map((tag, index) => (
-                <ListItemsStyled key={index}>{tag}</ListItemsStyled>
+                <TagsStyled key={index}>{tag}</TagsStyled>
               ))}
-            </ListStyled>
+            </TagSectionStyled>
           </RecipeSectionStyled>
         ))}
       </SectionStyled>
@@ -31,7 +31,7 @@ const RecipeSectionStyled = styled.section`
   margin-left: 16px;
   display: grid;
   grid-template-columns: auto auto;
-  grid-template-rows: auto auto;
+  grid-template-rows: 1fr 1fr;
 `
 
 const ImageStyled = styled.img`
@@ -49,26 +49,23 @@ const TitleStyled = styled.h3`
   text-transform: capitalize;
   font-weight: 300;
   margin-top: 4px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   width: 260px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 `
 
-const ListStyled = styled.ul`
-  list-style: none;
+const TagSectionStyled = styled.section`
   padding-left: 0;
-  margin-top: 4px;
   margin-left: 0;
 `
 
-const ListItemsStyled = styled.li`
+const TagsStyled = styled.span`
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 200;
-  display: inline;
   margin-right: 8px;
-  margin-top: 8px;
+  margin-top: 4px;
   background: #f2efe9;
   padding: 6px;
   border-radius: 12px;
