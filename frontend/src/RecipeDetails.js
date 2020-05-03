@@ -16,6 +16,13 @@ export default function RecipeDetails({
       console.log(error.message)
     }
   }
+  function removeFromStorage(name) {
+    try {
+      return localStorage.removeItem(name)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
   const recipeID = loadFromStorage('recipeID')
 
   return (
@@ -26,8 +33,13 @@ export default function RecipeDetails({
             <>
               <ImageSectionStyled key={recipe.id}>
                 <Link exact to="/">
-                  <ArrowImageStyled src={LeftArrow} alt="home Button" />
+                  <ArrowImageStyled
+                    src={LeftArrow}
+                    alt="home Button"
+                    onClick={() => removeFromStorage('recipeID')}
+                  />
                 </Link>
+                {console.log(recipeID)}
                 <ImageStyled src={recipe.image} alt="Recipe" />
               </ImageSectionStyled>
               <RecipeInfoSectionStyled>

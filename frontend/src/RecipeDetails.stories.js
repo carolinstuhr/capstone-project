@@ -8,4 +8,4 @@ export default {
   decorators: [withKnobs],
 }
 
-export const simple = () => <RecipeDetails recipeID={number('recipe', 1)} />
+export const simple = () => <RecipeDetails />
