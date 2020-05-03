@@ -9,7 +9,15 @@ export default function RecipeList({ showRecipeDetails }) {
       <SectionStyled>
         {recipeData.map((recipe, index) => (
           <RecipeSectionStyled key={index}>
-            <ImageStyled src={recipe.image} alt="Recipe" />
+            <ImageSection>
+              <Link to="/recipe">
+                <ImageStyled
+                  src={recipe.image}
+                  alt="Recipe"
+                  onClick={() => showRecipeDetails('recipeID', recipe.id)}
+                />
+              </Link>
+            </ImageSection>
             <TitleStyled
               onClick={() => showRecipeDetails('recipeID', recipe.id)}
             >
@@ -37,6 +45,12 @@ const RecipeSectionStyled = styled.section`
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: 1fr 1fr;
+`
+
+const ImageSection = styled.section`
+  height: 80px;
+  width: 80px;
+  grid-row: 1 / 3;
 `
 
 const ImageStyled = styled.img`

@@ -86,8 +86,8 @@ const ImageSectionStyled = styled.section`
 const ArrowImageStyled = styled.img`
   background: rgba(242, 239, 233, 0.6);
   border-radius: 4px;
-  hight: 24px;
-  width: 24px;
+  hight: 28px;
+  width: 28px;
   position: absolute;
   left: 12px;
   top: 12px;
