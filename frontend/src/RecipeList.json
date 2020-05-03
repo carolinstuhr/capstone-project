@@ -158,26 +158,27 @@
     "title": "American Pancakes",
     "tags": ["breakfast", "weekend", "sweet"],
     "image": "./images/pancakes.jpg",
-    "serving": 2,
+    "serving": 4,
     "timehour": 0,
     "timeminutes": 30,
     "ingredients": [
       "200 g",
       "flour",
-      "100 ml",
+      "150 ml",
       "milk",
-      "250 g",
-      "sugar",
       "2",
       "eggs",
-      "100 g",
-      "chocolate chips"
+      "1 tsp",
+      "baking powder",
+      "1 tbsp",
+      "rapseed oil"
     ],
     "instructions": [
-      "preheat the oven to 200 degress",
-      "put dry ingredients in a bowl",
-      "melt butter in a pan",
-      "mix wet ingredients together"
+      "Mix the flour, baking powder and a pinch of salt together in a large bowl. ",
+      "Add the eggs and milk and whisk them together either with a balloon whisk or electric hand beaters until smooth.",
+      "Heat 1 tsp of oil in a large, non-stick frying pan over a medium heat. When the oil looks frothy pour in rounds of the batter.",
+      "Cook the pancakes on their first side for about 1-2 mins or until lots of tiny bubbles start to appear and pop on the surface. Flip the pancakes over and cook for a further minute on the other side.",
+      "Serve your pancakes stacked up on a plate with a drizzle of maple syrup and any of your favourite toppings."
     ]
   },
   {
@@ -189,22 +190,33 @@
     "timehour": 0,
     "timeminutes": 30,
     "ingredients": [
-      "200 g",
+      "500 g",
       "flour",
-      "100 ml",
-      "milk",
-      "250 g",
-      "sugar",
-      "2",
-      "eggs",
+      "1 cup",
+      "lukewarm water",
+      "1 tbsp",
+      "olive oil",
+      "1 cube",
+      "fresh yeast",
+      "3 tsp",
+      "salt",
+      "1/2 cup",
+      "tomato sauce",
       "100 g",
-      "chocolate chips"
+      "mozzarella",
+      "handfull",
+      "basil leaves"
     ],
     "instructions": [
-      "preheat the oven to 200 degress",
-      "put dry ingredients in a bowl",
-      "melt butter in a pan",
-      "mix wet ingredients together"
+      "Combine yeast, sugar, salt, olive oil and water to a large bowl; stir until combined.",
+      "Fold through flour until just combined, turn out onto a lightly floured surface and knead for 5-10 minutes or until a smooth ball forms.",
+      "Place dough ball into a lightly oiled bowl, cover with a kitchen towel. Set aside in a warm drought free place for 30 minutes or until dough has doubled in size. Turn dough out on a floured surface and knock back (punch) the dough to remove excess air, lightly knead",
+      "Preheat Pizza oven to 200C.",
+      "Divide dough into three 220g balls. Roll out one piece of pizza dough to form a 24-26cm disc and place onto a large square of baking paper.",
+      "Prick base with a fork or pizza docker and spread base with 2 tablespoons tomato sauce.",
+      "Top base with mozzarella.",
+      "Place back in the oven for 15 minutes.",
+      "Top with basil leaves and drizzle with olive oil."
     ]
   },
   {
@@ -216,22 +228,33 @@
     "timehour": 0,
     "timeminutes": 30,
     "ingredients": [
-      "200 g",
-      "flour",
-      "100 ml",
-      "milk",
-      "250 g",
-      "sugar",
+      "400 g",
+      "spaghetti",
       "2",
-      "eggs",
-      "100 g",
-      "chocolate chips"
+      "garlic cloves",
+      " ",
+      "extra virgin olive oil",
+      "1-2",
+      "dried red chillies",
+      "400 g",
+      "peeled raw prawn",
+      "50 ml",
+      "white wine ",
+      "1",
+      "organic lemon",
+      "2 tbsp",
+      "sun-dried tomato purée",
+      " ",
+      "sea salt",
+      " ",
+      "black pepper"
     ],
     "instructions": [
-      "preheat the oven to 200 degress",
-      "put dry ingredients in a bowl",
-      "melt butter in a pan",
-      "mix wet ingredients together"
+      "Cook your spaghetti in a large pan of salted boiling water according to the packet instructions.",
+      "Meanwhile, peel and finely chop the garlic. Heat some virgin olive oil in a large frying pan, then toss in the garlic and crumble in the chilli. As the garlic begins to colour, add the prawns and sauté them for a minute. Add the white wine and tomato purée, and simmer for a couple of minutes. ",
+      "When the pasta is ready, drain it, reserving a little of the cooking water.",
+      "Toss the spaghetti with the sauce, squeeze in the lemon juice and add a little of the reserved cooking water if you want to loosen the sauce a bit.",
+      "Serve with sea salt and black pepper"
     ]
   },
   {
@@ -239,26 +262,47 @@
     "title": "Apple pie",
     "tags": ["baking", "sweet", "american"],
     "image": "./images/apple_pie.jpg",
-    "serving": 2,
-    "timehour": 0,
+    "serving": 8,
+    "timehour": 1,
     "timeminutes": 30,
     "ingredients": [
-      "200 g",
+      "350 g",
       "flour",
-      "100 ml",
-      "milk",
-      "250 g",
+      " ",
+      "salt",
+      "1",
+      "egg",
+      "1 1/2 sticks",
+      "butter",
+      "8 tbsp",
+      "ice water",
+      "1 kg",
+      "granny smith apple",
+      "150 g",
       "sugar",
-      "2",
-      "eggs",
-      "100 g",
-      "chocolate chips"
+      "1 tsp",
+      "cinnamon",
+      "1/4 tsp",
+      "nutmeg",
+      "1/2",
+      "lemon",
+      "10 g",
+      "flour (for the filling)",
+      "20 g",
+      "sugar (for the filling)"
     ],
     "instructions": [
-      "preheat the oven to 200 degress",
-      "put dry ingredients in a bowl",
-      "melt butter in a pan",
-      "mix wet ingredients together"
+      "In a medium-sized bowl, add the flour and a pinch of salt. Mix with fork until combined.",
+      "Add in cubed butter and break up into flour with a fork. Mixture will still have lumps about the size of small peas.",
+      "Gradually add the ice water and continue to mix until the dough starts to come together. You may not need all of the water, but if the dough is too dry then add more. The dough should not be very tacky or sticky.",
+      "Work the dough together with your hands and turn out onto a surface. Work into a ball and cover with cling wrap. Refrigerate.",
+      "Peel the apples, then core and slice.",
+      "In a bowl, add the sliced apples, sugar, flour, salt, cinnamon, nutmeg, and juice from the lemon. Mix until combined and all apples are coated. Refrigerate.",
+      "Preheat the oven to 200°C.",
+      "On a floured surface roll out the dough until round and about 3 mm thick.",
+      "Roll the dough around the rolling pin and unroll onto a pie dish making sure the dough reaches all edges. Trim extra if necessary.",
+      "Pour in apple filling mixture and pat down.",
+      "Bake pie for 50-60 minutes or until the crust is golden brown and no greyish or undercooked pastry remains."
     ]
   },
   {
@@ -297,22 +341,24 @@
     "timehour": 0,
     "timeminutes": 30,
     "ingredients": [
-      "200 g",
-      "flour",
-      "100 ml",
-      "milk",
-      "250 g",
-      "sugar",
-      "2",
-      "eggs",
-      "100 g",
-      "chocolate chips"
+      "4 tbsp",
+      "unsalted butter",
+      "1/2",
+      "large onion",
+      " 1 can",
+      "crushed tomatos",
+      "1 cube",
+      "vegetable stock",
+      "1 1/2 cups",
+      "water",
+      " ",
+      "sea salt"
     ],
     "instructions": [
-      "preheat the oven to 200 degress",
-      "put dry ingredients in a bowl",
-      "melt butter in a pan",
-      "mix wet ingredients together"
+      "Melt butter over medium heat in a large saucepan.",
+      "Chop up the oniones.",
+      "Add onion wedges, water, can of tomatoes with their juices, and 1/2 teaspoon of salt. Bring to a simmer. Cook, uncovered, for about 40 minutes. Stir occasionally and add additional salt as needed.",
+      "Blend the soup until smooth, and then season to taste."
     ]
   },
   {
@@ -320,26 +366,34 @@
     "title": "Banana bread",
     "tags": ["baking", "sweet", "treat"],
     "image": "./images/banana_bread.jpg",
-    "serving": 2,
-    "timehour": 0,
+    "serving": 12,
+    "timehour": 1,
     "timeminutes": 30,
     "ingredients": [
-      "200 g",
+      "2 cups",
       "flour",
-      "100 ml",
-      "milk",
-      "250 g",
+      "1 cups",
+      "margarine",
+      "2 cups",
       "sugar",
-      "2",
+      "4",
       "eggs",
-      "100 g",
-      "chocolate chips"
+      "2",
+      "ripe bananas",
+      "1 cup",
+      "chopped walnuts",
+      "1 tsp",
+      "salt",
+      "2 tsps",
+      "baking soda",
+      "8",
+      "figs"
     ],
     "instructions": [
-      "preheat the oven to 200 degress",
-      "put dry ingredients in a bowl",
-      "melt butter in a pan",
-      "mix wet ingredients together"
+      "Preheat the oven to 350 degrees F (175 degrees C). Grease and flour one 16x10 inch loaf pans.",
+      "Sift the flour, salt and baking soda into a large bowl. In a separate bowl, mix together the margarine and sugar until smooth. Stir in the mashed up bananas, eggs, and walnuts until well blended. Pour the wet ingredients into the dry mixture, and stir just until blended.",
+      "Slice the figs in half and put them on top of the batter",
+      "Bake for 60 to 70 minutes in the preheated oven, until a knife inserted into the crown of the loaf comes out clean. Let the loaves cool in the pans for at least 5 minutes, then turn out onto a cooling rack, and cool completely."
     ]
   },
   {
@@ -428,26 +482,27 @@
     "title": "French Toast",
     "tags": ["breakfast", "weekend", "sweet"],
     "image": "./images/french_toast.jpg",
-    "serving": 2,
+    "serving": 4,
     "timehour": 0,
-    "timeminutes": 30,
+    "timeminutes": 20,
     "ingredients": [
-      "200 g",
-      "flour",
-      "100 ml",
+      "6 slices",
+      "bread",
+      "2/3 cup",
       "milk",
-      "250 g",
-      "sugar",
+      "1 tsp",
+      "Vanilla Extract",
       "2",
       "eggs",
-      "100 g",
-      "chocolate chips"
+      "1/4 tsp",
+      "cinnamon",
+      " ",
+      "salt"
     ],
     "instructions": [
-      "preheat the oven to 200 degress",
-      "put dry ingredients in a bowl",
-      "melt butter in a pan",
-      "mix wet ingredients together"
+      "Beat together egg, milk, salt, desired spices and vanilla.",
+      "Heat a lightly oiled skillet over medium-high heat.",
+      "Dunk each slice of bread in egg mixture, soaking both sides. Place in pan, and cook on both sides until golden. Serve hot."
     ]
   },
   {
@@ -455,26 +510,34 @@
     "title": "Mushroom tagliatelle",
     "tags": ["quick", "dinner", "italian"],
     "image": "./images/mushroom_tagliatelle.jpg",
-    "serving": 2,
+    "serving": 4,
     "timehour": 0,
     "timeminutes": 30,
     "ingredients": [
-      "200 g",
-      "flour",
-      "100 ml",
-      "milk",
-      "250 g",
-      "sugar",
+      "300g",
+      "tagliatelle",
+      "1 tbsp",
+      "olive oil",
+      "1 bunch",
+      "spring onions",
       "2",
-      "eggs",
-      "100 g",
-      "chocolate chips"
+      "garlic cloves",
+      "10",
+      "chestnut mushrooms",
+      "200 g",
+      "fresh spinach",
+      "200 ml",
+      "crème fraîche",
+      "",
+      "salt",
+      "",
+      "pepper"
     ],
     "instructions": [
-      "preheat the oven to 200 degress",
-      "put dry ingredients in a bowl",
-      "melt butter in a pan",
-      "mix wet ingredients together"
+      "Chop the garlic, spring onions and mushrooms.",
+      "Heat the oil in a pan and gently fry the spring onions and garlic for a few minutes, or until pale golden-brown. Add the mushrooms and fry over a high heat for 8-10 minutes. Tip the spinach into the pan, and stir regularly as it wilts. Continue cooking over a medium heat until most of the water has evaporated.",
+      "Remove the pan from the heat and stir in the crème fraîche. Return the pan to the heat, bring to the boil, and simmer until the sauce has thickened. Season to taste with salt and freshly ground pepper.",
+      "Meanwhile, cook the pasta in a large pan of salted boiling water, according to packet instructions. Once cooked, drain the pasta, and toss with the mushroom and spinach sauce. Serve immediately."
     ]
   },
   {
@@ -513,22 +576,25 @@
     "timehour": 0,
     "timeminutes": 30,
     "ingredients": [
-      "200 g",
-      "flour",
-      "100 ml",
-      "milk",
-      "250 g",
-      "sugar",
+      "2 tbsp",
+      "olive oil",
       "2",
-      "eggs",
-      "100 g",
-      "chocolate chips"
+      "onions",
+      "1 kg",
+      "pumpkin",
+      "700 ml",
+      "vegtable stock",
+      "150 ml",
+      "double cream",
+      "50 g",
+      "feta cheese"
     ],
     "instructions": [
-      "preheat the oven to 200 degress",
-      "put dry ingredients in a bowl",
-      "melt butter in a pan",
-      "mix wet ingredients together"
+      "Finely chop the onions. Peel and deseed the pumpkin and chop it into chunks",
+      "Heat 2 tbsp olive oil in a large saucepan, then gently cook the chopped onions for 5 mins, until soft but not coloured.",
+      "Add the pumpkin to the pan, then carry on cooking for 8-10 mins, stirring occasionally until it starts to soften and turn golden.",
+      "Pour 700ml vegetable or chicken stock into the pan and season with salt and pepper. Bring to the boil, then simmer for 10 mins until the squash is very soft.",
+      "Pour 150ml double cream into the pan, bring back to the boil, then purée with a hand blender. For an extra-velvety consistency you can pour the soup through a fine sieve."
     ]
   },
   {
@@ -540,22 +606,32 @@
     "timehour": 0,
     "timeminutes": 30,
     "ingredients": [
-      "200 g",
-      "flour",
+      "1",
+      "frozen banana",
+      "1 tbsp",
+      "chocolate protein powder",
+      "1 cup",
+      "frozen berries",
+      "1 tsp",
+      "spirulina",
+      "1 cup",
+      "fresh spinach",
       "100 ml",
-      "milk",
-      "250 g",
-      "sugar",
-      "2",
-      "eggs",
-      "100 g",
-      "chocolate chips"
+      "coconut water",
+      "1/2 cup",
+      "granola",
+      "1 tsp",
+      "shredded coconut",
+      "1/2 cup",
+      "hazelnuts",
+      "1 tsp",
+      "cacao nibs",
+      "1 tbsp",
+      "freeze dried rasperries (crushed)"
     ],
     "instructions": [
-      "preheat the oven to 200 degress",
-      "put dry ingredients in a bowl",
-      "melt butter in a pan",
-      "mix wet ingredients together"
+      "Add banana, protein powder, berries, spirulina, spinach and coconut water to a blender and blend until smooth.",
+      "Add the smoothie to a bowl and top with the remaining ingredients."
     ]
   },
   {
@@ -594,22 +670,29 @@
     "timehour": 0,
     "timeminutes": 30,
     "ingredients": [
-      "200 g",
-      "flour",
-      "100 ml",
-      "milk",
-      "250 g",
-      "sugar",
+      "1",
+      "courgette",
+      "1 cup",
+      "fresh spinach",
       "2",
-      "eggs",
-      "100 g",
-      "chocolate chips"
+      "carrots",
+      "2 x 100g",
+      "Salmon",
+      "1 tbsp",
+      "olive oil",
+      "",
+      "salt",
+      " ",
+      "pepper"
     ],
     "instructions": [
-      "preheat the oven to 200 degress",
-      "put dry ingredients in a bowl",
-      "melt butter in a pan",
-      "mix wet ingredients together"
+      "Top and tail the courgette and carrots and slice into long strips using a vegetable peeler.",
+      "Cut each strip into long, thin strands — or use a spiraliser, if you have one.",
+      "Season each salmon fillet with freshly ground black pepper.",
+      "Heat 1 tbsp of the live oil in a nonstick frying pan and cook the salmon for 3 mins on each side.",
+      "Add the courgetti, carrots and spinach to a saucepan, along with the remaining olive oil, 2 tbsp water and salt and pepper.",
+      "Cook for 3-4 mins, or until the vegetable begins to soften.",
+      "When cooked, divide the the vegetables between 2 bowls and top each with a salmon fillet and a sprinkling of freshly ground black pepper. Serve immediately"
     ]
   }
 ]

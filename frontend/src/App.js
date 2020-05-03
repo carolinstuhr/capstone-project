@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import RecipeList from './RecipeList'
@@ -6,6 +6,8 @@ import Header from './Header'
 import RecipeDetails from './RecipeDetails'
 
 export default function App() {
+  const [recipeDetails, setRecipeDetails] = useState('ingredients')
+
   return (
     <>
       <Switch>
@@ -16,7 +18,11 @@ export default function App() {
           </GridDiv>
         </Route>
         <Route path="/recipe">
-          <RecipeDetails />
+          <RecipeDetails
+            displayIngredients={showIngredients}
+            displayInstructions={showInstructions}
+            recipeDetails={recipeDetails}
+          />
         </Route>
       </Switch>
     </>
@@ -24,6 +30,13 @@ export default function App() {
 
   function showRecipeDetails(name, clickedRecipe) {
     localStorage.setItem(name, JSON.stringify(clickedRecipe))
+  }
+
+  function showIngredients() {
+    setRecipeDetails('ingredients')
+  }
+  function showInstructions() {
+    setRecipeDetails('instructions')
   }
 }
 
