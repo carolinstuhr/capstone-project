@@ -2,7 +2,11 @@ import React from 'react'
 import styled from 'styled-components/macro'
 
 export default function Header({ children }) {
-  return <HeaderStyled>{children}</HeaderStyled>
+  return (
+    <header>
+      <HeaderStyled>{children}</HeaderStyled>
+    </header>
+  )
 }
 const HeaderStyled = styled.h1`
   text-align: center;
