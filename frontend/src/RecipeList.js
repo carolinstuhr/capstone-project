@@ -7,20 +7,27 @@ import FilterRecipes from './FilterRecipes'
 export default function RecipeList({ showRecipeDetails }) {
   const [userInput, setUserInput] = useState('')
 
+  let filteredRecipeData = recipeData.filter(
+    (recipe) =>
+      recipe.title.toLowerCase().includes(userInput.toLowerCase()) ||
+      recipe.tags[0].toLowerCase().includes(userInput.toLowerCase()) ||
+      recipe.tags[1].toLowerCase().includes(userInput.toLowerCase()) ||
+      recipe.tags[2].toLowerCase().includes(userInput.toLowerCase())
+  )
+
   return (
     <main>
       <SectionStyled>
         <FilterRecipes setUserInput={setUserInput} />
         {console.log(userInput)}
-        {recipeData
-          .filter(
-            (recipe) =>
-              recipe.title.toLowerCase().includes(userInput.toLowerCase()) ||
-              recipe.tags[0].toLowerCase().includes(userInput.toLowerCase()) ||
-              recipe.tags[1].toLowerCase().includes(userInput.toLowerCase()) ||
-              recipe.tags[2].toLowerCase().includes(userInput.toLowerCase())
-          )
-          .map((recipe, index) => (
+        {console.log(filteredRecipeData)}
+        {filteredRecipeData.length === 0 ? (
+          <FallBackStyled>
+            Unfortunately, we did not find any recipe matching your search
+            request.
+          </FallBackStyled>
+        ) : (
+          filteredRecipeData.map((recipe, index) => (
             <RecipeSectionStyled key={index}>
               <ImageSection>
                 <Link to="/recipe">
@@ -42,7 +49,8 @@ export default function RecipeList({ showRecipeDetails }) {
                 ))}
               </TagSectionStyled>
             </RecipeSectionStyled>
-          ))}
+          ))
+        )}
       </SectionStyled>
     </main>
   )
@@ -50,6 +58,12 @@ export default function RecipeList({ showRecipeDetails }) {
 
 const SectionStyled = styled.main`
   margin-top: 18px;
+`
+
+const FallBackStyled = styled.p`
+  margin-left: 16px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
 `
 
 const RecipeSectionStyled = styled.section`
