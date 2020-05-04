@@ -91,8 +91,8 @@ const ImageSectionStyled = styled.section`
 const ArrowIconStyled = styled.img`
   background: rgba(242, 239, 233, 0.6);
   border-radius: 4px;
-  hight: 28px;
-  width: 28px;
+  hight: 32px;
+  width: 32px;
   position: absolute;
   left: 12px;
   top: 12px;
@@ -110,10 +110,7 @@ const RecipeInfoSectionStyled = styled.section`
   background: lightblue;
   position: relative;
   bottom: 12px;
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: 12px;
-  padding-bottom: 8px;
+  padding: 12px;
   font-family: 'Josefin Sans', sans-serif;
   background: rgba(242, 239, 233, 1);
 `
@@ -132,24 +129,34 @@ const InfoSection = styled.section`
   margin-right: 12px;
   justify-content: space-between;
   margin-top: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   font-weight: 300;
 `
 
 const DetailSelectionStyled = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 8px;
+  justify-content: center;
+  margin-top: 4px;
   font-weight: 300;
 `
 const IngredientsSelectionSpan = styled.span`
-  text-decoration: ${(props) =>
-    props.recipeDetails === 'ingredients' ? 'underline' : 'none'};
+  padding: 4px;
+  border: 2px solid white;
+  border-right-width: 1px;
+  background: ${(props) =>
+    props.recipeDetails === 'ingredients'
+      ? 'rgba(221, 216, 206, 1)'
+      : 'rgba(242, 239, 233, 0.6)'};
 `
 
 const InstructionsSelectionSpan = styled.span`
-  text-decoration: ${(props) =>
-    props.recipeDetails === 'instructions' ? 'underline' : 'none'};
+  padding: 4px;
+  border: 2px solid white;
+  border-left-width: 1px;
+  background: ${(props) =>
+    props.recipeDetails === 'instructions'
+      ? 'rgba(221, 216, 206, 1)'
+      : 'rgba(242, 239, 233, 0.6)'};
 `
 
 const IngredientsSection = styled.section`
