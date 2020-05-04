@@ -16,13 +16,7 @@ export default function RecipeDetails({
       console.log(error.message)
     }
   }
-  function removeFromStorage(name) {
-    try {
-      return localStorage.removeItem(name)
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
+
   const recipeID = loadFromStorage('recipeID')
 
   return (
@@ -33,13 +27,12 @@ export default function RecipeDetails({
             <>
               <ImageSectionStyled key={recipe.id}>
                 <Link exact to="/">
-                  <ArrowImageStyled
+                  <ArrowIconStyled
                     src={LeftArrow}
                     alt="home Button"
-                    onClick={() => removeFromStorage('recipeID')}
+                    onClick={displayIngredients}
                   />
                 </Link>
-                {console.log(recipeID)}
                 <ImageStyled src={recipe.image} alt="Recipe" />
               </ImageSectionStyled>
               <RecipeInfoSectionStyled>
@@ -51,18 +44,18 @@ export default function RecipeDetails({
                   </span>
                 </InfoSection>
                 <DetailSelectionStyled>
-                  <IngredientsSpan
+                  <IngredientsSelectionSpan
                     onClick={displayIngredients}
                     recipeDetails={recipeDetails}
                   >
                     Ingredients
-                  </IngredientsSpan>
-                  <InstructionsSpan
+                  </IngredientsSelectionSpan>
+                  <InstructionsSelectionSpan
                     onClick={displayInstructions}
                     recipeDetails={recipeDetails}
                   >
                     Instructions
-                  </InstructionsSpan>
+                  </InstructionsSelectionSpan>
                 </DetailSelectionStyled>
               </RecipeInfoSectionStyled>
               {recipeDetails === 'ingredients' ? (
@@ -95,7 +88,7 @@ const ImageSectionStyled = styled.section`
   position: relative;
 `
 
-const ArrowImageStyled = styled.img`
+const ArrowIconStyled = styled.img`
   background: rgba(242, 239, 233, 0.6);
   border-radius: 4px;
   hight: 28px;
@@ -149,12 +142,12 @@ const DetailSelectionStyled = styled.div`
   margin-top: 8px;
   font-weight: 300;
 `
-const IngredientsSpan = styled.span`
+const IngredientsSelectionSpan = styled.span`
   text-decoration: ${(props) =>
     props.recipeDetails === 'ingredients' ? 'underline' : 'none'};
 `
 
-const InstructionsSpan = styled.span`
+const InstructionsSelectionSpan = styled.span`
   text-decoration: ${(props) =>
     props.recipeDetails === 'instructions' ? 'underline' : 'none'};
 `
