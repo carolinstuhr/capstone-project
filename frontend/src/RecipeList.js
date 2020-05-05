@@ -16,43 +16,39 @@ export default function RecipeList({ showRecipeDetails }) {
   )
 
   return (
-    <main>
-      <SectionStyled>
-        <FilterRecipes setUserInput={setUserInput} />
-        {console.log(userInput)}
-        {console.log(filteredRecipeData)}
-        {filteredRecipeData.length === 0 ? (
-          <FallBackStyled>
-            Unfortunately, we did not find any recipe matching your search
-            request.
-          </FallBackStyled>
-        ) : (
-          filteredRecipeData.map((recipe, index) => (
-            <RecipeSectionStyled key={index}>
-              <ImageSection>
-                <Link to="/recipe">
-                  <ImageStyled
-                    src={recipe.image}
-                    alt="Recipe"
-                    onClick={() => showRecipeDetails('recipeID', recipe.id)}
-                  />
-                </Link>
-              </ImageSection>
-              <TitleStyled
-                onClick={() => showRecipeDetails('recipeID', recipe.id)}
-              >
-                <LinkStyled to="/recipe">{recipe.title}</LinkStyled>
-              </TitleStyled>
-              <TagSectionStyled>
-                {recipe.tags.slice(0, 3).map((tag, index) => (
-                  <TagsStyled key={index}>{tag}</TagsStyled>
-                ))}
-              </TagSectionStyled>
-            </RecipeSectionStyled>
-          ))
-        )}
-      </SectionStyled>
-    </main>
+    <SectionStyled>
+      <FilterRecipes setUserInput={setUserInput} />
+      {filteredRecipeData.length === 0 ? (
+        <FallBackStyled>
+          Unfortunately, we did not find any recipe matching your search
+          request.
+        </FallBackStyled>
+      ) : (
+        filteredRecipeData.map((recipe, index) => (
+          <RecipeSectionStyled key={index}>
+            <ImageSection>
+              <Link to="/recipe">
+                <ImageStyled
+                  src={recipe.image}
+                  alt="Recipe"
+                  onClick={() => showRecipeDetails('recipeID', recipe.id)}
+                />
+              </Link>
+            </ImageSection>
+            <TitleStyled
+              onClick={() => showRecipeDetails('recipeID', recipe.id)}
+            >
+              <LinkStyled to="/recipe">{recipe.title}</LinkStyled>
+            </TitleStyled>
+            <TagSectionStyled>
+              {recipe.tags.slice(0, 3).map((tag, index) => (
+                <TagsStyled key={index}>{tag}</TagsStyled>
+              ))}
+            </TagSectionStyled>
+          </RecipeSectionStyled>
+        ))
+      )}
+    </SectionStyled>
   )
 }
 
