@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import recipeData from './RecipeList.json'
 import LeftArrow from './images/left-arrow.svg'
+import FavouritesBookmark from './FavouritesBookmark'
 import { Link } from 'react-router-dom'
 
 export default function RecipeDetails({
@@ -16,15 +17,17 @@ export default function RecipeDetails({
       console.log(error.message)
     }
   }
-
   const recipeID = loadFromStorage('recipeID')
+
+  const [recipes, setRecipeData] = useState(recipeData)
 
   return (
     <main>
-      {recipeData.map(
-        (recipe) =>
+      {recipes.map(
+        (recipe, index) =>
           recipe.id === recipeID && (
             <>
+              {console.log(recipe.isFavourite)}
               <ImageSectionStyled key={recipe.id}>
                 <Link exact to="/">
                   <ArrowIconStyled
@@ -33,6 +36,12 @@ export default function RecipeDetails({
                     onClick={displayIngredients}
                   />
                 </Link>
+                <FavouritesBookmark
+                  toggleFavourites={() => {
+                    toggleHeartIcon(index)
+                  }}
+                  isFavourite={recipe.isFavourite}
+                />
                 <ImageStyled src={recipe.image} alt="Recipe" />
               </ImageSectionStyled>
               <RecipeInfoSectionStyled>
@@ -81,6 +90,14 @@ export default function RecipeDetails({
       )}
     </main>
   )
+  function toggleHeartIcon(selectedIndex) {
+    const recipe = recipes[selectedIndex]
+    setRecipeData([
+      ...recipes.slice(0, selectedIndex),
+      { ...recipe, isFavourite: !recipe.isFavourite },
+      ...recipes.slice(selectedIndex + 1),
+    ])
+  }
 }
 
 const ImageSectionStyled = styled.section`
