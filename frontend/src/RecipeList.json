@@ -139,42 +139,6 @@
     ]
   },
   {
-    "title": "Indian Curry",
-    "tags": ["meal-prep", "vegan", "spicy"],
-    "image": "./images/vegan_curry.jpg",
-    "serving": 2,
-    "timehour": 0,
-    "timeminutes": 30,
-    "ingredients": [
-      "1 tbsp",
-      "vegetable oil",
-      "1",
-      "onion",
-      "2",
-      "garlic cloves",
-      "1/2 tsp",
-      "cumin",
-      "1/2 tsp",
-      "turmeric",
-      "1/2 tsp",
-      "red chilli powder",
-      "1/2 tsp",
-      "red garam masala",
-      "10 g",
-      "ginger",
-      "3",
-      "chopped tomatos",
-      "400 g",
-      "tinned chickpeas"
-    ],
-    "instructions": [
-      "Heat the oil in a deep saucepan or a medium-sized wok. Fry the onions and garlic until the onions are caramelised.",
-      "Add the salt, cumin, coriander, turmeric and red chilli powder. Cook for a minute and then add the tomato. Cook the sauce until it begins to thicken.",
-      "Add 4 tablespoons of water and stir. Stir in the chickpeas. Mash in a few of the chickpeas, cover and simmer for 5 minutes. Add the ginger and garam masala. Cook for another minute.",
-      "Serve with basmati rice."
-    ]
-  },
-  {
     "id": 5,
     "title": "American Pancakes",
     "tags": ["breakfast", "weekend", "sweet"],
@@ -769,6 +733,43 @@
       "Add the courgetti, carrots and spinach to a saucepan, along with the remaining olive oil, 2 tbsp water and salt and pepper.",
       "Cook for 3-4 mins, or until the vegetable begins to soften.",
       "When cooked, divide the the vegetables between 2 bowls and top each with a salmon fillet and a sprinkling of freshly ground black pepper. Serve immediately"
+    ]
+  },
+  {
+    "id": 22,
+    "title": "Indian Curry",
+    "tags": ["meal-prep", "vegan", "spicy"],
+    "image": "./images/vegan_curry.jpg",
+    "serving": 2,
+    "timehour": 0,
+    "timeminutes": 30,
+    "ingredients": [
+      "1 tbsp",
+      "vegetable oil",
+      "1",
+      "onion",
+      "2",
+      "garlic cloves",
+      "1/2 tsp",
+      "cumin",
+      "1/2 tsp",
+      "turmeric",
+      "1/2 tsp",
+      "red chilli powder",
+      "1/2 tsp",
+      "red garam masala",
+      "10 g",
+      "ginger",
+      "3",
+      "chopped tomatos",
+      "400 g",
+      "tinned chickpeas"
+    ],
+    "instructions": [
+      "Heat the oil in a deep saucepan or a medium-sized wok. Fry the onions and garlic until the onions are caramelised.",
+      "Add the salt, cumin, coriander, turmeric and red chilli powder. Cook for a minute and then add the tomato. Cook the sauce until it begins to thicken.",
+      "Add 4 tablespoons of water and stir. Stir in the chickpeas. Mash in a few of the chickpeas, cover and simmer for 5 minutes. Add the ginger and garam masala. Cook for another minute.",
+      "Serve with basmati rice."
     ]
   }
 ]
