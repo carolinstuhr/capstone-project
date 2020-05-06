@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro'
-import recipeData from './RecipeList.json'
 import LeftArrow from './images/left-arrow.svg'
 import FavouritesBookmark from './FavouritesBookmark'
 import { Link } from 'react-router-dom'
@@ -9,6 +8,8 @@ export default function RecipeDetails({
   displayIngredients,
   displayInstructions,
   recipeDetails,
+  recipes,
+  setRecipes,
 }) {
   function loadFromStorage(name) {
     try {
@@ -19,15 +20,12 @@ export default function RecipeDetails({
   }
   const recipeID = loadFromStorage('recipeID')
 
-  const [recipes, setRecipeData] = useState(recipeData)
-
   return (
     <main>
       {recipes.map(
         (recipe, index) =>
           recipe.id === recipeID && (
             <>
-              {console.log(recipe.isFavourite)}
               <ImageSectionStyled key={recipe.id}>
                 <Link exact to="/">
                   <ArrowIconStyled
@@ -91,12 +89,16 @@ export default function RecipeDetails({
     </main>
   )
   function toggleHeartIcon(selectedIndex) {
-    const recipe = recipes[selectedIndex]
-    setRecipeData([
-      ...recipes.slice(0, selectedIndex),
+    let recipe = recipes[selectedIndex]
+    let index = recipes.indexOf(recipe)
+    setRecipes([
+      ...recipes.slice(0, index),
       { ...recipe, isFavourite: !recipe.isFavourite },
-      ...recipes.slice(selectedIndex + 1),
+      ...recipes.slice(index + 1),
     ])
+    console.log(recipe.isFavourite)
+    console.log(index)
+    console.log(recipe)
   }
 }
 

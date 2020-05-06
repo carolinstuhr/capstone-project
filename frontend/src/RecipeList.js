@@ -1,22 +1,21 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import recipeData from './RecipeList.json'
 import styled from 'styled-components/macro'
 import FilterRecipes from './FilterRecipes'
 
-export default function RecipeList({ showRecipeDetails }) {
+export default function RecipeList({ showRecipeDetails, recipes }) {
   const [userInput, setUserInput] = useState('')
 
-  let filteredRecipeData = recipeData.filter(
+  let filteredRecipeData = recipes.filter(
     (recipe) =>
       recipe.title.toLowerCase().includes(userInput.toLowerCase()) ||
       recipe.tags[0].toLowerCase().includes(userInput.toLowerCase()) ||
       recipe.tags[1].toLowerCase().includes(userInput.toLowerCase()) ||
       recipe.tags[2].toLowerCase().includes(userInput.toLowerCase())
   )
-
   return (
     <SectionStyled>
+      <Link to="/favourites">favourites</Link>
       <FilterRecipes setUserInput={setUserInput} />
       {filteredRecipeData.length === 0 ? (
         <FallBackStyled>
