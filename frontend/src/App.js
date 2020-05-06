@@ -16,6 +16,10 @@ export default function App() {
   const [previousPage, setPreviousPage] = useState('All')
 
   useEffect(() => {
+    saveToStorage('recipes', recipeData)
+  }, [])
+
+  useEffect(() => {
     saveToStorage('recipes', recipes)
   }, [recipes])
 
