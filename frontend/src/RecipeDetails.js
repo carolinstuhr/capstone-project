@@ -1,13 +1,16 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import recipeData from './RecipeList.json'
 import LeftArrow from './images/left-arrow.svg'
+import FavouritesBookmark from './FavouritesBookmark'
 import { Link } from 'react-router-dom'
 
 export default function RecipeDetails({
   displayIngredients,
   displayInstructions,
   recipeDetails,
+  recipes,
+  setRecipes,
+  previousPage,
 }) {
   function loadFromStorage(name) {
     try {
@@ -16,23 +19,39 @@ export default function RecipeDetails({
       console.log(error.message)
     }
   }
-
   const recipeID = loadFromStorage('recipeID')
 
   return (
     <main>
-      {recipeData.map(
-        (recipe) =>
+      {recipes.map(
+        (recipe, index) =>
           recipe.id === recipeID && (
             <>
               <ImageSectionStyled key={recipe.id}>
-                <Link exact to="/">
-                  <ArrowIconStyled
-                    src={LeftArrow}
-                    alt="home Button"
-                    onClick={displayIngredients}
-                  />
-                </Link>
+                {previousPage === 'All' && (
+                  <Link exact to="/">
+                    <ArrowIconStyled
+                      src={LeftArrow}
+                      alt="home Button"
+                      onClick={displayIngredients}
+                    />
+                  </Link>
+                )}
+                {previousPage === 'Favourites' && (
+                  <Link exact to="/favourites">
+                    <ArrowIconStyled
+                      src={LeftArrow}
+                      alt="home Button"
+                      onClick={displayIngredients}
+                    />
+                  </Link>
+                )}
+                <FavouritesBookmark
+                  toggleFavourites={() => {
+                    toggleHeartIcon(index)
+                  }}
+                  isFavourite={recipe.isFavourite}
+                />
                 <ImageStyled src={recipe.image} alt="Recipe" />
               </ImageSectionStyled>
               <RecipeInfoSectionStyled>
@@ -81,6 +100,15 @@ export default function RecipeDetails({
       )}
     </main>
   )
+  function toggleHeartIcon(selectedIndex) {
+    let recipe = recipes[selectedIndex]
+    let index = recipes.indexOf(recipe)
+    setRecipes([
+      ...recipes.slice(0, index),
+      { ...recipe, isFavourite: !recipe.isFavourite },
+      ...recipes.slice(index + 1),
+    ])
+  }
 }
 
 const ImageSectionStyled = styled.section`
@@ -161,18 +189,20 @@ const InstructionsSelectionSpan = styled.span`
 
 const IngredientsSection = styled.section`
   padding-left: 12px;
+  padding-right: 12px;
   display: grid;
   grid-template-columns: 1fr 3fr;
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 200;
+  font-weight: 300;
 `
 
 const InstructionsSection = styled.section`
   padding-left: 12px;
+  padding-right: 8px;
   display: grid;
   grid-template-columns: 1fr 20fr;
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 200;
+  font-weight: 300;
 `
 
 const StyledParagraph = styled.p`

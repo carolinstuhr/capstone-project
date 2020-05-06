@@ -4,24 +4,32 @@ import styled from 'styled-components/macro'
 import FilterRecipes from './FilterRecipes'
 import DisplaySelection from './DisplaySelection'
 
-export default function RecipeList({ showRecipeDetails, recipes }) {
+export default function RecipeFavourites({ showRecipeDetails, recipes }) {
   const [userInput, setUserInput] = useState('')
 
-  let filteredRecipeData = recipes.filter(
+  let favouriteRecipes = recipes.filter((recipe) => recipe.isFavourite === true)
+
+  let filteredRecipeData = favouriteRecipes.filter(
     (recipe) =>
       recipe.title.toLowerCase().includes(userInput.toLowerCase()) ||
       recipe.tags[0].toLowerCase().includes(userInput.toLowerCase()) ||
       recipe.tags[1].toLowerCase().includes(userInput.toLowerCase()) ||
       recipe.tags[2].toLowerCase().includes(userInput.toLowerCase())
   )
+
   return (
     <SectionStyled>
       <DisplaySelection />
       <FilterRecipes setUserInput={setUserInput} />
-      {filteredRecipeData.length === 0 ? (
+      {favouriteRecipes.length === 0 && (
         <FallBackStyled>
-          Unfortunately, we did not find any recipe matching your search
-          request.
+          Unfortunately, you haven't selected any favourites yet.
+        </FallBackStyled>
+      )}
+      {favouriteRecipes.length > 0 && filteredRecipeData.length === 0 ? (
+        <FallBackStyled>
+          Unfortunately, we did not find any of your favourite recipes matching
+          your search request.
         </FallBackStyled>
       ) : (
         filteredRecipeData.map((recipe, index) => (
@@ -32,13 +40,15 @@ export default function RecipeList({ showRecipeDetails, recipes }) {
                   src={recipe.image}
                   alt="Recipe"
                   onClick={() =>
-                    showRecipeDetails('recipeID', recipe.id, 'All')
+                    showRecipeDetails('recipeID', recipe.id, 'Favourites')
                   }
                 />
               </Link>
             </ImageSection>
             <TitleStyled
-              onClick={() => showRecipeDetails('recipeID', recipe.id, 'All')}
+              onClick={() =>
+                showRecipeDetails('recipeID', recipe.id, 'Favourites')
+              }
             >
               <LinkStyled to="/recipe">{recipe.title}</LinkStyled>
             </TitleStyled>
