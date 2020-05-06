@@ -108,9 +108,6 @@ export default function RecipeDetails({
       { ...recipe, isFavourite: !recipe.isFavourite },
       ...recipes.slice(index + 1),
     ])
-    console.log(recipe.isFavourite)
-    console.log(index)
-    console.log(recipe)
   }
 }
 

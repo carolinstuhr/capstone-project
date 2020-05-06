@@ -26,7 +26,6 @@ export default function RecipeList({ showRecipeDetails, recipes }) {
       ) : (
         filteredRecipeData.map((recipe, index) => (
           <RecipeSectionStyled key={index}>
-            {console.log(recipe.isFavourite)}
             <ImageSection>
               <Link to="/recipe">
                 <ImageStyled
