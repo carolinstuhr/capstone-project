@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import RecipeList from './RecipeList'
@@ -15,47 +15,44 @@ export default function App() {
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
   const [previousPage, setPreviousPage] = useState('All')
 
-  useLayoutEffect(() => {
-    saveToStorage('recipes', recipeData)
-    loadFromStorage('recipes')
-  }, [])
-
   useEffect(() => {
     saveToStorage('recipes', recipes)
   }, [recipes])
 
   return (
     <>
-      <Switch>
-        <Route exact path="/">
-          <GridDiv>
-            <Header>recipes</Header>
-            <RecipeList
-              showRecipeDetails={showRecipeDetails}
+      {recipes && (
+        <Switch>
+          <Route exact path="/">
+            <GridDiv>
+              <Header>recipes</Header>
+              <RecipeList
+                showRecipeDetails={showRecipeDetails}
+                recipes={recipes}
+              />
+            </GridDiv>
+          </Route>
+          <Route path="/favourites">
+            <GridDiv>
+              <Header>favourites</Header>
+              <RecipeFavourites
+                showRecipeDetails={showRecipeDetails}
+                recipes={recipes}
+              />
+            </GridDiv>
+          </Route>
+          <Route path="/recipe">
+            <RecipeDetails
+              displayIngredients={showIngredients}
+              displayInstructions={showInstructions}
+              recipeDetails={recipeDetails}
               recipes={recipes}
+              setRecipes={setRecipes}
+              previousPage={previousPage}
             />
-          </GridDiv>
-        </Route>
-        <Route path="/favourites">
-          <GridDiv>
-            <Header>favourites</Header>
-            <RecipeFavourites
-              showRecipeDetails={showRecipeDetails}
-              recipes={recipes}
-            />
-          </GridDiv>
-        </Route>
-        <Route path="/recipe">
-          <RecipeDetails
-            displayIngredients={showIngredients}
-            displayInstructions={showInstructions}
-            recipeDetails={recipeDetails}
-            recipes={recipes}
-            setRecipes={setRecipes}
-            previousPage={previousPage}
-          />
-        </Route>
-      </Switch>
+          </Route>
+        </Switch>
+      )}
     </>
   )
 
