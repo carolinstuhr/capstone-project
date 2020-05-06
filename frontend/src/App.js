@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import RecipeList from './RecipeList'
@@ -15,7 +15,7 @@ export default function App() {
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
   const [previousPage, setPreviousPage] = useState('All')
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     saveToStorage('recipes', recipeData)
     loadFromStorage('recipes')
   }, [])

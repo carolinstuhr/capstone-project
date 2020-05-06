@@ -189,18 +189,20 @@ const InstructionsSelectionSpan = styled.span`
 
 const IngredientsSection = styled.section`
   padding-left: 12px;
+  padding-right: 12px;
   display: grid;
   grid-template-columns: 1fr 3fr;
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 200;
+  font-weight: 300;
 `
 
 const InstructionsSection = styled.section`
   padding-left: 12px;
+  padding-right: 8px;
   display: grid;
   grid-template-columns: 1fr 20fr;
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 200;
+  font-weight: 300;
 `
 
 const StyledParagraph = styled.p`
