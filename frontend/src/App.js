@@ -9,10 +9,11 @@ import recipeData from './RecipeList.json'
 import { saveToStorage, loadFromStorage } from './services'
 
 export default function App() {
-  const [recipeDetails, setRecipeDetails] = useState('ingredients')
   const [recipes, setRecipes] = useState(
     loadFromStorage('recipes') || saveToStorage('recipes', recipeData)
   )
+  const [recipeDetails, setRecipeDetails] = useState('ingredients')
+  const [previousPage, setPreviousPage] = useState('All')
 
   useEffect(() => {
     saveToStorage('recipes', recipes)
@@ -46,14 +47,16 @@ export default function App() {
             recipeDetails={recipeDetails}
             recipes={recipes}
             setRecipes={setRecipes}
+            previousPage={previousPage}
           />
         </Route>
       </Switch>
     </>
   )
 
-  function showRecipeDetails(name, clickedRecipe) {
+  function showRecipeDetails(name, clickedRecipe, page) {
     localStorage.setItem(name, JSON.stringify(clickedRecipe))
+    setPreviousPage(page)
   }
 
   function showIngredients() {

@@ -10,6 +10,7 @@ export default function RecipeDetails({
   recipeDetails,
   recipes,
   setRecipes,
+  previousPage,
 }) {
   function loadFromStorage(name) {
     try {
@@ -27,13 +28,24 @@ export default function RecipeDetails({
           recipe.id === recipeID && (
             <>
               <ImageSectionStyled key={recipe.id}>
-                <Link exact to="/">
-                  <ArrowIconStyled
-                    src={LeftArrow}
-                    alt="home Button"
-                    onClick={displayIngredients}
-                  />
-                </Link>
+                {previousPage === 'All' && (
+                  <Link exact to="/">
+                    <ArrowIconStyled
+                      src={LeftArrow}
+                      alt="home Button"
+                      onClick={displayIngredients}
+                    />
+                  </Link>
+                )}
+                {previousPage === 'Favourites' && (
+                  <Link exact to="/favourites">
+                    <ArrowIconStyled
+                      src={LeftArrow}
+                      alt="home Button"
+                      onClick={displayIngredients}
+                    />
+                  </Link>
+                )}
                 <FavouritesBookmark
                   toggleFavourites={() => {
                     toggleHeartIcon(index)

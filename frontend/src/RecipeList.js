@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import FilterRecipes from './FilterRecipes'
+import DisplaySelection from './DisplaySelection'
 
 export default function RecipeList({ showRecipeDetails, recipes }) {
   const [userInput, setUserInput] = useState('')
@@ -15,7 +16,7 @@ export default function RecipeList({ showRecipeDetails, recipes }) {
   )
   return (
     <SectionStyled>
-      <Link to="/favourites">favourites</Link>
+      <DisplaySelection />
       <FilterRecipes setUserInput={setUserInput} />
       {filteredRecipeData.length === 0 ? (
         <FallBackStyled>
@@ -31,12 +32,14 @@ export default function RecipeList({ showRecipeDetails, recipes }) {
                 <ImageStyled
                   src={recipe.image}
                   alt="Recipe"
-                  onClick={() => showRecipeDetails('recipeID', recipe.id)}
+                  onClick={() =>
+                    showRecipeDetails('recipeID', recipe.id, 'All')
+                  }
                 />
               </Link>
             </ImageSection>
             <TitleStyled
-              onClick={() => showRecipeDetails('recipeID', recipe.id)}
+              onClick={() => showRecipeDetails('recipeID', recipe.id, 'All')}
             >
               <LinkStyled to="/recipe">{recipe.title}</LinkStyled>
             </TitleStyled>
