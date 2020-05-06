@@ -21,38 +21,36 @@ export default function App() {
 
   return (
     <>
-      {recipes && (
-        <Switch>
-          <Route exact path="/">
-            <GridDiv>
-              <Header>recipes</Header>
-              <RecipeList
-                showRecipeDetails={showRecipeDetails}
-                recipes={recipes}
-              />
-            </GridDiv>
-          </Route>
-          <Route path="/favourites">
-            <GridDiv>
-              <Header>favourites</Header>
-              <RecipeFavourites
-                showRecipeDetails={showRecipeDetails}
-                recipes={recipes}
-              />
-            </GridDiv>
-          </Route>
-          <Route path="/recipe">
-            <RecipeDetails
-              displayIngredients={showIngredients}
-              displayInstructions={showInstructions}
-              recipeDetails={recipeDetails}
+      <Switch>
+        <Route exact path="/">
+          <GridDiv>
+            <Header>recipes</Header>
+            <RecipeList
+              showRecipeDetails={showRecipeDetails}
               recipes={recipes}
-              setRecipes={setRecipes}
-              previousPage={previousPage}
             />
-          </Route>
-        </Switch>
-      )}
+          </GridDiv>
+        </Route>
+        <Route path="/favourites">
+          <GridDiv>
+            <Header>favourites</Header>
+            <RecipeFavourites
+              showRecipeDetails={showRecipeDetails}
+              recipes={recipes}
+            />
+          </GridDiv>
+        </Route>
+        <Route path="/recipe">
+          <RecipeDetails
+            displayIngredients={showIngredients}
+            displayInstructions={showInstructions}
+            recipeDetails={recipeDetails}
+            recipes={recipes}
+            setRecipes={setRecipes}
+            previousPage={previousPage}
+          />
+        </Route>
+      </Switch>
     </>
   )
 
