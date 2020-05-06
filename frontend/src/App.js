@@ -11,12 +11,11 @@ import { saveToStorage, loadFromStorage } from './services'
 export default function App() {
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
   const [recipes, setRecipes] = useState(
-    JSON.parse(localStorage.getItem('recipes')) ||
-      localStorage.setItem('recipes', JSON.stringify(recipeData))
+    loadFromStorage('recipes') || saveToStorage('recipes', recipeData)
   )
 
   useEffect(() => {
-    localStorage.setItem('recipes', JSON.stringify(recipes))
+    saveToStorage('recipes', recipes)
   }, [recipes])
 
   return (
@@ -28,7 +27,6 @@ export default function App() {
             <RecipeList
               showRecipeDetails={showRecipeDetails}
               recipes={recipes}
-              setRecipes={setRecipes}
             />
           </GridDiv>
         </Route>
