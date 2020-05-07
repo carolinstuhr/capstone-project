@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import LeftArrow from './images/left-arrow.svg'
 import FavouritesBookmark from './FavouritesBookmark'
-import { Link } from 'react-router-dom'
+import { Link, useRouteMatch } from 'react-router-dom'
 
 export default function RecipeDetails({
   displayIngredients,
@@ -12,20 +12,13 @@ export default function RecipeDetails({
   setRecipes,
   previousPage,
 }) {
-  function loadFromStorage(name) {
-    try {
-      return JSON.parse(localStorage.getItem(name))
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-  const recipeID = loadFromStorage('recipeID')
+  const match = useRouteMatch()
 
   return (
     <main>
       {recipes.map(
         (recipe, index) =>
-          recipe.id === recipeID && (
+          recipe.id === parseInt(match.params.id) && (
             <>
               <ImageSectionStyled key={recipe.id}>
                 {previousPage === 'All' && (
@@ -52,7 +45,7 @@ export default function RecipeDetails({
                   }}
                   isFavourite={recipe.isFavourite}
                 />
-                <ImageStyled src={recipe.image} alt="Recipe" />
+                <ImageStyled src={`/../${recipe.image}`} alt="Recipe" />
               </ImageSectionStyled>
               <RecipeInfoSectionStyled>
                 <TitleStyled key={recipe.id}>{recipe.title}</TitleStyled>

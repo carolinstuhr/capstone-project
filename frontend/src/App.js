@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
-import RecipeList from './RecipeList'
+import RecipeList from './AllRecipes'
 import Header from './Header'
 import RecipeDetails from './RecipeDetails'
-import RecipeFavourites from './RecipeFavourites'
+import RecipeFavourites from './FavouriteRecipes'
 import recipeData from './RecipeList.json'
 import { saveToStorage, loadFromStorage } from './services'
 
@@ -26,7 +26,7 @@ export default function App() {
           <GridDiv>
             <Header>recipes</Header>
             <RecipeList
-              showRecipeDetails={showRecipeDetails}
+              savedPreviousPage={savedPreviousPage}
               recipes={recipes}
             />
           </GridDiv>
@@ -35,12 +35,12 @@ export default function App() {
           <GridDiv>
             <Header>favourites</Header>
             <RecipeFavourites
-              showRecipeDetails={showRecipeDetails}
+              savedPreviousPage={savedPreviousPage}
               recipes={recipes}
             />
           </GridDiv>
         </Route>
-        <Route path="/recipe">
+        <Route path="/recipe/:id">
           <RecipeDetails
             displayIngredients={showIngredients}
             displayInstructions={showInstructions}
@@ -54,8 +54,7 @@ export default function App() {
     </>
   )
 
-  function showRecipeDetails(name, clickedRecipe, page) {
-    localStorage.setItem(name, JSON.stringify(clickedRecipe))
+  function savedPreviousPage(page) {
     setPreviousPage(page)
   }
 

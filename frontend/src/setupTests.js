@@ -3,10 +3,10 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect'
-import 'jest-localstorage-mock'
+require('jest-localstorage-mock')
 
-const localStorageMock = {
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-}
-global.localStorage = localStorageMock
+// const localStorageMock = {
+//   getItem: jest.fn(),
+//   setItem: jest.fn(),
+// }
+// global.localStorage = localStorageMock
