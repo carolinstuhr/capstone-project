@@ -10,7 +10,7 @@ import { saveToStorage, loadFromStorage } from './services'
 
 export default function App() {
   const [recipes, setRecipes] = useState(
-    loadFromStorage('recipes') || saveToStorage('recipes', recipeData)
+    loadFromStorage('recipes') || recipeData
   )
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
   const [previousPage, setPreviousPage] = useState('All')

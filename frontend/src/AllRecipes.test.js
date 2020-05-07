@@ -1,50 +1,45 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import RecipeList from './RecipeList'
+import AllRecipes from './AllRecipes'
 import { MemoryRouter } from 'react-router-dom'
+import recipeData from './RecipeList.json'
 
-// const localStorageMock = {
-//   getItem: jest.fn(),
-//   setItem: jest.fn(),
-// }
-// global.localStorage = localStorageMock
-
-// test('rendering Recipe List', () => {
-//   const { getByText } = render(
-//     <MemoryRouter>
-//       <RecipeList />
-//     </MemoryRouter>
-//   )
-//   const linkElement = getByText(/Chocolate chip cookies/i)
-//   expect(linkElement).toBeInTheDocument()
-// })
-
-test('should save to localStorage', () => {
-  const { getByPlaceholderText } = render(
+test('rendering Recipe List', () => {
+  const { getByText } = render(
     <MemoryRouter>
-      <RecipeList />
+      <AllRecipes recipes={recipeData} />
     </MemoryRouter>
   )
-  const input = getByPlaceholderText(/Search for recipes.../i)
-  fireEvent.change(input, { target: { value: 'hdhdh' } })
-  expect(localStorage.getItem).toHaveBeenCalledTimes(1)
+  const linkElement = getByText(/Chocolate chip cookies/i)
+  expect(linkElement).toBeInTheDocument()
 })
 
 test('test filter to search matching recipe', () => {
   const { getByPlaceholderText, getByText } = render(
     <MemoryRouter>
-      <RecipeList />
+      <AllRecipes recipes={recipeData} />
     </MemoryRouter>
   )
   const input = getByPlaceholderText(/Search for recipes.../i)
   fireEvent.change(input, { target: { value: 'porridge' } })
-  expect(getByText(/porridge/i)).toHaveTextContent(/porridge/i)
+  expect(getByText(/b/i)).toBeTruthy()
+})
+
+test('test filter to search matching recipe', () => {
+  const { getByPlaceholderText, getAllByText } = render(
+    <MemoryRouter>
+      <AllRecipes recipes={recipeData} />
+    </MemoryRouter>
+  )
+  const input = getByPlaceholderText(/Search for recipes.../i)
+  fireEvent.change(input, { target: { value: 'break' } })
+  expect(getAllByText(/break/i)).toHaveLength(6)
 })
 
 test('test filter with no match', () => {
   const { getByPlaceholderText, getByText } = render(
     <MemoryRouter>
-      <RecipeList />
+      <AllRecipes recipes={recipeData} />
     </MemoryRouter>
   )
   const input = getByPlaceholderText(/Search for recipes.../i)
