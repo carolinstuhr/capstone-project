@@ -18,15 +18,16 @@ import { MemoryRouter } from 'react-router-dom'
 //   expect(localStorageMock.getItem).toBeCalledWith('recipes')
 // })
 
-// test('renders content of App.js', () => {
-//   const { getByText } = render(
-//     <MemoryRouter>
-//       <App />
-//     </MemoryRouter>
-//   )
-//   const linkElement = getByText(/recipe/i)
-//   expect(linkElement).toBeInTheDocument()
-// })
+test('renders content of App.js', () => {
+  const { getByText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  )
+  const linkElement = getByText(/recipe/i)
+  expect(linkElement).toBeInTheDocument()
+  expect(localStorage.getItem).toHaveBeenCalledTimes(1)
+})
 
 // jest.mock('recipeData')
 
@@ -39,11 +40,8 @@ import { MemoryRouter } from 'react-router-dom'
 
 //Storage Mock
 
-test('should save to localStorage', () => {
-  const KEY = 'foo',
-    VALUE = 'bar'
-
-  expect(localStorage.setItem).toHaveBeenLastCalledWith(KEY, VALUE)
-  expect(localStorage.__STORE__[KEY]).toBe(VALUE)
-  expect(Object.keys(localStorage.__STORE__).length).toBe(1)
+test('should load from localStorage', () => {
+  const KEY = 'recipes'
+  expect(localStorage.getItem).toHaveBeenLastCalledWith(KEY)
+  expect(localStorage.getItem).toHaveBeenCalledTimes(1)
 })
