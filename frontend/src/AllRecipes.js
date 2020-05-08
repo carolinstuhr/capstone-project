@@ -3,6 +3,8 @@ import styled from 'styled-components/macro'
 import FilterRecipes from './FilterRecipes'
 import DisplaySelection from './DisplaySelection'
 import RecipeList from './RecipeList'
+import CreateRecipeButton from './CreateRecipe/CreateRecipeButton'
+import { Link } from 'react-router-dom'
 
 export default function AllRecipes({ savedPreviousPage, recipes }) {
   const [userInput, setUserInput] = useState('')
@@ -30,6 +32,9 @@ export default function AllRecipes({ savedPreviousPage, recipes }) {
           page={'All'}
         />
       )}
+      <Link to="/create">
+        <CreateRecipeButton />
+      </Link>
     </SectionStyled>
   )
 }

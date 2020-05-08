@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaHeart } from 'react-icons/fa'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 export default function FavouritesBookmark({ toggleFavourites, isFavourite }) {
   return <HeartStyled onClick={toggleFavourites} isFavourite={isFavourite} />

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import RecipeList from './AllRecipes'
 import Header from './Header'
 import RecipeDetails from './RecipeDetails'
 import RecipeFavourites from './FavouriteRecipes'
 import recipeData from './RecipeList.json'
 import { saveToStorage, loadFromStorage } from './services'
+import CreateRecipe from './CreateRecipe/CreateRecipe'
 
 export default function App() {
   const [recipes, setRecipes] = useState(
@@ -49,6 +50,12 @@ export default function App() {
             setRecipes={setRecipes}
             previousPage={previousPage}
           />
+        </Route>
+        <Route path="/create">
+          <GridDiv>
+            <Header>create</Header>
+            <CreateRecipe />
+          </GridDiv>
         </Route>
       </Switch>
     </>
