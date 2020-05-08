@@ -1,15 +1,21 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-export default function IngredientsSection({ storeInput }) {
+export default function IngredientsSection({ storeInput, ingredientsNumber }) {
   return (
     <IngredientsPart>
       <IngredientsAmountInput
         type="text"
         id="ingredients"
-        onInput={storeInput}
+        onChange={storeInput}
+        name={`ingredientsamount${ingredientsNumber}`}
       />
-      <IngredientsNameInput type="text" id="ingredients" onInput={storeInput} />
+      <IngredientsNameInput
+        type="text"
+        id="ingredients"
+        onChange={storeInput}
+        name={`ingredientsname${ingredientsNumber}`}
+      />
     </IngredientsPart>
   )
 }

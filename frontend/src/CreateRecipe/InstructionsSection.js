@@ -1,15 +1,19 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-export default function InstructionsSection({ storeInput, number }) {
+export default function InstructionsSection({
+  storeInput,
+  instructionsNumber,
+}) {
   return (
     <InstructionsPart>
-      <InstructionsNumber>{number}. </InstructionsNumber>
+      <InstructionsNumber>{instructionsNumber}. </InstructionsNumber>
       <InstructionsInput
         rows="5"
         id="instructions"
         placeholder="Description"
-        onInput={storeInput}
+        onChange={storeInput}
+        name={`instruction${instructionsNumber}`}
       />
     </InstructionsPart>
   )

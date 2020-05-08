@@ -1,17 +1,42 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components/macro'
 import InstructionsSection from './InstructionsSection'
 import { FaPlus } from 'react-icons/fa'
 import IngredientsSection from './IngredientsSection'
 
 export default function CreateRecipe() {
-  const [formData, setFormData] = useState('')
-  const [number, setNumber] = useState(1)
+  const [ingredientsNumber, setIngredientsNumber] = useState(1)
+  const [instructionsNumber, setInstructionsNumber] = useState(1)
+  useEffect(() => {
+    setInstructionsNumber(2)
+    setIngredientsNumber(2)
+  }, [])
+  const [formData, setFormData] = useState({
+    // title: '',
+    // tag1: '',
+    // tag2: '',
+    // tag3: '',
+    // serving: '',
+    // timehour: '',
+    // timeminutes: '',
+    // ['ingredientsamount' + ingredientsNumber]: '',
+    // ['ingredientsname' + ingredientsNumber]: '',
+    // ['instruction' + instructionsNumber]: '',
+  })
+
   const [ingredients, setIngredients] = useState([
-    <IngredientsSection storeInput={storeInput} />,
+    <IngredientsSection
+      storeInput={storeInput}
+      ingredientsNumber={ingredientsNumber}
+      formData={formData}
+    />,
   ])
   const [instructions, setInstructions] = useState([
-    <InstructionsSection storeInput={storeInput} number={number} />,
+    <InstructionsSection
+      storeInput={storeInput}
+      formData={formData}
+      instructionsNumber={instructionsNumber}
+    />,
   ])
   return (
     <MainStyled>
@@ -19,21 +44,58 @@ export default function CreateRecipe() {
         <LabelStyled htmlFor="title">Title</LabelStyled>
         <TitleInput
           type="text"
-          name=""
+          name="title"
           placeholder="Title of Recipe..."
           id="title"
-          onInput={storeInput}
+          onChange={storeInput}
+          value={formData.title}
         />
         <LabelStyled htmlFor="tags">Description Tags</LabelStyled>
-        <TagsInput type="text" id="tags" onInput={storeInput} />
-        <TagsInput type="text" id="tags" onInput={storeInput} />
-        <TagsInput type="text" id="tags" onInput={storeInput} />
-        <PortionLabel htmlFor="portion">Portion Size</PortionLabel>
-        <PortionInput type="text" id="portion" onInput={storeInput} />
+        <TagsInput
+          type="text"
+          id="tags"
+          onChange={storeInput}
+          name="tag1"
+          value={formData.tag1}
+        />
+        <TagsInput
+          type="text"
+          id="tags"
+          onChange={storeInput}
+          name="tag2"
+          value={formData.tag2}
+        />
+        <TagsInput
+          type="text"
+          id="tags"
+          onChange={storeInput}
+          name="tag3"
+          value={formData.tag3}
+        />
+        <ServingsLabel htmlFor="portion">Servings</ServingsLabel>
+        <ServingsInput
+          type="text"
+          id="portion"
+          onChange={storeInput}
+          name="serving"
+          value={formData.serving}
+        />
         <TimeLabel htmlFor="">Time</TimeLabel>
-        <HourInput type="text" id="hour" onInput={storeInput} />
+        <HourInput
+          type="text"
+          id="hour"
+          onChange={storeInput}
+          name="timehour"
+          value={formData.timehour}
+        />
         <LabelStyled htmlFor="hour">hours</LabelStyled>
-        <MinutesInput type="text" id="minute" onInput={storeInput} />
+        <MinutesInput
+          type="text"
+          id="minute"
+          onChange={storeInput}
+          name="timeminutes"
+          value={formData.timeminutes}
+        />
         <LabelStyled htmlFor="minute">minutes</LabelStyled>
         <IngredientsLabel htmlFor="ingredients">Ingredients</IngredientsLabel>
         {ingredients}
@@ -46,23 +108,34 @@ export default function CreateRecipe() {
         <ButtonWrapper>
           <ButtonStyled>Submit</ButtonStyled>
         </ButtonWrapper>
+        {console.log(formData)}
+        {console.log(instructionsNumber)}
       </FormStyled>
     </MainStyled>
   )
   function storeInput(event) {
-    setFormData([...formData, ([event.target.name] = event.target.vale)])
+    setFormData({ ...formData, [event.target.name]: event.target.value })
   }
   function addIngredientsLine() {
+    setIngredientsNumber(ingredientsNumber + 1)
     setIngredients([
       ...ingredients,
-      <IngredientsSection storeInput={storeInput} />,
+      <IngredientsSection
+        storeInput={storeInput}
+        ingredientsNumber={ingredientsNumber}
+        formData={formData}
+      />,
     ])
   }
   function addInstructionsLine() {
-    setNumber(number + 1)
+    setInstructionsNumber(instructionsNumber + 1)
     setInstructions([
       ...instructions,
-      <InstructionsSection storeInput={storeInput} number={number} />,
+      <InstructionsSection
+        storeInput={storeInput}
+        instructionsNumber={instructionsNumber}
+        formData={formData}
+      />,
     ])
   }
 }
@@ -123,12 +196,12 @@ const TagsInput = styled(InputStyled)`
   margin-top: 4px;
 `
 
-const PortionLabel = styled(LabelStyled)`
+const ServingsLabel = styled(LabelStyled)`
   display: block;
   margin-top: 18px;
 `
 
-const PortionInput = styled(InputStyled)`
+const ServingsInput = styled(InputStyled)`
   display: block;
   width: 32px;
   height: 28px;
