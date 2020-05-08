@@ -3,22 +3,13 @@ import RecipeDetails from './RecipeDetails'
 import { render } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import recipeData from './RecipeList.json'
-import * as renderer from 'react-test-renderer'
 
 test('renders content of RecipeDetails', () => {
-  const renderWithProps = () => {
-    const defaultProps = {
-      match: { params: { id: 1 } },
-    }
-    return renderer.create(
-      <RecipeDetails recipes={recipeData} {...defaultProps} />
-    )
-  }
-  renderWithProps({})
-  const wrapper = render(
+  const { getByText } = render(
     <MemoryRouter>
-      <RecipeDetails />
+      <RecipeDetails recipes={recipeData} match={{ params: { id: 1 } }} />
     </MemoryRouter>
   )
-  expect(wrapper.find('main')).toHaveLength(1)
+
+  expect(getByText(/porridge/i)).toBeInTheDocument()
 })

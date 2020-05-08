@@ -7,4 +7,6 @@ export default {
   title: 'RecipeDetails',
 }
 
-export const simple = () => <RecipeDetails recipes={recipeData} />
+export const simple = () => (
+  <RecipeDetails recipes={recipeData} match={{ params: { id: 1 } }} />
+)

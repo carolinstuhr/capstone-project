@@ -25,7 +25,7 @@ test('test filter to search matching recipe', () => {
   expect(getByText(/porridge/i)).toBeTruthy()
 })
 
-test('test filter to search matching recipe', () => {
+test('test when input is entered, the right amount of recipes is returned', () => {
   const { getByPlaceholderText, getAllByText } = render(
     <MemoryRouter>
       <AllRecipes recipes={recipeData} />
