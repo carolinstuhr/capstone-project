@@ -20,5 +20,5 @@ test('renders content of RecipeDetails', () => {
       <RecipeDetails />
     </MemoryRouter>
   )
-  expect(wrapper.find('Nav')).toHaveLength(1)
+  expect(wrapper.find('main')).toHaveLength(1)
 })

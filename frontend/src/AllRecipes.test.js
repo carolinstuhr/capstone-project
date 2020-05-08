@@ -21,8 +21,8 @@ test('test filter to search matching recipe', () => {
     </MemoryRouter>
   )
   const input = getByPlaceholderText(/Search for recipes.../i)
-  fireEvent.change(input, { target: { value: 'porridge' } })
-  expect(getByText(/b/i)).toBeTruthy()
+  fireEvent.change(input, { target: { value: 'break' } })
+  expect(getByText(/porridge/i)).toBeTruthy()
 })
 
 test('test filter to search matching recipe', () => {
