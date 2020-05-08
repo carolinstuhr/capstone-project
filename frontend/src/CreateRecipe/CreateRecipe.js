@@ -1,10 +1,20 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
+import InstructionsSection from './InstructionsSection'
+import { FaPlus } from 'react-icons/fa'
+import IngredientsSection from './IngredientsSection'
 
 export default function CreateRecipe() {
+  const [formData, setFormData] = useState('')
   const [number, setNumber] = useState(1)
+  const [ingredients, setIngredients] = useState([
+    <IngredientsSection storeInput={storeInput} />,
+  ])
+  const [instructions, setInstructions] = useState([
+    <InstructionsSection storeInput={storeInput} number={number} />,
+  ])
   return (
-    <main>
+    <MainStyled>
       <FormStyled>
         <LabelStyled htmlFor="title">Title</LabelStyled>
         <TitleInput
@@ -12,37 +22,78 @@ export default function CreateRecipe() {
           name=""
           placeholder="Title of Recipe..."
           id="title"
+          onInput={storeInput}
         />
         <LabelStyled htmlFor="tags">Description Tags</LabelStyled>
-        <TagsInput type="text" id="tags" />
-        <TagsInput type="text" id="tags" />
-        <TagsInput type="text" id="tags" />
+        <TagsInput type="text" id="tags" onInput={storeInput} />
+        <TagsInput type="text" id="tags" onInput={storeInput} />
+        <TagsInput type="text" id="tags" onInput={storeInput} />
         <PortionLabel htmlFor="portion">Portion Size</PortionLabel>
-        <PortionInput type="text" id="portion" />
+        <PortionInput type="text" id="portion" onInput={storeInput} />
         <TimeLabel htmlFor="">Time</TimeLabel>
-        <HourInput type="text" id="hour" />
+        <HourInput type="text" id="hour" onInput={storeInput} />
         <LabelStyled htmlFor="hour">hours</LabelStyled>
-        <MinutesInput type="text" id="minute" />
+        <MinutesInput type="text" id="minute" onInput={storeInput} />
         <LabelStyled htmlFor="minute">minutes</LabelStyled>
         <IngredientsLabel htmlFor="ingredients">Ingredients</IngredientsLabel>
-        <IngredientsAmountInput type="text" id="ingredients" />
-        <IngredientsNameInput type="text" id="ingredients" />
+        {ingredients}
+        <IngredientsButton onClick={addIngredientsLine} />
         <InstructionsLabel htmlFor="instructions">
           Instructions
         </InstructionsLabel>
-        <InstructionsSection>
-          <InstructionsNumber>{number}. </InstructionsNumber>
-          <InstructionsInput
-            rows="5"
-            id="instructions"
-            placeholder="Description"
-          />
-        </InstructionsSection>
-        <ButtonStyled>Submit</ButtonStyled>
+        {instructions}
+        <InstructionsButton onClick={addInstructionsLine} />
+        <ButtonWrapper>
+          <ButtonStyled>Submit</ButtonStyled>
+        </ButtonWrapper>
       </FormStyled>
-    </main>
+    </MainStyled>
   )
+  function storeInput(event) {
+    setFormData([...formData, ([event.target.name] = event.target.vale)])
+  }
+  function addIngredientsLine() {
+    setIngredients([
+      ...ingredients,
+      <IngredientsSection storeInput={storeInput} />,
+    ])
+  }
+  function addInstructionsLine() {
+    setNumber(number + 1)
+    setInstructions([
+      ...instructions,
+      <InstructionsSection storeInput={storeInput} number={number} />,
+    ])
+  }
 }
+const InstructionsButton = styled(FaPlus)`
+  height: 28px;
+  width: 28px;
+  z-index: 2;
+  color: #514f4b;
+  padding: 4px;
+  background: white;
+  border: 2px solid #514f4b;
+  border-radius: 24px;
+  display: block;
+  margin-left: 40%;
+`
+const IngredientsButton = styled(FaPlus)`
+  height: 28px;
+  width: 28px;
+  z-index: 2;
+  color: #514f4b;
+  padding: 4px;
+  background: white;
+  border: 2px solid #514f4b;
+  border-radius: 24px;
+  display: block;
+  margin-left: 40%;
+`
+
+const MainStyled = styled.main`
+  margin-top: 18px;
+`
 
 const FormStyled = styled.form`
   margin-left: 12px;
@@ -105,48 +156,25 @@ const MinutesInput = styled(InputStyled)`
 const IngredientsLabel = styled(LabelStyled)`
   display: block;
 `
-const IngredientsAmountInput = styled(InputStyled)`
-  width: 40px;
-  height: 28px;
-  margin-bottom: 22px;
-  margin-top: 4px;
-  margin-right: 4px;
-`
-const IngredientsNameInput = styled(InputStyled)`
-  width: 270px;
-  height: 28px;
-  margin-bottom: 22px;
-  margin-top: 4px;
-`
+
 const InstructionsLabel = styled(LabelStyled)`
   display: block;
 `
-const InstructionsSection = styled.section`
-  display: flex;
-`
-const InstructionsNumber = styled.p`
-  margin-right: 8px;
-  margin-top: 10px;
-  font-weight: 300;
-`
 
-const InstructionsInput = styled.textarea`
-  width: 300px;
-  height: 140px;
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 200;
-  padding-top: 4px;
-  padding-left: 8px;
-  border-radius: 4px;
-  border: 1px solid #a09e9a;
-  margin-bottom: 12px;
-  margin-top: 8px;
-  rows: 5;
-  vertical-align: top;
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
 `
 
 const ButtonStyled = styled.button`
   display: block;
-  margin-top: 30px;
+  margin-top: 18px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  background: rgba(221, 216, 206, 1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #514f4b;
 `

@@ -17,7 +17,7 @@ export default function AllRecipes({ savedPreviousPage, recipes }) {
       recipe.tags[2].toLowerCase().includes(userInput.toLowerCase())
   )
   return (
-    <SectionStyled>
+    <MainStyled>
       <DisplaySelection />
       <FilterRecipes setUserInput={setUserInput} />
       {filteredRecipeData.length === 0 ? (
@@ -35,11 +35,11 @@ export default function AllRecipes({ savedPreviousPage, recipes }) {
       <Link to="/create">
         <CreateRecipeButton />
       </Link>
-    </SectionStyled>
+    </MainStyled>
   )
 }
 
-const SectionStyled = styled.main`
+const MainStyled = styled.main`
   margin-top: 18px;
 `
 
