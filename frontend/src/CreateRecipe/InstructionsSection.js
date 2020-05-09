@@ -9,6 +9,7 @@ export default function InstructionsSection({
     <InstructionsPart>
       <InstructionsNumber>{instructionsNumber}. </InstructionsNumber>
       <InstructionsInput
+        type="text"
         rows="5"
         id="instructions"
         placeholder="Description"

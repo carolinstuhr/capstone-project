@@ -1,7 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-export default function IngredientsSection({ storeInput, ingredientsNumber }) {
+export default function IngredientsSection({
+  storeInput,
+  ingredientsNumber,
+  formData,
+}) {
   return (
     <IngredientsPart>
       <IngredientsAmountInput

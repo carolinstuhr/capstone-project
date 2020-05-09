@@ -54,7 +54,7 @@ export default function App() {
         <Route path="/create">
           <GridDiv>
             <Header>create</Header>
-            <CreateRecipe />
+            <CreateRecipe setRecipes={setRecipes} recipes={recipes} />
           </GridDiv>
         </Route>
       </Switch>
