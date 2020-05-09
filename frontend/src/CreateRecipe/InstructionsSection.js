@@ -15,6 +15,8 @@ export default function InstructionsSection({
         placeholder="Description"
         onChange={storeInput}
         name={`instruction${instructionsNumber}`}
+        minLength="5"
+        maxLength="200"
       />
     </InstructionsPart>
   )

@@ -58,7 +58,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
 
   return (
     <MainStyled>
-      <FormStyled onSubmit={savetoLocalStorage}>
+      <FormStyled onSubmit={saveNewRecipetoLocalStorage}>
         <LabelStyled htmlFor="title">Title</LabelStyled>
         <TitleInput
           type="text"
@@ -67,6 +67,8 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           id="title"
           onChange={storeInput}
           value={formData.title}
+          minLength="2"
+          maxLength="40"
         />
         <LabelStyled htmlFor="tags">Description Tags</LabelStyled>
         <TagsInput
@@ -75,6 +77,8 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           onChange={storeInput}
           name="tag1"
           value={formData.tag1}
+          minLength="2"
+          maxLength="15"
         />
         <TagsInput
           type="text"
@@ -82,6 +86,8 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           onChange={storeInput}
           name="tag2"
           value={formData.tag2}
+          minLength="2"
+          maxLength="15"
         />
         <TagsInput
           type="text"
@@ -89,22 +95,29 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           onChange={storeInput}
           name="tag3"
           value={formData.tag3}
+          minLength="2"
+          maxLength="15"
         />
         <ServingsLabel htmlFor="portion">Servings</ServingsLabel>
         <ServingsInput
-          type="text"
+          type="number"
           id="portion"
           onChange={storeInput}
           name="serving"
           value={formData.serving}
+          min="1"
+          maxLength="2"
+          placeholder="1"
         />
         <TimeLabel htmlFor="">Time</TimeLabel>
         <HourInput
-          type="text"
+          type="number"
           id="hour"
           onChange={storeInput}
           name="timehour"
           value={formData.timehour}
+          placeholder="0"
+          maxLength="2"
         />
         <LabelStyled htmlFor="hour">hours</LabelStyled>
         <MinutesInput
@@ -113,6 +126,8 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           onChange={storeInput}
           name="timeminutes"
           value={formData.timeminutes}
+          placeholder="0"
+          maxLength="2"
         />
         <LabelStyled htmlFor="minute">minutes</LabelStyled>
         <IngredientsLabel htmlFor="ingredients">Ingredients</IngredientsLabel>
@@ -145,13 +160,13 @@ export default function CreateRecipe({ recipes, setRecipes }) {
       </FormStyled>
     </MainStyled>
   )
-  function savetoLocalStorage(event) {
+  function saveNewRecipetoLocalStorage(event) {
     event.preventDefault()
     let newRecipe = {
-      id: recipes.length,
+      id: recipes.length + 1,
       title: formData.title,
       tags: [formData.tag1, formData.tag2, formData.tag3],
-      image: '',
+      image: './images/default.png',
       timehour: formData.timehour,
       timeminutes: formData.timeminutes,
       ingredients: [
@@ -280,6 +295,7 @@ const InputStyled = styled.input`
   padding-left: 4px;
   border-radius: 4px;
   border: 1px solid #a09e9a;
+  font-family: 'Josefin Sans', sans-serif;
 `
 const TitleInput = styled(InputStyled)`
   display: block;
@@ -314,35 +330,36 @@ const TimeLabel = styled(LabelStyled)`
 const HourInput = styled(InputStyled)`
   width: 32px;
   height: 28px;
-  margin-bottom: 12px;
   margin-top: 4px;
   margin-right: 4px;
 `
 const MinutesInput = styled(InputStyled)`
   width: 32px;
   height: 28px;
-  margin-bottom: 12px;
   margin-top: 4px;
   margin-left: 12px;
   margin-right: 4px;
 `
 const IngredientsLabel = styled(LabelStyled)`
   display: block;
+  margin-top: 22px;
 `
 
 const InstructionsLabel = styled(LabelStyled)`
   display: block;
+  margin-top: 12px;
 `
 
 const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
+  position: relative;
   margin-bottom: 18px;
 `
 
 const ButtonStyled = styled.button`
-  display: block;
+  position: absolute;
+  left: 32%;
   margin-top: 18px;
+  margin-bottom: 18px;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 18px;
   font-weight: 400;

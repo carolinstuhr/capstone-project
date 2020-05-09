@@ -7,20 +7,25 @@ export default function IngredientsSection({
   formData,
 }) {
   return (
-    <IngredientsPart>
+    <section>
       <IngredientsAmountInput
         type="text"
         id="ingredients"
         onChange={storeInput}
         name={`ingredientsamount${ingredientsNumber}`}
+        maxLength="12"
+        placeholder="amount"
       />
       <IngredientsNameInput
         type="text"
         id="ingredients"
         onChange={storeInput}
         name={`ingredientsname${ingredientsNumber}`}
+        minLength="1"
+        maxLength="30"
+        placeholder="ingredient"
       />
-    </IngredientsPart>
+    </section>
   )
 }
 const InputStyled = styled.input`
@@ -29,20 +34,17 @@ const InputStyled = styled.input`
   padding-left: 4px;
   border-radius: 4px;
   border: 1px solid #a09e9a;
-`
-const IngredientsPart = styled.section`
-  margin-bottom: 22px;
-  margin-top: 4px;
+  font-family: 'Josefin Sans', sans-serif;
 `
 const IngredientsAmountInput = styled(InputStyled)`
-  width: 40px;
+  width: 60px;
   height: 28px;
   margin-top: 4px;
   margin-right: 4px;
   margin-bottom: 8px;
 `
 const IngredientsNameInput = styled(InputStyled)`
-  width: 270px;
+  width: 250px;
   height: 28px;
   margin-bottom: 8px;
 `

@@ -8,6 +8,7 @@ import RecipeFavourites from './FavouriteRecipes'
 import recipeData from './RecipeList.json'
 import { saveToStorage, loadFromStorage } from './services'
 import CreateRecipe from './CreateRecipe/CreateRecipe'
+import CreateHeader from './CreateRecipe/CreateHeader'
 
 export default function App() {
   const [recipes, setRecipes] = useState(
@@ -53,7 +54,7 @@ export default function App() {
         </Route>
         <Route path="/create">
           <GridDiv>
-            <Header>create</Header>
+            <CreateHeader>create</CreateHeader>
             <CreateRecipe setRecipes={setRecipes} recipes={recipes} />
           </GridDiv>
         </Route>

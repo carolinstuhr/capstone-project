@@ -25,7 +25,7 @@ export default function RecipeDetails({
                   <Link exact to="/">
                     <ArrowIconStyled
                       src={LeftArrow}
-                      alt="home Button"
+                      alt="return Button"
                       onClick={displayIngredients}
                     />
                   </Link>
@@ -78,7 +78,9 @@ export default function RecipeDetails({
                 </IngredientsSection>
               ) : (
                 <InstructionsSection>
-                  {recipe.instructions.map((instruction, index) => (
+                  {(recipe.instructions = recipe.instructions.filter(
+                    (instructions) => instructions
+                  )).map((instruction, index) => (
                     <>
                       <StyledParagraph key={index}>
                         {index + 1}.
