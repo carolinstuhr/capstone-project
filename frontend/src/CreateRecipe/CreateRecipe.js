@@ -52,6 +52,10 @@ export default function CreateRecipe({ recipes, setRecipes }) {
 
   const [ingredients, setIngredients] = useState([])
   const [instructions, setInstructions] = useState([])
+
+  const [maxIngredients, setMaxIngredients] = useState(false)
+  const [maxInstructions, setMaxInstructions] = useState(false)
+
   return (
     <MainStyled>
       <FormStyled onSubmit={savetoLocalStorage}>
@@ -118,7 +122,8 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           formData={formData}
         />
         {ingredients}
-        <IngredientsButton onClick={addIngredientsLine} />
+        {maxIngredients && <p>Max amount reached</p>}
+        {maxIngredients || <IngredientsButton onClick={addIngredientsLine} />}
         <InstructionsLabel htmlFor="instructions">
           Instructions
         </InstructionsLabel>
@@ -128,7 +133,10 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           instructionsNumber={1}
         />
         {instructions}
-        <InstructionsButton onClick={addInstructionsLine} />
+        {maxInstructions && <p>Max amount reached</p>}
+        {maxInstructions || (
+          <InstructionsButton onClick={addInstructionsLine} />
+        )}
         <ButtonWrapper>
           <ButtonStyled>Submit</ButtonStyled>
         </ButtonWrapper>
@@ -190,25 +198,45 @@ export default function CreateRecipe({ recipes, setRecipes }) {
   }
   function addIngredientsLine() {
     setIngredientsNumber(ingredientsNumber + 1)
-    setIngredients([
-      ...ingredients,
-      <IngredientsSection
-        storeInput={storeInput}
-        ingredientsNumber={ingredientsNumber}
-        formData={formData}
-      />,
-    ])
+    return ingredients.length < 3
+      ? setIngredients([
+          ...ingredients,
+          <IngredientsSection
+            storeInput={storeInput}
+            ingredientsNumber={ingredientsNumber}
+            formData={formData}
+          />,
+        ])
+      : setMaxIngredients(true) &
+          setIngredients([
+            ...ingredients,
+            <IngredientsSection
+              storeInput={storeInput}
+              ingredientsNumber={ingredientsNumber}
+              formData={formData}
+            />,
+          ])
   }
   function addInstructionsLine() {
     setInstructionsNumber(instructionsNumber + 1)
-    setInstructions([
-      ...instructions,
-      <InstructionsSection
-        storeInput={storeInput}
-        instructionsNumber={instructionsNumber}
-        formData={formData}
-      />,
-    ])
+    return instructions.length < 3
+      ? setInstructions([
+          ...instructions,
+          <InstructionsSection
+            storeInput={storeInput}
+            instructionsNumber={instructionsNumber}
+            formData={formData}
+          />,
+        ])
+      : setMaxInstructions(true) &
+          setInstructions([
+            ...instructions,
+            <InstructionsSection
+              storeInput={storeInput}
+              instructionsNumber={instructionsNumber}
+              formData={formData}
+            />,
+          ])
   }
 }
 const InstructionsButton = styled(FaPlus)`
