@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components/macro'
 
 export default function InstructionsSection({
   storeInput,
   instructionsNumber,
 }) {
+  const instructionsRef = useRef()
+  useEffect(() => {
+    instructionsRef.current.focus()
+  }, [])
+
   return (
     <InstructionsPart>
       <InstructionsNumber>{instructionsNumber}. </InstructionsNumber>
@@ -17,6 +22,7 @@ export default function InstructionsSection({
         name={`instruction${instructionsNumber}`}
         minLength="5"
         maxLength="200"
+        ref={instructionsRef}
       />
     </InstructionsPart>
   )

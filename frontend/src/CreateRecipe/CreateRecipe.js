@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components/macro'
 import InstructionsSection from './InstructionsSection'
 import { FaPlus } from 'react-icons/fa'
 import IngredientsSection from './IngredientsSection'
+import { Redirect } from 'react-router-dom'
 
 export default function CreateRecipe({ recipes, setRecipes }) {
   const [ingredientsNumber, setIngredientsNumber] = useState(1)
   const [instructionsNumber, setInstructionsNumber] = useState(1)
+  const titleRef = useRef()
   useEffect(() => {
     setInstructionsNumber(2)
     setIngredientsNumber(2)
+    titleRef.current.focus()
   }, [])
   const [formData, setFormData] = useState({
     title: '',
@@ -56,6 +59,11 @@ export default function CreateRecipe({ recipes, setRecipes }) {
   const [maxIngredients, setMaxIngredients] = useState(false)
   const [maxInstructions, setMaxInstructions] = useState(false)
 
+  const [recipeSaved, setRecipeSaved] = useState(false)
+  if (recipeSaved === true) {
+    return <Redirect exact to="/" />
+  }
+
   return (
     <MainStyled>
       <FormStyled onSubmit={saveNewRecipetoLocalStorage}>
@@ -69,6 +77,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           value={formData.title}
           minLength="2"
           maxLength="40"
+          ref={titleRef}
         />
         <LabelStyled htmlFor="tags">Description Tags</LabelStyled>
         <TagsInput
@@ -160,6 +169,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
       </FormStyled>
     </MainStyled>
   )
+
   function saveNewRecipetoLocalStorage(event) {
     event.preventDefault()
     let newRecipe = {
@@ -206,11 +216,13 @@ export default function CreateRecipe({ recipes, setRecipes }) {
       isFavourite: true,
     }
     setRecipes([...recipes, newRecipe])
+    setRecipeSaved(true)
   }
 
   function storeInput(event) {
     setFormData({ ...formData, [event.target.name]: event.target.value })
   }
+
   function addIngredientsLine() {
     setIngredientsNumber(ingredientsNumber + 1)
     return ingredients.length < 3
@@ -232,6 +244,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
             />,
           ])
   }
+
   function addInstructionsLine() {
     setInstructionsNumber(instructionsNumber + 1)
     return instructions.length < 3
@@ -254,6 +267,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           ])
   }
 }
+
 const InstructionsButton = styled(FaPlus)`
   height: 28px;
   width: 28px;
@@ -261,7 +275,7 @@ const InstructionsButton = styled(FaPlus)`
   color: #514f4b;
   padding: 4px;
   background: white;
-  border: 2px solid #514f4b;
+  border: 1px solid #514f4b;
   border-radius: 24px;
   display: block;
   margin-left: 40%;
@@ -273,7 +287,7 @@ const IngredientsButton = styled(FaPlus)`
   color: #514f4b;
   padding: 4px;
   background: white;
-  border: 2px solid #514f4b;
+  border: 1px solid #514f4b;
   border-radius: 24px;
   display: block;
   margin-left: 40%;
@@ -357,7 +371,7 @@ const ButtonWrapper = styled.div`
 
 const ButtonStyled = styled.button`
   position: absolute;
-  left: 32%;
+  left: 33%;
   margin-top: 18px;
   margin-bottom: 18px;
   font-family: 'Josefin Sans', sans-serif;
@@ -366,5 +380,6 @@ const ButtonStyled = styled.button`
   background: rgba(221, 216, 206, 1);
   padding: 4px 8px;
   border-radius: 4px;
+  border: 1px solid #514f4b;
   color: #514f4b;
 `

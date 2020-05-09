@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components/macro'
 
-export default function IngredientsSection({
-  storeInput,
-  ingredientsNumber,
-  formData,
-}) {
+export default function IngredientsSection({ storeInput, ingredientsNumber }) {
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
+  const inputRef = useRef()
+
   return (
     <section>
       <IngredientsAmountInput
@@ -15,6 +16,7 @@ export default function IngredientsSection({
         name={`ingredientsamount${ingredientsNumber}`}
         maxLength="12"
         placeholder="amount"
+        ref={inputRef}
       />
       <IngredientsNameInput
         type="text"
