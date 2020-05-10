@@ -4,6 +4,7 @@ import styled from 'styled-components/macro'
 export default function InstructionsSection({
   storeInput,
   instructionsNumber,
+  formData,
 }) {
   const instructionsRef = useRef()
   useEffect(() => {
@@ -49,4 +50,9 @@ const InstructionsInput = styled.textarea`
   border: 1px solid #a09e9a;
   margin-bottom: 8px;
   margin-top: 8px;
+  background: #f2efe9;
+  ::placeholder {
+    font-style: italic;
+    color: #a09e9a;
+  }
 `

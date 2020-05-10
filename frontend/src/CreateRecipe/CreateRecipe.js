@@ -128,7 +128,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           placeholder="0"
           maxLength="2"
         />
-        <LabelStyled htmlFor="hour">hours</LabelStyled>
+        <DetailTimeLabel htmlFor="hour">hours</DetailTimeLabel>
         <MinutesInput
           type="text"
           id="minute"
@@ -138,7 +138,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           placeholder="0"
           maxLength="2"
         />
-        <LabelStyled htmlFor="minute">minutes</LabelStyled>
+        <DetailTimeLabel htmlFor="minute">minutes</DetailTimeLabel>
         <IngredientsLabel htmlFor="ingredients">Ingredients</IngredientsLabel>
         <IngredientsSection
           storeInput={storeInput}
@@ -146,7 +146,9 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           formData={formData}
         />
         {ingredients}
-        {maxIngredients && <p>Max amount reached</p>}
+        {maxIngredients && (
+          <ParagraphStyled>Max amount reached</ParagraphStyled>
+        )}
         {maxIngredients || <IngredientsButton onClick={addIngredientsLine} />}
         <InstructionsLabel htmlFor="instructions">
           Instructions
@@ -157,7 +159,9 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           instructionsNumber={1}
         />
         {instructions}
-        {maxInstructions && <p>Max amount reached</p>}
+        {maxInstructions && (
+          <ParagraphStyled>Max amount reached</ParagraphStyled>
+        )}
         {maxInstructions || (
           <InstructionsButton onClick={addInstructionsLine} />
         )}
@@ -274,7 +278,7 @@ const InstructionsButton = styled(FaPlus)`
   z-index: 2;
   color: #514f4b;
   padding: 4px;
-  background: white;
+  background: #f2efe9;
   border: 1px solid #514f4b;
   border-radius: 24px;
   display: block;
@@ -286,7 +290,7 @@ const IngredientsButton = styled(FaPlus)`
   z-index: 2;
   color: #514f4b;
   padding: 4px;
-  background: white;
+  background: #f2efe9;
   border: 1px solid #514f4b;
   border-radius: 24px;
   display: block;
@@ -302,6 +306,7 @@ const FormStyled = styled.form`
 `
 const LabelStyled = styled.label`
   font-weight: 300;
+  font-size: 20px;
 `
 const InputStyled = styled.input`
   font-weight: 200;
@@ -309,7 +314,13 @@ const InputStyled = styled.input`
   padding-left: 4px;
   border-radius: 4px;
   border: 1px solid #a09e9a;
+  color: #514f4b;
   font-family: 'Josefin Sans', sans-serif;
+  background: #f2efe9;
+  ::placeholder {
+    font-style: italic;
+    color: #a09e9a;
+  }
 `
 const TitleInput = styled(InputStyled)`
   display: block;
@@ -325,12 +336,10 @@ const TagsInput = styled(InputStyled)`
   margin-bottom: 4px;
   margin-top: 4px;
 `
-
 const ServingsLabel = styled(LabelStyled)`
   display: block;
   margin-top: 18px;
 `
-
 const ServingsInput = styled(InputStyled)`
   display: block;
   width: 32px;
@@ -340,6 +349,9 @@ const ServingsInput = styled(InputStyled)`
 `
 const TimeLabel = styled(LabelStyled)`
   display: block;
+`
+const DetailTimeLabel = styled(LabelStyled)`
+  font-size: 16px;
 `
 const HourInput = styled(InputStyled)`
   width: 32px;
@@ -357,6 +369,11 @@ const MinutesInput = styled(InputStyled)`
 const IngredientsLabel = styled(LabelStyled)`
   display: block;
   margin-top: 22px;
+`
+
+const ParagraphStyled = styled.p`
+  margin-top: 4px;
+  margin-bottom: 22px;
 `
 
 const InstructionsLabel = styled(LabelStyled)`
@@ -377,9 +394,9 @@ const ButtonStyled = styled.button`
   font-family: 'Josefin Sans', sans-serif;
   font-size: 18px;
   font-weight: 400;
-  background: rgba(221, 216, 206, 1);
+  background: #514f4b;
   padding: 4px 8px;
   border-radius: 4px;
   border: 1px solid #514f4b;
-  color: #514f4b;
+  color: #f2efe9;
 `

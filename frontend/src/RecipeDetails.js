@@ -78,16 +78,16 @@ export default function RecipeDetails({
                 </IngredientsSection>
               ) : (
                 <InstructionsSection>
-                  {(recipe.instructions = recipe.instructions.filter(
-                    (instructions) => instructions
-                  )).map((instruction, index) => (
-                    <>
-                      <StyledParagraph key={index}>
-                        {index + 1}.
-                      </StyledParagraph>
-                      <StyledParagraph>{instruction}</StyledParagraph>
-                    </>
-                  ))}
+                  {recipe.instructions
+                    .filter((instructions) => instructions)
+                    .map((instruction, index) => (
+                      <>
+                        <StyledParagraph key={index}>
+                          {index + 1}.
+                        </StyledParagraph>
+                        <StyledParagraph>{instruction}</StyledParagraph>
+                      </>
+                    ))}
                 </InstructionsSection>
               )}
             </>

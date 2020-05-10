@@ -1,7 +1,11 @@
 import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components/macro'
 
-export default function IngredientsSection({ storeInput, ingredientsNumber }) {
+export default function IngredientsSection({
+  storeInput,
+  ingredientsNumber,
+  formData,
+}) {
   useEffect(() => {
     inputRef.current.focus()
   }, [])
@@ -37,6 +41,11 @@ const InputStyled = styled.input`
   border-radius: 4px;
   border: 1px solid #a09e9a;
   font-family: 'Josefin Sans', sans-serif;
+  background: #f2efe9;
+  ::placeholder {
+    font-style: italic;
+    color: #a09e9a;
+  }
 `
 const IngredientsAmountInput = styled(InputStyled)`
   width: 60px;
