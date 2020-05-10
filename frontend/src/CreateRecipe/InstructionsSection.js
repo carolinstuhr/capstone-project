@@ -6,10 +6,10 @@ export default function InstructionsSection({
   instructionsNumber,
 }) {
   const instructionsRef = useRef()
+
   useEffect(() => {
     instructionsRef.current.focus()
-  }, [])
-
+  }, [instructionsNumber])
   return (
     <>
       {instructionsNumber < 1 || (

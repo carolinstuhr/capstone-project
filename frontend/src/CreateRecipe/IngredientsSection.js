@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/macro'
 
 export default function IngredientsSection({ ingredientsNumber, storeInput }) {
+  const ingredientsRef = useRef()
+
+  useEffect(() => {
+    ingredientsRef.current.focus()
+  }, [ingredientsNumber])
   return (
     <>
       {ingredientsNumber < 1 || (
@@ -13,6 +18,7 @@ export default function IngredientsSection({ ingredientsNumber, storeInput }) {
             name="ingredientsamount1"
             maxLength="12"
             placeholder="amount"
+            ref={ingredientsRef}
           />
           <IngredientsNameInput
             type="text"
@@ -34,6 +40,7 @@ export default function IngredientsSection({ ingredientsNumber, storeInput }) {
             name="ingredientsamount2"
             maxLength="12"
             placeholder="amount"
+            ref={ingredientsRef}
           />
           <IngredientsNameInput
             type="text"
@@ -55,6 +62,7 @@ export default function IngredientsSection({ ingredientsNumber, storeInput }) {
             name="ingredientsamount3"
             maxLength="12"
             placeholder="amount"
+            ref={ingredientsRef}
           />
           <IngredientsNameInput
             type="text"
@@ -76,6 +84,7 @@ export default function IngredientsSection({ ingredientsNumber, storeInput }) {
             name="ingredientsamount4"
             maxLength="12"
             placeholder="amount"
+            ref={ingredientsRef}
           />
           <IngredientsNameInput
             type="text"
