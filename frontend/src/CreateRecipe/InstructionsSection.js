@@ -4,7 +4,6 @@ import styled from 'styled-components/macro'
 export default function InstructionsSection({
   storeInput,
   instructionsNumber,
-  formData,
 }) {
   const instructionsRef = useRef()
   useEffect(() => {
@@ -12,20 +11,72 @@ export default function InstructionsSection({
   }, [])
 
   return (
-    <InstructionsPart>
-      <InstructionsNumber>{instructionsNumber}. </InstructionsNumber>
-      <InstructionsInput
-        type="text"
-        rows="5"
-        id="instructions"
-        placeholder="Description"
-        onChange={storeInput}
-        name={`instruction${instructionsNumber}`}
-        minLength="5"
-        maxLength="200"
-        ref={instructionsRef}
-      />
-    </InstructionsPart>
+    <>
+      {instructionsNumber < 1 || (
+        <InstructionsPart>
+          <InstructionsNumber>1. </InstructionsNumber>
+          <InstructionsInput
+            type="text"
+            rows="5"
+            id="instructions"
+            placeholder="Description"
+            onChange={storeInput}
+            name="instruction1"
+            minLength="5"
+            maxLength="200"
+            ref={instructionsRef}
+          />
+        </InstructionsPart>
+      )}
+      {instructionsNumber < 2 || (
+        <InstructionsPart>
+          <InstructionsNumber>2. </InstructionsNumber>
+          <InstructionsInput
+            type="text"
+            rows="5"
+            id="instructions"
+            placeholder="Description"
+            onChange={storeInput}
+            name="instruction2"
+            minLength="5"
+            maxLength="200"
+            ref={instructionsRef}
+          />
+        </InstructionsPart>
+      )}
+      {instructionsNumber < 3 || (
+        <InstructionsPart>
+          <InstructionsNumber>3. </InstructionsNumber>
+          <InstructionsInput
+            type="text"
+            rows="5"
+            id="instructions"
+            placeholder="Description"
+            onChange={storeInput}
+            name="instruction3"
+            minLength="5"
+            maxLength="200"
+            ref={instructionsRef}
+          />
+        </InstructionsPart>
+      )}
+      {instructionsNumber < 4 || (
+        <InstructionsPart>
+          <InstructionsNumber>4. </InstructionsNumber>
+          <InstructionsInput
+            type="text"
+            rows="5"
+            id="instructions"
+            placeholder="Description"
+            onChange={storeInput}
+            name="instruction4"
+            minLength="5"
+            maxLength="200"
+            ref={instructionsRef}
+          />
+        </InstructionsPart>
+      )}
+    </>
   )
 }
 

@@ -2,16 +2,15 @@ import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components/macro'
 import InstructionsSection from './InstructionsSection'
 import { FaPlus } from 'react-icons/fa'
-import IngredientsSection from './IngredientsSection'
 import { Redirect } from 'react-router-dom'
+import IngredientsSection from './IngredientsSection'
 
 export default function CreateRecipe({ recipes, setRecipes }) {
   const [ingredientsNumber, setIngredientsNumber] = useState(1)
   const [instructionsNumber, setInstructionsNumber] = useState(1)
   const titleRef = useRef()
+
   useEffect(() => {
-    setInstructionsNumber(2)
-    setIngredientsNumber(2)
     titleRef.current.focus()
   }, [])
   const [formData, setFormData] = useState({
@@ -52,12 +51,6 @@ export default function CreateRecipe({ recipes, setRecipes }) {
     instruction9: '',
     instruction10: '',
   })
-
-  const [ingredients, setIngredients] = useState([])
-  const [instructions, setInstructions] = useState([])
-
-  const [maxIngredients, setMaxIngredients] = useState(false)
-  const [maxInstructions, setMaxInstructions] = useState(false)
 
   const [recipeSaved, setRecipeSaved] = useState(false)
   if (recipeSaved === true) {
@@ -141,28 +134,26 @@ export default function CreateRecipe({ recipes, setRecipes }) {
         <DetailTimeLabel htmlFor="minute">minutes</DetailTimeLabel>
         <IngredientsLabel htmlFor="ingredients">Ingredients</IngredientsLabel>
         <IngredientsSection
+          ingredientsNumber={ingredientsNumber}
           storeInput={storeInput}
-          ingredientsNumber={1}
-          formData={formData}
         />
-        {ingredients}
-        {maxIngredients && (
+        {ingredientsNumber < 4 || (
           <ParagraphStyled>Max amount reached</ParagraphStyled>
         )}
-        {maxIngredients || <IngredientsButton onClick={addIngredientsLine} />}
+        {ingredientsNumber < 4 && (
+          <IngredientsButton onClick={addIngredientsLine} />
+        )}
         <InstructionsLabel htmlFor="instructions">
           Instructions
         </InstructionsLabel>
         <InstructionsSection
           storeInput={storeInput}
-          formData={formData}
-          instructionsNumber={1}
+          instructionsNumber={instructionsNumber}
         />
-        {instructions}
-        {maxInstructions && (
+        {instructionsNumber < 4 || (
           <ParagraphStyled>Max amount reached</ParagraphStyled>
         )}
-        {maxInstructions || (
+        {instructionsNumber < 4 && (
           <InstructionsButton onClick={addInstructionsLine} />
         )}
         <ButtonWrapper>
@@ -181,6 +172,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
       title: formData.title,
       tags: [formData.tag1, formData.tag2, formData.tag3],
       image: './images/default.png',
+      serving: formData.serving,
       timehour: formData.timehour,
       timeminutes: formData.timeminutes,
       ingredients: [
@@ -229,46 +221,10 @@ export default function CreateRecipe({ recipes, setRecipes }) {
 
   function addIngredientsLine() {
     setIngredientsNumber(ingredientsNumber + 1)
-    return ingredients.length < 3
-      ? setIngredients([
-          ...ingredients,
-          <IngredientsSection
-            storeInput={storeInput}
-            ingredientsNumber={ingredientsNumber}
-            formData={formData}
-          />,
-        ])
-      : setMaxIngredients(true) &
-          setIngredients([
-            ...ingredients,
-            <IngredientsSection
-              storeInput={storeInput}
-              ingredientsNumber={ingredientsNumber}
-              formData={formData}
-            />,
-          ])
   }
 
   function addInstructionsLine() {
     setInstructionsNumber(instructionsNumber + 1)
-    return instructions.length < 3
-      ? setInstructions([
-          ...instructions,
-          <InstructionsSection
-            storeInput={storeInput}
-            instructionsNumber={instructionsNumber}
-            formData={formData}
-          />,
-        ])
-      : setMaxInstructions(true) &
-          setInstructions([
-            ...instructions,
-            <InstructionsSection
-              storeInput={storeInput}
-              instructionsNumber={instructionsNumber}
-              formData={formData}
-            />,
-          ])
   }
 }
 
