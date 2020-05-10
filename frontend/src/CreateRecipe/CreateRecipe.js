@@ -31,6 +31,16 @@ export default function CreateRecipe({ recipes, setRecipes }) {
     ingredientsamount8: '',
     ingredientsamount9: '',
     ingredientsamount10: '',
+    ingredientsamount11: '',
+    ingredientsamount12: '',
+    ingredientsamount13: '',
+    ingredientsamount14: '',
+    ingredientsamount15: '',
+    ingredientsamount16: '',
+    ingredientsamount17: '',
+    ingredientsamount18: '',
+    ingredientsamount19: '',
+    ingredientsamount20: '',
     ingredientsname1: '',
     ingredientsname2: '',
     ingredientsname3: '',
@@ -41,6 +51,16 @@ export default function CreateRecipe({ recipes, setRecipes }) {
     ingredientsname8: '',
     ingredientsname9: '',
     ingredientsname10: '',
+    ingredientsname11: '',
+    ingredientsname12: '',
+    ingredientsname13: '',
+    ingredientsname14: '',
+    ingredientsname15: '',
+    ingredientsname16: '',
+    ingredientsname17: '',
+    ingredientsname18: '',
+    ingredientsname19: '',
+    ingredientsname20: '',
     instruction1: '',
     instruction2: '',
     instruction3: '',
@@ -50,8 +70,17 @@ export default function CreateRecipe({ recipes, setRecipes }) {
     instruction7: '',
     instruction9: '',
     instruction10: '',
+    instruction11: '',
+    instruction12: '',
+    instruction13: '',
+    instruction14: '',
+    instruction15: '',
+    instruction16: '',
+    instruction17: '',
+    instruction18: '',
+    instruction19: '',
+    instruction20: '',
   })
-
   const [recipeSaved, setRecipeSaved] = useState(false)
   if (recipeSaved === true) {
     return <Redirect exact to="/" />
@@ -71,8 +100,9 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           minLength="2"
           maxLength="40"
           ref={titleRef}
+          required
         />
-        <LabelStyled htmlFor="tags">Description Tags</LabelStyled>
+        <LabelStyled htmlFor="tags">Tags</LabelStyled>
         <TagsInput
           type="text"
           id="tags"
@@ -110,6 +140,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           min="1"
           maxLength="2"
           placeholder="1"
+          required
         />
         <TimeLabel htmlFor="">Time</TimeLabel>
         <HourInput
@@ -118,29 +149,34 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           onChange={storeInput}
           name="timehour"
           value={formData.timehour}
-          placeholder="0"
           maxLength="2"
+          min="0"
+          required
         />
         <DetailTimeLabel htmlFor="hour">hours</DetailTimeLabel>
         <MinutesInput
-          type="text"
+          type="number"
           id="minute"
           onChange={storeInput}
           name="timeminutes"
           value={formData.timeminutes}
-          placeholder="0"
+          step="10"
           maxLength="2"
+          min="0"
+          max="60"
+          required
         />
         <DetailTimeLabel htmlFor="minute">minutes</DetailTimeLabel>
         <IngredientsLabel htmlFor="ingredients">Ingredients</IngredientsLabel>
         <IngredientsSection
           ingredientsNumber={ingredientsNumber}
           storeInput={storeInput}
+          formData={formData}
         />
-        {ingredientsNumber < 4 || (
+        {ingredientsNumber < 20 || (
           <ParagraphStyled>Max amount reached</ParagraphStyled>
         )}
-        {ingredientsNumber < 4 && (
+        {ingredientsNumber < 20 && (
           <IngredientsButton onClick={addIngredientsLine} />
         )}
         <InstructionsLabel htmlFor="instructions">
@@ -149,24 +185,84 @@ export default function CreateRecipe({ recipes, setRecipes }) {
         <InstructionsSection
           storeInput={storeInput}
           instructionsNumber={instructionsNumber}
+          formData={formData}
         />
-        {instructionsNumber < 4 || (
+        {instructionsNumber < 20 || (
           <ParagraphStyled>Max amount reached</ParagraphStyled>
         )}
-        {instructionsNumber < 4 && (
+        {instructionsNumber < 20 && (
           <InstructionsButton onClick={addInstructionsLine} />
         )}
         <ButtonWrapper>
           <ButtonStyled>Submit</ButtonStyled>
         </ButtonWrapper>
-        {console.log(formData)}
-        {console.log(instructionsNumber)}
       </FormStyled>
     </MainStyled>
   )
 
   function saveNewRecipetoLocalStorage(event) {
     event.preventDefault()
+    let ingredients = []
+    if (formData.ingredientsname1) {
+      ingredients.push(formData.ingredientsamount1, formData.ingredientsname1)
+    }
+    if (formData.ingredientsname2) {
+      ingredients.push(formData.ingredientsamount2, formData.ingredientsname2)
+    }
+    if (formData.ingredientsname3) {
+      ingredients.push(formData.ingredientsamount3, formData.ingredientsname3)
+    }
+    if (formData.ingredientsname4) {
+      ingredients.push(formData.ingredientsamount4, formData.ingredientsname4)
+    }
+    if (formData.ingredientsname5) {
+      ingredients.push(formData.ingredientsamount5, formData.ingredientsname5)
+    }
+    if (formData.ingredientsname6) {
+      ingredients.push(formData.ingredientsamount6, formData.ingredientsname6)
+    }
+    if (formData.ingredientsname7) {
+      ingredients.push(formData.ingredientsamount7, formData.ingredientsname7)
+    }
+    if (formData.ingredientsname8) {
+      ingredients.push(formData.ingredientsamount8, formData.ingredientsname8)
+    }
+    if (formData.ingredientsname9) {
+      ingredients.push(formData.ingredientsamount9, formData.ingredientsname9)
+    }
+    if (formData.ingredientsname10) {
+      ingredients.push(formData.ingredientsamount10, formData.ingredientsname10)
+    }
+    if (formData.ingredientsname11) {
+      ingredients.push(formData.ingredientsamount11, formData.ingredientsname11)
+    }
+    if (formData.ingredientsname12) {
+      ingredients.push(formData.ingredientsamount12, formData.ingredientsname12)
+    }
+    if (formData.ingredientsname13) {
+      ingredients.push(formData.ingredientsamount13, formData.ingredientsname13)
+    }
+    if (formData.ingredientsname14) {
+      ingredients.push(formData.ingredientsamount14, formData.ingredientsname14)
+    }
+    if (formData.ingredientsname15) {
+      ingredients.push(formData.ingredientsamount15, formData.ingredientsname15)
+    }
+    if (formData.ingredientsname16) {
+      ingredients.push(formData.ingredientsamount16, formData.ingredientsname16)
+    }
+    if (formData.ingredientsname17) {
+      ingredients.push(formData.ingredientsamount17, formData.ingredientsname17)
+    }
+    if (formData.ingredientsname18) {
+      ingredients.push(formData.ingredientsamount18, formData.ingredientsname18)
+    }
+    if (formData.ingredientsname19) {
+      ingredients.push(formData.ingredientsamount19, formData.ingredientsname19)
+    }
+    if (formData.ingredientsname20) {
+      ingredients.push(formData.ingredientsamount20, formData.ingredientsname20)
+    }
     let newRecipe = {
       id: recipes.length + 1,
       title: formData.title,
@@ -175,28 +271,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
       serving: formData.serving,
       timehour: formData.timehour,
       timeminutes: formData.timeminutes,
-      ingredients: [
-        formData.ingredientsamount1,
-        formData.ingredientsname1,
-        formData.ingredientsamount2,
-        formData.ingredientsname2,
-        formData.ingredientsamount3,
-        formData.ingredientsname3,
-        formData.ingredientsamount4,
-        formData.ingredientsname4,
-        formData.ingredientsamount5,
-        formData.ingredientsname5,
-        formData.ingredientsamount6,
-        formData.ingredientsname6,
-        formData.ingredientsamount7,
-        formData.ingredientsname7,
-        formData.ingredientsamount8,
-        formData.ingredientsname8,
-        formData.ingredientsamount9,
-        formData.ingredientsname9,
-        formData.ingredientsamount10,
-        formData.ingredientsname10,
-      ],
+      ingredients: ingredients,
       instructions: [
         formData.instruction1,
         formData.instruction2,
@@ -208,6 +283,16 @@ export default function CreateRecipe({ recipes, setRecipes }) {
         formData.instruction8,
         formData.instruction9,
         formData.instruction10,
+        formData.instruction11,
+        formData.instruction12,
+        formData.instruction13,
+        formData.instruction14,
+        formData.instruction15,
+        formData.instruction16,
+        formData.instruction17,
+        formData.instruction18,
+        formData.instruction19,
+        formData.instruction20,
       ],
       isFavourite: true,
     }
@@ -310,13 +395,13 @@ const DetailTimeLabel = styled(LabelStyled)`
   font-size: 16px;
 `
 const HourInput = styled(InputStyled)`
-  width: 32px;
+  width: 40px;
   height: 28px;
   margin-top: 4px;
   margin-right: 4px;
 `
 const MinutesInput = styled(InputStyled)`
-  width: 32px;
+  width: 40px;
   height: 28px;
   margin-top: 4px;
   margin-left: 12px;
