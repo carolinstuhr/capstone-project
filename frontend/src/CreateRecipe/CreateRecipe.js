@@ -111,6 +111,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           value={formData.tag1}
           minLength="2"
           maxLength="15"
+          data-testid="tag1"
         />
         <TagsInput
           type="text"
@@ -120,6 +121,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           value={formData.tag2}
           minLength="2"
           maxLength="15"
+          data-testid="tag2"
         />
         <TagsInput
           type="text"
@@ -129,6 +131,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           value={formData.tag3}
           minLength="2"
           maxLength="15"
+          data-testid="tag3"
         />
         <ServingsLabel htmlFor="portion">Servings</ServingsLabel>
         <ServingsInput
@@ -152,6 +155,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           maxLength="2"
           min="0"
           required
+          data-testid="hour"
         />
         <DetailTimeLabel htmlFor="hour">hours</DetailTimeLabel>
         <MinutesInput
@@ -165,6 +169,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           min="0"
           max="60"
           required
+          data-testid="minute"
         />
         <DetailTimeLabel htmlFor="minute">minutes</DetailTimeLabel>
         <IngredientsLabel htmlFor="ingredients">Ingredients</IngredientsLabel>
