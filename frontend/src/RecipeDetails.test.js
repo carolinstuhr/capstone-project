@@ -13,3 +13,14 @@ test('renders content of RecipeDetails', () => {
 
   expect(getByText(/porridge/i)).toBeInTheDocument()
 })
+
+describe('<RecipeDetails />', () => {
+  jest.mock('react-router', () => ({
+    useRouteMatch: jest.fn().mockReturnValue({ params.id: '1' }),
+  }))
+
+  test('renders', () => {
+    const wrapper = render(<RecipeDetails />)
+    expect(wrapper).toBeTruthy()
+  })
+})

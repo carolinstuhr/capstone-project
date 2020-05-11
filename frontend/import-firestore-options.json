@@ -1,0 +1,6 @@
+{
+  "collectionKey": "recipes",
+  "importDataPath": "./src/RecipeList.json",
+  "serviceAccountFilePath": "./serviceAccountKey.json",
+  " databaseURL": "https://get-cooking.firebaseio.com"
+}
