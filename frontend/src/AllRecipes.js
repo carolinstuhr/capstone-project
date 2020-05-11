@@ -3,6 +3,8 @@ import styled from 'styled-components/macro'
 import FilterRecipes from './FilterRecipes'
 import DisplaySelection from './DisplaySelection'
 import RecipeList from './RecipeList'
+import CreateRecipeButton from './CreateRecipe/CreateRecipeButton'
+import { Link } from 'react-router-dom'
 
 export default function AllRecipes({ savedPreviousPage, recipes }) {
   const [userInput, setUserInput] = useState('')
@@ -15,7 +17,7 @@ export default function AllRecipes({ savedPreviousPage, recipes }) {
       recipe.tags[2].toLowerCase().includes(userInput.toLowerCase())
   )
   return (
-    <SectionStyled>
+    <MainStyled>
       <DisplaySelection />
       <FilterRecipes setUserInput={setUserInput} />
       {filteredRecipeData.length === 0 ? (
@@ -30,11 +32,14 @@ export default function AllRecipes({ savedPreviousPage, recipes }) {
           page={'All'}
         />
       )}
-    </SectionStyled>
+      <Link to="/create">
+        <CreateRecipeButton />
+      </Link>
+    </MainStyled>
   )
 }
 
-const SectionStyled = styled.main`
+const MainStyled = styled.main`
   margin-top: 18px;
 `
 

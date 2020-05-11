@@ -8,6 +8,7 @@ export default createGlobalStyle`
 body {
     margin: 0; 
     color: #514f4b;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 main {
