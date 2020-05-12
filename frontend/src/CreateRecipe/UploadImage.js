@@ -20,14 +20,12 @@ export default function UploadImage({ setImageAsUrl, imageAsUrl }) {
       {imageAsUrl.imageUrl !== '' && (
         <StyledParagraph>{`Image ${imageAsFile.name} successfully uploaded`}</StyledParagraph>
       )}
-      {console.log(imageAsUrl)}
     </ImageUploadSection>
   )
 
   function handleImageAsFile(event) {
     const image = event.target.files[0]
     setImageAsFile(image)
-    console.log(image)
     const uploadTask = storage.ref(`images/${image.name}`).put(image)
     uploadTask.on(
       'state_changed',
@@ -66,13 +64,16 @@ const UploadImageLabel = styled.label`
   font-size: 14px;
   padding: 8px;
   border-radius: 4px;
-  border: 1px solid #a09e9a;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   color: #514f4b;
   font-family: 'Josefin Sans', sans-serif;
   background: #f2efe9;
   grid-column: 1 / 2;
   justify-self: center;
   align-self: center;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.2),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.2),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.15);
 `
 
 const StyledParagraph = styled.p`

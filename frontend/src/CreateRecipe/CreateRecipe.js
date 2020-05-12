@@ -274,6 +274,9 @@ const InstructionsButton = styled(FaPlus)`
   border-radius: 24px;
   display: block;
   margin-left: 40%;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.2),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.2),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.15);
 `
 const IngredientsButton = styled(FaPlus)`
   height: 28px;
@@ -388,6 +391,9 @@ const ButtonStyled = styled.button`
   background: #514f4b;
   padding: 4px 8px;
   border-radius: 4px;
-  border: 1px solid #514f4b;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   color: #f2efe9;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.1),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.2),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.15);
 `
