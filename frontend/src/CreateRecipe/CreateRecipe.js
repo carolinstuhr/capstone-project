@@ -4,11 +4,16 @@ import InstructionsSection from './InstructionsSection'
 import { FaPlus } from 'react-icons/fa'
 import { Redirect } from 'react-router-dom'
 import IngredientsSection from './IngredientsSection'
+import { db } from '../firebaseConfig'
+import UploadImage from './UploadImage'
 
 export default function CreateRecipe({ recipes, setRecipes }) {
   const [ingredientsNumber, setIngredientsNumber] = useState(1)
   const [instructionsNumber, setInstructionsNumber] = useState(1)
   const titleRef = useRef()
+
+  const allInputs = { imageUrl: '' }
+  const [imageAsUrl, setImageAsUrl] = useState(allInputs)
 
   useEffect(() => {
     titleRef.current.focus()
@@ -110,7 +115,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           name="tag1"
           value={formData.tag1}
           minLength="2"
-          maxLength="15"
+          maxLength="10"
           data-testid="tag1"
         />
         <TagsInput
@@ -120,7 +125,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           name="tag2"
           value={formData.tag2}
           minLength="2"
-          maxLength="15"
+          maxLength="10"
           data-testid="tag2"
         />
         <TagsInput
@@ -130,7 +135,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           name="tag3"
           value={formData.tag3}
           minLength="2"
-          maxLength="15"
+          maxLength="10"
           data-testid="tag3"
         />
         <ServingsLabel htmlFor="portion">Servings</ServingsLabel>
@@ -198,6 +203,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
         {instructionsNumber < 20 && (
           <InstructionsButton onClick={addInstructionsLine} />
         )}
+        <UploadImage setImageAsUrl={setImageAsUrl} imageAsUrl={imageAsUrl} />
         <ButtonWrapper>
           <ButtonStyled>Submit</ButtonStyled>
         </ButtonWrapper>
@@ -208,100 +214,39 @@ export default function CreateRecipe({ recipes, setRecipes }) {
   function saveNewRecipetoLocalStorage(event) {
     event.preventDefault()
     let ingredients = []
-    if (formData.ingredientsname1) {
-      ingredients.push(formData.ingredientsamount1, formData.ingredientsname1)
+    for (let i = 1; i <= 20; i++) {
+      let fieldName = 'ingredientsname' + i
+      let fieldAmount = 'ingredientsamount' + i
+      if (formData[fieldName]) {
+        ingredients.push(formData[fieldAmount], formData[fieldName])
+      }
     }
-    if (formData.ingredientsname2) {
-      ingredients.push(formData.ingredientsamount2, formData.ingredientsname2)
+    let instructions = []
+    for (let i = 1; i <= 20; i++) {
+      let fieldName = 'instruction' + i
+      if (formData[fieldName]) {
+        instructions.push(formData[fieldName])
+      }
     }
-    if (formData.ingredientsname3) {
-      ingredients.push(formData.ingredientsamount3, formData.ingredientsname3)
-    }
-    if (formData.ingredientsname4) {
-      ingredients.push(formData.ingredientsamount4, formData.ingredientsname4)
-    }
-    if (formData.ingredientsname5) {
-      ingredients.push(formData.ingredientsamount5, formData.ingredientsname5)
-    }
-    if (formData.ingredientsname6) {
-      ingredients.push(formData.ingredientsamount6, formData.ingredientsname6)
-    }
-    if (formData.ingredientsname7) {
-      ingredients.push(formData.ingredientsamount7, formData.ingredientsname7)
-    }
-    if (formData.ingredientsname8) {
-      ingredients.push(formData.ingredientsamount8, formData.ingredientsname8)
-    }
-    if (formData.ingredientsname9) {
-      ingredients.push(formData.ingredientsamount9, formData.ingredientsname9)
-    }
-    if (formData.ingredientsname10) {
-      ingredients.push(formData.ingredientsamount10, formData.ingredientsname10)
-    }
-    if (formData.ingredientsname11) {
-      ingredients.push(formData.ingredientsamount11, formData.ingredientsname11)
-    }
-    if (formData.ingredientsname12) {
-      ingredients.push(formData.ingredientsamount12, formData.ingredientsname12)
-    }
-    if (formData.ingredientsname13) {
-      ingredients.push(formData.ingredientsamount13, formData.ingredientsname13)
-    }
-    if (formData.ingredientsname14) {
-      ingredients.push(formData.ingredientsamount14, formData.ingredientsname14)
-    }
-    if (formData.ingredientsname15) {
-      ingredients.push(formData.ingredientsamount15, formData.ingredientsname15)
-    }
-    if (formData.ingredientsname16) {
-      ingredients.push(formData.ingredientsamount16, formData.ingredientsname16)
-    }
-    if (formData.ingredientsname17) {
-      ingredients.push(formData.ingredientsamount17, formData.ingredientsname17)
-    }
-    if (formData.ingredientsname18) {
-      ingredients.push(formData.ingredientsamount18, formData.ingredientsname18)
-    }
-    if (formData.ingredientsname19) {
-      ingredients.push(formData.ingredientsamount19, formData.ingredientsname19)
-    }
-    if (formData.ingredientsname20) {
-      ingredients.push(formData.ingredientsamount20, formData.ingredientsname20)
-    }
+    let imageForUpload
+    imageAsUrl.imageUrl === ''
+      ? (imageForUpload =
+          'https://firebasestorage.googleapis.com/v0/b/get-cooking.appspot.com/o/images%2Fdefault.png?alt=media&token=c009d7d1-ba9f-44b1-93ee-4c984c244a97')
+      : (imageForUpload = imageAsUrl.imageUrl)
+
     let newRecipe = {
       id: recipes.length + 1,
       title: formData.title,
       tags: [formData.tag1, formData.tag2, formData.tag3],
-      image: './images/default.png',
+      image: imageForUpload,
       serving: formData.serving,
       timehour: formData.timehour,
       timeminutes: formData.timeminutes,
       ingredients: ingredients,
-      instructions: [
-        formData.instruction1,
-        formData.instruction2,
-        formData.instruction3,
-        formData.instruction4,
-        formData.instruction5,
-        formData.instruction6,
-        formData.instruction7,
-        formData.instruction8,
-        formData.instruction9,
-        formData.instruction10,
-        formData.instruction11,
-        formData.instruction12,
-        formData.instruction13,
-        formData.instruction14,
-        formData.instruction15,
-        formData.instruction16,
-        formData.instruction17,
-        formData.instruction18,
-        formData.instruction19,
-        formData.instruction20,
-      ],
-      isFavourite: true,
+      instructions: instructions,
+      isFavourite: false,
     }
-    setRecipes([...recipes, newRecipe])
+    db.collection('recipes').add(newRecipe)
     setRecipeSaved(true)
   }
 
@@ -329,6 +274,9 @@ const InstructionsButton = styled(FaPlus)`
   border-radius: 24px;
   display: block;
   margin-left: 40%;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.2),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.2),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.15);
 `
 const IngredientsButton = styled(FaPlus)`
   height: 28px;
@@ -443,6 +391,9 @@ const ButtonStyled = styled.button`
   background: #514f4b;
   padding: 4px 8px;
   border-radius: 4px;
-  border: 1px solid #514f4b;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   color: #f2efe9;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.1),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.2),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.15);
 `

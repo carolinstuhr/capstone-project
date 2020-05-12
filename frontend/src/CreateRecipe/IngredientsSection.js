@@ -22,7 +22,7 @@ export default function IngredientsSection({
             id="ingredients"
             onChange={storeInput}
             name={`ingredientsamount${i + 1}`}
-            maxLength="12"
+            maxLength="7"
             placeholder="amount"
             ref={ingredientsRef}
             value={formData[`ingredientsamount${i + 1}`]}

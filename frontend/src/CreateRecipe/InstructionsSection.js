@@ -25,7 +25,7 @@ export default function InstructionsSection({
           onChange={storeInput}
           name={`instruction${i + 1}`}
           minLength="5"
-          maxLength="200"
+          maxLength="300"
           ref={instructionsRef}
           value={formData[`instruction${i + 1}`]}
         />

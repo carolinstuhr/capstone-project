@@ -45,7 +45,7 @@ export default function RecipeDetails({
                   }}
                   isFavourite={recipe.isFavourite}
                 />
-                <ImageStyled src={`/../${recipe.image}`} alt="Recipe" />
+                <ImageStyled src={recipe.image} alt="Recipe" />
               </ImageSectionStyled>
               <RecipeInfoSectionStyled>
                 <TitleStyled key={recipe.id}>{recipe.title}</TitleStyled>
@@ -166,6 +166,7 @@ const IngredientsSelectionSpan = styled.span`
   padding: 4px;
   border: 2px solid white;
   border-right-width: 1px;
+  cursor: default;
   background: ${(props) =>
     props.recipeDetails === 'ingredients'
       ? 'rgba(221, 216, 206, 1)'
@@ -176,6 +177,7 @@ const InstructionsSelectionSpan = styled.span`
   padding: 4px;
   border: 2px solid white;
   border-left-width: 1px;
+  cursor: default;
   background: ${(props) =>
     props.recipeDetails === 'instructions'
       ? 'rgba(221, 216, 206, 1)'

@@ -5,15 +5,27 @@ import RecipeList from './AllRecipes'
 import Header from './Header'
 import RecipeDetails from './RecipeDetails'
 import RecipeFavourites from './FavouriteRecipes'
-import recipeData from './RecipeList.json'
 import { saveToStorage, loadFromStorage } from './services'
 import CreateRecipe from './CreateRecipe/CreateRecipe'
 import CreateHeader from './CreateRecipe/CreateHeader'
+import { db } from './firebaseConfig'
 
 export default function App() {
-  const [recipes, setRecipes] = useState(
-    loadFromStorage('recipes') || recipeData
-  )
+  const [recipes, setRecipes] = useState(loadFromStorage('recipes') || [])
+
+  useEffect(() => {
+    const RecipeList = db.collection('recipes').onSnapshot((snapshot) => {
+      const recipes = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }))
+      setRecipes(recipes)
+    })
+    return () => {
+      RecipeList()
+    }
+  }, [])
+
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
   const [previousPage, setPreviousPage] = useState('All')
 
