@@ -4,11 +4,15 @@ import InstructionsSection from './InstructionsSection'
 import { FaPlus } from 'react-icons/fa'
 import { Redirect } from 'react-router-dom'
 import IngredientsSection from './IngredientsSection'
+import { db, storage } from '../firebaseConfig'
 
 export default function CreateRecipe({ recipes, setRecipes }) {
   const [ingredientsNumber, setIngredientsNumber] = useState(1)
   const [instructionsNumber, setInstructionsNumber] = useState(1)
   const titleRef = useRef()
+
+  const allInputs = { imgUrl: '' }
+  const [imageAsUrl, setImageAsUrl] = useState(allInputs)
 
   useEffect(() => {
     titleRef.current.focus()
@@ -110,7 +114,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           name="tag1"
           value={formData.tag1}
           minLength="2"
-          maxLength="15"
+          maxLength="7"
           data-testid="tag1"
         />
         <TagsInput
@@ -120,7 +124,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           name="tag2"
           value={formData.tag2}
           minLength="2"
-          maxLength="15"
+          maxLength="7"
           data-testid="tag2"
         />
         <TagsInput
@@ -130,7 +134,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           name="tag3"
           value={formData.tag3}
           minLength="2"
-          maxLength="15"
+          maxLength="8"
           data-testid="tag3"
         />
         <ServingsLabel htmlFor="portion">Servings</ServingsLabel>
@@ -198,6 +202,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
         {instructionsNumber < 20 && (
           <InstructionsButton onClick={addInstructionsLine} />
         )}
+        <input type="file" name="image" onChange={handleImageAsFile} />
         <ButtonWrapper>
           <ButtonStyled>Submit</ButtonStyled>
         </ButtonWrapper>
@@ -205,7 +210,32 @@ export default function CreateRecipe({ recipes, setRecipes }) {
     </MainStyled>
   )
 
-  function saveNewRecipetoLocalStorage(event) {
+  function handleImageAsFile(event) {
+    const image = event.target.files[0]
+    console.log(image)
+    const uploadTask = storage.ref(`images/${image.name}`).put(image)
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        console.log(snapshot)
+      },
+      (error) => {
+        console.log(error)
+        alert('Please try again')
+      },
+      () => {
+        storage
+          .ref('images')
+          .child(image.name)
+          .getDownloadURL()
+          .then((url) => {
+            setImageAsUrl({ imageUrl: url })
+          })
+      }
+    )
+  }
+
+  function saveNewRecipetoLocalStorage(event, image) {
     event.preventDefault()
     let ingredients = []
     if (formData.ingredientsname1) {
@@ -268,40 +298,83 @@ export default function CreateRecipe({ recipes, setRecipes }) {
     if (formData.ingredientsname20) {
       ingredients.push(formData.ingredientsamount20, formData.ingredientsname20)
     }
+    let instructions = []
+    if (formData.instruction1) {
+      instructions.push(formData.instruction1)
+    }
+    if (formData.instruction2) {
+      instructions.push(formData.instruction2)
+    }
+    if (formData.instruction3) {
+      instructions.push(formData.instruction3)
+    }
+    if (formData.instruction4) {
+      instructions.push(formData.instruction4)
+    }
+    if (formData.instruction5) {
+      instructions.push(formData.instruction5)
+    }
+    if (formData.instruction6) {
+      instructions.push(formData.instruction6)
+    }
+    if (formData.instruction7) {
+      instructions.push(formData.instruction7)
+    }
+    if (formData.instruction8) {
+      instructions.push(formData.instruction8)
+    }
+    if (formData.instruction9) {
+      instructions.push(formData.instruction9)
+    }
+    if (formData.instruction10) {
+      instructions.push(formData.instruction10)
+    }
+    if (formData.instruction11) {
+      instructions.push(formData.instruction11)
+    }
+    if (formData.instruction12) {
+      instructions.push(formData.instruction12)
+    }
+    if (formData.instruction13) {
+      instructions.push(formData.instruction13)
+    }
+    if (formData.instruction14) {
+      instructions.push(formData.instruction14)
+    }
+    if (formData.instruction15) {
+      instructions.push(formData.instruction15)
+    }
+    if (formData.instruction16) {
+      instructions.push(formData.instruction16)
+    }
+    if (formData.instruction17) {
+      instructions.push(formData.instruction17)
+    }
+    if (formData.instruction18) {
+      instructions.push(formData.instruction18)
+    }
+    if (formData.instruction19) {
+      instructions.push(formData.instruction19)
+    }
+    if (formData.instruction20) {
+      instructions.push(formData.instruction20)
+    }
+
     let newRecipe = {
       id: recipes.length + 1,
       title: formData.title,
       tags: [formData.tag1, formData.tag2, formData.tag3],
-      image: './images/default.png',
+      image: imageAsUrl.imageUrl,
+      // image: './images/default.png',
       serving: formData.serving,
       timehour: formData.timehour,
       timeminutes: formData.timeminutes,
       ingredients: ingredients,
-      instructions: [
-        formData.instruction1,
-        formData.instruction2,
-        formData.instruction3,
-        formData.instruction4,
-        formData.instruction5,
-        formData.instruction6,
-        formData.instruction7,
-        formData.instruction8,
-        formData.instruction9,
-        formData.instruction10,
-        formData.instruction11,
-        formData.instruction12,
-        formData.instruction13,
-        formData.instruction14,
-        formData.instruction15,
-        formData.instruction16,
-        formData.instruction17,
-        formData.instruction18,
-        formData.instruction19,
-        formData.instruction20,
-      ],
+      instructions: instructions,
       isFavourite: true,
     }
-    setRecipes([...recipes, newRecipe])
+    db.collection('recipes').add(newRecipe)
+    // setRecipes([...recipes, newRecipe])
     setRecipeSaved(true)
   }
 

@@ -45,7 +45,7 @@ export default function RecipeDetails({
                   }}
                   isFavourite={recipe.isFavourite}
                 />
-                <ImageStyled src={`/../${recipe.image}`} alt="Recipe" />
+                <ImageStyled src={recipe.image} alt="Recipe" />
               </ImageSectionStyled>
               <RecipeInfoSectionStyled>
                 <TitleStyled key={recipe.id}>{recipe.title}</TitleStyled>
