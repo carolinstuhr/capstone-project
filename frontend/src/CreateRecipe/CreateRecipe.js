@@ -4,14 +4,15 @@ import InstructionsSection from './InstructionsSection'
 import { FaPlus } from 'react-icons/fa'
 import { Redirect } from 'react-router-dom'
 import IngredientsSection from './IngredientsSection'
-import { db, storage } from '../firebaseConfig'
+import { db } from '../firebaseConfig'
+import UploadImage from './UploadImage'
 
 export default function CreateRecipe({ recipes, setRecipes }) {
   const [ingredientsNumber, setIngredientsNumber] = useState(1)
   const [instructionsNumber, setInstructionsNumber] = useState(1)
   const titleRef = useRef()
 
-  const allInputs = { imgUrl: '' }
+  const allInputs = { imageUrl: '' }
   const [imageAsUrl, setImageAsUrl] = useState(allInputs)
 
   useEffect(() => {
@@ -114,7 +115,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           name="tag1"
           value={formData.tag1}
           minLength="2"
-          maxLength="7"
+          maxLength="10"
           data-testid="tag1"
         />
         <TagsInput
@@ -124,7 +125,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           name="tag2"
           value={formData.tag2}
           minLength="2"
-          maxLength="7"
+          maxLength="10"
           data-testid="tag2"
         />
         <TagsInput
@@ -134,7 +135,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           name="tag3"
           value={formData.tag3}
           minLength="2"
-          maxLength="8"
+          maxLength="10"
           data-testid="tag3"
         />
         <ServingsLabel htmlFor="portion">Servings</ServingsLabel>
@@ -202,7 +203,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
         {instructionsNumber < 20 && (
           <InstructionsButton onClick={addInstructionsLine} />
         )}
-        <input type="file" name="image" onChange={handleImageAsFile} />
+        <UploadImage setImageAsUrl={setImageAsUrl} imageAsUrl={imageAsUrl} />
         <ButtonWrapper>
           <ButtonStyled>Submit</ButtonStyled>
         </ButtonWrapper>
@@ -210,171 +211,42 @@ export default function CreateRecipe({ recipes, setRecipes }) {
     </MainStyled>
   )
 
-  function handleImageAsFile(event) {
-    const image = event.target.files[0]
-    console.log(image)
-    const uploadTask = storage.ref(`images/${image.name}`).put(image)
-    uploadTask.on(
-      'state_changed',
-      (snapshot) => {
-        console.log(snapshot)
-      },
-      (error) => {
-        console.log(error)
-        alert('Please try again')
-      },
-      () => {
-        storage
-          .ref('images')
-          .child(image.name)
-          .getDownloadURL()
-          .then((url) => {
-            setImageAsUrl({ imageUrl: url })
-          })
-      }
-    )
-  }
-
-  function saveNewRecipetoLocalStorage(event, image) {
+  function saveNewRecipetoLocalStorage(event) {
     event.preventDefault()
     let ingredients = []
-    if (formData.ingredientsname1) {
-      ingredients.push(formData.ingredientsamount1, formData.ingredientsname1)
-    }
-    if (formData.ingredientsname2) {
-      ingredients.push(formData.ingredientsamount2, formData.ingredientsname2)
-    }
-    if (formData.ingredientsname3) {
-      ingredients.push(formData.ingredientsamount3, formData.ingredientsname3)
-    }
-    if (formData.ingredientsname4) {
-      ingredients.push(formData.ingredientsamount4, formData.ingredientsname4)
-    }
-    if (formData.ingredientsname5) {
-      ingredients.push(formData.ingredientsamount5, formData.ingredientsname5)
-    }
-    if (formData.ingredientsname6) {
-      ingredients.push(formData.ingredientsamount6, formData.ingredientsname6)
-    }
-    if (formData.ingredientsname7) {
-      ingredients.push(formData.ingredientsamount7, formData.ingredientsname7)
-    }
-    if (formData.ingredientsname8) {
-      ingredients.push(formData.ingredientsamount8, formData.ingredientsname8)
-    }
-    if (formData.ingredientsname9) {
-      ingredients.push(formData.ingredientsamount9, formData.ingredientsname9)
-    }
-    if (formData.ingredientsname10) {
-      ingredients.push(formData.ingredientsamount10, formData.ingredientsname10)
-    }
-    if (formData.ingredientsname11) {
-      ingredients.push(formData.ingredientsamount11, formData.ingredientsname11)
-    }
-    if (formData.ingredientsname12) {
-      ingredients.push(formData.ingredientsamount12, formData.ingredientsname12)
-    }
-    if (formData.ingredientsname13) {
-      ingredients.push(formData.ingredientsamount13, formData.ingredientsname13)
-    }
-    if (formData.ingredientsname14) {
-      ingredients.push(formData.ingredientsamount14, formData.ingredientsname14)
-    }
-    if (formData.ingredientsname15) {
-      ingredients.push(formData.ingredientsamount15, formData.ingredientsname15)
-    }
-    if (formData.ingredientsname16) {
-      ingredients.push(formData.ingredientsamount16, formData.ingredientsname16)
-    }
-    if (formData.ingredientsname17) {
-      ingredients.push(formData.ingredientsamount17, formData.ingredientsname17)
-    }
-    if (formData.ingredientsname18) {
-      ingredients.push(formData.ingredientsamount18, formData.ingredientsname18)
-    }
-    if (formData.ingredientsname19) {
-      ingredients.push(formData.ingredientsamount19, formData.ingredientsname19)
-    }
-    if (formData.ingredientsname20) {
-      ingredients.push(formData.ingredientsamount20, formData.ingredientsname20)
+    for (let i = 1; i <= 20; i++) {
+      let fieldName = 'ingredientsname' + i
+      let fieldAmount = 'ingredientsamount' + i
+      if (formData[fieldName]) {
+        ingredients.push(formData[fieldAmount], formData[fieldName])
+      }
     }
     let instructions = []
-    if (formData.instruction1) {
-      instructions.push(formData.instruction1)
+    for (let i = 1; i <= 20; i++) {
+      let fieldName = 'instruction' + i
+      if (formData[fieldName]) {
+        instructions.push(formData[fieldName])
+      }
     }
-    if (formData.instruction2) {
-      instructions.push(formData.instruction2)
-    }
-    if (formData.instruction3) {
-      instructions.push(formData.instruction3)
-    }
-    if (formData.instruction4) {
-      instructions.push(formData.instruction4)
-    }
-    if (formData.instruction5) {
-      instructions.push(formData.instruction5)
-    }
-    if (formData.instruction6) {
-      instructions.push(formData.instruction6)
-    }
-    if (formData.instruction7) {
-      instructions.push(formData.instruction7)
-    }
-    if (formData.instruction8) {
-      instructions.push(formData.instruction8)
-    }
-    if (formData.instruction9) {
-      instructions.push(formData.instruction9)
-    }
-    if (formData.instruction10) {
-      instructions.push(formData.instruction10)
-    }
-    if (formData.instruction11) {
-      instructions.push(formData.instruction11)
-    }
-    if (formData.instruction12) {
-      instructions.push(formData.instruction12)
-    }
-    if (formData.instruction13) {
-      instructions.push(formData.instruction13)
-    }
-    if (formData.instruction14) {
-      instructions.push(formData.instruction14)
-    }
-    if (formData.instruction15) {
-      instructions.push(formData.instruction15)
-    }
-    if (formData.instruction16) {
-      instructions.push(formData.instruction16)
-    }
-    if (formData.instruction17) {
-      instructions.push(formData.instruction17)
-    }
-    if (formData.instruction18) {
-      instructions.push(formData.instruction18)
-    }
-    if (formData.instruction19) {
-      instructions.push(formData.instruction19)
-    }
-    if (formData.instruction20) {
-      instructions.push(formData.instruction20)
-    }
+    let imageForUpload
+    imageAsUrl.imageUrl === ''
+      ? (imageForUpload =
+          'https://firebasestorage.googleapis.com/v0/b/get-cooking.appspot.com/o/images%2Fdefault.png?alt=media&token=c009d7d1-ba9f-44b1-93ee-4c984c244a97')
+      : (imageForUpload = imageAsUrl.imageUrl)
 
     let newRecipe = {
       id: recipes.length + 1,
       title: formData.title,
       tags: [formData.tag1, formData.tag2, formData.tag3],
-      image: imageAsUrl.imageUrl,
-      // image: './images/default.png',
+      image: imageForUpload,
       serving: formData.serving,
       timehour: formData.timehour,
       timeminutes: formData.timeminutes,
       ingredients: ingredients,
       instructions: instructions,
-      isFavourite: true,
+      isFavourite: false,
     }
     db.collection('recipes').add(newRecipe)
-    // setRecipes([...recipes, newRecipe])
     setRecipeSaved(true)
   }
 
