@@ -14,17 +14,22 @@ export default function App() {
   const [recipes, setRecipes] = useState(loadFromStorage('recipes') || [])
 
   useEffect(() => {
-    const RecipeList = db.collection('recipes').onSnapshot((snapshot) => {
-      const recipes = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }))
-      setRecipes(recipes)
-    })
-    return () => {
-      RecipeList()
-    }
-  }, [])
+    fetch('https://us-central1-get-cooking.cloudfunctions.net/api/recipes')
+      .then((res) => res.json())
+      .then((data) => setRecipes(data))
+    console.log(recipes)
+
+    // const RecipeList = db.collection('recipes').onSnapshot((snapshot) => {
+    //   const recipes = snapshot.docs.map((doc) => ({
+    //     id: doc.id,
+    //     ...doc.data(),
+    //   }))
+    //   setRecipes(recipes)
+    // })
+    // return () => {
+    //   RecipeList()
+    // }
+  }, [recipes])
 
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
   const [previousPage, setPreviousPage] = useState('All')

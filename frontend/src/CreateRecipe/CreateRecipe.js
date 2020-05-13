@@ -246,7 +246,24 @@ export default function CreateRecipe({ recipes, setRecipes }) {
       instructions: instructions,
       isFavourite: false,
     }
-    db.collection('recipes').add(newRecipe)
+
+    var raw = JSON.stringify(newRecipe)
+
+    var requestOptions = {
+      method: 'POST',
+      body: raw,
+      redirect: 'follow',
+    }
+
+    fetch(
+      'http://localhost:5001/get-cooking/us-central1/api/create',
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log('error', error))
+
+    // db.collection('recipes').add(newRecipe)
     setRecipeSaved(true)
   }
 

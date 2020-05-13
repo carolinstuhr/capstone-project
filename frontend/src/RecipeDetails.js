@@ -20,6 +20,7 @@ export default function RecipeDetails({
         (recipe, index) =>
           recipe.id === parseInt(match.params.id) && (
             <>
+              {console.log(recipes)}
               <ImageSectionStyled key={recipe.id}>
                 {previousPage === 'All' && (
                   <Link exact to="/">
