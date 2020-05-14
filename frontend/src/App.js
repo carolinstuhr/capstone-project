@@ -9,6 +9,9 @@ import { saveToStorage, loadFromStorage } from './services'
 import CreateRecipe from './CreateRecipe/CreateRecipe'
 import CreateHeader from './CreateRecipe/CreateHeader'
 import { db } from './firebaseConfig'
+import SignUp from './UserLogin/SignUp'
+import LoginHeader from './UserLogin/LoginHeader'
+import SignIn from './UserLogin/SignIn'
 
 export default function App() {
   // const [recipes, setRecipes] = useState(loadFromStorage('recipes') || [])
@@ -30,6 +33,8 @@ export default function App() {
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
   const [previousPage, setPreviousPage] = useState('All')
 
+  const [userLoginInput, setUserLoginInput] = useState({})
+
   // useEffect(() => {
   //   saveToStorage('recipes', recipes)
   // }, [recipes])
@@ -37,6 +42,24 @@ export default function App() {
   return (
     <>
       <Switch>
+        <Route path="/signin">
+          <LoginSection>
+            <LoginHeader>sign in</LoginHeader>
+            <SignIn
+              storeUserLoginInput={storeUserLoginInput}
+              userLoginInput={userLoginInput}
+            />
+          </LoginSection>
+        </Route>
+        <Route path="/signup">
+          <LoginSection>
+            <LoginHeader>register</LoginHeader>
+            <SignUp
+              storeUserLoginInput={storeUserLoginInput}
+              userLoginInput={userLoginInput}
+            />
+          </LoginSection>
+        </Route>
         <Route exact path="/">
           <GridDiv>
             <Header>recipes</Header>
@@ -75,6 +98,13 @@ export default function App() {
     </>
   )
 
+  function storeUserLoginInput(event) {
+    setUserLoginInput({
+      ...userLoginInput,
+      [event.target.name]: event.target.value,
+    })
+  }
+
   function savedPreviousPage(page) {
     setPreviousPage(page)
   }
@@ -91,4 +121,10 @@ const GridDiv = styled.div`
   display: grid;
   grid-template-rows: 48px auto;
   height: 100vh;
+`
+
+const LoginSection = styled.div`
+  background: #f2efe9;
+  height: 100vh;
+  margin: 0;
 `

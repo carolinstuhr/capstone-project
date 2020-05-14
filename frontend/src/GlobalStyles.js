@@ -10,6 +10,9 @@ body {
     color: #514f4b;
     font-family: 'Josefin Sans', sans-serif;
 }
+h1 {
+    margin: 0
+}
 
 main {
     overflow: scroll;
