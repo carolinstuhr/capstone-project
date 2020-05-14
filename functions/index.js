@@ -5,7 +5,7 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 app.use(cors({ origin: true }));
-app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const serviceAccount = require("./serviceAccountKey.json");
 const firebaseConfig = {
@@ -28,7 +28,7 @@ app.get("/recipes", (req, res) => {
     .then((data) => {
       let recipes = [];
       data.forEach((doc) => {
-        recipes.push(doc.data());
+        recipes.push({ id: doc.id, ...doc.data() });
       });
       return res.json(recipes);
     })
@@ -43,6 +43,21 @@ app.get("/recipes", (req, res) => {
 //     })
 //     .catch((err) => console.error(err));
 // });
+
+app.put("/update/:id", (req, res) => {
+  (async () => {
+    try {
+      const document = db.collection("recipes").doc(req.params.id);
+      await document.update({
+        isFavourite: req.body.isFavourite,
+      });
+      return res.status(200).send();
+    } catch (err) {
+      console.log(error);
+      return res.status(500).send(error);
+    }
+  })();
+});
 
 app.post("/create", (req, res) => {
   db.collection("recipes")
