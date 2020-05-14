@@ -11,12 +11,13 @@ import CreateHeader from './CreateRecipe/CreateHeader'
 import { db } from './firebaseConfig'
 
 export default function App() {
-  const [recipes, setRecipes] = useState(loadFromStorage('recipes') || [])
+  // const [recipes, setRecipes] = useState(loadFromStorage('recipes') || [])
+  const [recipes, setRecipes] = useState([])
 
   useEffect(() => {
     const RecipeList = db.collection('recipes').onSnapshot((snapshot) => {
       const recipes = snapshot.docs.map((doc) => ({
-        id: doc.id,
+        DocId: doc.id,
         ...doc.data(),
       }))
       setRecipes(recipes)
@@ -24,14 +25,14 @@ export default function App() {
     return () => {
       RecipeList()
     }
-  }, [])
+  }, [recipes])
 
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
   const [previousPage, setPreviousPage] = useState('All')
 
-  useEffect(() => {
-    saveToStorage('recipes', recipes)
-  }, [recipes])
+  // useEffect(() => {
+  //   saveToStorage('recipes', recipes)
+  // }, [recipes])
 
   return (
     <>
