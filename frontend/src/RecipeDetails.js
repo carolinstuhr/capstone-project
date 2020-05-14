@@ -20,7 +20,8 @@ export default function RecipeDetails({
         (recipe, index) =>
           recipe.id === parseInt(match.params.id) && (
             <>
-              {console.log(recipes)}
+              {console.log(recipe)}
+              {console.log(recipe.id)}
               <ImageSectionStyled key={recipe.id}>
                 {previousPage === 'All' && (
                   <Link exact to="/">
@@ -98,12 +99,34 @@ export default function RecipeDetails({
   )
   function toggleHeartIcon(selectedIndex) {
     let recipe = recipes[selectedIndex]
-    let index = recipes.indexOf(recipe)
-    setRecipes([
-      ...recipes.slice(0, index),
-      { ...recipe, isFavourite: !recipe.isFavourite },
-      ...recipes.slice(index + 1),
-    ])
+    let recipeFavourite = !recipe.isFavourite
+    console.log(recipeFavourite)
+    console.log(recipe)
+
+    var urlencoded = new URLSearchParams()
+    urlencoded.append('isFavourite', recipeFavourite)
+    console.log(urlencoded)
+    var requestOptions = {
+      method: 'PUT',
+      body: urlencoded,
+      redirect: 'follow',
+    }
+
+    fetch(
+      'http://localhost:5001/get-cooking/us-central1/api/update/t7CggVlS2NGf12T72iwz',
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log('error', error))
+
+    // let recipe = recipes[selectedIndex]
+    // let index = recipes.indexOf(recipe)
+    // setRecipes([
+    //   ...recipes.slice(0, index),
+    //   { ...recipe, isFavourite: !recipe.isFavourite },
+    //   ...recipes.slice(index + 1),
+    // ])
   }
 }
 
