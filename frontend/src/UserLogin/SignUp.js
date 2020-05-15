@@ -1,10 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { withRouter, Redirect } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import { auth } from '../firebaseConfig'
 import LoginButton from './LoginButton'
 
-export default function SignUp({ storeUserLoginInput, userLoginInput }) {
+function SignUp({ history }) {
   const [checked, setChecked] = useState(false)
+  // const [userInput, setUserLoginInput] = useState({
+  //   userName: '',
+  //   email: '',
+  //   password: '',
+  //   passwordRepeat: '',
+  // })
 
   const nameRef = useRef()
   useEffect(() => {
@@ -17,9 +24,9 @@ export default function SignUp({ storeUserLoginInput, userLoginInput }) {
       <InputStyled
         type="text"
         id="name"
-        name="name"
-        value={userLoginInput.name}
-        onChange={storeUserLoginInput}
+        name="userName"
+        // value={userInput.userName}
+        // onChange={storeUserLoginInput}
         ref={nameRef}
         required
       />
@@ -28,8 +35,8 @@ export default function SignUp({ storeUserLoginInput, userLoginInput }) {
         type="email"
         id="email"
         name="email"
-        value={userLoginInput.email}
-        onChange={storeUserLoginInput}
+        // value={userInput.email}
+        // onChange={storeUserLoginInput}
         required
       />
       <LabelStyled htmlFor="password">password</LabelStyled>
@@ -37,8 +44,8 @@ export default function SignUp({ storeUserLoginInput, userLoginInput }) {
         type="password"
         id="password"
         name="password"
-        value={userLoginInput.password}
-        onChange={storeUserLoginInput}
+        // value={userInput.password}
+        // onChange={storeUserLoginInput}
         required
       />
       <LabelStyled htmlFor="passwordRepeat">repeat password</LabelStyled>
@@ -46,8 +53,8 @@ export default function SignUp({ storeUserLoginInput, userLoginInput }) {
         type="password"
         id="passwordRepeat"
         name="passwordRepeat"
-        value={userLoginInput.passwordRepeat}
-        onChange={storeUserLoginInput}
+        // value={userInput.passwordRepeat}
+        // onChange={storeUserLoginInput}
         required
       />
       <CheckboxStyled
@@ -61,19 +68,25 @@ export default function SignUp({ storeUserLoginInput, userLoginInput }) {
         Accept the terms and conditions
       </CheckboxLabel>
       <LoginButton>Register</LoginButton>
-      {console.log(userLoginInput.email)}
+      {/* {console.log(userInput)} */}
     </FormStyled>
   )
-  function registerUser(event, userLoginInput) {
-    console.log(userLoginInput)
+  // function storeUserLoginInput(event) {
+  //   setUserLoginInput({
+  //     ...userInput,
+  //     [event.target.name]: event.target.value,
+  //   })
+  // }
+
+  function registerUser(event) {
+    event.preventDefault()
+    const { email, password } = event.target.elements
     auth
-      .createUserWithEmailAndPassword(
-        userLoginInput.email,
-        userLoginInput.password
-      )
-      .then((response) => {
-        console.log(response)
+      .createUserWithEmailAndPassword(email.value, password.value)
+      .then(() => {
+        history.push('/')
       })
+      .catch((err) => alert(err))
   }
 }
 const FormStyled = styled.form`
@@ -105,3 +118,5 @@ const CheckboxLabel = styled.label`
   justify-self: left;
   margin-left: 4px;
 `
+
+export default withRouter(SignUp)

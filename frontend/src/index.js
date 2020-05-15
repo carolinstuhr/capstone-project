@@ -4,13 +4,16 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import GlobalStyles from './GlobalStyles'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { AuthProvider } from './Auth'
 
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyles />
-    <Router>
-      <App />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <App />
+      </Router>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )

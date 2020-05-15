@@ -28,12 +28,10 @@ export default function App() {
     return () => {
       RecipeList()
     }
-  }, [recipes])
+  }, [])
 
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
   const [previousPage, setPreviousPage] = useState('All')
-
-  const [userLoginInput, setUserLoginInput] = useState({})
 
   // useEffect(() => {
   //   saveToStorage('recipes', recipes)
@@ -45,19 +43,13 @@ export default function App() {
         <Route path="/signin">
           <LoginSection>
             <LoginHeader>sign in</LoginHeader>
-            <SignIn
-              storeUserLoginInput={storeUserLoginInput}
-              userLoginInput={userLoginInput}
-            />
+            <SignIn />
           </LoginSection>
         </Route>
         <Route path="/signup">
           <LoginSection>
             <LoginHeader>register</LoginHeader>
-            <SignUp
-              storeUserLoginInput={storeUserLoginInput}
-              userLoginInput={userLoginInput}
-            />
+            <SignUp />
           </LoginSection>
         </Route>
         <Route exact path="/">
@@ -97,13 +89,6 @@ export default function App() {
       </Switch>
     </>
   )
-
-  function storeUserLoginInput(event) {
-    setUserLoginInput({
-      ...userLoginInput,
-      [event.target.name]: event.target.value,
-    })
-  }
 
   function savedPreviousPage(page) {
     setPreviousPage(page)
