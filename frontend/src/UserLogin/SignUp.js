@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { withRouter, Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import { auth } from '../firebaseConfig'
 import LoginButton from './LoginButton'

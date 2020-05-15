@@ -1,13 +1,32 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useContext } from 'react'
+import { withRouter, Redirect } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
+import { auth } from '../firebaseConfig'
 import LoginButton from './LoginButton'
+import { AuthContext } from '../Auth'
 
-export default function SignIn({ storeUserLoginInput, userLoginInput }) {
+function SignIn({ history }) {
   const emailRef = useRef()
   useEffect(() => {
     emailRef.current.focus()
   }, [])
+  function userLogin(event) {
+    event.preventDefault()
+    const { email, password } = event.target.elements
+    auth
+      .signInWithEmailAndPassword(email.value, password.value)
+      .then((res) => {
+        history.push('/')
+        console.log(res)
+      })
+      .catch((err) => alert(err))
+  }
+
+  // const { currentUser } = useContext(AuthContext)
+  // if (currentUser) {
+  //   return <Redirect exact to="/" />
+  // }
 
   return (
     <>
@@ -17,8 +36,8 @@ export default function SignIn({ storeUserLoginInput, userLoginInput }) {
           type="email"
           id="email"
           name="email"
-          value={userLoginInput.email}
-          onChange={(event) => storeUserLoginInput(event)}
+          // value={userLoginInput.email}
+          // onChange={(event) => storeUserLoginInput(event)}
           ref={emailRef}
           required
         />
@@ -27,11 +46,11 @@ export default function SignIn({ storeUserLoginInput, userLoginInput }) {
           type="password"
           id="password"
           name="password"
-          value={userLoginInput.password}
-          onChange={(event) => storeUserLoginInput(event)}
+          // value={userLoginInput.password}
+          // onChange={(event) => storeUserLoginInput(event)}
           required
         />
-        {console.log(userLoginInput)}
+        {/* {console.log(userLoginInput)} */}
         <LoginButton>Login</LoginButton>
       </FormStyled>
       <ParagraphStyled>Forgot your password?</ParagraphStyled>
@@ -40,7 +59,6 @@ export default function SignIn({ storeUserLoginInput, userLoginInput }) {
       </ParagraphStyled>
     </>
   )
-  function userLogin() {}
 }
 const FormStyled = styled.form`
   display: grid;
@@ -69,3 +87,5 @@ const ParagraphStyled = styled.p`
   font-weight: 300;
   font-size: 14px;
 `
+
+export default withRouter(SignIn)
