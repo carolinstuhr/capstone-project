@@ -8,9 +8,10 @@ import { db } from '../firebaseConfig'
 import UploadImage from './UploadImage'
 
 export default function CreateRecipe({ recipes, setRecipes }) {
-  const [ingredientsNumber, setIngredientsNumber] = useState(1)
-  const [instructionsNumber, setInstructionsNumber] = useState(1)
   const titleRef = useRef()
+
+  const [ingredients, setIngredients] = useState([{ amount: '', name: '' }])
+  const [instructions, setInstructions] = useState([''])
 
   const allInputs = { imageUrl: '' }
   const [imageAsUrl, setImageAsUrl] = useState(allInputs)
@@ -26,65 +27,6 @@ export default function CreateRecipe({ recipes, setRecipes }) {
     serving: '',
     timehour: '',
     timeminutes: '',
-    ingredientsamount1: '',
-    ingredientsamount2: '',
-    ingredientsamount3: '',
-    ingredientsamount4: '',
-    ingredientsamount5: '',
-    ingredientsamount6: '',
-    ingredientsamount7: '',
-    ingredientsamount8: '',
-    ingredientsamount9: '',
-    ingredientsamount10: '',
-    ingredientsamount11: '',
-    ingredientsamount12: '',
-    ingredientsamount13: '',
-    ingredientsamount14: '',
-    ingredientsamount15: '',
-    ingredientsamount16: '',
-    ingredientsamount17: '',
-    ingredientsamount18: '',
-    ingredientsamount19: '',
-    ingredientsamount20: '',
-    ingredientsname1: '',
-    ingredientsname2: '',
-    ingredientsname3: '',
-    ingredientsname4: '',
-    ingredientsname5: '',
-    ingredientsname6: '',
-    ingredientsname7: '',
-    ingredientsname8: '',
-    ingredientsname9: '',
-    ingredientsname10: '',
-    ingredientsname11: '',
-    ingredientsname12: '',
-    ingredientsname13: '',
-    ingredientsname14: '',
-    ingredientsname15: '',
-    ingredientsname16: '',
-    ingredientsname17: '',
-    ingredientsname18: '',
-    ingredientsname19: '',
-    ingredientsname20: '',
-    instruction1: '',
-    instruction2: '',
-    instruction3: '',
-    instruction4: '',
-    instruction5: '',
-    instruction6: '',
-    instruction7: '',
-    instruction9: '',
-    instruction10: '',
-    instruction11: '',
-    instruction12: '',
-    instruction13: '',
-    instruction14: '',
-    instruction15: '',
-    instruction16: '',
-    instruction17: '',
-    instruction18: '',
-    instruction19: '',
-    instruction20: '',
   })
   const [recipeSaved, setRecipeSaved] = useState(false)
   if (recipeSaved === true) {
@@ -179,55 +121,40 @@ export default function CreateRecipe({ recipes, setRecipes }) {
         <DetailTimeLabel htmlFor="minute">minutes</DetailTimeLabel>
         <IngredientsLabel htmlFor="ingredients">Ingredients</IngredientsLabel>
         <IngredientsSection
-          ingredientsNumber={ingredientsNumber}
-          storeInput={storeInput}
-          formData={formData}
+          ingredients={ingredients}
+          setIngredients={setIngredients}
         />
-        {ingredientsNumber < 20 || (
+        {/* {ingredientsNumber < 20 || (
           <ParagraphStyled>Max amount reached</ParagraphStyled>
         )}
         {ingredientsNumber < 20 && (
           <IngredientsButton onClick={addIngredientsLine} />
-        )}
+        )} */}
         <InstructionsLabel htmlFor="instructions">
           Instructions
         </InstructionsLabel>
         <InstructionsSection
-          storeInput={storeInput}
-          instructionsNumber={instructionsNumber}
-          formData={formData}
+          instructions={instructions}
+          setInstructions={setInstructions}
         />
-        {instructionsNumber < 20 || (
+        {/* {instructionsNumber < 20 || (
           <ParagraphStyled>Max amount reached</ParagraphStyled>
         )}
         {instructionsNumber < 20 && (
           <InstructionsButton onClick={addInstructionsLine} />
-        )}
+        )} */}
         <UploadImage setImageAsUrl={setImageAsUrl} imageAsUrl={imageAsUrl} />
         <ButtonWrapper>
           <ButtonStyled>Submit</ButtonStyled>
         </ButtonWrapper>
+        {console.log(formData)}
       </FormStyled>
     </MainStyled>
   )
 
   function saveNewRecipetoLocalStorage(event) {
     event.preventDefault()
-    let ingredients = []
-    for (let i = 1; i <= 20; i++) {
-      let fieldName = 'ingredientsname' + i
-      let fieldAmount = 'ingredientsamount' + i
-      if (formData[fieldName]) {
-        ingredients.push(formData[fieldAmount], formData[fieldName])
-      }
-    }
-    let instructions = []
-    for (let i = 1; i <= 20; i++) {
-      let fieldName = 'instruction' + i
-      if (formData[fieldName]) {
-        instructions.push(formData[fieldName])
-      }
-    }
+
     let imageForUpload
     imageAsUrl.imageUrl === ''
       ? (imageForUpload =
@@ -258,43 +185,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
   function storeInput(event) {
     setFormData({ ...formData, [event.target.name]: event.target.value })
   }
-
-  function addIngredientsLine() {
-    setIngredientsNumber(ingredientsNumber + 1)
-  }
-
-  function addInstructionsLine() {
-    setInstructionsNumber(instructionsNumber + 1)
-  }
 }
-
-const InstructionsButton = styled(FaPlus)`
-  height: 28px;
-  width: 28px;
-  z-index: 2;
-  color: #514f4b;
-  padding: 4px;
-  background: #f2efe9;
-  border: 1px solid #514f4b;
-  border-radius: 24px;
-  display: block;
-  margin-left: 40%;
-  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.2),
-    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.2),
-    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.15);
-`
-const IngredientsButton = styled(FaPlus)`
-  height: 28px;
-  width: 28px;
-  z-index: 2;
-  color: #514f4b;
-  padding: 4px;
-  background: #f2efe9;
-  border: 1px solid #514f4b;
-  border-radius: 24px;
-  display: block;
-  margin-left: 40%;
-`
 
 const MainStyled = styled.main`
   margin-top: 18px;

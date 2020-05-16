@@ -1,82 +1,52 @@
 import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components/macro'
+import { FaPlus } from 'react-icons/fa'
 
-export default function InstructionsSection({
-  storeInput,
-  instructionsNumber,
-  formData,
-}) {
+export default function InstructionsSection({ instructions, setInstructions }) {
   const instructionsRef = useRef()
 
   useEffect(() => {
-    instructionsRef.current.focus()
-  }, [instructionsNumber])
-
-  let instructions = []
-  for (let i = 0; i < 20; i++) {
-    instructions.push(
-      <InstructionsPart>
-        <InstructionsNumber>{i + 1}. </InstructionsNumber>
-        <InstructionsInput
-          type="text"
-          rows="5"
-          id="instructions"
-          placeholder="Description"
-          onChange={storeInput}
-          name={`instruction${i + 1}`}
-          minLength="5"
-          maxLength="300"
-          ref={instructionsRef}
-          value={formData[`instruction${i + 1}`]}
-        />
-      </InstructionsPart>
-    )
-  }
-
+    if (instructions.length > 0) {
+      instructionsRef.current.focus()
+    }
+  }, [instructions.length])
   return (
     <>
-      {instructionsNumber === 1 &&
-        instructions.slice(0, 1).map((instruction) => instruction)}
-      {instructionsNumber === 2 &&
-        instructions.slice(0, 2).map((instruction) => instruction)}
-      {instructionsNumber === 3 &&
-        instructions.slice(0, 3).map((instruction) => instruction)}
-      {instructionsNumber === 4 &&
-        instructions.slice(0, 4).map((instruction) => instruction)}
-      {instructionsNumber === 5 &&
-        instructions.slice(0, 5).map((instruction) => instruction)}
-      {instructionsNumber === 6 &&
-        instructions.slice(0, 6).map((instruction) => instruction)}
-      {instructionsNumber === 7 &&
-        instructions.slice(0, 7).map((instruction) => instruction)}
-      {instructionsNumber === 8 &&
-        instructions.slice(0, 8).map((instruction) => instruction)}
-      {instructionsNumber === 9 &&
-        instructions.slice(0, 9).map((instruction) => instruction)}
-      {instructionsNumber === 10 &&
-        instructions.slice(0, 10).map((instruction) => instruction)}
-      {instructionsNumber === 11 &&
-        instructions.slice(0, 11).map((instruction) => instruction)}
-      {instructionsNumber === 12 &&
-        instructions.slice(0, 12).map((instruction) => instruction)}
-      {instructionsNumber === 13 &&
-        instructions.slice(0, 13).map((instruction) => instruction)}
-      {instructionsNumber === 14 &&
-        instructions.slice(0, 14).map((instruction) => instruction)}
-      {instructionsNumber === 15 &&
-        instructions.slice(0, 15).map((instruction) => instruction)}
-      {instructionsNumber === 16 &&
-        instructions.slice(0, 16).map((instruction) => instruction)}
-      {instructionsNumber === 17 &&
-        instructions.slice(0, 17).map((instruction) => instruction)}
-      {instructionsNumber === 18 &&
-        instructions.slice(0, 18).map((instruction) => instruction)}
-      {instructionsNumber === 19 &&
-        instructions.slice(0, 19).map((instruction) => instruction)}
-      {instructionsNumber === 20 &&
-        instructions.slice(0, 20).map((instruction) => instruction)}
+      {instructions.map((instruction, index) => (
+        <InstructionsPart>
+          <InstructionsNumber>{index + 1}. </InstructionsNumber>
+          <InstructionsInput
+            type="text"
+            rows="5"
+            id="instructions"
+            placeholder="Description"
+            onChange={storeInput(index)}
+            name="instruction"
+            minLength="5"
+            maxLength="300"
+            ref={instructionsRef}
+            value={instruction}
+          />
+        </InstructionsPart>
+      ))}
+      {console.log(instructions)}
+      <InstructionsButton onClick={addInstructionsLine} />
     </>
   )
+  function storeInput(index) {
+    return (event) => {
+      const input = event.target
+      setInstructions([
+        ...instructions.slice(0, index),
+        input.value,
+        ...instructions.slice(index + 1),
+      ])
+    }
+  }
+
+  function addInstructionsLine() {
+    setInstructions([...instructions, ''])
+  }
 }
 
 const InstructionsPart = styled.section`
@@ -105,4 +75,19 @@ const InstructionsInput = styled.textarea`
     font-style: italic;
     color: #a09e9a;
   }
+`
+const InstructionsButton = styled(FaPlus)`
+  height: 28px;
+  width: 28px;
+  z-index: 2;
+  color: #514f4b;
+  padding: 4px;
+  background: #f2efe9;
+  border: 1px solid #514f4b;
+  border-radius: 24px;
+  display: block;
+  margin-left: 40%;
+  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.2),
+    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.2),
+    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.15);
 `

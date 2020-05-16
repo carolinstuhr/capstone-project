@@ -74,7 +74,12 @@ export default function RecipeDetails({
               {recipeDetails === 'ingredients' ? (
                 <IngredientsSection>
                   {recipe.ingredients.map((ingredient, index) => (
-                    <StyledParagraph key={index}>{ingredient}</StyledParagraph>
+                    <>
+                      <StyledParagraph key={index}>
+                        {ingredient.amount}
+                      </StyledParagraph>
+                      <StyledParagraph>{ingredient.name}</StyledParagraph>
+                    </>
                   ))}
                 </IngredientsSection>
               ) : (
