@@ -18,10 +18,10 @@ export default function RecipeDetails({
   return (
     <main>
       {recipes.map(
-        (recipe) =>
-          recipe.id === parseInt(match.params.id) && (
+        (recipe, index) =>
+          recipe.id === match.params.id && (
             <>
-              <ImageSectionStyled key={recipe.id}>
+              <ImageSectionStyled key={index}>
                 {previousPage === 'All' && (
                   <Link exact to="/">
                     <ArrowIconStyled
@@ -49,7 +49,7 @@ export default function RecipeDetails({
                 <ImageStyled src={recipe.image} alt="Recipe" />
               </ImageSectionStyled>
               <RecipeInfoSectionStyled>
-                <TitleStyled key={recipe.id}>{recipe.title}</TitleStyled>
+                <TitleStyled>{recipe.title}</TitleStyled>
                 <InfoSection>
                   <span>serves: {recipe.serving}</span>
                   <span>
@@ -99,7 +99,7 @@ export default function RecipeDetails({
 
   function toggleHeartIcon(recipe) {
     db.collection('recipes')
-      .doc(recipe.DocId)
+      .doc(recipe.id)
       .update({ isFavourite: !recipe.isFavourite })
       .then(() => console.log('Favourite updated!'))
       .catch((err) =>

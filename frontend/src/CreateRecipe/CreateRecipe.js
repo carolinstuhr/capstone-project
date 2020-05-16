@@ -235,7 +235,6 @@ export default function CreateRecipe({ recipes, setRecipes }) {
       : (imageForUpload = imageAsUrl.imageUrl)
 
     let newRecipe = {
-      id: recipes.length + 1,
       title: formData.title,
       tags: [formData.tag1, formData.tag2, formData.tag3],
       image: imageForUpload,

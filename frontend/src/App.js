@@ -19,7 +19,7 @@ export default function App() {
   useEffect(() => {
     db.collection('recipes').onSnapshot((snapshot) => {
       const recipes = snapshot.docs.map((doc) => ({
-        DocId: doc.id,
+        id: doc.id,
         ...doc.data(),
       }))
       setRecipes(recipes)
