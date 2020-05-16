@@ -3,6 +3,7 @@ import styled from 'styled-components/macro'
 import LeftArrow from './images/left-arrow.svg'
 import FavouritesBookmark from './FavouritesBookmark'
 import { Link, useRouteMatch } from 'react-router-dom'
+import { db } from './firebaseConfig'
 
 export default function RecipeDetails({
   displayIngredients,
@@ -18,9 +19,9 @@ export default function RecipeDetails({
     <main>
       {recipes.map(
         (recipe, index) =>
-          recipe.id === parseInt(match.params.id) && (
+          recipe.id === match.params.id && (
             <>
-              <ImageSectionStyled key={recipe.id}>
+              <ImageSectionStyled key={index}>
                 {previousPage === 'All' && (
                   <Link exact to="/">
                     <ArrowIconStyled
@@ -41,14 +42,14 @@ export default function RecipeDetails({
                 )}
                 <FavouritesBookmark
                   toggleFavourites={() => {
-                    toggleHeartIcon(index)
+                    toggleHeartIcon(recipe)
                   }}
                   isFavourite={recipe.isFavourite}
                 />
                 <ImageStyled src={recipe.image} alt="Recipe" />
               </ImageSectionStyled>
               <RecipeInfoSectionStyled>
-                <TitleStyled key={recipe.id}>{recipe.title}</TitleStyled>
+                <TitleStyled>{recipe.title}</TitleStyled>
                 <InfoSection>
                   <span>serves: {recipe.serving}</span>
                   <span>
@@ -95,14 +96,15 @@ export default function RecipeDetails({
       )}
     </main>
   )
-  function toggleHeartIcon(selectedIndex) {
-    let recipe = recipes[selectedIndex]
-    let index = recipes.indexOf(recipe)
-    setRecipes([
-      ...recipes.slice(0, index),
-      { ...recipe, isFavourite: !recipe.isFavourite },
-      ...recipes.slice(index + 1),
-    ])
+
+  function toggleHeartIcon(recipe) {
+    db.collection('recipes')
+      .doc(recipe.id)
+      .update({ isFavourite: !recipe.isFavourite })
+      .then(() => console.log('Favourite updated!'))
+      .catch((err) =>
+        alert('Something went wrong. Please try again later.', err)
+      )
   }
 }
 

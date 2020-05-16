@@ -5,38 +5,46 @@ import RecipeList from './AllRecipes'
 import Header from './Header'
 import RecipeDetails from './RecipeDetails'
 import RecipeFavourites from './FavouriteRecipes'
-import { saveToStorage, loadFromStorage } from './services'
 import CreateRecipe from './CreateRecipe/CreateRecipe'
 import CreateHeader from './CreateRecipe/CreateHeader'
 import { db } from './firebaseConfig'
+import SignUp from './UserLogin/SignUp'
+import LoginHeader from './UserLogin/LoginHeader'
+import SignIn from './UserLogin/SignIn'
+import PrivateRoute from './PrivateRoute'
 
 export default function App() {
-  const [recipes, setRecipes] = useState(loadFromStorage('recipes') || [])
+  const [recipes, setRecipes] = useState([])
 
   useEffect(() => {
-    const RecipeList = db.collection('recipes').onSnapshot((snapshot) => {
+    db.collection('recipes').onSnapshot((snapshot) => {
       const recipes = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }))
       setRecipes(recipes)
     })
-    return () => {
-      RecipeList()
-    }
   }, [])
 
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
   const [previousPage, setPreviousPage] = useState('All')
 
-  useEffect(() => {
-    saveToStorage('recipes', recipes)
-  }, [recipes])
-
   return (
     <>
       <Switch>
-        <Route exact path="/">
+        <Route path="/signin">
+          <LoginSection>
+            <LoginHeader>sign in</LoginHeader>
+            <SignIn />
+          </LoginSection>
+        </Route>
+        <Route path="/signup">
+          <LoginSection>
+            <LoginHeader>register</LoginHeader>
+            <SignUp />
+          </LoginSection>
+        </Route>
+        <PrivateRoute exact path="/">
           <GridDiv>
             <Header>recipes</Header>
             <RecipeList
@@ -44,8 +52,8 @@ export default function App() {
               recipes={recipes}
             />
           </GridDiv>
-        </Route>
-        <Route path="/favourites">
+        </PrivateRoute>
+        <PrivateRoute path="/favourites">
           <GridDiv>
             <Header>favourites</Header>
             <RecipeFavourites
@@ -53,8 +61,8 @@ export default function App() {
               recipes={recipes}
             />
           </GridDiv>
-        </Route>
-        <Route path="/recipe/:id">
+        </PrivateRoute>
+        <PrivateRoute path="/recipe/:id">
           <RecipeDetails
             displayIngredients={showIngredients}
             displayInstructions={showInstructions}
@@ -63,13 +71,13 @@ export default function App() {
             setRecipes={setRecipes}
             previousPage={previousPage}
           />
-        </Route>
-        <Route path="/create">
+        </PrivateRoute>
+        <PrivateRoute path="/create">
           <GridDiv>
             <CreateHeader>create</CreateHeader>
             <CreateRecipe setRecipes={setRecipes} recipes={recipes} />
           </GridDiv>
-        </Route>
+        </PrivateRoute>
       </Switch>
     </>
   )
@@ -90,4 +98,10 @@ const GridDiv = styled.div`
   display: grid;
   grid-template-rows: 48px auto;
   height: 100vh;
+`
+
+const LoginSection = styled.div`
+  background: #f2efe9;
+  height: 100vh;
+  margin: 0;
 `
