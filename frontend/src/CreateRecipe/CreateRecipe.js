@@ -245,7 +245,13 @@ export default function CreateRecipe({ recipes, setRecipes }) {
       instructions: instructions,
       isFavourite: false,
     }
-    db.collection('recipes').add(newRecipe)
+    let newId
+    db.collection('recipes')
+      .add(newRecipe)
+      .then((doc) => {
+        newId = doc.id
+      })
+    setRecipes([...recipes, { ...newRecipe, id: newId }])
     setRecipeSaved(true)
   }
 
