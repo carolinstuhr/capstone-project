@@ -25,6 +25,3 @@ yarn-error.log*
 #firebase
 serviceAccountKey.json
 firebaseConfig.js
-firestore-debug.log
-.firebase
-.env

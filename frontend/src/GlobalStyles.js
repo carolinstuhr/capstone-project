@@ -11,7 +11,13 @@ body {
     font-family: 'Josefin Sans', sans-serif;
 }
 h1 {
-    margin: 0
+    margin: 0;
+    text-align: center;
+    margin-left: 0;
+    font-size: 32px;
+    padding-top: 4px;
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: 400;
 }
 
 main {

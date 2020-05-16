@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchIcon from './images/search-icon.svg'
+import SearchIcon from '../images/search-icon.svg'
 import styled from 'styled-components/macro'
 
 export default function FilterRecipes({ setUserInput }) {

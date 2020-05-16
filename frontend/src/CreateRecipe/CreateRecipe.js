@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components/macro'
 import InstructionsSection from './InstructionsSection'
-import { FaPlus } from 'react-icons/fa'
 import { Redirect } from 'react-router-dom'
 import IngredientsSection from './IngredientsSection'
 import { db } from '../firebaseConfig'

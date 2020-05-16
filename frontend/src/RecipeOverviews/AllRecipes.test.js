@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import AllRecipes from './AllRecipes'
 import { MemoryRouter } from 'react-router-dom'
-import recipeData from './RecipeList.json'
+import recipeData from '../RecipeList.json'
 
 test('rendering Recipe List', () => {
   const { getByText } = render(

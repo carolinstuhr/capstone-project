@@ -1,28 +1,31 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro'
 import FilterRecipes from './FilterRecipes'
-import DisplaySelection from './DisplaySelection'
+import SelectionNav from './SelectionNav'
 import RecipeList from './RecipeList'
-import CreateRecipeButton from './CreateRecipe/CreateRecipeButton'
+import CreateRecipeButton from '../CreateRecipe/CreateRecipeButton'
 import { Link } from 'react-router-dom'
 
-export default function RecipeFavourites({ savedPreviousPage, recipes }) {
-  const [userInput, setUserInput] = useState('')
-
+export default function RecipeFavourites({
+  setPreviousPage,
+  recipes,
+  userFilterInput,
+  setUserFilterInput,
+}) {
   let favouriteRecipes = recipes.filter((recipe) => recipe.isFavourite === true)
 
   let filteredRecipeData = favouriteRecipes.filter(
     (recipe) =>
-      recipe.title.toLowerCase().includes(userInput.toLowerCase()) ||
-      recipe.tags[0].toLowerCase().includes(userInput.toLowerCase()) ||
-      recipe.tags[1].toLowerCase().includes(userInput.toLowerCase()) ||
-      recipe.tags[2].toLowerCase().includes(userInput.toLowerCase())
+      recipe.title.toLowerCase().includes(userFilterInput.toLowerCase()) ||
+      recipe.tags[0].toLowerCase().includes(userFilterInput.toLowerCase()) ||
+      recipe.tags[1].toLowerCase().includes(userFilterInput.toLowerCase()) ||
+      recipe.tags[2].toLowerCase().includes(userFilterInput.toLowerCase())
   )
 
   return (
     <SectionStyled>
-      <DisplaySelection />
-      <FilterRecipes setUserInput={setUserInput} />
+      <SelectionNav />
+      <FilterRecipes setUserInput={setUserFilterInput} />
       {favouriteRecipes.length === 0 && (
         <FallBackStyled>
           Unfortunately, you haven't selected any favourites yet.
@@ -35,7 +38,7 @@ export default function RecipeFavourites({ savedPreviousPage, recipes }) {
         </FallBackStyled>
       ) : (
         <RecipeList
-          savedPreviousPage={savedPreviousPage}
+          setPreviousPage={setPreviousPage}
           filteredRecipeData={filteredRecipeData}
           page={'Favourites'}
         />
@@ -53,6 +56,5 @@ const SectionStyled = styled.main`
 
 const FallBackStyled = styled.p`
   margin-left: 16px;
-  font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
 `

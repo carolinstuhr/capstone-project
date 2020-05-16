@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import RecipeList from './AllRecipes'
-import Header from './Header'
-import RecipeDetails from './RecipeDetails'
-import RecipeFavourites from './FavouriteRecipes'
+import RecipeList from './RecipeOverviews/AllRecipes'
+import Header from './RecipeOverviews/Header'
+import RecipeDetails from './RecipeDetails/RecipeDetails'
+import RecipeFavourites from './RecipeOverviews/FavouriteRecipes'
 import CreateRecipe from './CreateRecipe/CreateRecipe'
 import CreateHeader from './CreateRecipe/CreateHeader'
 import { db } from './firebaseConfig'
@@ -26,8 +26,8 @@ export default function App() {
     })
   }, [])
 
-  const [recipeDetails, setRecipeDetails] = useState('ingredients')
   const [previousPage, setPreviousPage] = useState('All')
+  const [userFilterInput, setUserFilterInput] = useState('')
 
   return (
     <>
@@ -48,8 +48,10 @@ export default function App() {
           <GridDiv>
             <Header>recipes</Header>
             <RecipeList
-              savedPreviousPage={savedPreviousPage}
+              setPreviousPage={setPreviousPage}
               recipes={recipes}
+              userFilterInput={userFilterInput}
+              setUserFilterInput={setUserFilterInput}
             />
           </GridDiv>
         </PrivateRoute>
@@ -57,16 +59,15 @@ export default function App() {
           <GridDiv>
             <Header>favourites</Header>
             <RecipeFavourites
-              savedPreviousPage={savedPreviousPage}
+              setPreviousPage={setPreviousPage}
               recipes={recipes}
+              userFilterInput={userFilterInput}
+              setUserFilterInput={setUserFilterInput}
             />
           </GridDiv>
         </PrivateRoute>
         <PrivateRoute path="/recipe/:id">
           <RecipeDetails
-            displayIngredients={showIngredients}
-            displayInstructions={showInstructions}
-            recipeDetails={recipeDetails}
             recipes={recipes}
             setRecipes={setRecipes}
             previousPage={previousPage}
@@ -81,17 +82,6 @@ export default function App() {
       </Switch>
     </>
   )
-
-  function savedPreviousPage(page) {
-    setPreviousPage(page)
-  }
-
-  function showIngredients() {
-    setRecipeDetails('ingredients')
-  }
-  function showInstructions() {
-    setRecipeDetails('instructions')
-  }
 }
 
 const GridDiv = styled.div`

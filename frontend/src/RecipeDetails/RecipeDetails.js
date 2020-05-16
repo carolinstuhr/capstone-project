@@ -1,19 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import LeftArrow from './images/left-arrow.svg'
+import LeftArrow from '../images/left-arrow.svg'
 import FavouritesBookmark from './FavouritesBookmark'
 import { Link, useRouteMatch } from 'react-router-dom'
-import { db } from './firebaseConfig'
+import { db } from '../firebaseConfig'
 
-export default function RecipeDetails({
-  displayIngredients,
-  displayInstructions,
-  recipeDetails,
-  recipes,
-  setRecipes,
-  previousPage,
-}) {
+export default function RecipeDetails({ recipes, previousPage }) {
   const match = useRouteMatch()
+  const [recipeDetails, setRecipeDetails] = useState('ingredients')
 
   return (
     <main>
@@ -27,7 +21,7 @@ export default function RecipeDetails({
                     <ArrowIconStyled
                       src={LeftArrow}
                       alt="return Button"
-                      onClick={displayIngredients}
+                      onClick={() => setRecipeDetails('ingredients')}
                     />
                   </Link>
                 )}
@@ -36,7 +30,7 @@ export default function RecipeDetails({
                     <ArrowIconStyled
                       src={LeftArrow}
                       alt="home Button"
-                      onClick={displayIngredients}
+                      onClick={() => setRecipeDetails('ingredients')}
                     />
                   </Link>
                 )}
@@ -58,13 +52,13 @@ export default function RecipeDetails({
                 </InfoSection>
                 <DetailSelectionStyled>
                   <IngredientsSelectionSpan
-                    onClick={displayIngredients}
+                    onClick={() => setRecipeDetails('ingredients')}
                     recipeDetails={recipeDetails}
                   >
                     Ingredients
                   </IngredientsSelectionSpan>
                   <InstructionsSelectionSpan
-                    onClick={displayInstructions}
+                    onClick={() => setRecipeDetails('instructions')}
                     recipeDetails={recipeDetails}
                   >
                     Instructions
@@ -141,7 +135,6 @@ const RecipeInfoSectionStyled = styled.section`
   position: relative;
   bottom: 12px;
   padding: 12px;
-  font-family: 'Josefin Sans', sans-serif;
   background: rgba(242, 239, 233, 1);
 `
 
@@ -196,7 +189,6 @@ const IngredientsSection = styled.section`
   padding-right: 12px;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
 `
 
@@ -205,7 +197,6 @@ const InstructionsSection = styled.section`
   padding-right: 8px;
   display: grid;
   grid-template-columns: 1fr 20fr;
-  font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
 `
 

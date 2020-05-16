@@ -17,9 +17,7 @@ const HeaderStyled = styled.header`
 `
 
 const NameStyled = styled.h1`
-  font-family: 'Nanum Myeongjo', serif;
   font-weight: 600;
-  text-align: center;
   padding-top: 12px;
   font-size: 36px;
 `
