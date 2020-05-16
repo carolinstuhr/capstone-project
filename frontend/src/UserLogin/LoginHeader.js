@@ -5,15 +5,15 @@ import ChefsHat from '../images/chefs-hat.png'
 export default function LoginHeader({ children }) {
   return (
     <HeaderStyled>
+      <LogoLeftStyled src={ChefsHat} alt="logo" />
       <NameStyled>get cooking</NameStyled>
-      <LogoStyled src={ChefsHat} alt="logo" />
-      <LogoStyledL src={ChefsHat} alt="logo" />
+      <LogoRightStyled src={ChefsHat} alt="logo" />
       <TtileStyled>{children}</TtileStyled>
     </HeaderStyled>
   )
 }
 const HeaderStyled = styled.header`
-  positions: realtive;
+  positions: relative;
 `
 
 const NameStyled = styled.h1`
@@ -28,17 +28,14 @@ const LogoStyled = styled.img`
   height: 32px;
   width: 32px;
   position: absolute;
-  right: 15%;
   top: 16px;
 `
-const LogoStyledL = styled.img`
-  height: 32px;
-  width: 32px;
-  position: absolute;
+const LogoLeftStyled = styled(LogoStyled)`
   left: 15%;
-  top: 16px;
 `
-
+const LogoRightStyled = styled(LogoStyled)`
+  right: 15%;
+`
 const TtileStyled = styled.h4`
   font-family: 'Nanum Myeongjo', serif;
   font-weight: 300;

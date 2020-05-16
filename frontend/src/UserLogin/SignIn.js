@@ -44,7 +44,7 @@ function SignIn({ history }) {
       </FormStyled>
       <ParagraphStyled>Forgot your password?</ParagraphStyled>
       <ParagraphStyled>
-        New to get cooking? <Link to="signup">Sign-up</Link>
+        New to get cooking? <Link to="/signup">Sign-up</Link>
       </ParagraphStyled>
     </>
   )

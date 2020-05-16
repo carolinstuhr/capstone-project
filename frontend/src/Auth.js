@@ -10,9 +10,10 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        setCurrentUser({ id: user.uid })
+        setCurrentUser(user)
         localStorage.setItem('uid', user.uid)
         console.log(user)
+        console.log(currentUser)
         setPending(false)
       } else {
         setCurrentUser({})
