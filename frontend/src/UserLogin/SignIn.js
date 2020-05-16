@@ -18,15 +18,14 @@ function SignIn({ history }) {
       .signInWithEmailAndPassword(email.value, password.value)
       .then((res) => {
         history.push('/')
-        console.log(res)
       })
       .catch((err) => alert(err))
   }
 
-  // const { currentUser } = useContext(AuthContext)
-  // if (currentUser) {
-  //   return <Redirect exact to="/" />
-  // }
+  const { currentUser } = useContext(AuthContext)
+  if (currentUser) {
+    return <Redirect exact to="/" />
+  }
 
   return (
     <>
@@ -36,21 +35,11 @@ function SignIn({ history }) {
           type="email"
           id="email"
           name="email"
-          // value={userLoginInput.email}
-          // onChange={(event) => storeUserLoginInput(event)}
           ref={emailRef}
           required
         />
         <LabelStyled htmlFor="password">password</LabelStyled>
-        <InputStyled
-          type="password"
-          id="password"
-          name="password"
-          // value={userLoginInput.password}
-          // onChange={(event) => storeUserLoginInput(event)}
-          required
-        />
-        {/* {console.log(userLoginInput)} */}
+        <InputStyled type="password" id="password" name="password" required />
         <LoginButton>Login</LoginButton>
       </FormStyled>
       <ParagraphStyled>Forgot your password?</ParagraphStyled>

@@ -6,12 +6,6 @@ import LoginButton from './LoginButton'
 
 function SignUp({ history }) {
   const [checked, setChecked] = useState(false)
-  // const [userInput, setUserLoginInput] = useState({
-  //   userName: '',
-  //   email: '',
-  //   password: '',
-  //   passwordRepeat: '',
-  // })
 
   const nameRef = useRef()
   useEffect(() => {
@@ -25,36 +19,18 @@ function SignUp({ history }) {
         type="text"
         id="name"
         name="userName"
-        // value={userInput.userName}
-        // onChange={storeUserLoginInput}
         ref={nameRef}
         required
       />
       <LabelStyled htmlFor="email">e-mail</LabelStyled>
-      <InputStyled
-        type="email"
-        id="email"
-        name="email"
-        // value={userInput.email}
-        // onChange={storeUserLoginInput}
-        required
-      />
+      <InputStyled type="email" id="email" name="email" required />
       <LabelStyled htmlFor="password">password</LabelStyled>
-      <InputStyled
-        type="password"
-        id="password"
-        name="password"
-        // value={userInput.password}
-        // onChange={storeUserLoginInput}
-        required
-      />
+      <InputStyled type="password" id="password" name="password" required />
       <LabelStyled htmlFor="passwordRepeat">repeat password</LabelStyled>
       <InputStyled
         type="password"
         id="passwordRepeat"
         name="passwordRepeat"
-        // value={userInput.passwordRepeat}
-        // onChange={storeUserLoginInput}
         required
       />
       <CheckboxStyled
@@ -68,15 +44,8 @@ function SignUp({ history }) {
         Accept the terms and conditions
       </CheckboxLabel>
       <LoginButton>Register</LoginButton>
-      {/* {console.log(userInput)} */}
     </FormStyled>
   )
-  // function storeUserLoginInput(event) {
-  //   setUserLoginInput({
-  //     ...userInput,
-  //     [event.target.name]: event.target.value,
-  //   })
-  // }
 
   function registerUser(event) {
     event.preventDefault()
