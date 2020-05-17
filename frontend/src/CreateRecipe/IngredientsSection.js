@@ -1,117 +1,60 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/macro'
+import AdditionalLineButton from './AdditionalLineButton'
 
-export default function IngredientsSection({
-  ingredientsNumber,
-  storeInput,
-  formData,
-}) {
+export default function IngredientsSection({ ingredients, setIngredients }) {
   const ingredientsRef = useRef()
 
   useEffect(() => {
-    ingredientsRef.current.focus()
-  }, [ingredientsNumber])
-
-  let ingredients = []
-  for (let i = 0; i < 20; i++) {
-    if (i === 0) {
-      ingredients.push(
-        <section>
-          <IngredientsAmountInput
-            type="text"
-            id="ingredients"
-            onChange={storeInput}
-            name={`ingredientsamount${i + 1}`}
-            maxLength="7"
-            placeholder="amount"
-            ref={ingredientsRef}
-            value={formData[`ingredientsamount${i + 1}`]}
-          />
-          <IngredientsNameInput
-            type="text"
-            id="ingredients"
-            onChange={storeInput}
-            name={`ingredientsname${i + 1}`}
-            minLength="1"
-            maxLength="30"
-            placeholder="ingredient"
-            value={formData[`ingredientsname${i + 1}`]}
-            required
-          />
-        </section>
-      )
-    } else {
-      ingredients.push(
-        <section>
-          <IngredientsAmountInput
-            type="text"
-            id="ingredients"
-            onChange={storeInput}
-            name={`ingredientsamount${i + 1}`}
-            maxLength="12"
-            placeholder="amount"
-            ref={ingredientsRef}
-            value={formData[`ingredientsamount${i + 1}`]}
-          />
-          <IngredientsNameInput
-            type="text"
-            id="ingredients"
-            onChange={storeInput}
-            name={`ingredientsname${i + 1}`}
-            minLength="1"
-            maxLength="30"
-            placeholder="ingredient"
-            value={formData[`ingredientsname${i + 1}`]}
-          />
-        </section>
-      )
+    if (ingredients.length > 0) {
+      ingredientsRef.current.focus()
     }
-  }
+  }, [ingredients.length])
 
   return (
     <>
-      {ingredientsNumber === 1 &&
-        ingredients.slice(0, 1).map((ingredient) => ingredient)}
-      {ingredientsNumber === 2 &&
-        ingredients.slice(0, 2).map((ingredient) => ingredient)}
-      {ingredientsNumber === 3 &&
-        ingredients.slice(0, 3).map((ingredient) => ingredient)}
-      {ingredientsNumber === 4 &&
-        ingredients.slice(0, 4).map((ingredient) => ingredient)}
-      {ingredientsNumber === 5 &&
-        ingredients.slice(0, 5).map((ingredient) => ingredient)}
-      {ingredientsNumber === 6 &&
-        ingredients.slice(0, 6).map((ingredient) => ingredient)}
-      {ingredientsNumber === 7 &&
-        ingredients.slice(0, 7).map((ingredient) => ingredient)}
-      {ingredientsNumber === 8 &&
-        ingredients.slice(0, 8).map((ingredient) => ingredient)}
-      {ingredientsNumber === 9 &&
-        ingredients.slice(0, 9).map((ingredient) => ingredient)}
-      {ingredientsNumber === 10 &&
-        ingredients.slice(0, 10).map((ingredient) => ingredient)}
-      {ingredientsNumber === 11 &&
-        ingredients.slice(0, 11).map((ingredient) => ingredient)}
-      {ingredientsNumber === 12 &&
-        ingredients.slice(0, 12).map((ingredient) => ingredient)}
-      {ingredientsNumber === 13 &&
-        ingredients.slice(0, 13).map((ingredient) => ingredient)}
-      {ingredientsNumber === 14 &&
-        ingredients.slice(0, 14).map((ingredient) => ingredient)}
-      {ingredientsNumber === 15 &&
-        ingredients.slice(0, 15).map((ingredient) => ingredient)}
-      {ingredientsNumber === 16 &&
-        ingredients.slice(0, 16).map((ingredient) => ingredient)}
-      {ingredientsNumber === 17 &&
-        ingredients.slice(0, 17).map((ingredient) => ingredient)}
-      {ingredientsNumber === 18 &&
-        ingredients.slice(0, 18).map((ingredient) => ingredient)}
-      {ingredientsNumber === 19 &&
-        ingredients.slice(0, 19).map((ingredient) => ingredient)}
-      {ingredientsNumber === 20 &&
-        ingredients.slice(0, 20).map((ingredient) => ingredient)}
+      {ingredients.map((ingredient, index) => (
+        <section key={index}>
+          <IngredientsAmountInput
+            type="text"
+            id="ingredients"
+            onChange={storeInput(index)}
+            name="amount"
+            maxLength="7"
+            placeholder="amount"
+            ref={ingredientsRef}
+            value={ingredient.amount}
+          />
+          <IngredientsNameInput
+            type="text"
+            id="ingredients"
+            onChange={storeInput(index)}
+            name="name"
+            minLength="1"
+            maxLength="30"
+            placeholder="ingredient"
+            value={ingredient.name}
+            required
+          />
+        </section>
+      ))}
+      <AdditionalLineButton addAdditionalLine={addIngredientsLine} />
     </>
   )
+  function storeInput(index) {
+    return (event) => {
+      const input = event.target
+      setIngredients([
+        ...ingredients.slice(0, index),
+        { ...ingredients[index], [input.name]: input.value },
+        ...ingredients.slice(index + 1),
+      ])
+    }
+  }
+
+  function addIngredientsLine() {
+    setIngredients([...ingredients, { amount: '', name: '' }])
+  }
 }
 const InputStyled = styled.input`
   font-weight: 200;
@@ -121,7 +64,6 @@ const InputStyled = styled.input`
   border: 1px solid #a09e9a;
   color: #514f4b;
   font-family: 'Josefin Sans', sans-serif;
-  background: #f2efe9;
   ::placeholder {
     font-style: italic;
     color: #a09e9a;

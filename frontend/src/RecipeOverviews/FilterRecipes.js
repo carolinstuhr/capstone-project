@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchIcon from './images/search-icon.svg'
+import SearchIcon from '../images/search-icon.svg'
 import styled from 'styled-components/macro'
 
 export default function FilterRecipes({ setUserInput }) {
@@ -36,13 +36,9 @@ const InputFieldStyled = styled.input`
   grid-row: 1;
   width: 200px;
   height: 28px;
-  font-family: 'Josefin Sans', sans-serif;
   font-size: 16px;
-  font-weight: 200;
   padding-top: 4px;
   padding-left: 8px;
-  border-radius: 4px;
-  border: 1px solid #a09e9a;
 `
 
 const SearchIconStyled = styled.img`

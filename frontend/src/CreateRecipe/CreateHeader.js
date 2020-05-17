@@ -9,7 +9,7 @@ export default function CreateHeader({ children }) {
       <Link exact to="/">
         <ArrowIconStyled src={LeftArrow} alt="return Button" />
       </Link>
-      <HeaderStyled>{children}</HeaderStyled>
+      <h1>{children}</h1>
     </header>
   )
 }
@@ -22,14 +22,4 @@ const ArrowIconStyled = styled.img`
   left: 12px;
   top: 12px;
   padding: 4px;
-`
-
-const HeaderStyled = styled.h1`
-  text-align: center;
-  margin-left: 0;
-  font-size: 32px;
-  margin-top: 0;
-  padding-top: 4px;
-  font-family: 'Nanum Myeongjo', serif;
-  font-weight: 400;
 `

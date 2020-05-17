@@ -21,9 +21,9 @@ test('should cycle elements in document tab order', () => {
     </MemoryRouter>
   )
   const title = getByPlaceholderText(/Title of Recipe.../i)
-  const tag1 = getByTestId('tag1')
-  const tag2 = getByTestId('tag2')
-  const tag3 = getByTestId('tag3')
+  const tag1 = getByPlaceholderText(/e.g. quick/i)
+  const tag2 = getByPlaceholderText(/e.g. easy/i)
+  const tag3 = getByPlaceholderText(/e.g. healthy/i)
   const servings = getByPlaceholderText(/1/i)
   const hour = getByTestId('hour')
   const minute = getByTestId('minute')

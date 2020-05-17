@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import RecipeList from './AllRecipes'
-import Header from './Header'
-import RecipeDetails from './RecipeDetails'
-import RecipeFavourites from './FavouriteRecipes'
+import RecipeList from './RecipeOverviews/AllRecipes'
+import Header from './RecipeOverviews/Header'
+import RecipeDetails from './RecipeDetails/RecipeDetails'
+import RecipeFavourites from './RecipeOverviews/FavouriteRecipes'
 import CreateRecipe from './CreateRecipe/CreateRecipe'
 import CreateHeader from './CreateRecipe/CreateHeader'
 import { db } from './firebaseConfig'
@@ -12,9 +12,11 @@ import SignUp from './UserLogin/SignUp'
 import LoginHeader from './UserLogin/LoginHeader'
 import SignIn from './UserLogin/SignIn'
 import PrivateRoute from './PrivateRoute'
+import ChefsHat from './images/chefs-hat.png'
 
 export default function App() {
   const [recipes, setRecipes] = useState([])
+  const [pending, setPending] = useState(true)
 
   useEffect(() => {
     db.collection('recipes').onSnapshot((snapshot) => {
@@ -23,10 +25,10 @@ export default function App() {
         ...doc.data(),
       }))
       setRecipes(recipes)
+      setPending(false)
     })
   }, [])
 
-  const [recipeDetails, setRecipeDetails] = useState('ingredients')
   const [previousPage, setPreviousPage] = useState('All')
 
   return (
@@ -47,26 +49,28 @@ export default function App() {
         <PrivateRoute exact path="/">
           <GridDiv>
             <Header>recipes</Header>
-            <RecipeList
-              savedPreviousPage={savedPreviousPage}
-              recipes={recipes}
-            />
+            {pending ? (
+              <LoadingLogo src={ChefsHat} alt="loading" />
+            ) : (
+              <RecipeList setPreviousPage={setPreviousPage} recipes={recipes} />
+            )}
           </GridDiv>
         </PrivateRoute>
         <PrivateRoute path="/favourites">
           <GridDiv>
             <Header>favourites</Header>
-            <RecipeFavourites
-              savedPreviousPage={savedPreviousPage}
-              recipes={recipes}
-            />
+            {pending ? (
+              <LoadingLogo src={ChefsHat} alt="loading" />
+            ) : (
+              <RecipeFavourites
+                setPreviousPage={setPreviousPage}
+                recipes={recipes}
+              />
+            )}
           </GridDiv>
         </PrivateRoute>
         <PrivateRoute path="/recipe/:id">
           <RecipeDetails
-            displayIngredients={showIngredients}
-            displayInstructions={showInstructions}
-            recipeDetails={recipeDetails}
             recipes={recipes}
             setRecipes={setRecipes}
             previousPage={previousPage}
@@ -81,17 +85,6 @@ export default function App() {
       </Switch>
     </>
   )
-
-  function savedPreviousPage(page) {
-    setPreviousPage(page)
-  }
-
-  function showIngredients() {
-    setRecipeDetails('ingredients')
-  }
-  function showInstructions() {
-    setRecipeDetails('instructions')
-  }
 }
 
 const GridDiv = styled.div`
@@ -104,4 +97,11 @@ const LoginSection = styled.div`
   background: #f2efe9;
   height: 100vh;
   margin: 0;
+`
+const LoadingLogo = styled.img`
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 40%;
+  right: 40%;
 `

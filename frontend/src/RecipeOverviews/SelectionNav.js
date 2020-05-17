@@ -5,12 +5,12 @@ import styled from 'styled-components/macro'
 export default function DisplaySelection() {
   return (
     <SelectionSection>
-      <AllRecipesLink exact to="/" activeClassName="selected">
+      <NavItem exact to="/" activeClassName="selected">
         All
-      </AllRecipesLink>
-      <FavouritesLink exact to="/favourites" activeClassName="selected">
+      </NavItem>
+      <NavItem exact to="/favourites" activeClassName="selected">
         Favourites
-      </FavouritesLink>
+      </NavItem>
     </SelectionSection>
   )
 }
@@ -19,19 +19,10 @@ const SelectionSection = styled.section`
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 20px;
-  font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
 `
 
-const AllRecipesLink = styled(NavLink)`
-  color: #514f4b;
-  text-decoration: none;
-  &.selected {
-    text-decoration: underline;
-  }
-`
-
-const FavouritesLink = styled(NavLink)`
+const NavItem = styled(NavLink)`
   color: #514f4b;
   text-decoration: none;
   &.selected {

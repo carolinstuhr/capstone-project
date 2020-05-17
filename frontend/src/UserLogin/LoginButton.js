@@ -6,10 +6,12 @@ export default function LoginButton({ children }) {
 }
 const ButtonStyled = styled.button`
   grid-column: 1 / 3;
-  width: 100px;
-  padding: 8px;
+  width: 80px;
+  padding: 4px;
   justify-self: center;
   margin-top: 18px;
   border-radius: 4px;
-  font-family: 'Josefin Sans', sans-serif;
+  background: white;
+  font-size: 16px;
+  font-weight: 300;
 `

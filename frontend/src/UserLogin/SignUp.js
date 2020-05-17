@@ -72,7 +72,8 @@ const InputStyled = styled.input`
   grid-column: 1 / 3;
   border-radius: 4px;
   height: 32px;
-  width: 180px;
+  width: 200px;
+  font-size: 16px;
 `
 const LabelStyled = styled.label`
   justify-self: center;

@@ -1,22 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import LeftArrow from './images/left-arrow.svg'
+import LeftArrow from '../images/left-arrow.svg'
 import FavouritesBookmark from './FavouritesBookmark'
 import { Link, useRouteMatch } from 'react-router-dom'
-import { db } from './firebaseConfig'
+import { db } from '../firebaseConfig'
 
-export default function RecipeDetails({
-  displayIngredients,
-  displayInstructions,
-  recipeDetails,
-  recipes,
-  setRecipes,
-  previousPage,
-}) {
+export default function RecipeDetails({ recipes, previousPage }) {
   const match = useRouteMatch()
+  const [recipeDetails, setRecipeDetails] = useState('ingredients')
 
   return (
-    <main>
+    <MainStyled>
       {recipes.map(
         (recipe, index) =>
           recipe.id === match.params.id && (
@@ -27,7 +21,7 @@ export default function RecipeDetails({
                     <ArrowIconStyled
                       src={LeftArrow}
                       alt="return Button"
-                      onClick={displayIngredients}
+                      onClick={() => setRecipeDetails('ingredients')}
                     />
                   </Link>
                 )}
@@ -36,7 +30,7 @@ export default function RecipeDetails({
                     <ArrowIconStyled
                       src={LeftArrow}
                       alt="home Button"
-                      onClick={displayIngredients}
+                      onClick={() => setRecipeDetails('ingredients')}
                     />
                   </Link>
                 )}
@@ -58,13 +52,13 @@ export default function RecipeDetails({
                 </InfoSection>
                 <DetailSelectionStyled>
                   <IngredientsSelectionSpan
-                    onClick={displayIngredients}
+                    onClick={() => setRecipeDetails('ingredients')}
                     recipeDetails={recipeDetails}
                   >
                     Ingredients
                   </IngredientsSelectionSpan>
                   <InstructionsSelectionSpan
-                    onClick={displayInstructions}
+                    onClick={() => setRecipeDetails('instructions')}
                     recipeDetails={recipeDetails}
                   >
                     Instructions
@@ -74,7 +68,12 @@ export default function RecipeDetails({
               {recipeDetails === 'ingredients' ? (
                 <IngredientsSection>
                   {recipe.ingredients.map((ingredient, index) => (
-                    <StyledParagraph key={index}>{ingredient}</StyledParagraph>
+                    <>
+                      <StyledParagraph key={index}>
+                        {ingredient.amount}
+                      </StyledParagraph>
+                      <StyledParagraph>{ingredient.name}</StyledParagraph>
+                    </>
                   ))}
                 </IngredientsSection>
               ) : (
@@ -94,7 +93,7 @@ export default function RecipeDetails({
             </>
           )
       )}
-    </main>
+    </MainStyled>
   )
 
   function toggleHeartIcon(recipe) {
@@ -107,6 +106,10 @@ export default function RecipeDetails({
       )
   }
 }
+const MainStyled = styled.main`
+  overflow-x: hidden;
+  padding-top: 0;
+`
 
 const ImageSectionStyled = styled.section`
   height: 288px;
@@ -132,11 +135,9 @@ const ImageStyled = styled.img`
 
 const RecipeInfoSectionStyled = styled.section`
   border-radius: 8px;
-  background: lightblue;
   position: relative;
   bottom: 12px;
   padding: 12px;
-  font-family: 'Josefin Sans', sans-serif;
   background: rgba(242, 239, 233, 1);
 `
 
@@ -147,15 +148,41 @@ const TitleStyled = styled.h3`
   text-transform: capitalize;
   font-weight: 500;
   font-size: 20px;
+  animation-duration: 1s;
+  animation-name: slidein;
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 100%;
+    }
+
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
 `
 const InfoSection = styled.section`
   display: flex;
-  margin-left: 12px;
-  margin-right: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
   justify-content: space-between;
   margin-top: 16px;
   margin-bottom: 12px;
   font-weight: 300;
+  animation-duration: 1s;
+  animation-name: slidein;
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 100%;
+    }
+
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
 `
 
 const DetailSelectionStyled = styled.div`
@@ -163,6 +190,19 @@ const DetailSelectionStyled = styled.div`
   justify-content: center;
   margin-top: 4px;
   font-weight: 300;
+  animation-duration: 1s;
+  animation-name: slidein;
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 100%;
+    }
+
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
 `
 const IngredientsSelectionSpan = styled.span`
   padding: 4px;
@@ -191,8 +231,20 @@ const IngredientsSection = styled.section`
   padding-right: 12px;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
+  animation-duration: 1s;
+  animation-name: slidein;
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 100%;
+    }
+
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
 `
 
 const InstructionsSection = styled.section`
@@ -200,8 +252,20 @@ const InstructionsSection = styled.section`
   padding-right: 8px;
   display: grid;
   grid-template-columns: 1fr 20fr;
-  font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
+  animation-duration: 1s;
+  animation-name: slidein;
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 100%;
+    }
+
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
 `
 
 const StyledParagraph = styled.p`

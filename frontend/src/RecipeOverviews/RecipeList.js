@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function RecipeList({
   filteredRecipeData,
-  savedPreviousPage,
+  setPreviousPage,
   page,
 }) {
   return (
@@ -16,11 +16,11 @@ export default function RecipeList({
               <ImageStyled
                 src={recipe.image}
                 alt="Recipe"
-                onClick={() => savedPreviousPage('page')}
+                onClick={() => setPreviousPage(page)}
               />
             </Link>
           </ImageSection>
-          <TitleStyled onClick={() => savedPreviousPage(page)}>
+          <TitleStyled onClick={() => setPreviousPage(page)}>
             <LinkStyled to={`/recipe/${recipe.id}`}>{recipe.title}</LinkStyled>
           </TitleStyled>
           <TagSectionStyled>
@@ -51,14 +51,12 @@ const ImageSection = styled.section`
 const ImageStyled = styled.img`
   height: 80px;
   width: 80px;
-  grid-row: 1 / 3;
   border-radius: 12px;
   object-fit: cover;
   margin-right: 8px;
 `
 
 const TitleStyled = styled.h3`
-  font-family: 'Josefin Sans', sans-serif;
   font-size: 22px;
   text-transform: capitalize;
   font-weight: 300;
@@ -81,7 +79,6 @@ const TagSectionStyled = styled.section`
 `
 
 const TagsStyled = styled.span`
-  font-family: 'Josefin Sans', sans-serif;
   font-weight: 200;
   margin-right: 8px;
   margin-top: 4px;
