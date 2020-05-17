@@ -19,8 +19,22 @@ h1 {
     font-family: 'Nanum Myeongjo', serif;
     font-weight: 400;
 }
+header {
+    background: rgba(242, 239, 233, 1);
+}
 
 main {
     overflow: scroll;
+    padding-top: 16px;
 }
+input {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    border-radius: 4px;
+    border: 1px solid #a09e9a;
+}
+button {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
 `

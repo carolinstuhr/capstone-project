@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components/macro'
-import { FaPlus } from 'react-icons/fa'
+import AdditionalLineButton from './AdditionalLineButton'
 
 export default function InstructionsSection({ instructions, setInstructions }) {
   const instructionsRef = useRef()
@@ -29,8 +29,7 @@ export default function InstructionsSection({ instructions, setInstructions }) {
           />
         </InstructionsPart>
       ))}
-      {console.log(instructions)}
-      <InstructionsButton onClick={addInstructionsLine} />
+      <AdditionalLineButton addAdditionalLine={addInstructionsLine} />
     </>
   )
   function storeInput(index) {
@@ -70,24 +69,8 @@ const InstructionsInput = styled.textarea`
   border: 1px solid #a09e9a;
   margin-bottom: 8px;
   margin-top: 8px;
-  background: #f2efe9;
   ::placeholder {
     font-style: italic;
     color: #a09e9a;
   }
-`
-const InstructionsButton = styled(FaPlus)`
-  height: 28px;
-  width: 28px;
-  z-index: 2;
-  color: #514f4b;
-  padding: 4px;
-  background: #f2efe9;
-  border: 1px solid #514f4b;
-  border-radius: 24px;
-  display: block;
-  margin-left: 40%;
-  box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.2),
-    inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.2),
-    inset 0 0 0em 0.05em rgba(255, 255, 255, 0.15);
 `

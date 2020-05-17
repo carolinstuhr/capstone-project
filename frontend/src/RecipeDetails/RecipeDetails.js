@@ -108,6 +108,7 @@ export default function RecipeDetails({ recipes, previousPage }) {
 }
 const MainStyled = styled.main`
   overflow-x: hidden;
+  padding-top: 0;
 `
 
 const ImageSectionStyled = styled.section`

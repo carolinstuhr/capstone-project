@@ -7,7 +7,7 @@ import recipeData from '../RecipeList.json'
 test('Not rendering any recipes with no favourites selected', () => {
   const { getByText } = render(
     <MemoryRouter>
-      <FavouriteRecipes recipes={recipeData} userFilterInput={''} />
+      <FavouriteRecipes recipes={recipeData} />
     </MemoryRouter>
   )
   const linkElement = getByText(
@@ -19,7 +19,7 @@ test('Not rendering any recipes with no favourites selected', () => {
 test('should still render first default message when no favourites selected when user enters input', () => {
   const { getByText, getByPlaceholderText } = render(
     <MemoryRouter>
-      <FavouriteRecipes recipes={recipeData} userFilterInput={''} />
+      <FavouriteRecipes recipes={recipeData} />
     </MemoryRouter>
   )
   const input = getByPlaceholderText(/Search for recipes.../i)

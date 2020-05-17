@@ -17,6 +17,19 @@ export default function PrivateRoute({ component: RouteComponent, ...rest }) {
         }
       />
       {console.log(currentUser)}
+
+      {/* <AuthConsumer>
+        {({ routeProps, currentUser }) =>
+          currentUser ? (
+            <RouteComponent {...routeProps} />
+          ) : (
+            <>
+              <Redirect to={'/signin'} />
+              {console.log(currentUser)}
+            </>
+          )
+        }
+      </AuthConsumer> */}
     </>
   )
 }

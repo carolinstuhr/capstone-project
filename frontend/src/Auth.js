@@ -15,7 +15,6 @@ export const AuthProvider = ({ children }) => {
         setCurrentUser(user)
         localStorage.setItem('uid', user.uid)
         console.log(user)
-        console.log(currentUser)
         setPending(false)
       } else {
         setCurrentUser({})
@@ -39,3 +38,5 @@ const LoadingLogo = styled.img`
   top: 40%;
   right: 40%;
 `
+
+export const AuthConsumer = AuthContext.Consumer

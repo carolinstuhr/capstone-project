@@ -1,9 +1,13 @@
 import React from 'react'
+import styled from 'styled-components/macro'
 
 export default function Header({ children }) {
   return (
-    <header>
+    <HeaderStyled>
       <h1>{children}</h1>
-    </header>
+    </HeaderStyled>
   )
 }
+const HeaderStyled = styled.header`
+  background: white;
+`

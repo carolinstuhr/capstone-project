@@ -11,12 +11,14 @@ function SignIn({ history }) {
   useEffect(() => {
     emailRef.current.focus()
   }, [])
-  function userLogin(event) {
+
+  async function userLogin(event) {
     event.preventDefault()
     const { email, password } = event.target.elements
-    auth
+    return await auth
       .signInWithEmailAndPassword(email.value, password.value)
       .then((res) => {
+        console.log(res)
         history.push('/')
       })
       .catch((err) => alert(err))
@@ -64,7 +66,8 @@ const InputStyled = styled.input`
   grid-column: 1 / 3;
   border-radius: 4px;
   height: 32px;
-  width: 180px;
+  width: 200px;
+  font-size: 16px;
 `
 const LabelStyled = styled.label`
   justify-self: center;

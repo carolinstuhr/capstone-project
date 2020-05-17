@@ -15,7 +15,7 @@ const IconStyled = styled(FaPlus)`
   top: 92%;
   left: 84%;
   padding: 4px;
-  background: white;
+  background: #f2efe9;
   border: 2px solid #514f4b;
   border-radius: 24px;
 `

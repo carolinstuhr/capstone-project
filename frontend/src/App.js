@@ -30,7 +30,6 @@ export default function App() {
   }, [])
 
   const [previousPage, setPreviousPage] = useState('All')
-  const [userFilterInput, setUserFilterInput] = useState('')
 
   return (
     <>
@@ -53,12 +52,7 @@ export default function App() {
             {pending ? (
               <LoadingLogo src={ChefsHat} alt="loading" />
             ) : (
-              <RecipeList
-                setPreviousPage={setPreviousPage}
-                recipes={recipes}
-                userFilterInput={userFilterInput}
-                setUserFilterInput={setUserFilterInput}
-              />
+              <RecipeList setPreviousPage={setPreviousPage} recipes={recipes} />
             )}
           </GridDiv>
         </PrivateRoute>
@@ -71,8 +65,6 @@ export default function App() {
               <RecipeFavourites
                 setPreviousPage={setPreviousPage}
                 recipes={recipes}
-                userFilterInput={userFilterInput}
-                setUserFilterInput={setUserFilterInput}
               />
             )}
           </GridDiv>
