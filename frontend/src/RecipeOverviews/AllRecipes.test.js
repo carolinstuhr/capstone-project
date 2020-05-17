@@ -7,7 +7,7 @@ import recipeData from '../RecipeList.json'
 test('rendering Recipe List', () => {
   const { getByText } = render(
     <MemoryRouter>
-      <AllRecipes recipes={recipeData} />
+      <AllRecipes recipes={recipeData} userFilterInput={''} />
     </MemoryRouter>
   )
   const linkElement = getByText(/Chocolate chip cookies/i)
@@ -17,7 +17,7 @@ test('rendering Recipe List', () => {
 test('test filter to search matching recipe', () => {
   const { getByPlaceholderText, getByText } = render(
     <MemoryRouter>
-      <AllRecipes recipes={recipeData} />
+      <AllRecipes recipes={recipeData} userFilterInput={''} />
     </MemoryRouter>
   )
   const input = getByPlaceholderText(/Search for recipes.../i)
@@ -28,7 +28,7 @@ test('test filter to search matching recipe', () => {
 test('test when input is entered, the right amount of recipes is returned', () => {
   const { getByPlaceholderText, getAllByText } = render(
     <MemoryRouter>
-      <AllRecipes recipes={recipeData} />
+      <AllRecipes recipes={recipeData} userFilterInput={''} />
     </MemoryRouter>
   )
   const input = getByPlaceholderText(/Search for recipes.../i)
@@ -39,7 +39,7 @@ test('test when input is entered, the right amount of recipes is returned', () =
 test('test filter with no match', () => {
   const { getByPlaceholderText, getByText } = render(
     <MemoryRouter>
-      <AllRecipes recipes={recipeData} />
+      <AllRecipes recipes={recipeData} userFilterInput={''} />
     </MemoryRouter>
   )
   const input = getByPlaceholderText(/Search for recipes.../i)

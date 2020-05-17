@@ -17,4 +17,5 @@ const HeartStyled = styled(FaHeart)`
   background: rgba(242, 239, 233, 0.6);
   border-radius: 4px;
   color: ${(props) => (props.isFavourite ? '#c82a1a' : 'white')};
+  transition-duration: 0.8s;
 `

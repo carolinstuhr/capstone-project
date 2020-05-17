@@ -12,9 +12,11 @@ import SignUp from './UserLogin/SignUp'
 import LoginHeader from './UserLogin/LoginHeader'
 import SignIn from './UserLogin/SignIn'
 import PrivateRoute from './PrivateRoute'
+import ChefsHat from './images/chefs-hat.png'
 
 export default function App() {
   const [recipes, setRecipes] = useState([])
+  const [pending, setPending] = useState(true)
 
   useEffect(() => {
     db.collection('recipes').onSnapshot((snapshot) => {
@@ -23,6 +25,7 @@ export default function App() {
         ...doc.data(),
       }))
       setRecipes(recipes)
+      setPending(false)
     })
   }, [])
 
@@ -47,23 +50,31 @@ export default function App() {
         <PrivateRoute exact path="/">
           <GridDiv>
             <Header>recipes</Header>
-            <RecipeList
-              setPreviousPage={setPreviousPage}
-              recipes={recipes}
-              userFilterInput={userFilterInput}
-              setUserFilterInput={setUserFilterInput}
-            />
+            {pending ? (
+              <LoadingLogo src={ChefsHat} alt="loading" />
+            ) : (
+              <RecipeList
+                setPreviousPage={setPreviousPage}
+                recipes={recipes}
+                userFilterInput={userFilterInput}
+                setUserFilterInput={setUserFilterInput}
+              />
+            )}
           </GridDiv>
         </PrivateRoute>
         <PrivateRoute path="/favourites">
           <GridDiv>
             <Header>favourites</Header>
-            <RecipeFavourites
-              setPreviousPage={setPreviousPage}
-              recipes={recipes}
-              userFilterInput={userFilterInput}
-              setUserFilterInput={setUserFilterInput}
-            />
+            {pending ? (
+              <LoadingLogo src={ChefsHat} alt="loading" />
+            ) : (
+              <RecipeFavourites
+                setPreviousPage={setPreviousPage}
+                recipes={recipes}
+                userFilterInput={userFilterInput}
+                setUserFilterInput={setUserFilterInput}
+              />
+            )}
           </GridDiv>
         </PrivateRoute>
         <PrivateRoute path="/recipe/:id">
@@ -94,4 +105,11 @@ const LoginSection = styled.div`
   background: #f2efe9;
   height: 100vh;
   margin: 0;
+`
+const LoadingLogo = styled.img`
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 40%;
+  right: 40%;
 `

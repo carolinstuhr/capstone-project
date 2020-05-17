@@ -10,7 +10,7 @@ export default function RecipeDetails({ recipes, previousPage }) {
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
 
   return (
-    <main>
+    <MainStyled>
       {recipes.map(
         (recipe, index) =>
           recipe.id === match.params.id && (
@@ -93,7 +93,7 @@ export default function RecipeDetails({ recipes, previousPage }) {
             </>
           )
       )}
-    </main>
+    </MainStyled>
   )
 
   function toggleHeartIcon(recipe) {
@@ -106,6 +106,9 @@ export default function RecipeDetails({ recipes, previousPage }) {
       )
   }
 }
+const MainStyled = styled.main`
+  overflow-x: hidden;
+`
 
 const ImageSectionStyled = styled.section`
   height: 288px;
@@ -131,7 +134,6 @@ const ImageStyled = styled.img`
 
 const RecipeInfoSectionStyled = styled.section`
   border-radius: 8px;
-  background: lightblue;
   position: relative;
   bottom: 12px;
   padding: 12px;
@@ -145,15 +147,41 @@ const TitleStyled = styled.h3`
   text-transform: capitalize;
   font-weight: 500;
   font-size: 20px;
+  animation-duration: 1s;
+  animation-name: slidein;
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 100%;
+    }
+
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
 `
 const InfoSection = styled.section`
   display: flex;
-  margin-left: 12px;
-  margin-right: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
   justify-content: space-between;
   margin-top: 16px;
   margin-bottom: 12px;
   font-weight: 300;
+  animation-duration: 1s;
+  animation-name: slidein;
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 100%;
+    }
+
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
 `
 
 const DetailSelectionStyled = styled.div`
@@ -161,6 +189,19 @@ const DetailSelectionStyled = styled.div`
   justify-content: center;
   margin-top: 4px;
   font-weight: 300;
+  animation-duration: 1s;
+  animation-name: slidein;
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 100%;
+    }
+
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
 `
 const IngredientsSelectionSpan = styled.span`
   padding: 4px;
@@ -190,6 +231,19 @@ const IngredientsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 3fr;
   font-weight: 300;
+  animation-duration: 1s;
+  animation-name: slidein;
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 100%;
+    }
+
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
 `
 
 const InstructionsSection = styled.section`
@@ -198,6 +252,19 @@ const InstructionsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 20fr;
   font-weight: 300;
+  animation-duration: 1s;
+  animation-name: slidein;
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 100%;
+    }
+
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
 `
 
 const StyledParagraph = styled.p`
