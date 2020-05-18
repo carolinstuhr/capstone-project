@@ -69,6 +69,7 @@ const InstructionsInput = styled.textarea`
   border: 1px solid #a09e9a;
   margin-bottom: 8px;
   margin-top: 8px;
+  background: rgba(242, 239, 233, 0.5);
   ::placeholder {
     font-style: italic;
     color: #a09e9a;

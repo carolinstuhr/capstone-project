@@ -19,5 +19,5 @@ const ButtonStyled = styled.button`
   font-size: 16px;
   font-weight: 300;
   background: ${(props) =>
-    props.buttonStatus === true ? 'rgba(81, 79, 75, 0.7)' : 'white'};
+    props.buttonStatus === true ? 'rgba(255, 255, 255, 0.7)' : 'white'};
 `

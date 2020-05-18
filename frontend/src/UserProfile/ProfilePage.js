@@ -6,6 +6,12 @@ import LogoutButton from './LogoutButton'
 
 export default function ProfilePage() {
   const [users, setUser] = useState('')
+  const [international, setInternational] = useState('')
+  const [addedInternational, setAddedInternational] = useState('')
+  const [childhood, setChildhood] = useState('')
+  const [addedChildhood, setAddedChildhood] = useState('')
+  const [restaurant, setRestaurant] = useState('')
+  const [addedRestaurant, setAddedRestaurant] = useState('')
 
   const currentUser = localStorage.getItem('uid')
 
@@ -26,21 +32,64 @@ export default function ProfilePage() {
       <CreateHeader>profile</CreateHeader>
       {user && (
         <MainStyled>
-          <ParagraphStyled>Name: </ParagraphStyled>
+          <ParagraphStyled>username: </ParagraphStyled>
           <UserInfo>{user[0].name}</UserInfo>
-          <ParagraphStyled>E-mail address: </ParagraphStyled>
+          <ParagraphStyled>e-mail: </ParagraphStyled>
           <UserInfo>{user[0].email}</UserInfo>
-          <ParagraphStyled>Favourite Recipe: </ParagraphStyled>
-          {user[0].food ? (
-            <UserInfo>{user[0].food}</UserInfo>
+          <ParagraphStyled>favourite international cuisine: </ParagraphStyled>
+          {addedInternational ? (
+            <UserInfo>{addedInternational}</UserInfo>
           ) : (
             <>
               <InputStyled
                 type="text"
-                placeholder="Add your favourite recipe"
+                placeholder="e.g. mexican"
+                value={international}
+                name="favourites"
+                onChange={(event) => setInternational(event.target.value)}
               />
 
-              <ButtonStyled>Add</ButtonStyled>
+              <ButtonStyled
+                onClick={() => setAddedInternational(international)}
+              >
+                Add
+              </ButtonStyled>
+            </>
+          )}
+          <ParagraphStyled>dish of your childhood: </ParagraphStyled>
+          {addedChildhood ? (
+            <UserInfo>{addedChildhood}</UserInfo>
+          ) : (
+            <>
+              <InputStyled
+                type="text"
+                placeholder="e.g. mum's pancakes"
+                value={childhood}
+                name="favourites"
+                onChange={(event) => setChildhood(event.target.value)}
+              />
+
+              <ButtonStyled onClick={() => setAddedChildhood(childhood)}>
+                Add
+              </ButtonStyled>
+            </>
+          )}
+          <ParagraphStyled>favourite restaurant: </ParagraphStyled>
+          {addedRestaurant ? (
+            <UserInfo>{addedRestaurant}</UserInfo>
+          ) : (
+            <>
+              <InputStyled
+                type="text"
+                placeholder="e.g. NENI, Hamburg"
+                value={restaurant}
+                name="favourites"
+                onChange={(event) => setRestaurant(event.target.value)}
+              />
+
+              <ButtonStyled onClick={() => setAddedRestaurant(restaurant)}>
+                Add
+              </ButtonStyled>
             </>
           )}
           <LogoutButton />
@@ -54,14 +103,15 @@ const MainStyled = styled.main`
 `
 
 const ParagraphStyled = styled.p`
-  font-weight: 300;
-  font-size: 20px;
+  font-weight: 400;
+  font-size: 16px;
   margin-bottom: 4px;
 `
 const UserInfo = styled.p`
-  font-weight: 400;
+  font-weight: 300;
   font-size: 16px;
   margin-top: 4px;
+  margin-bottom: 22px;
 `
 const InputStyled = styled.input`
   font-size: 14px;
@@ -70,7 +120,7 @@ const InputStyled = styled.input`
   height: 28px;
 `
 const ButtonStyled = styled.button`
-  width: 80px;
+  width: 50px;
   padding: 4px;
   justify-self: center;
   margin-top: 4px;

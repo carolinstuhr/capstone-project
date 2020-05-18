@@ -156,7 +156,6 @@ export default function CreateRecipe({ recipes, setRecipes }) {
 }
 
 const MainStyled = styled.main`
-  background: #f2efe9;
   padding-left: 20px;
 `
 const LabelStyled = styled.label`
@@ -167,6 +166,7 @@ const InputStyled = styled.input`
   font-size: 14px;
   padding-left: 4px;
   color: #514f4b;
+  background: rgba(242, 239, 233, 0.5);
 `
 
 const TitleInput = styled(InputStyled)`

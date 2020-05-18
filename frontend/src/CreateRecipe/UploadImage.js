@@ -66,7 +66,7 @@ const UploadImageLabel = styled.label`
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   color: #514f4b;
-  background: white;
+  background: rgba(242, 239, 233, 0.5);
   grid-column: 1 / 2;
   justify-self: center;
   align-self: center;

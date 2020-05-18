@@ -52,7 +52,6 @@ function SignUp({ history }) {
         type="checkbox"
         id="tc"
         checked={checked}
-        required
         onChange={() => clickCheckbox(checked)}
       />
       <CheckboxLabel htmlFor="tc">
