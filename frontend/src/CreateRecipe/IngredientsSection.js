@@ -64,10 +64,6 @@ const InputStyled = styled.input`
   border: 1px solid #a09e9a;
   color: #514f4b;
   font-family: 'Josefin Sans', sans-serif;
-  ::placeholder {
-    font-style: italic;
-    color: #a09e9a;
-  }
 `
 
 const IngredientsAmountInput = styled(InputStyled)`

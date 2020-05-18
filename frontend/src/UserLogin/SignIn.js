@@ -1,30 +1,28 @@
-import React, { useRef, useEffect, useContext } from 'react'
+import React, { useRef, useEffect, useContext, useState } from 'react'
 import { withRouter, Redirect } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import { auth } from '../firebaseConfig'
 import LoginButton from './LoginButton'
 import { AuthContext } from '../Auth'
+import ChefsHat from '../images/chefs-hat.png'
 
 function SignIn({ history }) {
   const emailRef = useRef()
-  useEffect(() => {
-    emailRef.current.focus()
-  }, [])
 
-  async function userLogin(event) {
-    event.preventDefault()
-    const { email, password } = event.target.elements
-    return await auth
-      .signInWithEmailAndPassword(email.value, password.value)
-      .then((res) => {
-        console.log(res)
-        history.push('/')
-      })
-      .catch((err) => alert(err))
-  }
+  useEffect(() => {
+    if (emailRef) {
+      emailRef.current.focus()
+    }
+  }, [])
+  const [pending, setPending] = useState(false)
 
   const { currentUser } = useContext(AuthContext)
+
+  if (pending) {
+    return <LoadingLogo src={ChefsHat} alt="loading" />
+  }
+
   if (currentUser) {
     return <Redirect exact to="/" />
   }
@@ -50,6 +48,21 @@ function SignIn({ history }) {
       </ParagraphStyled>
     </>
   )
+
+  async function userLogin(event) {
+    setPending(true)
+    event.preventDefault()
+    const { email, password } = event.target.elements
+    return await auth
+      .signInWithEmailAndPassword(email.value, password.value)
+      .then(() => {
+        setTimeout(() => {
+          setPending(false)
+          history.push('/')
+        }, 1000)
+      })
+      .catch((err) => alert(err))
+  }
 }
 const FormStyled = styled.form`
   display: grid;
@@ -78,6 +91,13 @@ const ParagraphStyled = styled.p`
   text-align: center;
   font-weight: 300;
   font-size: 14px;
+`
+const LoadingLogo = styled.img`
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 40%;
+  right: 40%;
 `
 
 export default withRouter(SignIn)

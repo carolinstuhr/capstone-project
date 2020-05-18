@@ -1,17 +1,27 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { withRouter } from 'react-router-dom'
+import React, { useState, useRef, useEffect, useContext } from 'react'
+import { withRouter, Redirect } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import { auth } from '../firebaseConfig'
+import { auth, db } from '../firebaseConfig'
 import LoginButton from './LoginButton'
+import { AuthContext } from '../Auth'
 
 function SignUp({ history }) {
   const [checked, setChecked] = useState(false)
   const [buttonStatus, setButtonStatus] = useState(true)
+  const [userName, setUserName] = useState('')
 
   const nameRef = useRef()
   useEffect(() => {
-    nameRef.current.focus()
+    if (nameRef) {
+      nameRef.current.focus()
+    }
   }, [])
+
+  const { currentUser } = useContext(AuthContext)
+
+  if (currentUser) {
+    return <Redirect exact to="/" />
+  }
 
   return (
     <FormStyled onSubmit={registerUser}>
@@ -22,6 +32,10 @@ function SignUp({ history }) {
         name="userName"
         ref={nameRef}
         required
+        onChange={(event) => {
+          setUserName(event.target.value)
+        }}
+        value={userName}
       />
       <LabelStyled htmlFor="email">e-mail</LabelStyled>
       <InputStyled type="email" id="email" name="email" required />
@@ -53,10 +67,19 @@ function SignUp({ history }) {
     const { email, password } = event.target.elements
     auth
       .createUserWithEmailAndPassword(email.value, password.value)
-      .then(() => {
+      .then((res) => {
+        createNewUser(res.user)
         history.push('/')
       })
       .catch((err) => alert(err))
+  }
+
+  function createNewUser(user) {
+    return db.collection('users').doc(user.uid).set({
+      id: user.uid,
+      email: user.email,
+      name: userName,
+    })
   }
 
   function clickCheckbox(checked) {

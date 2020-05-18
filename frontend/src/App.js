@@ -13,6 +13,7 @@ import LoginHeader from './UserLogin/LoginHeader'
 import SignIn from './UserLogin/SignIn'
 import PrivateRoute from './PrivateRoute'
 import ChefsHat from './images/chefs-hat.png'
+import ProfilePage from './UserProfile/ProfilePage'
 
 export default function App() {
   const [recipes, setRecipes] = useState([])
@@ -80,6 +81,11 @@ export default function App() {
           <GridDiv>
             <CreateHeader>create</CreateHeader>
             <CreateRecipe setRecipes={setRecipes} recipes={recipes} />
+          </GridDiv>
+        </PrivateRoute>
+        <PrivateRoute path="/profile">
+          <GridDiv>
+            <ProfilePage />
           </GridDiv>
         </PrivateRoute>
       </Switch>

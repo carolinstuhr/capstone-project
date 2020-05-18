@@ -32,6 +32,10 @@ input {
     font-weight: 200;
     border-radius: 4px;
     border: 1px solid #a09e9a;
+    ::placeholder {
+        font-style: italic;
+        color: #a09e9a;
+      }
 }
 button {
     font-family: 'Josefin Sans', sans-serif;

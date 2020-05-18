@@ -14,7 +14,9 @@ export const AuthProvider = ({ children }) => {
       if (user) {
         setCurrentUser(user)
         localStorage.setItem('uid', user.uid)
-        setPending(false)
+        setTimeout(() => {
+          setPending(false)
+        }, 1000)
       } else {
         setCurrentUser(null)
         setPending(false)

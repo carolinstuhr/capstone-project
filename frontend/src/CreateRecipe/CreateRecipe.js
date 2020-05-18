@@ -167,10 +167,6 @@ const InputStyled = styled.input`
   font-size: 14px;
   padding-left: 4px;
   color: #514f4b;
-  ::placeholder {
-    font-style: italic;
-    color: #a09e9a;
-  }
 `
 
 const TitleInput = styled(InputStyled)`
