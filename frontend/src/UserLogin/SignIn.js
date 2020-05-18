@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom'
 import { auth } from '../firebaseConfig'
 import LoginButton from './LoginButton'
 import { AuthContext } from '../Auth'
-import ChefsHat from '../images/chefs-hat.png'
+
+import LoginHeader from './LoginHeader'
+import Pending from './Pending'
 
 function SignIn({ history }) {
   const emailRef = useRef()
@@ -20,7 +22,7 @@ function SignIn({ history }) {
   const { currentUser } = useContext(AuthContext)
 
   if (pending) {
-    return <LoadingLogo src={ChefsHat} alt="loading" />
+    return <Pending>welcome back</Pending>
   }
 
   if (currentUser) {
@@ -29,6 +31,7 @@ function SignIn({ history }) {
 
   return (
     <>
+      <LoginHeader>sign in</LoginHeader>
       <FormStyled onSubmit={userLogin}>
         <LabelStyled htmlFor="email">e-mail</LabelStyled>
         <InputStyled
@@ -61,7 +64,10 @@ function SignIn({ history }) {
           history.push('/')
         }, 1000)
       })
-      .catch((err) => alert(err))
+      .catch((err) => {
+        alert(err)
+        setPending(false)
+      })
   }
 }
 const FormStyled = styled.form`
@@ -91,13 +97,6 @@ const ParagraphStyled = styled.p`
   text-align: center;
   font-weight: 300;
   font-size: 14px;
-`
-const LoadingLogo = styled.img`
-  height: 50px;
-  width: 50px;
-  position: absolute;
-  top: 40%;
-  right: 40%;
 `
 
 export default withRouter(SignIn)

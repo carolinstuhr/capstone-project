@@ -2,8 +2,8 @@ import React from 'react'
 import { FaSignOutAlt } from 'react-icons/fa'
 import styled from 'styled-components/macro'
 
-export default function LogoutButton() {
-  return <LogoutImageStyled alt="logout" />
+export default function LogoutButton({ logoutUser }) {
+  return <LogoutImageStyled alt="logout" onClick={logoutUser} />
 }
 const LogoutImageStyled = styled(FaSignOutAlt)`
   height: 32px;

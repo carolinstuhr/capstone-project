@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { db } from '../firebaseConfig'
+import { db, auth } from '../firebaseConfig'
 import CreateHeader from '../CreateRecipe/CreateHeader'
 import styled from 'styled-components/macro'
 import LogoutButton from './LogoutButton'
 
-export default function ProfilePage() {
+export default function ProfilePage({ logout }) {
   const [users, setUser] = useState('')
   const [international, setInternational] = useState('')
   const [addedInternational, setAddedInternational] = useState('')
@@ -92,11 +92,20 @@ export default function ProfilePage() {
               </ButtonStyled>
             </>
           )}
-          <LogoutButton />
+          <LogoutButton logoutUser={logoutUser} />
         </MainStyled>
       )}
     </>
   )
+  function logoutUser(event) {
+    event.preventDefault()
+    auth
+      .signOut()
+      .then(() => {
+        logout()
+      })
+      .catch((err) => console.log(err))
+  }
 }
 const MainStyled = styled.main`
   padding-left: 16px;

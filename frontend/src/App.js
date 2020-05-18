@@ -37,7 +37,6 @@ export default function App() {
       <Switch>
         <Route path="/signin">
           <LoginSection>
-            <LoginHeader>sign in</LoginHeader>
             <SignIn />
           </LoginSection>
         </Route>
