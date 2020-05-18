@@ -6,6 +6,7 @@ import LoginButton from './LoginButton'
 
 function SignUp({ history }) {
   const [checked, setChecked] = useState(false)
+  const [buttonStatus, setButtonStatus] = useState(true)
 
   const nameRef = useRef()
   useEffect(() => {
@@ -38,12 +39,12 @@ function SignUp({ history }) {
         id="tc"
         checked={checked}
         required
-        onChange={() => setChecked(!checked)}
+        onChange={() => clickCheckbox(checked)}
       />
       <CheckboxLabel htmlFor="tc">
         Accept the terms and conditions
       </CheckboxLabel>
-      <LoginButton>Register</LoginButton>
+      <LoginButton buttonStatus={buttonStatus}>Register</LoginButton>
     </FormStyled>
   )
 
@@ -56,6 +57,15 @@ function SignUp({ history }) {
         history.push('/')
       })
       .catch((err) => alert(err))
+  }
+
+  function clickCheckbox(checked) {
+    setChecked(!checked)
+    if (checked) {
+      setButtonStatus(true)
+    } else {
+      setButtonStatus(false)
+    }
   }
 }
 const FormStyled = styled.form`

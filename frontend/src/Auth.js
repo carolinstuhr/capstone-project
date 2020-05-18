@@ -6,7 +6,7 @@ import ChefsHat from './images/chefs-hat.png'
 export const AuthContext = React.createContext()
 
 export const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState({})
+  const [currentUser, setCurrentUser] = useState()
   const [pending, setPending] = useState(true)
 
   useEffect(() => {
@@ -14,10 +14,9 @@ export const AuthProvider = ({ children }) => {
       if (user) {
         setCurrentUser(user)
         localStorage.setItem('uid', user.uid)
-        console.log(user)
         setPending(false)
       } else {
-        setCurrentUser({})
+        setCurrentUser(null)
         setPending(false)
       }
     })
@@ -28,7 +27,9 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={currentUser}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ currentUser }}>
+      {children}
+    </AuthContext.Provider>
   )
 }
 const LoadingLogo = styled.img`

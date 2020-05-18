@@ -42,7 +42,7 @@ function SignIn({ history }) {
         />
         <LabelStyled htmlFor="password">password</LabelStyled>
         <InputStyled type="password" id="password" name="password" required />
-        <LoginButton>Login</LoginButton>
+        <LoginButton buttonStatus={false}>Login</LoginButton>
       </FormStyled>
       <ParagraphStyled>Forgot your password?</ParagraphStyled>
       <ParagraphStyled>
