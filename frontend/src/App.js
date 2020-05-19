@@ -61,7 +61,7 @@ export default function App() {
           <CreateRecipe setRecipes={setRecipes} recipes={recipes} />
         </PrivateRoute>
         <PrivateRoute path="/profile">
-          <ProfilePage />
+          <ProfilePage recipes={recipes} />
         </PrivateRoute>
       </Switch>
     </>

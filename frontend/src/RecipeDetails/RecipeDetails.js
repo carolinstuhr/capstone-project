@@ -148,17 +148,15 @@ const TitleStyled = styled.h3`
   text-transform: capitalize;
   font-weight: 500;
   font-size: 20px;
-  animation-duration: 1s;
-  animation-name: slidein;
-  @keyframes slidein {
+  animation-duration: 2s;
+  animation-name: fadein;
+  @keyframes fadein {
     from {
-      margin-left: 100%;
-      width: 100%;
+      opacity: 0;
     }
 
     to {
-      margin-left: 0%;
-      width: 100%;
+      opacity: 100;
     }
   }
 `
@@ -170,17 +168,15 @@ const InfoSection = styled.section`
   margin-top: 16px;
   margin-bottom: 12px;
   font-weight: 300;
-  animation-duration: 1s;
-  animation-name: slidein;
-  @keyframes slidein {
+  animation-duration: 2s;
+  animation-name: fadein;
+  @keyframes fadein {
     from {
-      margin-left: 100%;
-      width: 100%;
+      opacity: 0;
     }
 
     to {
-      margin-left: 0%;
-      width: 100%;
+      opacity: 100;
     }
   }
 `
@@ -190,17 +186,15 @@ const DetailSelectionStyled = styled.div`
   justify-content: center;
   margin-top: 4px;
   font-weight: 300;
-  animation-duration: 1s;
-  animation-name: slidein;
-  @keyframes slidein {
+  animation-duration: 2s;
+  animation-name: fadein;
+  @keyframes fadein {
     from {
-      margin-left: 100%;
-      width: 100%;
+      opacity: 0;
     }
 
     to {
-      margin-left: 0%;
-      width: 100%;
+      opacity: 100;
     }
   }
 `
@@ -232,17 +226,15 @@ const IngredientsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 3fr;
   font-weight: 300;
-  animation-duration: 1s;
-  animation-name: slidein;
-  @keyframes slidein {
+  animation-duration: 2s;
+  animation-name: fadein;
+  @keyframes fadein {
     from {
-      margin-left: 100%;
-      width: 100%;
+      opacity: 0;
     }
 
     to {
-      margin-left: 0%;
-      width: 100%;
+      opacity: 100;
     }
   }
 `

@@ -21,7 +21,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
     timehour: '',
     timeminutes: '',
   })
-
+  const currentUser = localStorage.getItem('uid')
   const [ingredients, setIngredients] = useState([{ amount: '', name: '' }])
   const [instructions, setInstructions] = useState([''])
   const [tags, setTags] = useState(['', '', ''])
@@ -147,6 +147,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
       ingredients: ingredients,
       instructions: instructions,
       isFavourite: false,
+      userId: currentUser,
     }
     let newId
     db.collection('recipes')

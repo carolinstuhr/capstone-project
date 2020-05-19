@@ -6,10 +6,10 @@ import LogoutButton from './LogoutButton'
 import GridArea from '../GridArea'
 import ChefsHat from '../images/chefs-hat.png'
 
-export default function ProfilePage({ logout }) {
+export default function ProfilePage({ logout, recipes }) {
   const [users, setUser] = useState('')
 
-  const [editProfile, setEditProfile] = useState(true)
+  const [editProfile, setEditProfile] = useState(false)
 
   const [details, setDetails] = useState({
     internationalCuisine: '',
@@ -31,6 +31,10 @@ export default function ProfilePage({ logout }) {
 
   let user = users && users.filter((user) => user.id === currentUser)[0]
 
+  let userRecipes = recipes.filter(
+    (recipe) => recipe.userId && recipe.userId === currentUser
+  )[0]
+
   return (
     <GridArea>
       <CreateHeader>profile</CreateHeader>
@@ -49,10 +53,7 @@ export default function ProfilePage({ logout }) {
               <InputStyled
                 type="text"
                 placeholder="e.g. mexican"
-                value={
-                  details.internationalCuisine ||
-                  user.details.internationalCuisine
-                }
+                value={details.internationalCuisine}
                 name="internationalCuisine"
                 id="internationalCuisine"
                 onChange={storeDetails}
@@ -63,7 +64,7 @@ export default function ProfilePage({ logout }) {
               <InputStyled
                 type="text"
                 placeholder="e.g. mum's pancakes"
-                value={details.childhoodDish || user.details.childhoodDish}
+                value={details.childhoodDish}
                 name="childhoodDish"
                 onChange={storeDetails}
               />
@@ -73,7 +74,7 @@ export default function ProfilePage({ logout }) {
               <InputStyled
                 type="text"
                 placeholder="e.g. NENI, Hamburg"
-                value={details.restaurant || user.details.restaurant}
+                value={details.restaurant}
                 name="restaurant"
                 onChange={storeDetails}
               />
@@ -93,12 +94,14 @@ export default function ProfilePage({ logout }) {
               <UserInput>{user.details.childhoodDish}</UserInput>
               <Title>favourite restaurant:</Title>
               <UserInput>{user.details.restaurant}</UserInput>
-              <ButtonEditStyled onClick={() => setEditProfile(true)}>
+              <ButtonEditStyled onClick={() => changeEditMode()}>
                 edit profile
               </ButtonEditStyled>
             </>
           )}
-
+          <p>My Recipes</p>
+          {console.log(userRecipes)}
+          {userRecipes && <p>{userRecipes.title}</p>}
           <LogoutButton logoutUser={logoutUser} />
         </MainStyled>
       )}
@@ -106,6 +109,11 @@ export default function ProfilePage({ logout }) {
   )
   function storeDetails(event) {
     setDetails({ ...details, [event.target.name]: event.target.value })
+  }
+
+  function changeEditMode() {
+    setEditProfile(true)
+    details && setDetails(user.details)
   }
 
   function addDetails(user) {

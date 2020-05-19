@@ -31,7 +31,7 @@ export default function FavouriteRecipes({
 
   return (
     <GridArea>
-      <Header>favourites</Header>
+      <Header>recipes</Header>
       {pending ? (
         <LoadingLogo />
       ) : (
