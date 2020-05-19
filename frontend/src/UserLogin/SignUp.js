@@ -4,6 +4,9 @@ import styled from 'styled-components/macro'
 import { auth, db } from '../firebaseConfig'
 import LoginButton from './LoginButton'
 import { AuthContext } from '../Auth'
+import LoginHeader from './LoginHeader'
+import PageLayout from './PageLayout'
+import Pending from './Pending'
 
 function SignUp({ history }) {
   const [checked, setChecked] = useState(false)
@@ -17,58 +20,71 @@ function SignUp({ history }) {
     }
   }, [])
 
+  const [pending, setPending] = useState(false)
+
   const { currentUser } = useContext(AuthContext)
+
+  if (pending) {
+    return <Pending>welcome</Pending>
+  }
 
   if (currentUser) {
     return <Redirect exact to="/" />
   }
 
   return (
-    <FormStyled onSubmit={registerUser}>
-      <LabelStyled htmlFor="name">name</LabelStyled>
-      <InputStyled
-        type="text"
-        id="name"
-        name="userName"
-        ref={nameRef}
-        required
-        onChange={(event) => {
-          setUserName(event.target.value)
-        }}
-        value={userName}
-      />
-      <LabelStyled htmlFor="email">e-mail</LabelStyled>
-      <InputStyled type="email" id="email" name="email" required />
-      <LabelStyled htmlFor="password">password</LabelStyled>
-      <InputStyled type="password" id="password" name="password" required />
-      <LabelStyled htmlFor="passwordRepeat">repeat password</LabelStyled>
-      <InputStyled
-        type="password"
-        id="passwordRepeat"
-        name="passwordRepeat"
-        required
-      />
-      <CheckboxStyled
-        type="checkbox"
-        id="tc"
-        checked={checked}
-        onChange={() => clickCheckbox(checked)}
-      />
-      <CheckboxLabel htmlFor="tc">
-        Accept the terms and conditions
-      </CheckboxLabel>
-      <LoginButton buttonStatus={buttonStatus}>Register</LoginButton>
-    </FormStyled>
+    <PageLayout>
+      <LoginHeader>register</LoginHeader>
+      <FormStyled onSubmit={registerUser}>
+        <LabelStyled htmlFor="name">name</LabelStyled>
+        <InputStyled
+          type="text"
+          id="name"
+          name="userName"
+          ref={nameRef}
+          required
+          onChange={(event) => {
+            setUserName(event.target.value)
+          }}
+          value={userName}
+        />
+        <LabelStyled htmlFor="email">e-mail</LabelStyled>
+        <InputStyled type="email" id="email" name="email" required />
+        <LabelStyled htmlFor="password">password</LabelStyled>
+        <InputStyled type="password" id="password" name="password" required />
+        <LabelStyled htmlFor="passwordRepeat">repeat password</LabelStyled>
+        <InputStyled
+          type="password"
+          id="passwordRepeat"
+          name="passwordRepeat"
+          required
+        />
+        <CheckboxStyled
+          type="checkbox"
+          id="tc"
+          checked={checked}
+          onChange={() => clickCheckbox(checked)}
+        />
+        <CheckboxLabel htmlFor="tc">
+          Accept the terms and conditions
+        </CheckboxLabel>
+        <LoginButton buttonStatus={buttonStatus}>Register</LoginButton>
+      </FormStyled>
+    </PageLayout>
   )
 
   function registerUser(event) {
+    setPending(true)
     event.preventDefault()
     const { email, password } = event.target.elements
     auth
       .createUserWithEmailAndPassword(email.value, password.value)
       .then((res) => {
         createNewUser(res.user)
-        history.push('/')
+        setTimeout(() => {
+          setPending(false)
+          history.push('/')
+        }, 2000)
       })
       .catch((err) => alert(err))
   }

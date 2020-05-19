@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 import { auth } from '../firebaseConfig'
 import LoginButton from './LoginButton'
 import { AuthContext } from '../Auth'
-
 import LoginHeader from './LoginHeader'
 import Pending from './Pending'
+import PageLayout from './PageLayout'
 
 function SignIn({ history }) {
   const emailRef = useRef()
@@ -30,7 +30,7 @@ function SignIn({ history }) {
   }
 
   return (
-    <>
+    <PageLayout>
       <LoginHeader>sign in</LoginHeader>
       <FormStyled onSubmit={userLogin}>
         <LabelStyled htmlFor="email">e-mail</LabelStyled>
@@ -49,7 +49,7 @@ function SignIn({ history }) {
       <ParagraphStyled>
         New to get cooking? <Link to="/signup">Sign-up</Link>
       </ParagraphStyled>
-    </>
+    </PageLayout>
   )
 
   async function userLogin(event) {
@@ -62,7 +62,7 @@ function SignIn({ history }) {
         setTimeout(() => {
           setPending(false)
           history.push('/')
-        }, 1000)
+        }, 2000)
       })
       .catch((err) => {
         alert(err)

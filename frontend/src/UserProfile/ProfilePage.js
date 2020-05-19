@@ -3,6 +3,7 @@ import { db, auth } from '../firebaseConfig'
 import CreateHeader from '../CreateRecipe/CreateHeader'
 import styled from 'styled-components/macro'
 import LogoutButton from './LogoutButton'
+import GridArea from '../GridArea'
 
 export default function ProfilePage({ logout }) {
   const [users, setUser] = useState('')
@@ -28,7 +29,7 @@ export default function ProfilePage({ logout }) {
   let user = users && users.filter((user) => user.id === currentUser)
 
   return (
-    <>
+    <GridArea>
       <CreateHeader>profile</CreateHeader>
       {user && (
         <MainStyled>
@@ -95,7 +96,7 @@ export default function ProfilePage({ logout }) {
           <LogoutButton logoutUser={logoutUser} />
         </MainStyled>
       )}
-    </>
+    </GridArea>
   )
   function logoutUser(event) {
     event.preventDefault()

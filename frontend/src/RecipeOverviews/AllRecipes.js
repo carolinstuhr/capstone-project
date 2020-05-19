@@ -5,8 +5,11 @@ import SelectionNav from './SelectionNav'
 import RecipeList from './RecipeList'
 import CreateRecipeButton from '../CreateRecipe/CreateRecipeButton'
 import { Link } from 'react-router-dom'
+import GridArea from '../GridArea'
+import Header from './Header'
+import LoadingLogo from './LoadingLogo'
 
-export default function AllRecipes({ setPreviousPage, recipes }) {
+export default function AllRecipes({ setPreviousPage, recipes, pending }) {
   const [userFilterInput, setUserFilterInput] = useState('')
 
   let filteredRecipeData = recipes.filter(
@@ -20,25 +23,32 @@ export default function AllRecipes({ setPreviousPage, recipes }) {
         recipe.tags[2].toLowerCase().includes(userFilterInput.toLowerCase()))
   )
   return (
-    <main>
-      <SelectionNav />
-      <FilterRecipes setUserInput={setUserFilterInput} />
-      {filteredRecipeData.length === 0 ? (
-        <FallBackStyled>
-          Unfortunately, we did not find any recipe matching your search
-          request.
-        </FallBackStyled>
+    <GridArea>
+      <Header>favourites</Header>
+      {pending ? (
+        <LoadingLogo />
       ) : (
-        <RecipeList
-          setPreviousPage={setPreviousPage}
-          filteredRecipeData={filteredRecipeData}
-          page={'All'}
-        />
+        <main>
+          <SelectionNav />
+          <FilterRecipes setUserInput={setUserFilterInput} />
+          {filteredRecipeData.length === 0 ? (
+            <FallBackStyled>
+              Unfortunately, we did not find any recipe matching your search
+              request.
+            </FallBackStyled>
+          ) : (
+            <RecipeList
+              setPreviousPage={setPreviousPage}
+              filteredRecipeData={filteredRecipeData}
+              page={'All'}
+            />
+          )}
+          <Link to="/create">
+            <CreateRecipeButton />
+          </Link>
+        </main>
       )}
-      <Link to="/create">
-        <CreateRecipeButton />
-      </Link>
-    </main>
+    </GridArea>
   )
 }
 
