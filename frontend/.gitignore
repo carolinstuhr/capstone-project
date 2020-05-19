@@ -25,3 +25,7 @@ yarn-error.log*
 #firebase
 serviceAccountKey.json
 firebaseConfig.js
+
+#cypress
+cypress/videos
+cypress/screenshots

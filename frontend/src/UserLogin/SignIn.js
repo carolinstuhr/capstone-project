@@ -32,7 +32,7 @@ function SignIn({ history }) {
   return (
     <PageLayout>
       <LoginHeader>sign in</LoginHeader>
-      <FormStyled onSubmit={userLogin}>
+      <FormStyled onSubmit={userLogin} className="signin_form">
         <LabelStyled htmlFor="email">e-mail</LabelStyled>
         <InputStyled
           type="email"
@@ -40,9 +40,16 @@ function SignIn({ history }) {
           name="email"
           ref={emailRef}
           required
+          className="signin_email"
         />
         <LabelStyled htmlFor="password">password</LabelStyled>
-        <InputStyled type="password" id="password" name="password" required />
+        <InputStyled
+          type="password"
+          id="password"
+          name="password"
+          required
+          className="signin_password"
+        />
         <LoginButton buttonStatus={false}>Login</LoginButton>
       </FormStyled>
       <ParagraphStyled>Forgot your password?</ParagraphStyled>

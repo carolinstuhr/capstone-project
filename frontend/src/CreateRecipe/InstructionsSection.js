@@ -26,6 +26,7 @@ export default function InstructionsSection({ instructions, setInstructions }) {
             maxLength="300"
             ref={instructionsRef}
             value={instruction}
+            className={`create_instructions${index}`}
           />
         </InstructionsPart>
       ))}

@@ -16,6 +16,7 @@ export default function TagSection({ tags, setTags }) {
           maxLength="10"
           data-testid="tag"
           placeholder={placeholder[index]}
+          className={`create_tags${index}`}
         />
       ))}
     </>

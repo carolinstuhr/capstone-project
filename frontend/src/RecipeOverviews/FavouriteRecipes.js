@@ -55,7 +55,7 @@ export default function FavouriteRecipes({
               page={'Favourites'}
             />
           )}
-          <Link to="/create">
+          <Link to="/create" className="create_recipe_button">
             <CreateRecipeButton />
           </Link>
         </main>
