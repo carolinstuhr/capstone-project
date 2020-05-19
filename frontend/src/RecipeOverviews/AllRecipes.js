@@ -24,7 +24,7 @@ export default function AllRecipes({ setPreviousPage, recipes, pending }) {
   )
   return (
     <GridArea>
-      <Header>favourites</Header>
+      <Header>recipes</Header>
       {pending ? (
         <LoadingLogo />
       ) : (

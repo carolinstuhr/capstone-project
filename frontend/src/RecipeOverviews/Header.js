@@ -10,6 +10,4 @@ export default function Header({ children }) {
     </HeaderStyled>
   )
 }
-const HeaderStyled = styled.header`
-  background: white;
-`
+const HeaderStyled = styled.header``

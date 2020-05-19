@@ -1,25 +1,25 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import LeftArrow from '../images/left-arrow.svg'
 import { Link } from 'react-router-dom'
+import { RiArrowLeftSLine } from 'react-icons/ri'
 
 export default function CreateHeader({ children }) {
   return (
     <header>
       <Link exact to="/">
-        <ArrowIconStyled src={LeftArrow} alt="return Button" />
+        <ArrowIconStyled />
       </Link>
       <h1>{children}</h1>
     </header>
   )
 }
 
-const ArrowIconStyled = styled.img`
+const ArrowIconStyled = styled(RiArrowLeftSLine)`
   border-radius: 4px;
-  height: 32px;
-  width: 32px;
+  height: 40px;
+  width: 40px;
   position: absolute;
   left: 12px;
-  top: 12px;
-  padding: 4px;
+  top: 4px;
+  color: #514f4b;
 `
