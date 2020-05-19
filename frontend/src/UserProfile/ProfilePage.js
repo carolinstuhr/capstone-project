@@ -7,12 +7,9 @@ import GridArea from '../GridArea'
 
 export default function ProfilePage({ logout }) {
   const [users, setUser] = useState('')
-  const [international, setInternational] = useState('')
-  const [addedInternational, setAddedInternational] = useState('')
-  const [childhood, setChildhood] = useState('')
-  const [addedChildhood, setAddedChildhood] = useState('')
+  const [internationalCuisine, setIinternationalCuisine] = useState('')
+  const [childhoodDish, setChildhoodDish] = useState('')
   const [restaurant, setRestaurant] = useState('')
-  const [addedRestaurant, setAddedRestaurant] = useState('')
 
   const currentUser = localStorage.getItem('uid')
 
@@ -26,7 +23,7 @@ export default function ProfilePage({ logout }) {
     })
   }, [])
 
-  let user = users && users.filter((user) => user.id === currentUser)
+  let user = users && users.filter((user) => user.id === currentUser)[0]
 
   return (
     <GridArea>
@@ -34,50 +31,62 @@ export default function ProfilePage({ logout }) {
       {user && (
         <MainStyled>
           <ParagraphStyled>username: </ParagraphStyled>
-          <UserInfo>{user[0].name}</UserInfo>
+          <UserInfo>{user.name}</UserInfo>
           <ParagraphStyled>e-mail: </ParagraphStyled>
-          <UserInfo>{user[0].email}</UserInfo>
+          <UserInfo>{user.email}</UserInfo>
           <ParagraphStyled>favourite international cuisine: </ParagraphStyled>
-          {addedInternational ? (
-            <UserInfo>{addedInternational}</UserInfo>
+          {user.internationalCuisine ? (
+            <UserInfo>{user.internationalCuisine}</UserInfo>
           ) : (
             <>
               <InputStyled
                 type="text"
                 placeholder="e.g. mexican"
-                value={international}
+                value={internationalCuisine}
                 name="favourites"
-                onChange={(event) => setInternational(event.target.value)}
+                onChange={(event) =>
+                  setIinternationalCuisine(event.target.value)
+                }
               />
 
               <ButtonStyled
-                onClick={() => setAddedInternational(international)}
+                onClick={() =>
+                  addNewDetail(
+                    user,
+                    'internationalCuisine',
+                    internationalCuisine
+                  )
+                }
               >
                 Add
               </ButtonStyled>
             </>
           )}
           <ParagraphStyled>dish of your childhood: </ParagraphStyled>
-          {addedChildhood ? (
-            <UserInfo>{addedChildhood}</UserInfo>
+          {user.childhoodDish ? (
+            <UserInfo>{user.childhoodDish}</UserInfo>
           ) : (
             <>
               <InputStyled
                 type="text"
                 placeholder="e.g. mum's pancakes"
-                value={childhood}
+                value={childhoodDish}
                 name="favourites"
-                onChange={(event) => setChildhood(event.target.value)}
+                onChange={(event) => setChildhoodDish(event.target.value)}
               />
 
-              <ButtonStyled onClick={() => setAddedChildhood(childhood)}>
+              <ButtonStyled
+                onClick={() =>
+                  addNewDetail(user, 'childhoodDish', childhoodDish)
+                }
+              >
                 Add
               </ButtonStyled>
             </>
           )}
           <ParagraphStyled>favourite restaurant: </ParagraphStyled>
-          {addedRestaurant ? (
-            <UserInfo>{addedRestaurant}</UserInfo>
+          {user.restaurant ? (
+            <UserInfo>{user.restaurant}</UserInfo>
           ) : (
             <>
               <InputStyled
@@ -88,7 +97,9 @@ export default function ProfilePage({ logout }) {
                 onChange={(event) => setRestaurant(event.target.value)}
               />
 
-              <ButtonStyled onClick={() => setAddedRestaurant(restaurant)}>
+              <ButtonStyled
+                onClick={() => addNewDetail(user, 'restaurant', restaurant)}
+              >
                 Add
               </ButtonStyled>
             </>
@@ -98,6 +109,20 @@ export default function ProfilePage({ logout }) {
       )}
     </GridArea>
   )
+
+  function addNewDetail(user, key, value) {
+    db.collection('users')
+      .doc(user.id)
+      .update({ [key]: value })
+      .then(() => {
+        console.log('Favourite updated!')
+        setRestaurant('')
+      })
+      .catch((err) =>
+        alert('Something went wrong. Please try again later.', err)
+      )
+  }
+
   function logoutUser(event) {
     event.preventDefault()
     auth
