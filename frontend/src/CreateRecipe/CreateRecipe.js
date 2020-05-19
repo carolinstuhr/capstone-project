@@ -6,6 +6,8 @@ import IngredientsSection from './IngredientsSection'
 import { db } from '../firebaseConfig'
 import UploadImage from './UploadImage'
 import TagSection from './TagSection'
+import CreateHeader from './CreateHeader'
+import GridArea from '../GridArea'
 
 export default function CreateRecipe({ recipes, setRecipes }) {
   const titleRef = useRef()
@@ -35,82 +37,85 @@ export default function CreateRecipe({ recipes, setRecipes }) {
   }
 
   return (
-    <MainStyled>
-      <form onSubmit={saveNewRecipetoLocalStorage}>
-        <LabelStyled htmlFor="title">Title</LabelStyled>
-        <TitleInput
-          type="text"
-          name="title"
-          placeholder="Title of Recipe..."
-          id="title"
-          onChange={storeInput}
-          value={formData.title}
-          minLength="2"
-          maxLength="40"
-          ref={titleRef}
-          required
-        />
-        <LabelStyled htmlFor="tags">Tags</LabelStyled>
-        <TagSection tags={tags} setTags={setTags} />
-        <ServingsLabel htmlFor="portion">Servings</ServingsLabel>
-        <ServingsInput
-          type="number"
-          id="portion"
-          onChange={storeInput}
-          name="serving"
-          value={formData.serving}
-          min="1"
-          maxLength="2"
-          placeholder="1"
-          required
-        />
-        <TimeLabel htmlFor="hour">Time</TimeLabel>
-        <HourInput
-          type="number"
-          id="hour"
-          onChange={storeInput}
-          name="timehour"
-          value={formData.timehour}
-          maxLength="2"
-          min="0"
-          required
-          data-testid="hour"
-        />
-        <DetailTimeLabel htmlFor="hour">hours</DetailTimeLabel>
-        <MinutesInput
-          type="number"
-          id="minute"
-          onChange={storeInput}
-          name="timeminutes"
-          value={formData.timeminutes}
-          step="10"
-          maxLength="2"
-          min="0"
-          max="60"
-          required
-          data-testid="minute"
-        />
-        <DetailTimeLabel htmlFor="minute">minutes</DetailTimeLabel>
-        <IngredientsLabel htmlFor="ingredients">Ingredients</IngredientsLabel>
-        <IngredientsSection
-          ingredients={ingredients}
-          setIngredients={setIngredients}
-        />
-        <InstructionsLabel htmlFor="instructions">
-          Instructions
-        </InstructionsLabel>
-        <InstructionsSection
-          instructions={instructions}
-          setInstructions={setInstructions}
-        />
-        <UploadImage setImageAsUrl={setImageAsUrl} imageAsUrl={imageAsUrl} />
-        <ButtonWrapper>
-          <ButtonStyled disabled={buttonStatus} buttonStatus={buttonStatus}>
-            Submit
-          </ButtonStyled>
-        </ButtonWrapper>
-      </form>
-    </MainStyled>
+    <GridArea>
+      <CreateHeader>create</CreateHeader>
+      <MainStyled>
+        <form onSubmit={saveNewRecipetoLocalStorage}>
+          <LabelStyled htmlFor="title">Title</LabelStyled>
+          <TitleInput
+            type="text"
+            name="title"
+            placeholder="Title of Recipe..."
+            id="title"
+            onChange={storeInput}
+            value={formData.title}
+            minLength="2"
+            maxLength="40"
+            ref={titleRef}
+            required
+          />
+          <LabelStyled htmlFor="tags">Tags</LabelStyled>
+          <TagSection tags={tags} setTags={setTags} />
+          <ServingsLabel htmlFor="portion">Servings</ServingsLabel>
+          <ServingsInput
+            type="number"
+            id="portion"
+            onChange={storeInput}
+            name="serving"
+            value={formData.serving}
+            min="1"
+            maxLength="2"
+            placeholder="1"
+            required
+          />
+          <TimeLabel htmlFor="hour">Time</TimeLabel>
+          <HourInput
+            type="number"
+            id="hour"
+            onChange={storeInput}
+            name="timehour"
+            value={formData.timehour}
+            maxLength="2"
+            min="0"
+            required
+            data-testid="hour"
+          />
+          <DetailTimeLabel htmlFor="hour">hours</DetailTimeLabel>
+          <MinutesInput
+            type="number"
+            id="minute"
+            onChange={storeInput}
+            name="timeminutes"
+            value={formData.timeminutes}
+            step="10"
+            maxLength="2"
+            min="0"
+            max="60"
+            required
+            data-testid="minute"
+          />
+          <DetailTimeLabel htmlFor="minute">minutes</DetailTimeLabel>
+          <IngredientsLabel htmlFor="ingredients">Ingredients</IngredientsLabel>
+          <IngredientsSection
+            ingredients={ingredients}
+            setIngredients={setIngredients}
+          />
+          <InstructionsLabel htmlFor="instructions">
+            Instructions
+          </InstructionsLabel>
+          <InstructionsSection
+            instructions={instructions}
+            setInstructions={setInstructions}
+          />
+          <UploadImage setImageAsUrl={setImageAsUrl} imageAsUrl={imageAsUrl} />
+          <ButtonWrapper>
+            <ButtonStyled disabled={buttonStatus} buttonStatus={buttonStatus}>
+              Submit
+            </ButtonStyled>
+          </ButtonWrapper>
+        </form>
+      </MainStyled>
+    </GridArea>
   )
 
   function saveNewRecipetoLocalStorage(event) {
@@ -156,7 +161,6 @@ export default function CreateRecipe({ recipes, setRecipes }) {
 }
 
 const MainStyled = styled.main`
-  background: #f2efe9;
   padding-left: 20px;
 `
 const LabelStyled = styled.label`
@@ -167,10 +171,7 @@ const InputStyled = styled.input`
   font-size: 14px;
   padding-left: 4px;
   color: #514f4b;
-  ::placeholder {
-    font-style: italic;
-    color: #a09e9a;
-  }
+  background: rgba(242, 239, 233, 0.5);
 `
 
 const TitleInput = styled(InputStyled)`

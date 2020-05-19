@@ -1,36 +1,37 @@
-import React, { useRef, useEffect, useContext } from 'react'
+import React, { useRef, useEffect, useContext, useState } from 'react'
 import { withRouter, Redirect } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import { auth } from '../firebaseConfig'
 import LoginButton from './LoginButton'
 import { AuthContext } from '../Auth'
+import LoginHeader from './LoginHeader'
+import Pending from './Pending'
+import PageLayout from './PageLayout'
 
 function SignIn({ history }) {
   const emailRef = useRef()
-  useEffect(() => {
-    emailRef.current.focus()
-  }, [])
 
-  async function userLogin(event) {
-    event.preventDefault()
-    const { email, password } = event.target.elements
-    return await auth
-      .signInWithEmailAndPassword(email.value, password.value)
-      .then((res) => {
-        console.log(res)
-        history.push('/')
-      })
-      .catch((err) => alert(err))
-  }
+  useEffect(() => {
+    if (emailRef) {
+      emailRef.current.focus()
+    }
+  }, [])
+  const [pending, setPending] = useState(false)
 
   const { currentUser } = useContext(AuthContext)
+
+  if (pending) {
+    return <Pending>welcome back</Pending>
+  }
+
   if (currentUser) {
     return <Redirect exact to="/" />
   }
 
   return (
-    <>
+    <PageLayout>
+      <LoginHeader>sign in</LoginHeader>
       <FormStyled onSubmit={userLogin}>
         <LabelStyled htmlFor="email">e-mail</LabelStyled>
         <InputStyled
@@ -42,14 +43,32 @@ function SignIn({ history }) {
         />
         <LabelStyled htmlFor="password">password</LabelStyled>
         <InputStyled type="password" id="password" name="password" required />
-        <LoginButton>Login</LoginButton>
+        <LoginButton buttonStatus={false}>Login</LoginButton>
       </FormStyled>
       <ParagraphStyled>Forgot your password?</ParagraphStyled>
       <ParagraphStyled>
         New to get cooking? <Link to="/signup">Sign-up</Link>
       </ParagraphStyled>
-    </>
+    </PageLayout>
   )
+
+  async function userLogin(event) {
+    setPending(true)
+    event.preventDefault()
+    const { email, password } = event.target.elements
+    return await auth
+      .signInWithEmailAndPassword(email.value, password.value)
+      .then(() => {
+        setTimeout(() => {
+          setPending(false)
+          history.push('/')
+        }, 2000)
+      })
+      .catch((err) => {
+        alert(err)
+        setPending(false)
+      })
+  }
 }
 const FormStyled = styled.form`
   display: grid;

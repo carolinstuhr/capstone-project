@@ -5,8 +5,15 @@ import SelectionNav from './SelectionNav'
 import RecipeList from './RecipeList'
 import CreateRecipeButton from '../CreateRecipe/CreateRecipeButton'
 import { Link } from 'react-router-dom'
+import GridArea from '../GridArea'
+import Header from './Header'
+import LoadingLogo from './LoadingLogo'
 
-export default function RecipeFavourites({ setPreviousPage, recipes }) {
+export default function FavouriteRecipes({
+  setPreviousPage,
+  recipes,
+  pending,
+}) {
   const [userFilterInput, setUserFilterInput] = useState('')
 
   let favouriteRecipes = recipes.filter((recipe) => recipe.isFavourite === true)
@@ -23,30 +30,37 @@ export default function RecipeFavourites({ setPreviousPage, recipes }) {
   )
 
   return (
-    <main>
-      <SelectionNav />
-      <FilterRecipes setUserInput={setUserFilterInput} />
-      {favouriteRecipes.length === 0 && (
-        <FallBackStyled>
-          Unfortunately, you haven't selected any favourites yet.
-        </FallBackStyled>
-      )}
-      {favouriteRecipes.length > 0 && filteredRecipeData.length === 0 ? (
-        <FallBackStyled>
-          Unfortunately, we did not find any of your favourite recipes matching
-          your search request.
-        </FallBackStyled>
+    <GridArea>
+      <Header>favourites</Header>
+      {pending ? (
+        <LoadingLogo />
       ) : (
-        <RecipeList
-          setPreviousPage={setPreviousPage}
-          filteredRecipeData={filteredRecipeData}
-          page={'Favourites'}
-        />
+        <main>
+          <SelectionNav />
+          <FilterRecipes setUserInput={setUserFilterInput} />
+          {favouriteRecipes.length === 0 && (
+            <FallBackStyled>
+              Unfortunately, you haven't selected any favourites yet.
+            </FallBackStyled>
+          )}
+          {favouriteRecipes.length > 0 && filteredRecipeData.length === 0 ? (
+            <FallBackStyled>
+              Unfortunately, we did not find any of your favourite recipes
+              matching your search request.
+            </FallBackStyled>
+          ) : (
+            <RecipeList
+              setPreviousPage={setPreviousPage}
+              filteredRecipeData={filteredRecipeData}
+              page={'Favourites'}
+            />
+          )}
+          <Link to="/create">
+            <CreateRecipeButton />
+          </Link>
+        </main>
       )}
-      <Link to="/create">
-        <CreateRecipeButton />
-      </Link>
-    </main>
+    </GridArea>
   )
 }
 
