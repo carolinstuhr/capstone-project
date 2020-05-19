@@ -7,7 +7,7 @@ import GridArea from '../GridArea'
 
 export default function ProfilePage({ logout }) {
   const [users, setUser] = useState('')
-  const [internationalCuisine, setIinternationalCuisine] = useState('')
+  const [internationalCuisine, setInternationalCuisine] = useState('')
   const [childhoodDish, setChildhoodDish] = useState('')
   const [restaurant, setRestaurant] = useState('')
 
@@ -45,7 +45,7 @@ export default function ProfilePage({ logout }) {
                 value={internationalCuisine}
                 name="favourites"
                 onChange={(event) =>
-                  setIinternationalCuisine(event.target.value)
+                  setInternationalCuisine(event.target.value)
                 }
               />
 
