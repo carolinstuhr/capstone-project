@@ -11,7 +11,7 @@ export default function ProfilePage({
   recipes,
   setPreviousPage,
   user,
-  setCurrentUser,
+  setUserStatus,
 }) {
   const [display, setDisplay] = useState('userRecipes')
 
@@ -116,12 +116,37 @@ export default function ProfilePage({
               )}
               {editProfile || (
                 <>
-                  <Title>favourite international cuisine:</Title>
-                  <UserInput>{user.details.internationalCuisine}</UserInput>
-                  <Title>dish of your childhood:</Title>
-                  <UserInput>{user.details.childhoodDish}</UserInput>
-                  <Title>favourite restaurant:</Title>
-                  <UserInput>{user.details.restaurant}</UserInput>
+                  {user.details && (
+                    <>
+                      {user.details.internationalCuisine && (
+                        <>
+                          <Title>favourite international cuisine:</Title>
+                          <UserInput>
+                            {user.details.internationalCuisine}
+                          </UserInput>
+                        </>
+                      )}
+                      {user.details.childhoodDish && (
+                        <>
+                          <Title>dish of your childhood:</Title>
+                          <UserInput>{user.details.childhoodDish}</UserInput>
+                        </>
+                      )}
+                      {user.details.restaurant && (
+                        <>
+                          <Title>favourite restaurant:</Title>
+                          <UserInput>{user.details.restaurant}</UserInput>
+                        </>
+                      )}
+                    </>
+                  )}
+                  {user.details.internationalCuisine === '' &&
+                    user.details.childhoodDish === '' &&
+                    user.details.restaurant === '' && (
+                      <NoUserInput>
+                        you haven't provided any additional information yet
+                      </NoUserInput>
+                    )}
                   <ButtonEditStyled onClick={() => changeEditMode()}>
                     edit profile
                   </ButtonEditStyled>
@@ -162,7 +187,7 @@ export default function ProfilePage({
       .signOut()
       .then(() => {
         localStorage.removeItem('uid')
-        setCurrentUser(null)
+        setUserStatus(false)
       })
       .catch((err) => console.log(err))
   }
@@ -171,7 +196,7 @@ export default function ProfilePage({
 const TopSection = styled.section`
   display: grid;
   grid-template-columns: 100px auto;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 40px auto;
   align-content: center;
   padding-left: 16px;
   margin-top: 8px;
@@ -189,15 +214,15 @@ const UserImage = styled.img`
 `
 const UserName = styled.p`
   font-weight: 400;
-  font-size: 22px;
+  font-size: 20px;
   margin-top: 4px;
   margin-bottom: 4px;
   margin-left: 12px;
 `
 
 const UserInfo = styled.p`
-  font-weight: 300;
-  font-size: 18px;
+  font-weight: 200;
+  font-size: 16px;
   margin-top: 0;
   margin-bottom: 0;
   margin-left: 12px;
@@ -225,6 +250,7 @@ const UserDetailsSelector = styled.p`
     props.display === 'userDetails'
       ? 'rgba(242, 239, 233, 1)'
       : 'rgba(242, 239, 233, 0.4)'};
+  font-weight: ${(props) => (props.display === 'userDetails' ? 300 : 200)};
 `
 const UserRecipesSelector = styled.p`
   margin: 0;
@@ -242,6 +268,7 @@ const UserRecipesSelector = styled.p`
     props.display === 'userRecipes'
       ? 'rgba(242, 239, 233, 1)'
       : 'rgba(242, 239, 233, 0.4)'};
+  font-weight: ${(props) => (props.display === 'userRecipes' ? 300 : 200)};
 `
 
 const UserDetails = styled.section`
@@ -282,6 +309,7 @@ const ButtonStyled = styled.button`
 `
 const ButtonEditStyled = styled(ButtonStyled)`
   width: 85px;
+  margin-top: 12px;
 `
 const ButtonSaveStyled = styled(ButtonStyled)`
   width: 50px;
@@ -303,4 +331,9 @@ const RecipeImage = styled.img`
   object-fit: cover;
   margin-top: 3.75px;
   margin-right: 3.75px;
+`
+
+const NoUserInput = styled.p`
+  font-weight: 200;
+  font-size: 16px;
 `

@@ -16,6 +16,7 @@ export default function App() {
   const [users, setUsers] = useState('')
   const [user, setUser] = useState('')
   const [previousPage, setPreviousPage] = useState('All')
+  const [userStatus, setUserStatus] = useState(false)
 
   useEffect(() => {
     db.collection('recipes').onSnapshot((snapshot) => {
@@ -25,7 +26,10 @@ export default function App() {
       }))
       setRecipes(recipes)
     })
-    const currentUser = localStorage.getItem('uid')
+  }, [])
+
+  useEffect(() => {
+    // const currentUser = localStorage.getItem('uid')
     // db.collection('users')
     //   .where('id', '==', currentUser)
     //   .onSnapshot((snapshot) => {
@@ -35,8 +39,8 @@ export default function App() {
     //     }))
     //     setUser(user[0])
     //     setPending(false)
-    //   })
-
+    //     console.log(user)
+    // })
     db.collection('users').onSnapshot((snapshot) => {
       const users = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -49,16 +53,16 @@ export default function App() {
       setUser(userObject)
       setPending(false)
     })
-  }, [])
+  }, [userStatus])
 
   return (
     <>
       <Switch>
         <Route path="/signin">
-          <SignIn />
+          <SignIn setUserStatus={setUserStatus} />
         </Route>
         <Route path="/signup">
-          <SignUp />
+          <SignUp setUserStatus={setUserStatus} />
         </Route>
         <PrivateRoute exact path="/">
           <RecipeList
@@ -91,6 +95,7 @@ export default function App() {
             recipes={recipes}
             setPreviousPage={setPreviousPage}
             user={user}
+            setUserStatus={setUserStatus}
           />
         </PrivateRoute>
       </Switch>

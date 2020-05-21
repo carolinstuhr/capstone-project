@@ -19,9 +19,6 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
   let favouriteCheck =
     user && user.favourites.some((favourite) => favourite === recipe.id)
 
-  console.log(favouriteCheck)
-  console.log(isFavourite)
-
   return (
     <>
       {recipe && (
@@ -130,8 +127,6 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
             setIsFavourite(false)
 
             console.log('Favourite removed!')
-            console.log(isFavourite)
-            console.log(user.favourites)
           })
           .catch((err) =>
             alert('Something went wrong. Please try again later.', err)
@@ -144,8 +139,6 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
             setIsFavourite(true)
 
             console.log('Favourite added!')
-            console.log(isFavourite)
-            console.log(user.favourites)
           })
           .catch((err) =>
             alert('Something went wrong. Please try again later.', err)
@@ -194,6 +187,7 @@ const TitleStyled = styled.h3`
   text-transform: capitalize;
   font-weight: 500;
   font-size: 20px;
+  animation-duration: 1s;
   animation-duration: 2s;
   animation-name: fadein;
   @keyframes fadein {
@@ -232,6 +226,7 @@ const DetailSelectionStyled = styled.div`
   justify-content: center;
   margin-top: 4px;
   font-weight: 300;
+  animation-duration: 1s;
   animation-duration: 2s;
   animation-name: fadein;
   @keyframes fadein {
@@ -291,17 +286,15 @@ const InstructionsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 20fr;
   font-weight: 300;
-  animation-duration: 1s;
-  animation-name: slidein;
-  @keyframes slidein {
+  animation-duration: 2s;
+  animation-name: fadein;
+  @keyframes fadein {
     from {
-      margin-left: 100%;
-      width: 100%;
+      opacity: 0;
     }
 
     to {
-      margin-left: 0%;
-      width: 100%;
+      opacity: 100;
     }
   }
 `

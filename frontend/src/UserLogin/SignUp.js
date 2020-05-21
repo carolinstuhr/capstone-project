@@ -8,7 +8,7 @@ import LoginHeader from './LoginHeader'
 import PageLayout from './PageLayout'
 import Pending from './Pending'
 
-function SignUp({ history }) {
+function SignUp({ history, setUserStatus }) {
   const [checked, setChecked] = useState(false)
   const [buttonStatus, setButtonStatus] = useState(true)
   const [userName, setUserName] = useState('')
@@ -29,7 +29,12 @@ function SignUp({ history }) {
   }
 
   if (currentUser) {
-    return <Redirect exact to="/" />
+    return (
+      <>
+        {setUserStatus(true)}
+        <Redirect exact to="/" />
+      </>
+    )
   }
 
   return (
@@ -81,6 +86,7 @@ function SignUp({ history }) {
       .createUserWithEmailAndPassword(email.value, password.value)
       .then((res) => {
         createNewUser(res.user)
+        setUserStatus(true)
         setTimeout(() => {
           setPending(false)
           history.push('/')

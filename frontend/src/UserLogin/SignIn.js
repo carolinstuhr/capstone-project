@@ -9,7 +9,7 @@ import LoginHeader from './LoginHeader'
 import Pending from './Pending'
 import PageLayout from './PageLayout'
 
-function SignIn({ history }) {
+function SignIn({ history, setUserStatus }) {
   const emailRef = useRef()
 
   useEffect(() => {
@@ -66,6 +66,7 @@ function SignIn({ history }) {
     return await auth
       .signInWithEmailAndPassword(email.value, password.value)
       .then(() => {
+        setUserStatus(true)
         setTimeout(() => {
           setPending(false)
           history.push('/')
