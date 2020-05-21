@@ -29,3 +29,6 @@ firebaseConfig.js
 #cypress
 cypress/videos
 cypress/screenshots
+
+#jest
+__snapshots__

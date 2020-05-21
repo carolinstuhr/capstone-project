@@ -13,10 +13,15 @@ export default function FavouriteRecipes({
   setPreviousPage,
   recipes,
   pending,
+  user,
 }) {
   const [userFilterInput, setUserFilterInput] = useState('')
 
-  let favouriteRecipes = recipes.filter((recipe) => recipe.isFavourite === true)
+  let favouriteRecipes = recipes.filter(
+    (recipe) => user && user.favourites.includes(recipe.id)
+  )
+
+  // let favouriteRecipes = recipes.filter((recipe) => recipe.isFavourite === true)
 
   let filteredRecipeData = favouriteRecipes.filter(
     (recipe) =>

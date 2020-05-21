@@ -94,6 +94,8 @@ function SignUp({ history }) {
       id: user.uid,
       email: user.email,
       name: userName,
+      favourites: [],
+      details: {},
     })
   }
 

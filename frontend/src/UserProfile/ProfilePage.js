@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { db, auth } from '../firebaseConfig'
 import CreateHeader from '../CreateRecipe/CreateHeader'
 import styled from 'styled-components/macro'
 import LogoutButton from './LogoutButton'
 import GridArea from '../GridArea'
 import ChefsHat from '../images/chefs-hat.png'
+import { Link } from 'react-router-dom'
 
-export default function ProfilePage({ logout, recipes }) {
-  const [users, setUser] = useState('')
-  const [display, setDisplay] = useState('userDetails')
+export default function ProfilePage({
+  recipes,
+  setPreviousPage,
+  user,
+  setCurrentUser,
+}) {
+  const [display, setDisplay] = useState('userRecipes')
 
   const [editProfile, setEditProfile] = useState(false)
 
@@ -18,22 +23,8 @@ export default function ProfilePage({ logout, recipes }) {
     restaurant: '',
   })
 
-  const currentUser = localStorage.getItem('uid')
-
-  useEffect(() => {
-    db.collection('users').onSnapshot((snapshot) => {
-      const users = snapshot.docs.map((doc) => ({
-        docId: doc.id,
-        ...doc.data(),
-      }))
-      setUser(users)
-    })
-  }, [])
-
-  let user = users && users.filter((user) => user.id === currentUser)[0]
-
   let userRecipes = recipes.filter(
-    (recipe) => recipe.userId && recipe.userId === currentUser
+    (recipe) => recipe.userId && recipe.userId === user.id
   )
 
   return (
@@ -45,22 +36,41 @@ export default function ProfilePage({ logout, recipes }) {
             <UserImage src={ChefsHat} alt="" />
             <UserName>{user.name}</UserName>
             <UserInfo>created recipes: {userRecipes.length}</UserInfo>
-            <UserInfo>liked recipes</UserInfo>
+            <UserInfo>liked recipes: {user.favourites.length}</UserInfo>
           </TopSection>
           <DisplaySelection>
-            <UserDetailsSelector
-              onClick={() => setDisplay('userDetails')}
-              display={display}
-            >
-              UserDetails
-            </UserDetailsSelector>
             <UserRecipesSelector
               onClick={() => setDisplay('userRecipes')}
               display={display}
             >
               CreatedRecipes
             </UserRecipesSelector>
+            <UserDetailsSelector
+              onClick={() => setDisplay('userDetails')}
+              display={display}
+            >
+              UserDetails
+            </UserDetailsSelector>
           </DisplaySelection>
+          {display === 'userRecipes' && (
+            <>
+              {userRecipes && (
+                <ImageSection>
+                  {userRecipes.map((recipe) => (
+                    <>
+                      <Link to={`/recipe/${recipe.id}`}>
+                        <RecipeImage
+                          src={recipe.image}
+                          alt=""
+                          onClick={() => setPreviousPage('Profile')}
+                        />
+                      </Link>
+                    </>
+                  ))}
+                </ImageSection>
+              )}
+            </>
+          )}
           {display === 'userDetails' && (
             <UserDetails>
               {editProfile && (
@@ -119,20 +129,6 @@ export default function ProfilePage({ logout, recipes }) {
               )}
             </UserDetails>
           )}
-          {console.log(display)}
-          {display === 'userRecipes' && (
-            <>
-              {userRecipes && (
-                <>
-                  {userRecipes.map((recipe) => (
-                    <>
-                      <RecipeImage src={recipe.image} alt="" />
-                    </>
-                  ))}
-                </>
-              )}
-            </>
-          )}
           <LogoutButton logoutUser={logoutUser} />
         </main>
       )}
@@ -165,7 +161,8 @@ export default function ProfilePage({ logout, recipes }) {
     auth
       .signOut()
       .then(() => {
-        logout()
+        localStorage.removeItem('uid')
+        setCurrentUser(null)
       })
       .catch((err) => console.log(err))
   }
@@ -177,6 +174,8 @@ const TopSection = styled.section`
   grid-template-rows: 1fr 1fr 1fr;
   align-content: center;
   padding-left: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 `
 
 const UserImage = styled.img`
@@ -217,6 +216,7 @@ const UserDetailsSelector = styled.p`
   width: 50%;
   text-align: center;
   border-right: 0.5px solid;
+  cursor: default;
   color: ${(props) =>
     props.display === 'userDetails'
       ? 'rgba(81, 79, 75, 1)'
@@ -233,6 +233,7 @@ const UserRecipesSelector = styled.p`
   width: 50%;
   text-align: center;
   border-left: 0.5px solid;
+  cursor: default;
   color: ${(props) =>
     props.display === 'userRecipes'
       ? 'rgba(81, 79, 75, 1)'
@@ -292,8 +293,14 @@ const ButtonCancelStyled = styled(ButtonStyled)`
   margin-left: 4px;
   padding: 2px;
 `
+const ImageSection = styled.section`
+  margin-left: 3.75px;
+`
+
 const RecipeImage = styled.img`
-  height: 125px;
-  width: 125px;
+  height: 120px;
+  width: 120px;
   object-fit: cover;
+  margin-top: 3.75px;
+  margin-right: 3.75px;
 `
