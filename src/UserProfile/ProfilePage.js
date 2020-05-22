@@ -13,7 +13,7 @@ export default function ProfilePage({
   user,
   setUserStatus,
 }) {
-  const [display, setDisplay] = useState('userRecipes')
+  const [displayElement, setDisplayElement] = useState('userRecipes')
 
   const [editProfile, setEditProfile] = useState(false)
 
@@ -40,36 +40,36 @@ export default function ProfilePage({
           </TopSection>
           <DisplaySelection>
             <UserRecipesSelector
-              onClick={() => setDisplay('userRecipes')}
-              display={display}
+              onClick={() => setDisplayElement('userRecipes')}
+              displayElement={displayElement}
             >
               CreatedRecipes
             </UserRecipesSelector>
             <UserDetailsSelector
-              onClick={() => setDisplay('userDetails')}
-              display={display}
+              onClick={() => setDisplayElement('userDetails')}
+              displayElement={displayElement}
             >
               UserDetails
             </UserDetailsSelector>
           </DisplaySelection>
-          {display === 'userRecipes' && (
+          {displayElement === 'userRecipes' && (
             <>
               {userRecipes && (
                 <ImageSection>
                   {userRecipes.map((recipe) => (
-                    <LinkStyled to={`/recipe/${recipe.id}`}>
+                    <Link to={`/recipe/${recipe.id}`}>
                       <RecipeImage
                         src={recipe.image}
                         alt=""
                         onClick={() => setPreviousPage('Profile')}
                       />
-                    </LinkStyled>
+                    </Link>
                   ))}
                 </ImageSection>
               )}
             </>
           )}
-          {display === 'userDetails' && (
+          {displayElement === 'userDetails' && (
             <UserDetails>
               {editProfile && (
                 <>
@@ -229,42 +229,36 @@ const DisplaySelection = styled.section`
   margin-top: 22px;
   display: flex;
   justify-content: space-around;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
+  border-top: 1px solid #514f4b;
+  border-bottom: 1px solid #514f4b;
   margin-bottom: 4px;
 `
-const UserDetailsSelector = styled.p`
+const ParagraphStyled = styled.p`
   margin: 0;
   padding-top: 4px;
   padding-bottom: 4px;
   width: 50%;
   text-align: center;
-  border-right: 0.5px solid;
   cursor: default;
+`
+const UserDetailsSelector = styled(ParagraphStyled)`
   color: ${(props) =>
-    props.display === 'userDetails'
+    props.displayElement === 'userDetails'
       ? 'rgba(81, 79, 75, 1)'
       : 'rgba(81, 79, 75, 0.4)'};
   background: ${(props) =>
-    props.display === 'userDetails'
+    props.displayElement === 'userDetails'
       ? 'rgba(242, 239, 233, 1)'
       : 'rgba(242, 239, 233, 0.4)'};
   font-weight: ${(props) => (props.display === 'userDetails' ? 300 : 200)};
 `
-const UserRecipesSelector = styled.p`
-  margin: 0;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  width: 50%;
-  text-align: center;
-  border-left: 0.5px solid;
-  cursor: default;
+const UserRecipesSelector = styled(ParagraphStyled)`
   color: ${(props) =>
-    props.display === 'userRecipes'
+    props.displayElement === 'userRecipes'
       ? 'rgba(81, 79, 75, 1)'
       : 'rgba(81, 79, 75, 0.4)'};
   background: ${(props) =>
-    props.display === 'userRecipes'
+    props.displayElement === 'userRecipes'
       ? 'rgba(242, 239, 233, 1)'
       : 'rgba(242, 239, 233, 0.4)'};
   font-weight: ${(props) => (props.display === 'userRecipes' ? 300 : 200)};
@@ -305,18 +299,16 @@ const ButtonStyled = styled.button`
   font-size: 14px;
   font-weight: 200;
   background: rgba(242, 239, 233, 1);
+  margin-top: 12px;
 `
 const ButtonEditStyled = styled(ButtonStyled)`
   width: 85px;
-  margin-top: 12px;
 `
 const ButtonSaveStyled = styled(ButtonStyled)`
   width: 50px;
-  margin-top: 12px;
 `
 const ButtonCancelStyled = styled(ButtonStyled)`
   width: 50px;
-  margin-top: 12px;
   margin-left: 4px;
   padding: 2px;
 `
@@ -334,10 +326,4 @@ const RecipeImage = styled.img`
 const NoUserInput = styled.p`
   font-weight: 200;
   font-size: 16px;
-`
-
-const LinkStyled = styled(Link)`
-  display: inline-block;
-  padding: 0;
-  height: 0;
 `

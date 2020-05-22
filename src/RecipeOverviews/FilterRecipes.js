@@ -8,16 +8,13 @@ export default function FilterRecipes({ setUserInput }) {
       <SearchSection>
         <InputFieldStyled
           type="search"
-          onChange={(event) => filterResults(event)}
+          onChange={(event) => setUserInput(event.target.value)}
           placeholder="Search for recipes..."
         />
         <SearchIconStyled src={SearchIcon} alt="maginifier" />
       </SearchSection>
     </SectionCenter>
   )
-  function filterResults(event) {
-    setUserInput(event.target.value)
-  }
 }
 const SectionCenter = styled.section`
   display: grid;

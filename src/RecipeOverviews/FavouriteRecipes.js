@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import GridArea from '../GridArea'
 import Header from './Header'
 import LoadingLogo from './LoadingLogo'
+import { filterUserRecipes } from '../services'
 
 export default function FavouriteRecipes({
   setPreviousPage,
@@ -20,14 +21,7 @@ export default function FavouriteRecipes({
   let favouriteRecipes = recipes.filter(
     (recipe) => user && user.favourites.includes(recipe.id)
   )
-
-  const userInput = userFilterInput.toLowerCase()
-  let filteredRecipeData = favouriteRecipes.filter((recipe) => {
-    return (
-      recipe.title.toLowerCase().includes(userInput) ||
-      recipe.tags.some((tag) => tag.toLowerCase().includes(userInput))
-    )
-  })
+  let filteredRecipeData = filterUserRecipes(userFilterInput, favouriteRecipes)
 
   return (
     <GridArea>

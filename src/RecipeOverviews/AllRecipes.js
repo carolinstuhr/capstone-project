@@ -8,17 +8,12 @@ import { Link } from 'react-router-dom'
 import GridArea from '../GridArea'
 import Header from './Header'
 import LoadingLogo from './LoadingLogo'
+import { filterUserRecipes } from '../services'
 
 export default function AllRecipes({ setPreviousPage, recipes, pending }) {
   const [userFilterInput, setUserFilterInput] = useState('')
+  let filteredRecipeData = filterUserRecipes(userFilterInput, recipes)
 
-  const userInput = userFilterInput.toLowerCase()
-  let filteredRecipeData = recipes.filter((recipe) => {
-    return (
-      recipe.title.toLowerCase().includes(userInput) ||
-      recipe.tags.some((tag) => tag.toLowerCase().includes(userInput))
-    )
-  })
   return (
     <GridArea>
       <Header>recipes</Header>

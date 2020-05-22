@@ -24,7 +24,12 @@ function SignIn({ history, setUserStatus }) {
   }
 
   if (currentUser) {
-    return <Redirect exact to="/" />
+    return (
+      <>
+        {setUserStatus(true)}
+        <Redirect exact to="/" />
+      </>
+    )
   }
 
   return (
@@ -50,7 +55,9 @@ function SignIn({ history, setUserStatus }) {
         />
         <LoginButton>Login</LoginButton>
       </FormStyled>
-      <ParagraphStyled>Forgot your password?</ParagraphStyled>
+      <ParagraphStyled onClick={resetUserPassword}>
+        Forgot your password?
+      </ParagraphStyled>
       <ParagraphStyled>
         New to get cooking? <Link to="/signup">Sign-up</Link>
       </ParagraphStyled>
@@ -72,6 +79,11 @@ function SignIn({ history, setUserStatus }) {
         alert(err)
         setPending(false)
       })
+  }
+
+  function resetUserPassword() {
+    alert('An email was sent.')
+    auth.sendPasswordResetEmail().then(() => {})
   }
 }
 const FormStyled = styled.form`
