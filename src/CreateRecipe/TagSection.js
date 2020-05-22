@@ -31,11 +31,11 @@ export default function TagSection({ tags, setTags }) {
 const TagsInput = styled.input`
   font-size: 14px;
   padding-left: 4px;
-  color: #514f4b;
-  background: rgba(242, 239, 233, 0.5);
+  color: var(--primary);
+  background: var(--input-background);
   ::placeholder {
     font-style: italic;
-    color: #a09e9a;
+    color: var(--tertiary);
   }
   display: block;
   width: 200px;

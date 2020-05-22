@@ -152,7 +152,7 @@ const ImageSectionStyled = styled.section`
 `
 
 const ArrowIconStyled = styled.img`
-  background: rgba(242, 239, 233, 0.6);
+  background: var(--primary-backgroundopaque);
   border-radius: 4px;
   height: 32px;
   width: 32px;
@@ -173,7 +173,7 @@ const RecipeInfoSectionStyled = styled.section`
   position: relative;
   bottom: 12px;
   padding: 12px;
-  background: rgba(242, 239, 233, 1);
+  background: var(--primary-background);
 `
 
 const TitleStyled = styled.h3`
@@ -242,7 +242,7 @@ const IngredientsSelectionSpan = styled.span`
   cursor: default;
   background: ${(props) =>
     props.recipeDetails === 'ingredients'
-      ? 'rgba(221, 216, 206, 1)'
+      ? 'var(--secondary-background)'
       : 'rgba(242, 239, 233, 0.6)'};
 `
 
@@ -253,7 +253,7 @@ const InstructionsSelectionSpan = styled.span`
   cursor: default;
   background: ${(props) =>
     props.recipeDetails === 'instructions'
-      ? 'rgba(221, 216, 206, 1)'
+      ? 'var(--secondary-background)'
       : 'rgba(242, 239, 233, 0.6)'};
 `
 

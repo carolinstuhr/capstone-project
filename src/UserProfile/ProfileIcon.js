@@ -14,11 +14,11 @@ const ProfileImage = styled(FaRegUser)`
   height: 36px;
   width: 36px;
   z-index: 2;
-  color: #514f4b;
+  color: var(--primary);
   position: fixed;
   top: 1%;
   left: 84%;
   padding: 6px;
-  border: 1px solid #514f4b;
+  border: 1px solid var(--primary);
   border-radius: 50%;
 `

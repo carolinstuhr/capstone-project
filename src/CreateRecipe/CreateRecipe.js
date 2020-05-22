@@ -29,7 +29,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
   const allInputs = { imageUrl: '' }
   const [imageAsUrl, setImageAsUrl] = useState(allInputs)
 
-  const [buttonStatus, setButtonStatus] = useState(true)
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true)
 
   const [recipeSaved, setRecipeSaved] = useState(false)
   if (recipeSaved) {
@@ -113,7 +113,10 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           />
           <UploadImage setImageAsUrl={setImageAsUrl} imageAsUrl={imageAsUrl} />
           <ButtonWrapper>
-            <ButtonStyled disabled={buttonStatus} buttonStatus={buttonStatus}>
+            <ButtonStyled
+              disabled={isButtonDisabled}
+              isButtonDisabled={isButtonDisabled}
+            >
               Submit
             </ButtonStyled>
           </ButtonWrapper>
@@ -157,7 +160,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
 
   function storeInput(event) {
     setFormData({ ...formData, [event.target.name]: event.target.value })
-    setButtonStatus(false)
+    setIsButtonDisabled(false)
   }
 }
 
@@ -171,8 +174,8 @@ const LabelStyled = styled.label`
 const InputStyled = styled.input`
   font-size: 14px;
   padding-left: 4px;
-  color: #514f4b;
-  background: rgba(242, 239, 233, 0.5);
+  color: var(--primary);
+  background: var(--input-background);
 `
 
 const TitleInput = styled(InputStyled)`
@@ -238,7 +241,7 @@ const ButtonStyled = styled.button`
   padding: 6px 8px;
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.8);
-  color: rgba(242, 239, 233, 1);
+  color: var(--primary-background);
   background: ${(props) =>
-    props.buttonStatus ? 'rgba(81, 79, 75, 0.7)' : 'rgba(81, 79, 75, 1)'};
+    props.isButtonDisabled ? 'rgba(81, 79, 75, 0.7)' : 'var(--primary)'};
 `

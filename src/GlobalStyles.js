@@ -7,7 +7,7 @@ export default createGlobalStyle`
 
 body {
     margin: 0; 
-    color: #514f4b;
+    color: var(--primary);
     font-family: 'Josefin Sans', sans-serif;
 }
 h1 {
@@ -20,7 +20,7 @@ h1 {
     font-weight: 400;
 }
 header {
-    background: rgba(242, 239, 233, 1);
+    background: var(--primary-background)
 }
 
 main {
@@ -31,14 +31,24 @@ input {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 200;
     border-radius: 4px;
-    border: 1px solid #a09e9a;
+    border: 1px solid var(--tertiary);
     ::placeholder {
         font-style: italic;
-        color: #a09e9a;
+        color: var(--tertiary);
       }
 }
 button {
     font-family: 'Josefin Sans', sans-serif;
 }
 
+:root {
+    --primary: rgba(81, 79, 75, 1);
+    --primary-opaque: rgba(81, 79, 75, 0.4);
+    --primary-background: rgba(242, 239, 233, 1);
+    --primary-backgroundopaque: rgba(242, 239, 233, 0.6);
+    --secondary: rgba(105, 102, 96, 1);
+    --secondary-background: rgba(221, 216, 206, 1);
+    --input-background: rgba(242, 239, 233, 0.5);
+    --tertiary: rgba(160, 158, 154, 1);
+    }
 `

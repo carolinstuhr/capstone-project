@@ -63,10 +63,10 @@ const InputStyled = styled.input`
   font-size: 14px;
   padding-left: 4px;
   border-radius: 4px;
-  border: 1px solid #a09e9a;
-  color: #514f4b;
+  border: 1px solid var(--tertiary);
+  color: var(--primary);
   font-family: 'Josefin Sans', sans-serif;
-  background: rgba(242, 239, 233, 0.5);
+  background: var(--input-background);
 `
 
 const IngredientsAmountInput = styled(InputStyled)`

@@ -10,7 +10,7 @@ export default styled(FaHeart)`
   height: 32px;
   width: 32px;
   padding: 4px;
-  background: rgba(242, 239, 233, 0.6);
+  background: var(--primary-backgroundopaque);
   border-radius: 4px;
   color: ${(props) => (props.isFavourite ? '#c82a1a' : 'white')};
   transition-duration: 0.8s;

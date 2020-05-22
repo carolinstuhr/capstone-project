@@ -55,9 +55,9 @@ function SignIn({ history, setUserStatus }) {
         />
         <LoginButton>Login</LoginButton>
       </FormStyled>
-      <ParagraphStyled onClick={resetUserPassword}>
+      <PasswordParagraph onClick={resetUserPassword}>
         Forgot your password?
-      </ParagraphStyled>
+      </PasswordParagraph>
       <ParagraphStyled>
         New to get cooking? <Link to="/signup">Sign-up</Link>
       </ParagraphStyled>
@@ -113,6 +113,12 @@ const ParagraphStyled = styled.p`
   text-align: center;
   font-weight: 300;
   font-size: 14px;
+`
+
+const PasswordParagraph = styled(ParagraphStyled)`
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
 `
 
 export default withRouter(SignIn)

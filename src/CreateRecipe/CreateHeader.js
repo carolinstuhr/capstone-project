@@ -21,5 +21,5 @@ const ArrowIconStyled = styled(RiArrowLeftSLine)`
   position: absolute;
   left: 12px;
   top: 4px;
-  color: #514f4b;
+  color: var(--primary);
 `

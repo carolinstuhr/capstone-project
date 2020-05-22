@@ -229,8 +229,8 @@ const DisplaySelection = styled.section`
   margin-top: 22px;
   display: flex;
   justify-content: space-around;
-  border-top: 1px solid #514f4b;
-  border-bottom: 1px solid #514f4b;
+  border-top: 1px solid var(--primary);
+  border-bottom: 1px solid var(--primary);
   margin-bottom: 4px;
 `
 const ParagraphStyled = styled.p`
@@ -244,22 +244,22 @@ const ParagraphStyled = styled.p`
 const UserDetailsSelector = styled(ParagraphStyled)`
   color: ${(props) =>
     props.displayElement === 'userDetails'
-      ? 'rgba(81, 79, 75, 1)'
+      ? 'var(--primary)'
       : 'rgba(81, 79, 75, 0.4)'};
   background: ${(props) =>
     props.displayElement === 'userDetails'
-      ? 'rgba(242, 239, 233, 1)'
+      ? 'var(--primary-background)'
       : 'rgba(242, 239, 233, 0.4)'};
   font-weight: ${(props) => (props.display === 'userDetails' ? 300 : 200)};
 `
 const UserRecipesSelector = styled(ParagraphStyled)`
   color: ${(props) =>
     props.displayElement === 'userRecipes'
-      ? 'rgba(81, 79, 75, 1)'
+      ? 'var(--primary)'
       : 'rgba(81, 79, 75, 0.4)'};
   background: ${(props) =>
     props.displayElement === 'userRecipes'
-      ? 'rgba(242, 239, 233, 1)'
+      ? 'var(--primary-background)'
       : 'rgba(242, 239, 233, 0.4)'};
   font-weight: ${(props) => (props.display === 'userRecipes' ? 300 : 200)};
 `
@@ -298,7 +298,7 @@ const ButtonStyled = styled.button`
   border-radius: 4px;
   font-size: 14px;
   font-weight: 200;
-  background: rgba(242, 239, 233, 1);
+  background: var(--primary-background);
   margin-top: 12px;
 `
 const ButtonEditStyled = styled(ButtonStyled)`

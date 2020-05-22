@@ -5,11 +5,11 @@ export default styled(RiAddLine)`
   height: 36px;
   width: 36px;
   z-index: 2;
-  color: #514f4b;
+  color: var(--primary);
   position: fixed;
   top: 92%;
   left: 84%;
 
-  border: 2px solid #514f4b;
+  border: 2px solid var(--primary);
   border-radius: 24px;
 `

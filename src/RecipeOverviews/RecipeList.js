@@ -70,7 +70,7 @@ const TitleStyled = styled.h3`
 
 const LinkStyled = styled(Link)`
   text-decoration: none;
-  color: #514f4b;
+  color: var(--primary);
 `
 
 const TagSectionStyled = styled.section`
@@ -82,10 +82,10 @@ const TagsStyled = styled.span`
   font-weight: 200;
   margin-right: 8px;
   margin-top: 4px;
-  background: #f2efe9;
+  background: var(--primary-background);
   padding: 6px;
   border-radius: 12px;
   font-size: 16px;
   text-transform: lowercase;
-  color: #696660;
+  color: var(--secondary);
 `

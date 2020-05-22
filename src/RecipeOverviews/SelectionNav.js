@@ -23,7 +23,7 @@ const SelectionSection = styled.section`
 `
 
 const NavItem = styled(NavLink)`
-  color: #514f4b;
+  color: var(--primary);
   text-decoration: none;
   &.selected {
     text-decoration: underline;
