@@ -57,15 +57,13 @@ export default function ProfilePage({
               {userRecipes && (
                 <ImageSection>
                   {userRecipes.map((recipe) => (
-                    <>
-                      <Link to={`/recipe/${recipe.id}`}>
-                        <RecipeImage
-                          src={recipe.image}
-                          alt=""
-                          onClick={() => setPreviousPage('Profile')}
-                        />
-                      </Link>
-                    </>
+                    <LinkStyled to={`/recipe/${recipe.id}`}>
+                      <RecipeImage
+                        src={recipe.image}
+                        alt=""
+                        onClick={() => setPreviousPage('Profile')}
+                      />
+                    </LinkStyled>
                   ))}
                 </ImageSection>
               )}
@@ -233,6 +231,7 @@ const DisplaySelection = styled.section`
   justify-content: space-around;
   border-top: 1px solid;
   border-bottom: 1px solid;
+  margin-bottom: 4px;
 `
 const UserDetailsSelector = styled.p`
   margin: 0;
@@ -329,11 +328,16 @@ const RecipeImage = styled.img`
   height: 120px;
   width: 120px;
   object-fit: cover;
-  margin-top: 3.75px;
   margin-right: 3.75px;
 `
 
 const NoUserInput = styled.p`
   font-weight: 200;
   font-size: 16px;
+`
+
+const LinkStyled = styled(Link)`
+  display: inline-block;
+  padding: 0;
+  height: 0;
 `

@@ -24,17 +24,22 @@ const LoadingLogo = styled.img`
   height: 50px;
   width: 50px;
   margin-top: 40%;
-  margin-left: 45%;
+  margin-left: 43%;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
 
-  animation-duration: 3s;
-  animation-iteration-count: 2;
-  animation-name: fadein;
-  @keyframes fadein {
+  animation-name: bounce;
+  animation-timing-function: linear;
+
+  @keyframes bounce {
     0% {
-      opacity: 0;
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(20px);
     }
     100% {
-      opacity: 1;
+      transform: translateX(0);
     }
   }
 `

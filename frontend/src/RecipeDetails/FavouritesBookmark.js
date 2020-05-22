@@ -9,7 +9,6 @@ export default function FavouritesBookmark({
 }) {
   return (
     <>
-      {console.log(isFavourite)}
       <HeartStyled
         onClick={toggleFavourites}
         isFavourite={isFavourite || favouriteCheck}

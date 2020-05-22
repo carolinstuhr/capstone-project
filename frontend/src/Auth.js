@@ -46,6 +46,17 @@ const LoadingLogo = styled.img`
   position: absolute;
   top: 40%;
   right: 40%;
+  animation-duration: 1s;
+  animation-name: fadein;
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 100;
+    }
+  }
 `
 
 export const AuthConsumer = AuthContext.Consumer

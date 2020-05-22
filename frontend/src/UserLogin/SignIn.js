@@ -70,7 +70,7 @@ function SignIn({ history, setUserStatus }) {
         setTimeout(() => {
           setPending(false)
           history.push('/')
-        }, 2000)
+        }, 1000)
       })
       .catch((err) => {
         alert(err)

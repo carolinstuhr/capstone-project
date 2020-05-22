@@ -21,8 +21,6 @@ export default function FavouriteRecipes({
     (recipe) => user && user.favourites.includes(recipe.id)
   )
 
-  // let favouriteRecipes = recipes.filter((recipe) => recipe.isFavourite === true)
-
   let filteredRecipeData = favouriteRecipes.filter(
     (recipe) =>
       recipe.title.toLowerCase().includes(userFilterInput.toLowerCase()) ||
