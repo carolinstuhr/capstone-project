@@ -67,10 +67,8 @@ function SignIn({ history, setUserStatus }) {
       .signInWithEmailAndPassword(email.value, password.value)
       .then(() => {
         setUserStatus(true)
-        setTimeout(() => {
-          setPending(false)
-          history.push('/')
-        }, 1000)
+        setPending(false)
+        history.push('/')
       })
       .catch((err) => {
         alert(err)

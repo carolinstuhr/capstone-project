@@ -56,49 +56,47 @@ export default function App() {
   }, [userStatus])
 
   return (
-    <>
-      <Switch>
-        <Route path="/signin">
-          <SignIn setUserStatus={setUserStatus} />
-        </Route>
-        <Route path="/signup">
-          <SignUp setUserStatus={setUserStatus} />
-        </Route>
-        <PrivateRoute exact path="/">
-          <RecipeList
-            setPreviousPage={setPreviousPage}
-            recipes={recipes}
-            pending={pending}
-          />
-        </PrivateRoute>
-        <PrivateRoute path="/favourites">
-          <FavouriteRecipes
-            setPreviousPage={setPreviousPage}
-            recipes={recipes}
-            pending={pending}
-            user={user}
-          />
-        </PrivateRoute>
-        <PrivateRoute path="/recipe/:id">
-          <RecipeDetails
-            recipes={recipes}
-            setRecipes={setRecipes}
-            previousPage={previousPage}
-            user={user}
-          />
-        </PrivateRoute>
-        <PrivateRoute path="/create">
-          <CreateRecipe setRecipes={setRecipes} recipes={recipes} />
-        </PrivateRoute>
-        <PrivateRoute path="/profile">
-          <ProfilePage
-            recipes={recipes}
-            setPreviousPage={setPreviousPage}
-            user={user}
-            setUserStatus={setUserStatus}
-          />
-        </PrivateRoute>
-      </Switch>
-    </>
+    <Switch>
+      <Route path="/signin">
+        <SignIn setUserStatus={setUserStatus} />
+      </Route>
+      <Route path="/signup">
+        <SignUp setUserStatus={setUserStatus} />
+      </Route>
+      <PrivateRoute exact path="/">
+        <RecipeList
+          setPreviousPage={setPreviousPage}
+          recipes={recipes}
+          pending={pending}
+        />
+      </PrivateRoute>
+      <PrivateRoute path="/favourites">
+        <FavouriteRecipes
+          setPreviousPage={setPreviousPage}
+          recipes={recipes}
+          pending={pending}
+          user={user}
+        />
+      </PrivateRoute>
+      <PrivateRoute path="/recipe/:id">
+        <RecipeDetails
+          recipes={recipes}
+          setRecipes={setRecipes}
+          previousPage={previousPage}
+          user={user}
+        />
+      </PrivateRoute>
+      <PrivateRoute path="/create">
+        <CreateRecipe setRecipes={setRecipes} recipes={recipes} />
+      </PrivateRoute>
+      <PrivateRoute path="/profile">
+        <ProfilePage
+          recipes={recipes}
+          setPreviousPage={setPreviousPage}
+          user={user}
+          setUserStatus={setUserStatus}
+        />
+      </PrivateRoute>
+    </Switch>
   )
 }

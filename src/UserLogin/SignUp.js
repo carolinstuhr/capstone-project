@@ -87,10 +87,8 @@ function SignUp({ history, setUserStatus }) {
       .then((res) => {
         createNewUser(res.user)
         setUserStatus(true)
-        setTimeout(() => {
-          setPending(false)
-          history.push('/')
-        }, 1000)
+        setPending(false)
+        history.push('/')
       })
       .catch((err) => alert(err))
   }
