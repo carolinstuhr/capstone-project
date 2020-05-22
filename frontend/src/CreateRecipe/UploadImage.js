@@ -4,6 +4,7 @@ import { storage } from '../firebaseConfig'
 
 export default function UploadImage({ setImageAsUrl, imageAsUrl }) {
   const [imageAsFile, setImageAsFile] = useState('')
+  const [uploadActive, setUploadActive] = useState(false)
 
   return (
     <ImageUploadSection>
@@ -14,16 +15,20 @@ export default function UploadImage({ setImageAsUrl, imageAsUrl }) {
         onChange={handleImageAsFile}
       />
       <UploadImageLabel htmlFor="imageUpload">Browse...</UploadImageLabel>
-      {imageAsUrl.imageUrl === '' && (
+      {imageAsUrl.imageUrl === '' && uploadActive === false && (
         <StyledParagraph>Please upload your image</StyledParagraph>
       )}
-      {imageAsUrl.imageUrl !== '' && (
+      {imageAsUrl.imageUrl !== '' && uploadActive === false && (
         <StyledParagraph>{`Image ${imageAsFile.name} successfully uploaded`}</StyledParagraph>
+      )}
+      {uploadActive && (
+        <StyledParagraph>{`Uploading image ...`}</StyledParagraph>
       )}
     </ImageUploadSection>
   )
 
   function handleImageAsFile(event) {
+    setUploadActive(true)
     const image = event.target.files[0]
     setImageAsFile(image)
     const uploadTask = storage.ref(`images/${image.name}`).put(image)
@@ -43,6 +48,7 @@ export default function UploadImage({ setImageAsUrl, imageAsUrl }) {
           .getDownloadURL()
           .then((url) => {
             setImageAsUrl({ imageUrl: url })
+            setUploadActive(false)
           })
       }
     )
