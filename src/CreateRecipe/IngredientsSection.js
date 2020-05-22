@@ -40,7 +40,7 @@ export default function IngredientsSection({ ingredients, setIngredients }) {
           />
         </section>
       ))}
-      <AdditionalLineButton addAdditionalLine={addIngredientsLine} />
+      <AdditionalLineButton onClick={addIngredientsLine} />
     </>
   )
   function storeInput(index) {

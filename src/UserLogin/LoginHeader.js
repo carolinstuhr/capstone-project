@@ -1,20 +1,17 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import ChefsHat from '../images/chefs-hat.png'
+import chefsHat from '../images/chefs-hat.png'
 
 export default function LoginHeader({ children }) {
   return (
-    <HeaderStyled>
-      <LogoLeftStyled src={ChefsHat} alt="logo" />
+    <header>
+      <LogoLeftStyled src={chefsHat} alt="" />
       <NameStyled>get cooking</NameStyled>
-      <LogoRightStyled src={ChefsHat} alt="logo" />
-      <TtileStyled>{children}</TtileStyled>
-    </HeaderStyled>
+      <LogoRightStyled src={chefsHat} alt="" />
+      <TitleStyled>{children}</TitleStyled>
+    </header>
   )
 }
-const HeaderStyled = styled.header`
-  positions: relative;
-`
 
 const NameStyled = styled.h1`
   font-weight: 600;
@@ -34,7 +31,7 @@ const LogoLeftStyled = styled(LogoStyled)`
 const LogoRightStyled = styled(LogoStyled)`
   right: 15%;
 `
-const TtileStyled = styled.h4`
+const TitleStyled = styled.h4`
   font-family: 'Nanum Myeongjo', serif;
   font-weight: 300;
   font-size: 28px;

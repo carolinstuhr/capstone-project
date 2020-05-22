@@ -1,6 +1,6 @@
 import React from 'react'
 import LoginHeader from './LoginHeader'
-import ChefsHat from '../images/chefs-hat.png'
+import chefsHat from '../images/chefs-hat.png'
 import styled from 'styled-components/macro'
 import PageLayout from './PageLayout'
 
@@ -10,7 +10,7 @@ export default function Pending({ children }) {
       <LoginHeader></LoginHeader>
       <PendingHeading>{children}</PendingHeading>
       <Wrapper>
-        <LoadingLogo src={ChefsHat} alt="loading" />
+        <LoadingLogo src={chefsHat} alt="loading" />
       </Wrapper>
     </PageLayout>
   )

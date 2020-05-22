@@ -12,16 +12,13 @@ import LoadingLogo from './LoadingLogo'
 export default function AllRecipes({ setPreviousPage, recipes, pending }) {
   const [userFilterInput, setUserFilterInput] = useState('')
 
-  let filteredRecipeData = recipes.filter(
-    (recipe) =>
-      recipe.title.toLowerCase().includes(userFilterInput.toLowerCase()) ||
-      (recipe.tags[0] &&
-        recipe.tags[0].toLowerCase().includes(userFilterInput.toLowerCase())) ||
-      (recipe.tags[1] &&
-        recipe.tags[1].toLowerCase().includes(userFilterInput.toLowerCase())) ||
-      (recipe.tags[2] &&
-        recipe.tags[2].toLowerCase().includes(userFilterInput.toLowerCase()))
-  )
+  const userInput = userFilterInput.toLowerCase()
+  let filteredRecipeData = recipes.filter((recipe) => {
+    return (
+      recipe.title.toLowerCase().includes(userInput) ||
+      recipe.tags.some((tag) => tag.toLowerCase().includes(userInput))
+    )
+  })
   return (
     <GridArea>
       <Header>recipes</Header>

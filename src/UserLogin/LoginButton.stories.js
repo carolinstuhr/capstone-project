@@ -8,10 +8,10 @@ export default {
   decorators: [withKnobs],
 }
 
-export const signIn = () => (
+export const active = () => (
   <LoginButton>{text('Children', 'sign in')}</LoginButton>
 )
 
-export const register = () => (
-  <LoginButton>{text('Children', 'register')}</LoginButton>
+export const disabled = () => (
+  <LoginButton disabled={true}>{text('Children', 'register')}</LoginButton>
 )

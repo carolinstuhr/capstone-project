@@ -21,16 +21,13 @@ export default function FavouriteRecipes({
     (recipe) => user && user.favourites.includes(recipe.id)
   )
 
-  let filteredRecipeData = favouriteRecipes.filter(
-    (recipe) =>
-      recipe.title.toLowerCase().includes(userFilterInput.toLowerCase()) ||
-      (recipe.tags[0] &&
-        recipe.tags[0].toLowerCase().includes(userFilterInput.toLowerCase())) ||
-      (recipe.tags[1] &&
-        recipe.tags[1].toLowerCase().includes(userFilterInput.toLowerCase())) ||
-      (recipe.tags[2] &&
-        recipe.tags[2].toLowerCase().includes(userFilterInput.toLowerCase()))
-  )
+  const userInput = userFilterInput.toLowerCase()
+  let filteredRecipeData = favouriteRecipes.filter((recipe) => {
+    return (
+      recipe.title.toLowerCase().includes(userInput) ||
+      recipe.tags.some((tag) => tag.toLowerCase().includes(userInput))
+    )
+  })
 
   return (
     <GridArea>

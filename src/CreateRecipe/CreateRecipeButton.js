@@ -1,12 +1,7 @@
-import React from 'react'
 import { RiAddLine } from 'react-icons/ri'
 import styled from 'styled-components/macro'
 
-export default function CreateRecipeButton() {
-  return <IconStyled />
-}
-
-const IconStyled = styled(RiAddLine)`
+export default styled(RiAddLine)`
   height: 36px;
   width: 36px;
   z-index: 2;

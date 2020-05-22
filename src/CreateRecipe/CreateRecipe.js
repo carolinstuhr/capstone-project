@@ -32,7 +32,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
   const [buttonStatus, setButtonStatus] = useState(true)
 
   const [recipeSaved, setRecipeSaved] = useState(false)
-  if (recipeSaved === true) {
+  if (recipeSaved) {
     return <Redirect exact to="/" />
   }
 
@@ -125,12 +125,8 @@ export default function CreateRecipe({ recipes, setRecipes }) {
   function saveNewRecipetoLocalStorage(event) {
     event.preventDefault()
     let tagsFiltered = tags.filter((tag) => tag !== '')
-    let timehour =
-      formData.timehour.length === 1 ? 0 + formData.timehour : formData.timehour
-    let timeminutes =
-      formData.timeminutes.length === 1
-        ? 0 + formData.timeminutes
-        : formData.timeminutes
+    let timehour = formData.timehour.padStart(2, '0')
+    let timeminutes = formData.timeminutes.padStart(2, '0')
     let imageForUpload
     imageAsUrl.imageUrl === ''
       ? (imageForUpload =
@@ -244,7 +240,5 @@ const ButtonStyled = styled.button`
   border: 1px solid rgba(255, 255, 255, 0.8);
   color: rgba(242, 239, 233, 1);
   background: ${(props) =>
-    props.buttonStatus === true
-      ? 'rgba(81, 79, 75, 0.7)'
-      : 'rgba(81, 79, 75, 1)'};
+    props.buttonStatus ? 'rgba(81, 79, 75, 0.7)' : 'rgba(81, 79, 75, 1)'};
 `

@@ -13,9 +13,7 @@ function SignIn({ history, setUserStatus }) {
   const emailRef = useRef()
 
   useEffect(() => {
-    if (emailRef) {
-      emailRef.current.focus()
-    }
+    emailRef && emailRef.current.focus()
   }, [])
   const [pending, setPending] = useState(false)
 
@@ -50,7 +48,7 @@ function SignIn({ history, setUserStatus }) {
           required
           className="signin_password"
         />
-        <LoginButton buttonStatus={false}>Login</LoginButton>
+        <LoginButton>Login</LoginButton>
       </FormStyled>
       <ParagraphStyled>Forgot your password?</ParagraphStyled>
       <ParagraphStyled>

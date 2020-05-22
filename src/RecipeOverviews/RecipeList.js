@@ -15,7 +15,7 @@ export default function RecipeList({
             <Link to={`/recipe/${recipe.id}`}>
               <ImageStyled
                 src={recipe.image}
-                alt="Recipe"
+                alt=""
                 onClick={() => setPreviousPage(page)}
               />
             </Link>

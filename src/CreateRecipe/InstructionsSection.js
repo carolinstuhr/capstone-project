@@ -30,7 +30,7 @@ export default function InstructionsSection({ instructions, setInstructions }) {
           />
         </InstructionsPart>
       ))}
-      <AdditionalLineButton addAdditionalLine={addInstructionsLine} />
+      <AdditionalLineButton onClick={addInstructionsLine} />
     </>
   )
   function storeInput(index) {

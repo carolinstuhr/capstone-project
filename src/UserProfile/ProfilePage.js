@@ -152,7 +152,7 @@ export default function ProfilePage({
               )}
             </UserDetails>
           )}
-          <LogoutButton logoutUser={logoutUser} />
+          <LogoutButton onClick={logoutUser} alt="logout" />
         </main>
       )}
     </GridArea>

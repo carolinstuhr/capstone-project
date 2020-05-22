@@ -1,11 +1,7 @@
-import React from 'react'
 import styled from 'styled-components/macro'
 import { RiAddLine } from 'react-icons/ri'
 
-export default function AdditionalLineButton({ addAdditionalLine }) {
-  return <StyledButton onClick={addAdditionalLine}></StyledButton>
-}
-const StyledButton = styled(RiAddLine)`
+export default styled(RiAddLine)`
   height: 28px;
   width: 28px;
   z-index: 2;

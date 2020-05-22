@@ -1,9 +1,9 @@
 import React from 'react'
-import ChefsHat from '../images/chefs-hat.png'
+import chefsHat from '../images/chefs-hat.png'
 import styled from 'styled-components/macro'
 
 export default function LoadingLogo() {
-  return <LoadingImg src={ChefsHat} alt="loading" />
+  return <LoadingImg src={chefsHat} alt="loading" />
 }
 const LoadingImg = styled.img`
   height: 50px;

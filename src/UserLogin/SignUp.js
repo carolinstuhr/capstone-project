@@ -10,14 +10,12 @@ import Pending from './Pending'
 
 function SignUp({ history, setUserStatus }) {
   const [checked, setChecked] = useState(false)
-  const [buttonStatus, setButtonStatus] = useState(true)
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true)
   const [userName, setUserName] = useState('')
 
   const nameRef = useRef()
   useEffect(() => {
-    if (nameRef) {
-      nameRef.current.focus()
-    }
+    nameRef && nameRef.current.focus()
   }, [])
 
   const [pending, setPending] = useState(false)
@@ -73,7 +71,7 @@ function SignUp({ history, setUserStatus }) {
         <CheckboxLabel htmlFor="tc">
           Accept the terms and conditions
         </CheckboxLabel>
-        <LoginButton buttonStatus={buttonStatus}>Register</LoginButton>
+        <LoginButton disabled={isButtonDisabled}>Register</LoginButton>
       </FormStyled>
     </PageLayout>
   )
@@ -106,9 +104,9 @@ function SignUp({ history, setUserStatus }) {
   function clickCheckbox(checked) {
     setChecked(!checked)
     if (checked) {
-      setButtonStatus(true)
+      setIsButtonDisabled(true)
     } else {
-      setButtonStatus(false)
+      setIsButtonDisabled(false)
     }
   }
 }

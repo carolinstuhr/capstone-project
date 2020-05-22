@@ -2,22 +2,7 @@ import React from 'react'
 import { FaHeart } from 'react-icons/fa'
 import styled from 'styled-components/macro'
 
-export default function FavouritesBookmark({
-  toggleFavourites,
-  isFavourite,
-  favouriteCheck,
-}) {
-  return (
-    <>
-      <HeartStyled
-        onClick={toggleFavourites}
-        isFavourite={isFavourite || favouriteCheck}
-      />
-    </>
-  )
-}
-
-const HeartStyled = styled(FaHeart)`
+export default styled(FaHeart)`
   position: absolute;
   text-align: right;
   left: 88%;

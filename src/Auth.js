@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { auth } from './firebaseConfig'
 import styled from 'styled-components/macro'
-import ChefsHat from './images/chefs-hat.png'
+import chefsHat from './images/chefs-hat.png'
 
 export const AuthContext = React.createContext()
 
@@ -26,7 +26,7 @@ export const AuthProvider = ({ children, history }) => {
   }, [])
 
   if (pending) {
-    return <LoadingLogo src={ChefsHat} alt="loading" />
+    return <LoadingLogo src={chefsHat} alt="loading" />
   }
 
   function logout() {

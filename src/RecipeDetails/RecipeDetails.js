@@ -28,7 +28,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               <Link exact to="/">
                 <ArrowIconStyled
                   src={LeftArrow}
-                  alt="return Button"
+                  alt="return to all recipes"
                   onClick={() => setRecipeDetails('ingredients')}
                 />
               </Link>
@@ -37,7 +37,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               <Link exact to="/favourites">
                 <ArrowIconStyled
                   src={LeftArrow}
-                  alt="home Button"
+                  alt="return to favourite recipes"
                   onClick={() => setRecipeDetails('ingredients')}
                 />
               </Link>
@@ -46,19 +46,18 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               <Link to="/profile">
                 <ArrowIconStyled
                   src={LeftArrow}
-                  alt="home Button"
+                  alt="return to profile page"
                   onClick={() => setRecipeDetails('ingredients')}
                 />
               </Link>
             )}
             <FavouritesBookmark
-              toggleFavourites={() => {
+              onClick={() => {
                 toggleHeartIcon(recipe)
               }}
-              isFavourite={isFavourite}
-              favouriteCheck={favouriteCheck}
+              isFavourite={isFavourite || favouriteCheck}
             />
-            <ImageStyled src={recipe.image} alt="Recipe" />
+            <ImageStyled src={recipe.image} alt="" />
           </ImageSectionStyled>
           <RecipeInfoSectionStyled>
             <TitleStyled>{recipe.title}</TitleStyled>
@@ -96,14 +95,12 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
             </IngredientsSection>
           ) : (
             <InstructionsSection>
-              {recipe.instructions
-                .filter((instructions) => instructions)
-                .map((instruction, index) => (
-                  <>
-                    <StyledParagraph key={index}>{index + 1}.</StyledParagraph>
-                    <StyledParagraph>{instruction}</StyledParagraph>
-                  </>
-                ))}
+              {recipe.instructions.map((instruction, index) => (
+                <>
+                  <StyledParagraph key={index}>{index + 1}.</StyledParagraph>
+                  <StyledParagraph>{instruction}</StyledParagraph>
+                </>
+              ))}
             </InstructionsSection>
           )}
         </MainStyled>
@@ -112,7 +109,6 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
   )
   function toggleHeartIcon(recipe) {
     let index = user.favourites.indexOf(recipe.id)
-    console.log(index)
     index >= 0
       ? db
           .collection('users')
@@ -158,7 +154,7 @@ const ImageSectionStyled = styled.section`
 const ArrowIconStyled = styled.img`
   background: rgba(242, 239, 233, 0.6);
   border-radius: 4px;
-  hight: 32px;
+  height: 32px;
   width: 32px;
   position: absolute;
   left: 12px;
