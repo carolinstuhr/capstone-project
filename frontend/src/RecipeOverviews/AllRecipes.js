@@ -24,7 +24,7 @@ export default function AllRecipes({ setPreviousPage, recipes, pending }) {
   )
   return (
     <GridArea>
-      <Header>favourites</Header>
+      <Header>recipes</Header>
       {pending ? (
         <LoadingLogo />
       ) : (
@@ -43,7 +43,7 @@ export default function AllRecipes({ setPreviousPage, recipes, pending }) {
               page={'All'}
             />
           )}
-          <Link to="/create">
+          <Link to="/create" className="create_recipe_button">
             <CreateRecipeButton />
           </Link>
         </main>

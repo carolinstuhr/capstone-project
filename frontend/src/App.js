@@ -13,6 +13,10 @@ import ProfilePage from './UserProfile/ProfilePage'
 export default function App() {
   const [recipes, setRecipes] = useState([])
   const [pending, setPending] = useState(true)
+  const [users, setUsers] = useState('')
+  const [user, setUser] = useState('')
+  const [previousPage, setPreviousPage] = useState('All')
+  const [userStatus, setUserStatus] = useState(false)
 
   useEffect(() => {
     db.collection('recipes').onSnapshot((snapshot) => {
@@ -21,20 +25,44 @@ export default function App() {
         ...doc.data(),
       }))
       setRecipes(recipes)
-      setPending(false)
     })
   }, [])
 
-  const [previousPage, setPreviousPage] = useState('All')
+  useEffect(() => {
+    // const currentUser = localStorage.getItem('uid')
+    // db.collection('users')
+    //   .where('id', '==', currentUser)
+    //   .onSnapshot((snapshot) => {
+    //     const user = snapshot.docs.map((doc) => ({
+    //       id: doc.id,
+    //       ...doc.data(),
+    //     }))
+    //     setUser(user[0])
+    //     setPending(false)
+    //     console.log(user)
+    // })
+    db.collection('users').onSnapshot((snapshot) => {
+      const users = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }))
+      setUsers(users)
+      const userObject = users.find(
+        (user) => user.id === localStorage.getItem('uid')
+      )
+      setUser(userObject)
+      setPending(false)
+    })
+  }, [userStatus])
 
   return (
     <>
       <Switch>
         <Route path="/signin">
-          <SignIn />
+          <SignIn setUserStatus={setUserStatus} />
         </Route>
         <Route path="/signup">
-          <SignUp />
+          <SignUp setUserStatus={setUserStatus} />
         </Route>
         <PrivateRoute exact path="/">
           <RecipeList
@@ -48,6 +76,7 @@ export default function App() {
             setPreviousPage={setPreviousPage}
             recipes={recipes}
             pending={pending}
+            user={user}
           />
         </PrivateRoute>
         <PrivateRoute path="/recipe/:id">
@@ -55,13 +84,19 @@ export default function App() {
             recipes={recipes}
             setRecipes={setRecipes}
             previousPage={previousPage}
+            user={user}
           />
         </PrivateRoute>
         <PrivateRoute path="/create">
           <CreateRecipe setRecipes={setRecipes} recipes={recipes} />
         </PrivateRoute>
         <PrivateRoute path="/profile">
-          <ProfilePage />
+          <ProfilePage
+            recipes={recipes}
+            setPreviousPage={setPreviousPage}
+            user={user}
+            setUserStatus={setUserStatus}
+          />
         </PrivateRoute>
       </Switch>
     </>

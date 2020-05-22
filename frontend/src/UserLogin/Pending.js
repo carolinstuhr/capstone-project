@@ -24,16 +24,22 @@ const LoadingLogo = styled.img`
   height: 50px;
   width: 50px;
   margin-top: 40%;
+  margin-left: 43%;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
 
-  animation-duration: 3s;
-  animation-name: slidein;
-  @keyframes slidein {
-    from {
-      margin-left: 100%;
+  animation-name: bounce;
+  animation-timing-function: linear;
+
+  @keyframes bounce {
+    0% {
+      transform: translateX(0);
     }
-
-    to {
-      margin-left: 0%;
+    50% {
+      transform: translateX(20px);
+    }
+    100% {
+      transform: translateX(0);
     }
   }
 `

@@ -14,6 +14,7 @@ export const AuthProvider = ({ children, history }) => {
       if (user) {
         setCurrentUser(user)
         localStorage.setItem('uid', user.uid)
+
         setTimeout(() => {
           setPending(false)
         }, 1000)
@@ -34,7 +35,7 @@ export const AuthProvider = ({ children, history }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ currentUser, logout }}>
+    <AuthContext.Provider value={{ currentUser, logout, setCurrentUser }}>
       {children}
     </AuthContext.Provider>
   )
@@ -45,6 +46,17 @@ const LoadingLogo = styled.img`
   position: absolute;
   top: 40%;
   right: 40%;
+  animation-duration: 1s;
+  animation-name: fadein;
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 100;
+    }
+  }
 `
 
 export const AuthConsumer = AuthContext.Consumer

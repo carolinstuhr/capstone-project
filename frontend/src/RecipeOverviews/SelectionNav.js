@@ -6,10 +6,10 @@ export default function DisplaySelection() {
   return (
     <SelectionSection>
       <NavItem exact to="/" activeClassName="selected">
-        All
+        all
       </NavItem>
       <NavItem exact to="/favourites" activeClassName="selected">
-        Favourites
+        favourites
       </NavItem>
     </SelectionSection>
   )

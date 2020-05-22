@@ -24,6 +24,7 @@ export default function IngredientsSection({ ingredients, setIngredients }) {
             placeholder="amount"
             ref={ingredientsRef}
             value={ingredient.amount}
+            className={`create_ingredientsamount${index}`}
           />
           <IngredientsNameInput
             type="text"
@@ -35,6 +36,7 @@ export default function IngredientsSection({ ingredients, setIngredients }) {
             placeholder="ingredient"
             value={ingredient.name}
             required
+            className={`create_ingredientsname${index}`}
           />
         </section>
       ))}

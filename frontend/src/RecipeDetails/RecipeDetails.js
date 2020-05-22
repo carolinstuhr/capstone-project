@@ -5,105 +5,144 @@ import FavouritesBookmark from './FavouritesBookmark'
 import { Link, useRouteMatch } from 'react-router-dom'
 import { db } from '../firebaseConfig'
 
-export default function RecipeDetails({ recipes, previousPage }) {
+export default function RecipeDetails({ user, recipes, previousPage }) {
   const match = useRouteMatch()
+
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
 
-  return (
-    <MainStyled>
-      {recipes.map(
-        (recipe, index) =>
-          recipe.id === match.params.id && (
-            <>
-              <ImageSectionStyled key={index}>
-                {previousPage === 'All' && (
-                  <Link exact to="/">
-                    <ArrowIconStyled
-                      src={LeftArrow}
-                      alt="return Button"
-                      onClick={() => setRecipeDetails('ingredients')}
-                    />
-                  </Link>
-                )}
-                {previousPage === 'Favourites' && (
-                  <Link exact to="/favourites">
-                    <ArrowIconStyled
-                      src={LeftArrow}
-                      alt="home Button"
-                      onClick={() => setRecipeDetails('ingredients')}
-                    />
-                  </Link>
-                )}
-                <FavouritesBookmark
-                  toggleFavourites={() => {
-                    toggleHeartIcon(recipe)
-                  }}
-                  isFavourite={recipe.isFavourite}
-                />
-                <ImageStyled src={recipe.image} alt="Recipe" />
-              </ImageSectionStyled>
-              <RecipeInfoSectionStyled>
-                <TitleStyled>{recipe.title}</TitleStyled>
-                <InfoSection>
-                  <span>serves: {recipe.serving}</span>
-                  <span>
-                    time: {recipe.timehour}:{recipe.timeminutes}
-                  </span>
-                </InfoSection>
-                <DetailSelectionStyled>
-                  <IngredientsSelectionSpan
-                    onClick={() => setRecipeDetails('ingredients')}
-                    recipeDetails={recipeDetails}
-                  >
-                    Ingredients
-                  </IngredientsSelectionSpan>
-                  <InstructionsSelectionSpan
-                    onClick={() => setRecipeDetails('instructions')}
-                    recipeDetails={recipeDetails}
-                  >
-                    Instructions
-                  </InstructionsSelectionSpan>
-                </DetailSelectionStyled>
-              </RecipeInfoSectionStyled>
-              {recipeDetails === 'ingredients' ? (
-                <IngredientsSection>
-                  {recipe.ingredients.map((ingredient, index) => (
-                    <>
-                      <StyledParagraph key={index}>
-                        {ingredient.amount}
-                      </StyledParagraph>
-                      <StyledParagraph>{ingredient.name}</StyledParagraph>
-                    </>
-                  ))}
-                </IngredientsSection>
-              ) : (
-                <InstructionsSection>
-                  {recipe.instructions
-                    .filter((instructions) => instructions)
-                    .map((instruction, index) => (
-                      <>
-                        <StyledParagraph key={index}>
-                          {index + 1}.
-                        </StyledParagraph>
-                        <StyledParagraph>{instruction}</StyledParagraph>
-                      </>
-                    ))}
-                </InstructionsSection>
-              )}
-            </>
-          )
-      )}
-    </MainStyled>
-  )
+  let recipe =
+    recipes && recipes.filter((recipe) => recipe.id === match.params.id)[0]
 
+  const [isFavourite, setIsFavourite] = useState(
+    user && user.favourites.some((favourite) => favourite === recipe.id)
+  )
+  let favouriteCheck =
+    user && user.favourites.some((favourite) => favourite === recipe.id)
+
+  return (
+    <>
+      {recipe && (
+        <MainStyled>
+          <ImageSectionStyled>
+            {previousPage === 'All' && (
+              <Link exact to="/">
+                <ArrowIconStyled
+                  src={LeftArrow}
+                  alt="return Button"
+                  onClick={() => setRecipeDetails('ingredients')}
+                />
+              </Link>
+            )}
+            {previousPage === 'Favourites' && (
+              <Link exact to="/favourites">
+                <ArrowIconStyled
+                  src={LeftArrow}
+                  alt="home Button"
+                  onClick={() => setRecipeDetails('ingredients')}
+                />
+              </Link>
+            )}
+            {previousPage === 'Profile' && (
+              <Link to="/profile">
+                <ArrowIconStyled
+                  src={LeftArrow}
+                  alt="home Button"
+                  onClick={() => setRecipeDetails('ingredients')}
+                />
+              </Link>
+            )}
+            <FavouritesBookmark
+              toggleFavourites={() => {
+                toggleHeartIcon(recipe)
+              }}
+              isFavourite={isFavourite}
+              favouriteCheck={favouriteCheck}
+            />
+            <ImageStyled src={recipe.image} alt="Recipe" />
+          </ImageSectionStyled>
+          <RecipeInfoSectionStyled>
+            <TitleStyled>{recipe.title}</TitleStyled>
+            <InfoSection>
+              <span>serves: {recipe.serving}</span>
+              <span>
+                time: {recipe.timehour}:{recipe.timeminutes}
+              </span>
+            </InfoSection>
+            <DetailSelectionStyled>
+              <IngredientsSelectionSpan
+                onClick={() => setRecipeDetails('ingredients')}
+                recipeDetails={recipeDetails}
+              >
+                Ingredients
+              </IngredientsSelectionSpan>
+              <InstructionsSelectionSpan
+                onClick={() => setRecipeDetails('instructions')}
+                recipeDetails={recipeDetails}
+              >
+                Instructions
+              </InstructionsSelectionSpan>
+            </DetailSelectionStyled>
+          </RecipeInfoSectionStyled>
+          {recipeDetails === 'ingredients' ? (
+            <IngredientsSection>
+              {recipe.ingredients.map((ingredient, index) => (
+                <>
+                  <StyledParagraph key={index}>
+                    {ingredient.amount}
+                  </StyledParagraph>
+                  <StyledParagraph>{ingredient.name}</StyledParagraph>
+                </>
+              ))}
+            </IngredientsSection>
+          ) : (
+            <InstructionsSection>
+              {recipe.instructions
+                .filter((instructions) => instructions)
+                .map((instruction, index) => (
+                  <>
+                    <StyledParagraph key={index}>{index + 1}.</StyledParagraph>
+                    <StyledParagraph>{instruction}</StyledParagraph>
+                  </>
+                ))}
+            </InstructionsSection>
+          )}
+        </MainStyled>
+      )}
+    </>
+  )
   function toggleHeartIcon(recipe) {
-    db.collection('recipes')
-      .doc(recipe.id)
-      .update({ isFavourite: !recipe.isFavourite })
-      .then(() => console.log('Favourite updated!'))
-      .catch((err) =>
-        alert('Something went wrong. Please try again later.', err)
-      )
+    let index = user.favourites.indexOf(recipe.id)
+    console.log(index)
+    index >= 0
+      ? db
+          .collection('users')
+          .doc(user.id)
+          .update({
+            favourites: [
+              ...user.favourites.slice(0, index),
+              ...user.favourites.slice(index + 1),
+            ],
+          })
+          .then(() => {
+            setIsFavourite(false)
+
+            console.log('Favourite removed!')
+          })
+          .catch((err) =>
+            alert('Something went wrong. Please try again later.', err)
+          )
+      : db
+          .collection('users')
+          .doc(user.id)
+          .update({ favourites: [...user.favourites, recipe.id] })
+          .then(() => {
+            setIsFavourite(true)
+
+            console.log('Favourite added!')
+          })
+          .catch((err) =>
+            alert('Something went wrong. Please try again later.', err)
+          )
   }
 }
 const MainStyled = styled.main`
@@ -149,16 +188,15 @@ const TitleStyled = styled.h3`
   font-weight: 500;
   font-size: 20px;
   animation-duration: 1s;
-  animation-name: slidein;
-  @keyframes slidein {
+  animation-duration: 2s;
+  animation-name: fadein;
+  @keyframes fadein {
     from {
-      margin-left: 100%;
-      width: 100%;
+      opacity: 0;
     }
 
     to {
-      margin-left: 0%;
-      width: 100%;
+      opacity: 100;
     }
   }
 `
@@ -170,17 +208,15 @@ const InfoSection = styled.section`
   margin-top: 16px;
   margin-bottom: 12px;
   font-weight: 300;
-  animation-duration: 1s;
-  animation-name: slidein;
-  @keyframes slidein {
+  animation-duration: 2s;
+  animation-name: fadein;
+  @keyframes fadein {
     from {
-      margin-left: 100%;
-      width: 100%;
+      opacity: 0;
     }
 
     to {
-      margin-left: 0%;
-      width: 100%;
+      opacity: 100;
     }
   }
 `
@@ -191,16 +227,15 @@ const DetailSelectionStyled = styled.div`
   margin-top: 4px;
   font-weight: 300;
   animation-duration: 1s;
-  animation-name: slidein;
-  @keyframes slidein {
+  animation-duration: 2s;
+  animation-name: fadein;
+  @keyframes fadein {
     from {
-      margin-left: 100%;
-      width: 100%;
+      opacity: 0;
     }
 
     to {
-      margin-left: 0%;
-      width: 100%;
+      opacity: 100;
     }
   }
 `
@@ -232,17 +267,15 @@ const IngredientsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 3fr;
   font-weight: 300;
-  animation-duration: 1s;
-  animation-name: slidein;
-  @keyframes slidein {
+  animation-duration: 2s;
+  animation-name: fadein;
+  @keyframes fadein {
     from {
-      margin-left: 100%;
-      width: 100%;
+      opacity: 0;
     }
 
     to {
-      margin-left: 0%;
-      width: 100%;
+      opacity: 100;
     }
   }
 `
@@ -253,17 +286,15 @@ const InstructionsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 20fr;
   font-weight: 300;
-  animation-duration: 1s;
-  animation-name: slidein;
-  @keyframes slidein {
+  animation-duration: 2s;
+  animation-name: fadein;
+  @keyframes fadein {
     from {
-      margin-left: 100%;
-      width: 100%;
+      opacity: 0;
     }
 
     to {
-      margin-left: 0%;
-      width: 100%;
+      opacity: 100;
     }
   }
 `

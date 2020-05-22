@@ -13,10 +13,13 @@ export default function FavouriteRecipes({
   setPreviousPage,
   recipes,
   pending,
+  user,
 }) {
   const [userFilterInput, setUserFilterInput] = useState('')
 
-  let favouriteRecipes = recipes.filter((recipe) => recipe.isFavourite === true)
+  let favouriteRecipes = recipes.filter(
+    (recipe) => user && user.favourites.includes(recipe.id)
+  )
 
   let filteredRecipeData = favouriteRecipes.filter(
     (recipe) =>
@@ -31,7 +34,7 @@ export default function FavouriteRecipes({
 
   return (
     <GridArea>
-      <Header>favourites</Header>
+      <Header>recipes</Header>
       {pending ? (
         <LoadingLogo />
       ) : (
@@ -55,7 +58,7 @@ export default function FavouriteRecipes({
               page={'Favourites'}
             />
           )}
-          <Link to="/create">
+          <Link to="/create" className="create_recipe_button">
             <CreateRecipeButton />
           </Link>
         </main>

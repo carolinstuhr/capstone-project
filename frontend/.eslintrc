@@ -1,0 +1,6 @@
+{
+  "env": {
+    "cypress/gloabls": true
+  },
+  "plugins": ["eslint-plugin-cypress"]
+}
