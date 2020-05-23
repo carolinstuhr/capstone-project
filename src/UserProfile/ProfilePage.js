@@ -245,7 +245,7 @@ const UserDetailsSelector = styled(ParagraphStyled)`
   color: ${(props) =>
     props.displayElement === 'userDetails'
       ? 'var(--primary)'
-      : 'rgba(81, 79, 75, 0.4)'};
+      : 'var(--primary-opaque)'};
   background: ${(props) =>
     props.displayElement === 'userDetails'
       ? 'var(--primary-background)'
@@ -256,7 +256,7 @@ const UserRecipesSelector = styled(ParagraphStyled)`
   color: ${(props) =>
     props.displayElement === 'userRecipes'
       ? 'var(--primary)'
-      : 'rgba(81, 79, 75, 0.4)'};
+      : 'var(--primary-opaque)'};
   background: ${(props) =>
     props.displayElement === 'userRecipes'
       ? 'var(--primary-background)'

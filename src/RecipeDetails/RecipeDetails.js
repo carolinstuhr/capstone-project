@@ -2,16 +2,15 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import LeftArrow from '../images/left-arrow.svg'
 import FavouritesBookmark from './FavouritesBookmark'
-import { Link, useRouteMatch } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { db } from '../firebaseConfig'
 
 export default function RecipeDetails({ user, recipes, previousPage }) {
-  const match = useRouteMatch()
+  const params = useParams()
 
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
 
-  let recipe =
-    recipes && recipes.filter((recipe) => recipe.id === match.params.id)[0]
+  let recipe = recipes && recipes.find((recipe) => recipe.id === params.id)
 
   const [isFavourite, setIsFavourite] = useState(
     user && user.favourites.some((favourite) => favourite === recipe.id)
@@ -242,8 +241,12 @@ const IngredientsSelectionSpan = styled.span`
   cursor: default;
   background: ${(props) =>
     props.recipeDetails === 'ingredients'
-      ? 'var(--secondary-background)'
-      : 'rgba(242, 239, 233, 0.6)'};
+      ? 'var(--primary-background)'
+      : 'rgba(255, 255, 255, 0.4)'};
+  color: ${(props) =>
+    props.recipeDetails === 'ingredients'
+      ? 'var(--primary)'
+      : 'var(--primary-opaque)'};
 `
 
 const InstructionsSelectionSpan = styled.span`
@@ -253,8 +256,12 @@ const InstructionsSelectionSpan = styled.span`
   cursor: default;
   background: ${(props) =>
     props.recipeDetails === 'instructions'
-      ? 'var(--secondary-background)'
-      : 'rgba(242, 239, 233, 0.6)'};
+      ? 'var(--primary-background)'
+      : 'rgba(255, 255, 255, 0.4)'};
+  color: ${(props) =>
+    props.recipeDetails === 'instructions'
+      ? 'var(--primary)'
+      : 'var(--primary-opaque)'};
 `
 
 const IngredientsSection = styled.section`
