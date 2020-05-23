@@ -17,6 +17,7 @@ export default function RecipeList({
                 src={recipe.image}
                 alt=""
                 onClick={() => setPreviousPage(page)}
+                className={`recipe${index}`}
               />
             </Link>
           </ImageSection>

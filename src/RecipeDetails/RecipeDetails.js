@@ -29,7 +29,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                   src={LeftArrow}
                   alt="return to all recipes"
                   onClick={() => setRecipeDetails('ingredients')}
-                  className="returnAll"
+                  className="return-all"
                 />
               </Link>
             )}
@@ -58,6 +58,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 toggleHeartIcon(recipe)
               }}
               isFavourite={isFavourite || favouriteCheck}
+              className="heart-icon"
             />
             <ImageStyled src={recipe.image} alt="" />
           </ImageSectionStyled>
