@@ -12,7 +12,7 @@ export default function FilterRecipes({ setUserInput }) {
           placeholder="Search for recipes..."
           className="recipes-filter"
         />
-        <SearchIconStyled src={SearchIcon} alt="maginifier" />
+        <SearchIconStyled src={SearchIcon} alt="" />
       </SearchSection>
     </SectionCenter>
   )

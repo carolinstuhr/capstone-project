@@ -186,7 +186,6 @@ export default function ProfilePage({
       .update({ details })
       .then(() => {
         setEditProfile(false)
-        console.log('Favourites updated!')
       })
       .catch((err) =>
         alert('Something went wrong. Please try again later.', err)

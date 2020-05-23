@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import RecipeList from './RecipeOverviews/AllRecipes'
+import AllRecipes from './RecipeOverviews/AllRecipes'
 import RecipeDetails from './RecipeDetails/RecipeDetails'
 import FavouriteRecipes from './RecipeOverviews/FavouriteRecipes'
 import CreateRecipe from './CreateRecipe/CreateRecipe'
@@ -15,7 +15,7 @@ export default function App() {
   const [pending, setPending] = useState(true)
   const [users, setUsers] = useState('')
   const [user, setUser] = useState('')
-  const [previousPage, setPreviousPage] = useState('All')
+  const [previousPage, setPreviousPage] = useState('')
   const [userStatus, setUserStatus] = useState(false)
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function App() {
         <SignUp setUserStatus={setUserStatus} />
       </Route>
       <PrivateRoute exact path="/">
-        <RecipeList
+        <AllRecipes
           setPreviousPage={setPreviousPage}
           recipes={recipes}
           pending={pending}

@@ -58,6 +58,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 toggleHeartIcon(recipe)
               }}
               isFavourite={isFavourite || favouriteCheck}
+              alt="bookmark recipe"
               className="heart-icon"
             />
             <ImageStyled src={recipe.image} alt="" />
@@ -127,8 +128,6 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
           })
           .then(() => {
             setIsFavourite(false)
-
-            console.log('Favourite removed!')
           })
           .catch((err) =>
             alert('Something went wrong. Please try again later.', err)
@@ -139,8 +138,6 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
           .update({ favourites: [...user.favourites, recipe.id] })
           .then(() => {
             setIsFavourite(true)
-
-            console.log('Favourite added!')
           })
           .catch((err) =>
             alert('Something went wrong. Please try again later.', err)
@@ -187,8 +184,8 @@ const TitleStyled = styled.h3`
   margin-top: 0;
   margin-bottom: 8px;
   text-transform: capitalize;
-  font-weight: 500;
-  font-size: 20px;
+  font-weight: 400;
+  font-size: 22px;
   animation-duration: 1s;
   animation-duration: 2s;
   animation-name: fadein;

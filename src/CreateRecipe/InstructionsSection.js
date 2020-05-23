@@ -32,6 +32,7 @@ export default function InstructionsSection({ instructions, setInstructions }) {
       ))}
       <AdditionalLineButton
         onClick={addInstructionsLine}
+        alt="add additional instructions line"
         className="additional-instructions-line"
       />
     </>

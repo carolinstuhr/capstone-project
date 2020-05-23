@@ -7,7 +7,7 @@ export default function CreateHeader({ children }) {
   return (
     <header>
       <Link exact to="/">
-        <ArrowIconStyled />
+        <ArrowIconStyled alt="return" />
       </Link>
       <h1>{children}</h1>
     </header>

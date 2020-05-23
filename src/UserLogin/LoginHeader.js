@@ -14,7 +14,6 @@ export default function LoginHeader({ children }) {
 }
 
 const NameStyled = styled.h1`
-  font-weight: 600;
   padding-top: 12px;
   font-size: 36px;
 `
@@ -26,14 +25,14 @@ const LogoStyled = styled.img`
   top: 16px;
 `
 const LogoLeftStyled = styled(LogoStyled)`
-  left: 15%;
+  left: 16%;
 `
 const LogoRightStyled = styled(LogoStyled)`
   right: 15%;
 `
 const TitleStyled = styled.h4`
   font-family: 'Nanum Myeongjo', serif;
-  font-weight: 300;
-  font-size: 28px;
+  font-weight: 400;
+  font-size: 24px;
   text-align: center;
 `

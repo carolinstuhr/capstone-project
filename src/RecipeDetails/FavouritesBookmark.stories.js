@@ -10,11 +10,11 @@ export default {
 }
 
 export const ToggleHeart = () => (
-  <FavouritesBookmark toggleFavourites={action('changed')} />
+  <FavouritesBookmark onClick={action('changed')} />
 )
 
 const label = 'Color'
-const defaultValue = '#c8461a'
+const defaultValue = 'white'
 
 export const FavouritesColor = () => (
   <FavouritesBookmark color={color(label, defaultValue)} />

@@ -42,6 +42,7 @@ export default function IngredientsSection({ ingredients, setIngredients }) {
       ))}
       <AdditionalLineButton
         onClick={addIngredientsLine}
+        alt="add additional ingredients line"
         className="additional-ingredient-line"
       />
     </>

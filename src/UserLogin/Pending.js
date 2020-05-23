@@ -46,4 +46,5 @@ const LoadingLogo = styled.img`
 
 const PendingHeading = styled.h1`
   margin-top: 70px;
+  font-size: 28px;
 `
