@@ -48,6 +48,7 @@ export default function ProfilePage({
             <UserDetailsSelector
               onClick={() => setDisplayElement('userDetails')}
               displayElement={displayElement}
+              data-testid="detailsSelector"
             >
               UserDetails
             </UserDetailsSelector>
@@ -62,6 +63,7 @@ export default function ProfilePage({
                         src={recipe.image}
                         alt=""
                         onClick={() => setPreviousPage('Profile')}
+                        data-testid={recipe.title}
                       />
                     </Link>
                   ))}

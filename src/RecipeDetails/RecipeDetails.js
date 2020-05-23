@@ -76,6 +76,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               <InstructionsSelectionSpan
                 onClick={() => setRecipeDetails('instructions')}
                 recipeDetails={recipeDetails}
+                data-testid="instructionsButton"
               >
                 Instructions
               </InstructionsSelectionSpan>
