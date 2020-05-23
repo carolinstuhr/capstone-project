@@ -49,6 +49,7 @@ export default function ProfilePage({
               onClick={() => setDisplayElement('userDetails')}
               displayElement={displayElement}
               data-testid="detailsSelector"
+              className="profile-user-details"
             >
               UserDetails
             </UserDetailsSelector>
@@ -64,6 +65,7 @@ export default function ProfilePage({
                         alt=""
                         onClick={() => setPreviousPage('Profile')}
                         data-testid={recipe.title}
+                        className={recipe.title}
                       />
                     </Link>
                   ))}
@@ -85,6 +87,7 @@ export default function ProfilePage({
                     name="internationalCuisine"
                     id="internationalCuisine"
                     onChange={storeDetails}
+                    className="input-international"
                   />
                   <LabelStyled htmlFor="internationalCuisine">
                     dish of your childhood:
@@ -106,10 +109,16 @@ export default function ProfilePage({
                     name="restaurant"
                     onChange={storeDetails}
                   />
-                  <ButtonSaveStyled onClick={() => addDetails(user)}>
+                  <ButtonSaveStyled
+                    onClick={() => addDetails(user)}
+                    className="save-button"
+                  >
                     save
                   </ButtonSaveStyled>
-                  <ButtonCancelStyled onClick={() => setEditProfile(false)}>
+                  <ButtonCancelStyled
+                    onClick={() => setEditProfile(false)}
+                    className="cancel-button"
+                  >
                     cancel
                   </ButtonCancelStyled>
                 </>
@@ -147,7 +156,10 @@ export default function ProfilePage({
                         you haven't provided any additional information yet
                       </NoUserInput>
                     )}
-                  <ButtonEditStyled onClick={() => changeEditMode()}>
+                  <ButtonEditStyled
+                    onClick={() => changeEditMode()}
+                    className="edit-button"
+                  >
                     edit profile
                   </ButtonEditStyled>
                 </>

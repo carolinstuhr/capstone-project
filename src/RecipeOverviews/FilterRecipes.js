@@ -10,6 +10,7 @@ export default function FilterRecipes({ setUserInput }) {
           type="search"
           onChange={(event) => setUserInput(event.target.value)}
           placeholder="Search for recipes..."
+          className="recipes-filter"
         />
         <SearchIconStyled src={SearchIcon} alt="maginifier" />
       </SearchSection>

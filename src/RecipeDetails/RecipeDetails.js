@@ -29,6 +29,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                   src={LeftArrow}
                   alt="return to all recipes"
                   onClick={() => setRecipeDetails('ingredients')}
+                  className="returnAll"
                 />
               </Link>
             )}
@@ -38,6 +39,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                   src={LeftArrow}
                   alt="return to favourite recipes"
                   onClick={() => setRecipeDetails('ingredients')}
+                  className="returnFavourites"
                 />
               </Link>
             )}
@@ -47,6 +49,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                   src={LeftArrow}
                   alt="return to profile page"
                   onClick={() => setRecipeDetails('ingredients')}
+                  className="return-profile"
                 />
               </Link>
             )}
@@ -70,6 +73,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               <IngredientsSelectionSpan
                 onClick={() => setRecipeDetails('ingredients')}
                 recipeDetails={recipeDetails}
+                className="ingredients-selector"
               >
                 Ingredients
               </IngredientsSelectionSpan>
@@ -77,6 +81,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 onClick={() => setRecipeDetails('instructions')}
                 recipeDetails={recipeDetails}
                 data-testid="instructionsButton"
+                className="instructions-selector"
               >
                 Instructions
               </InstructionsSelectionSpan>

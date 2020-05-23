@@ -8,7 +8,12 @@ export default function DisplaySelection() {
       <NavItem exact to="/" activeClassName="selected">
         all
       </NavItem>
-      <NavItem exact to="/favourites" activeClassName="selected">
+      <NavItem
+        exact
+        to="/favourites"
+        activeClassName="selected"
+        className="favourite-recipes"
+      >
         favourites
       </NavItem>
     </SelectionSection>

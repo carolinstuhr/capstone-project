@@ -24,7 +24,7 @@ export default function AllRecipes({ setPreviousPage, recipes, pending }) {
           <SelectionNav />
           <FilterRecipes setUserInput={setUserFilterInput} />
           {filteredRecipeData.length === 0 ? (
-            <FallBackStyled>
+            <FallBackStyled className="fallback-all">
               Unfortunately, we did not find any recipe matching your search
               request.
             </FallBackStyled>
@@ -35,8 +35,8 @@ export default function AllRecipes({ setPreviousPage, recipes, pending }) {
               page={'All'}
             />
           )}
-          <Link to="/create" className="create_recipe_button">
-            <CreateRecipeButton />
+          <Link to="/create">
+            <CreateRecipeButton className="create_recipe_button" />
           </Link>
         </main>
       )}

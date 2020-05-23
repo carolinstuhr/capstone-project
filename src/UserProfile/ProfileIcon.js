@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 export default function ProfileIcon() {
   return (
     <Link to="/profile">
-      <ProfileImage />
+      <ProfileImage className="profile-button" />
     </Link>
   )
 }

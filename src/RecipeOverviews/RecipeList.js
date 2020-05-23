@@ -21,7 +21,9 @@ export default function RecipeList({
             </Link>
           </ImageSection>
           <TitleStyled onClick={() => setPreviousPage(page)}>
-            <LinkStyled to={`/recipe/${recipe.id}`}>{recipe.title}</LinkStyled>
+            <LinkStyled to={`/recipe/${recipe.id}`} className={recipe.title}>
+              {recipe.title}
+            </LinkStyled>
           </TitleStyled>
           <TagSectionStyled>
             {recipe.tags.slice(0, 3).map((tag, index) => (

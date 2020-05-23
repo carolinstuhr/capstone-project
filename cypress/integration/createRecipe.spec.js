@@ -1,10 +1,9 @@
 describe('user can enter new recipe', () => {
-  it('after submit user should be redirected to homepage', () => {
-    cy.visit('/create')
-    // cy.get('.signin_email').type('stuhr.carolin@googlemail.com')
-    // cy.get('.signin_password').type('Test123')
-    // cy.get('.signin_form').submit()
-    // cy.get('.create_recipe_button')
+  it('user can enter details into form and add additional lines', () => {
+    cy.visit('/')
+    cy.wait(2000)
+
+    cy.get('.create_recipe_button').click()
     cy.get('.create_title').type('New Recipe Test')
     cy.get('.create_tags0').type('yummy')
     cy.get('.create_tags1').type('yummy')
@@ -14,6 +13,11 @@ describe('user can enter new recipe', () => {
     cy.get('.create_timeminutes').type('2')
     cy.get('.create_ingredientsamount0').type('1 cup')
     cy.get('.create_ingredientsname0').type('water')
+    cy.get('.additional-ingredient-line').click()
+    cy.get('.create_ingredientsamount1').type('500 g')
+    cy.get('.create_ingredientsname1').type('flour')
     cy.get('.create_instructions0').type('Mix it all together')
+    cy.get('.additional-instructions-line').click()
+    cy.get('.create_instructions1').type('Bake it at 200 degrees')
   })
 })
