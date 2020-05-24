@@ -302,7 +302,7 @@ const UserInput = styled.p`
 const InputStyled = styled.input`
   font-size: 14px;
   padding-left: 4px;
-  color: #514f4b;
+  color: var(--primary);
   height: 28px;
   display: block;
 `

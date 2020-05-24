@@ -47,7 +47,6 @@ button {
     --primary-background: rgba(242, 239, 233, 1);
     --primary-backgroundopaque: rgba(242, 239, 233, 0.6);
     --secondary: rgba(105, 102, 96, 1);
-    --secondary-background: rgba(221, 216, 206, 1);
     --input-background: rgba(242, 239, 233, 0.5);
     --tertiary: rgba(160, 158, 154, 1);
     }

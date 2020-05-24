@@ -29,17 +29,16 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    // const currentUser = localStorage.getItem('uid')
     // db.collection('users')
-    //   .where('id', '==', currentUser)
-    //   .onSnapshot((snapshot) => {
-    //     const user = snapshot.docs.map((doc) => ({
-    //       id: doc.id,
-    //       ...doc.data(),
-    //     }))
-    //     setUser(user[0])
-    //     setPending(false)
-    //     console.log(user)
+    //   .where('id', '==', localStorage.getItem('uid'))
+    // .onSnapshot((snapshot) => {
+    //   const user = snapshot.docs.map((doc) => ({
+    // id: doc.id,
+    // ...doc.data(),
+    // }))
+    // setUser(user[0])
+    // setPending(false)
+    // console.log(user)
     // })
     db.collection('users').onSnapshot((snapshot) => {
       const users = snapshot.docs.map((doc) => ({
