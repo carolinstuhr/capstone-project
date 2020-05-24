@@ -1,5 +1,5 @@
 describe('user can visit profile page', () => {
-  it('user can visit recipe details from his created page and return', () => {
+  it('visits recipe details from his created recipe page and returns', () => {
     cy.visit('/')
     cy.wait(2000)
     cy.get('.profile-button').click()
@@ -9,7 +9,7 @@ describe('user can visit profile page', () => {
     cy.get('.return-profile').click()
   })
 
-  it('user can change detail information', () => {
+  it('changes detail information', () => {
     cy.visit('/')
     cy.wait(2000)
     cy.get('.profile-button').click()

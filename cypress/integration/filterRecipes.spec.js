@@ -1,5 +1,5 @@
 describe('user can filter recipes', () => {
-  it('user can filter recipes on all recipes page', () => {
+  it('filters recipes on all recipes page', () => {
     cy.visit('/')
     cy.wait(2000)
     cy.get('.recipes-filter').type('breakfast')
@@ -13,7 +13,7 @@ describe('user can filter recipes', () => {
     cy.get('.fallback-all').should('be.visible')
   })
 
-  it('user can filter recipes on favourites recipes page', () => {
+  it('filters recipes on favourites recipes page', () => {
     cy.visit('/')
     cy.wait(2000)
     cy.get('.favourite-recipes').click()
