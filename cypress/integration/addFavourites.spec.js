@@ -1,5 +1,5 @@
 describe('user can add recipes to his favourites and remove them', () => {
-  it('user can add recipe to favourites', () => {
+  it('adds recipe to favourites', () => {
     cy.visit('/')
     cy.wait(2000)
 
@@ -9,7 +9,7 @@ describe('user can add recipes to his favourites and remove them', () => {
     cy.get('.favourite-recipes').click()
     cy.get('.recipe3').should('be.visible')
   })
-  it('user can remove recipe from favourites', () => {
+  it('removes recipe from favourites', () => {
     cy.visit('/')
     cy.wait(2000)
 

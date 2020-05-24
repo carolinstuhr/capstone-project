@@ -7,7 +7,7 @@ import PageLayout from './PageLayout'
 export default function Pending({ children }) {
   return (
     <PageLayout>
-      <LoginHeader></LoginHeader>
+      <LoginHeader />
       <PendingHeading>{children}</PendingHeading>
       <Wrapper>
         <LoadingLogo src={chefsHat} alt="loading" />

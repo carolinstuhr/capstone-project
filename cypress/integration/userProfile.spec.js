@@ -26,5 +26,6 @@ describe('user can visit profile page', () => {
     cy.get('.input-international').clear()
     cy.get('.input-international').type('mexican')
     cy.get('.cancel-button').click()
+    cy.get('.user-input').should('contain', 'italian')
   })
 })

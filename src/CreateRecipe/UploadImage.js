@@ -21,9 +21,7 @@ export default function UploadImage({ setImageAsUrl, imageAsUrl }) {
       {imageAsUrl.imageUrl !== '' && uploadActive === false && (
         <StyledParagraph>{`Image ${imageAsFile.name} successfully uploaded`}</StyledParagraph>
       )}
-      {uploadActive && (
-        <StyledParagraph>{`Uploading image ...`}</StyledParagraph>
-      )}
+      {uploadActive && <StyledParagraph>Uploading image ...</StyledParagraph>}
     </ImageUploadSection>
   )
 

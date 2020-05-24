@@ -9,7 +9,6 @@ export default function DisplaySelection() {
         all
       </NavItem>
       <NavItem
-        exact
         to="/favourites"
         activeClassName="selected"
         className="favourite-recipes"

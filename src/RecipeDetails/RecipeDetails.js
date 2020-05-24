@@ -39,7 +39,6 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                   src={LeftArrow}
                   alt="return to favourite recipes"
                   onClick={() => setRecipeDetails('ingredients')}
-                  className="returnFavourites"
                 />
               </Link>
             )}
@@ -186,9 +185,7 @@ const TitleStyled = styled.h3`
   text-transform: capitalize;
   font-weight: 400;
   font-size: 22px;
-  animation-duration: 1s;
-  animation-duration: 2s;
-  animation-name: fadein;
+  animation-duration: 2s fadein;
   @keyframes fadein {
     from {
       opacity: 0;
@@ -207,8 +204,7 @@ const InfoSection = styled.section`
   margin-top: 16px;
   margin-bottom: 12px;
   font-weight: 300;
-  animation-duration: 2s;
-  animation-name: fadein;
+  animation-duration: 2s fadein;
   @keyframes fadein {
     from {
       opacity: 0;
@@ -225,9 +221,7 @@ const DetailSelectionStyled = styled.div`
   justify-content: center;
   margin-top: 4px;
   font-weight: 300;
-  animation-duration: 1s;
-  animation-duration: 2s;
-  animation-name: fadein;
+  animation-duration: 2s fadein;
   @keyframes fadein {
     from {
       opacity: 0;
@@ -274,8 +268,7 @@ const IngredientsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 3fr;
   font-weight: 300;
-  animation-duration: 2s;
-  animation-name: fadein;
+  animation-duration: 2s fadein;
   @keyframes fadein {
     from {
       opacity: 0;
@@ -293,8 +286,7 @@ const InstructionsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 20fr;
   font-weight: 300;
-  animation-duration: 2s;
-  animation-name: fadein;
+  animation-duration: 2s fadein;
   @keyframes fadein {
     from {
       opacity: 0;

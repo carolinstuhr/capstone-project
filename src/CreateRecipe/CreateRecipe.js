@@ -53,7 +53,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
             maxLength="40"
             ref={titleRef}
             required
-            className="create_title"
+            className="create-title"
           />
           <LabelStyled htmlFor="tags">Tags</LabelStyled>
           <TagSection tags={tags} setTags={setTags} />
@@ -68,7 +68,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
             maxLength="2"
             placeholder="1"
             required
-            className="create_serving"
+            className="create-serving"
           />
           <TimeLabel htmlFor="hour">Time</TimeLabel>
           <HourInput
@@ -81,7 +81,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
             min="0"
             required
             data-testid="hour"
-            className="create_timehour"
+            className="create-timehour"
           />
           <DetailTimeLabel htmlFor="hour">hours</DetailTimeLabel>
           <MinutesInput
@@ -96,7 +96,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
             max="60"
             required
             data-testid="minute"
-            className="create_timeminutes"
+            className="create-timeminutes"
           />
           <DetailTimeLabel htmlFor="minute">minutes</DetailTimeLabel>
           <IngredientsLabel htmlFor="ingredients">Ingredients</IngredientsLabel>
@@ -113,12 +113,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
           />
           <UploadImage setImageAsUrl={setImageAsUrl} imageAsUrl={imageAsUrl} />
           <ButtonWrapper>
-            <ButtonStyled
-              disabled={isButtonDisabled}
-              isButtonDisabled={isButtonDisabled}
-            >
-              Submit
-            </ButtonStyled>
+            <ButtonStyled disabled={isButtonDisabled}>Submit</ButtonStyled>
           </ButtonWrapper>
         </form>
       </MainStyled>

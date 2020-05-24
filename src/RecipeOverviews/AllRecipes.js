@@ -36,7 +36,7 @@ export default function AllRecipes({ setPreviousPage, recipes, pending }) {
             />
           )}
           <Link to="/create">
-            <CreateRecipeButton className="create_recipe_button" />
+            <CreateRecipeButton className="create-recipe-button" />
           </Link>
         </main>
       )}

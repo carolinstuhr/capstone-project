@@ -130,7 +130,7 @@ export default function ProfilePage({
                       {user.details.internationalCuisine && (
                         <>
                           <Title>favourite international cuisine:</Title>
-                          <UserInput>
+                          <UserInput className="user-input">
                             {user.details.internationalCuisine}
                           </UserInput>
                         </>
