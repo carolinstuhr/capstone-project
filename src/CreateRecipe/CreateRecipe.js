@@ -8,7 +8,6 @@ import UploadImage from './UploadImage'
 import TagSection from './TagSection'
 import CreateHeader from './CreateHeader'
 import GridArea from '../GridArea'
-import Tags from './Tags'
 
 export default function CreateRecipe({ recipes, setRecipes }) {
   const titleRef = useRef()
@@ -25,7 +24,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
   const currentUser = localStorage.getItem('uid')
   const [ingredients, setIngredients] = useState([{ amount: '', name: '' }])
   const [instructions, setInstructions] = useState([''])
-  const [tags, setTags] = useState(['', '', ''])
+  const [tags, setTags] = useState([])
 
   const allInputs = { imageUrl: '' }
   const [imageAsUrl, setImageAsUrl] = useState(allInputs)
@@ -57,8 +56,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
             className="create-title"
           />
           <LabelStyled htmlFor="tags">Tags</LabelStyled>
-          <Tags />
-          {/* <TagSection tags={tags} setTags={setTags} /> */}
+          <TagSection tags={tags} setTags={setTags} />
           <ServingsLabel htmlFor="portion">Servings</ServingsLabel>
           <ServingsInput
             type="number"
@@ -124,7 +122,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
 
   function saveNewRecipetoLocalStorage(event) {
     event.preventDefault()
-    let tagsFiltered = tags.filter((tag) => tag !== '')
+    let tagsTrimmed = tags.map((tag) => tag.trim())
     let timehour = formData.timehour.padStart(2, '0')
     let timeminutes = formData.timeminutes.padStart(2, '0')
     let imageForUpload
@@ -135,7 +133,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
 
     let newRecipe = {
       title: formData.title,
-      tags: tagsFiltered,
+      tags: tagsTrimmed,
       image: imageForUpload,
       serving: formData.serving,
       timehour: timehour,
