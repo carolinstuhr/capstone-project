@@ -29,6 +29,17 @@ export default function App() {
   }, [])
 
   useEffect(() => {
+    // db.collection('users')
+    //   .where('id', '==', localStorage.getItem('uid'))
+    // .onSnapshot((snapshot) => {
+    //   const user = snapshot.docs.map((doc) => ({
+    // id: doc.id,
+    // ...doc.data(),
+    // }))
+    // setUser(user[0])
+    // setPending(false)
+    // console.log(user)
+    // })
     db.collection('users').onSnapshot((snapshot) => {
       const users = snapshot.docs.map((doc) => ({
         id: doc.id,

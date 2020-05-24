@@ -8,6 +8,7 @@ import UploadImage from './UploadImage'
 import TagSection from './TagSection'
 import CreateHeader from './CreateHeader'
 import GridArea from '../GridArea'
+import Tags from './Tags'
 
 export default function CreateRecipe({ recipes, setRecipes }) {
   const titleRef = useRef()
@@ -56,7 +57,8 @@ export default function CreateRecipe({ recipes, setRecipes }) {
             className="create-title"
           />
           <LabelStyled htmlFor="tags">Tags</LabelStyled>
-          <TagSection tags={tags} setTags={setTags} />
+          <Tags />
+          {/* <TagSection tags={tags} setTags={setTags} /> */}
           <ServingsLabel htmlFor="portion">Servings</ServingsLabel>
           <ServingsInput
             type="number"
