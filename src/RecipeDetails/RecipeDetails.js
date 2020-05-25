@@ -185,14 +185,15 @@ const TitleStyled = styled.h3`
   text-transform: capitalize;
   font-weight: 400;
   font-size: 22px;
-  animation-duration: 2s fadein;
-  @keyframes fadein {
+  animation: 1.5s slidein;
+  @keyframes slidein {
     from {
-      opacity: 0;
+      margin-left: 100%;
+      width: 100%;
     }
-
     to {
-      opacity: 100;
+      margin-left: 0%;
+      width: 100%;
     }
   }
 `
@@ -204,14 +205,15 @@ const InfoSection = styled.section`
   margin-top: 16px;
   margin-bottom: 12px;
   font-weight: 300;
-  animation-duration: 2s fadein;
-  @keyframes fadein {
+  animation: 1.5s slidein;
+  @keyframes slidein {
     from {
-      opacity: 0;
+      margin-left: 100%;
+      width: 100%;
     }
-
     to {
-      opacity: 100;
+      margin-left: 0%;
+      width: 100%;
     }
   }
 `
@@ -221,14 +223,15 @@ const DetailSelectionStyled = styled.div`
   justify-content: center;
   margin-top: 4px;
   font-weight: 300;
-  animation-duration: 2s fadein;
-  @keyframes fadein {
+  animation: 1.5s slidein;
+  @keyframes slidein {
     from {
-      opacity: 0;
+      margin-left: 100%;
+      width: 100%;
     }
-
     to {
-      opacity: 100;
+      margin-left: 0%;
+      width: 100%;
     }
   }
 `
@@ -268,14 +271,15 @@ const IngredientsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 3fr;
   font-weight: 300;
-  animation-duration: 2s fadein;
-  @keyframes fadein {
+  animation: 1.5s slidein;
+  @keyframes slidein {
     from {
-      opacity: 0;
+      margin-left: 100%;
+      width: 100%;
     }
-
     to {
-      opacity: 100;
+      margin-left: 0%;
+      width: 100%;
     }
   }
 `
@@ -286,16 +290,16 @@ const InstructionsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 20fr;
   font-weight: 300;
-  animation-duration: 2s fadein;
-  @keyframes fadein {
+  animation: 1.5s slidein;
+  @keyframes slidein {
     from {
-      opacity: 0;
+      margin-left: 100%;
+      width: 100%;
     }
-
     to {
-      opacity: 100;
+      margin-left: 0%;
+      width: 100%;
     }
-  }
 `
 
 const StyledParagraph = styled.p`

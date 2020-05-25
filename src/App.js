@@ -15,7 +15,7 @@ export default function App() {
   const [pending, setPending] = useState(true)
   const [users, setUsers] = useState('')
   const [user, setUser] = useState('')
-  const [previousPage, setPreviousPage] = useState('')
+  const [previousPage, setPreviousPage] = useState('All')
   const [userStatus, setUserStatus] = useState(false)
 
   useEffect(() => {
