@@ -24,7 +24,8 @@ export default function CreateRecipe({ recipes, setRecipes }) {
   const currentUser = localStorage.getItem('uid')
   const [ingredients, setIngredients] = useState([{ amount: '', name: '' }])
   const [instructions, setInstructions] = useState([''])
-  const [tags, setTags] = useState(['', '', ''])
+  const [tag, setTag] = useState('')
+  const [tags, setTags] = useState([])
 
   const allInputs = { imageUrl: '' }
   const [imageAsUrl, setImageAsUrl] = useState(allInputs)
@@ -56,7 +57,10 @@ export default function CreateRecipe({ recipes, setRecipes }) {
             className="create-title"
           />
           <LabelStyled htmlFor="tags">Tags</LabelStyled>
-          <TagSection tags={tags} setTags={setTags} />
+          <SpanStyled>(max. 3)</SpanStyled>
+          <TagSection tags={tags} setTags={setTags} tag={tag} setTag={setTag} />
+          {console.log(tag)}
+          {console.log(tags)}
           <ServingsLabel htmlFor="portion">Servings</ServingsLabel>
           <ServingsInput
             type="number"
@@ -116,13 +120,14 @@ export default function CreateRecipe({ recipes, setRecipes }) {
             <ButtonStyled disabled={isButtonDisabled}>Submit</ButtonStyled>
           </ButtonWrapper>
         </form>
+        {console.log(recipes)}
       </MainStyled>
     </GridArea>
   )
 
-  function saveNewRecipetoLocalStorage(event) {
+  function saveNewRecipetoLocalStorage(event, tag) {
     event.preventDefault()
-    let tagsFiltered = tags.filter((tag) => tag !== '')
+    let tagsTrimmed = tags.map((tag) => tag.trim())
     let timehour = formData.timehour.padStart(2, '0')
     let timeminutes = formData.timeminutes.padStart(2, '0')
     let imageForUpload
@@ -133,7 +138,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
 
     let newRecipe = {
       title: formData.title,
-      tags: tagsFiltered,
+      tags: tagsTrimmed,
       image: imageForUpload,
       serving: formData.serving,
       timehour: timehour,
@@ -179,6 +184,11 @@ const TitleInput = styled(InputStyled)`
   height: 28px;
   margin-bottom: 22px;
   margin-top: 4px;
+`
+const SpanStyled = styled.span`
+  margin-left: 4px;
+  font-weight: 200;
+  font-size: 12px;
 `
 
 const ServingsLabel = styled(LabelStyled)`

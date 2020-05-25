@@ -5,9 +5,7 @@ describe('user can enter new recipe', () => {
 
     cy.get('.create-recipe-button').click()
     cy.get('.create-title').type('New Recipe Test')
-    cy.get('.create_tags0').type('yummy')
-    cy.get('.create_tags1').type('yummy')
-    cy.get('.create_tags2').type('yummy')
+    cy.get('.create_tags').type('yummy, yummy, yummy,')
     cy.get('.create-serving').type('2')
     cy.get('.create-timehour').type('1')
     cy.get('.create-timeminutes').type('2')
