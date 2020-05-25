@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro'
 import { TiDelete } from 'react-icons/ti'
 
-export default function Tags({ tags, setTags }) {
-  const [tag, setTag] = useState('')
-
+export default function Tags({ tags, setTags, tag, setTag }) {
   return (
     <TagWrapper>
       <ListStyled>
@@ -21,12 +19,14 @@ export default function Tags({ tags, setTags }) {
               type="text"
               id="tags"
               onChange={storeInput}
+              onBlur={storeLastTag}
               name="tag"
               value={tag}
               minLength="2"
               maxLength="10"
               data-testid="tag"
-              placeholder="e.g. easy"
+              placeholder={tags.length === 0 && 'e.g. easy, quick, italian'}
+              className="create_tags"
             />
           </InputItem>
         )}
@@ -37,14 +37,17 @@ export default function Tags({ tags, setTags }) {
     if (event.target.value.endsWith(',')) {
       setTags([...tags, tag])
       setTag('')
-      console.log(tag)
-      console.log(tags)
     } else {
       setTag(event.target.value)
-      console.log(tag)
-      console.log(tags)
     }
   }
+  function storeLastTag() {
+    if (tag.length > 0) {
+      setTags([...tags, tag])
+      setTag('')
+    }
+  }
+
   function deleteTag(index) {
     setTags([...tags.slice(0, index), ...tags.slice(index + 1)])
   }
@@ -60,8 +63,6 @@ const TagsInput = styled.input`
   }
   display: block;
   height: 34px;
-  padding-bottom: 4px;
-  padding-top: 4px;
   border: none;
   width: 100%;
   align-self: center;
@@ -89,13 +90,16 @@ const InputItem = styled.li`
   width: 100%;
 `
 const TagItem = styled.li`
-  align-self: center;
   display: flex;
   margin-left: 4px;
-  margin-bottom: 2px;
+  margin-top: 6px;
+  margin-bottom: 6px;
   background: var(--tertiary);
   color: var(--primary-background);
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   border-radius: 4px;
   font-weight: 200;
   font-size: 14px;
