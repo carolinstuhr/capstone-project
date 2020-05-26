@@ -123,8 +123,8 @@ const DisplaySelection = styled.section`
   margin-top: 22px;
   display: flex;
   justify-content: space-around;
-  border-top: 1px solid var(--primary);
-  border-bottom: 1px solid var(--primary);
+  border-top: 1px solid var(--tertiary);
+  border-bottom: 1px solid var(--tertiary);
   margin-bottom: 4px;
 `
 const ParagraphStyled = styled.p`
@@ -142,9 +142,10 @@ const UserDetailsSelector = styled(ParagraphStyled)`
       : 'var(--primary-opaque)'};
   background: ${(props) =>
     props.displayElement === 'userDetails'
-      ? 'var(--primary-background)'
-      : 'rgba(242, 239, 233, 0.4)'};
-  font-weight: ${(props) => (props.display === 'userDetails' ? 300 : 200)};
+      ? 'var(--secondary-background)'
+      : 'var(--primary-background)'};
+  font-weight: ${(props) =>
+    props.displayElement === 'userDetails' ? 300 : 200};
 `
 const UserRecipesSelector = styled(ParagraphStyled)`
   color: ${(props) =>
@@ -153,9 +154,10 @@ const UserRecipesSelector = styled(ParagraphStyled)`
       : 'var(--primary-opaque)'};
   background: ${(props) =>
     props.displayElement === 'userRecipes'
-      ? 'var(--primary-background)'
-      : 'rgba(242, 239, 233, 0.4)'};
-  font-weight: ${(props) => (props.display === 'userRecipes' ? 300 : 200)};
+      ? 'var(--secondary-background)'
+      : 'var(--primary-background)'};
+  font-weight: ${(props) =>
+    props.displayElement === 'userRecipes' ? 300 : 200};
 `
 
 const ImageSection = styled.section`

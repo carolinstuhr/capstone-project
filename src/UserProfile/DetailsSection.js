@@ -86,14 +86,13 @@ export default function DetailsSection({ user }) {
               )}
             </>
           )}
-          {user.details === [] ||
-            (details.internationalCuisine === '' &&
-              details.childhoodDish === '' &&
-              details.restaurant === '' && (
-                <NoUserInput>
-                  you haven't provided any additional information yet
-                </NoUserInput>
-              ))}
+          {user.details.internationalCuisine === '' &&
+            user.details.childhoodDish === '' &&
+            user.details.restaurant === '' && (
+              <NoUserInput>
+                you haven't provided any additional information yet
+              </NoUserInput>
+            )}
           <ButtonEditStyled
             onClick={() => changeEditMode()}
             className="edit-button"
