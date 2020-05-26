@@ -11,9 +11,22 @@ Not matter whether your're a pro or an absolute beginner at cooking 'get cooking
 
 This app was developed as my capstone project during the final four weeks of the neuefische Web Development Bootcamp in May, 2020.
 
-This app was developed and optimized for mobile useage, so please switch your browser to responsive mode (iPhone 6/7/8 plus)
+This app was developed and optimized for mobile useage, so please switch your browser to responsive mode (iPhone 6/7/8)
 
 Take a look at the get cooking app [here](https://get-cooking.web.app/)
+
+<div align="center">
+  <img src="images/../src/images/gif_login.gif"
+     height="300px"/>
+       <img src="images/../src/images/gif_details.gif"
+     height="300px"/>
+       <img src="images/../src/images/gif_favourites.gif"
+     height="300px"/>
+       <img src="images/../src/images/gif_filter.gif"
+     height="300px"/>
+       <img src="images/../src/images/gif_profile2.gif"
+     height="300px"/>
+</div>
 
 ---
 
