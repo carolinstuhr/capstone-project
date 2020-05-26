@@ -17,15 +17,21 @@ Take a look at the get cooking app [here](https://get-cooking.web.app/)
 
 <div align="center">
   <img src="images/../src/images/gif_login.gif"
-     height="300px"/>
-       <img src="images/../src/images/gif_details.gif"
-     height="300px"/>
-       <img src="images/../src/images/gif_favourites.gif"
-     height="300px"/>
+     height="400px"/>
        <img src="images/../src/images/gif_filter.gif"
-     height="300px"/>
-       <img src="images/../src/images/gif_profile2.gif"
-     height="300px"/>
+     height="400px"/>
+</div>
+<div align="center">
+  <img src="images/../src/images/gif_favourites.gif"
+     height="400px"/>
+  <img src="images/../src/images/gif_details.gif"
+     height="400px"/>
+</div>
+<div align="center">
+  <img src="images/../src/images/gif_create.gif"
+     height="400px"/>
+  <img src="images/../src/images/gif_profile2.gif"
+     height="400px"/>
 </div>
 
 ---
