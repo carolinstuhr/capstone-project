@@ -15,7 +15,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
   const [isFavourite, setIsFavourite] = useState(
     user && user.favourites.some((favourite) => favourite === recipe.id)
   )
-  let favouriteCheck =
+  let isFavouriteInitially =
     user && user.favourites.some((favourite) => favourite === recipe.id)
 
   return (
@@ -56,7 +56,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               onClick={() => {
                 toggleHeartIcon(recipe)
               }}
-              isFavourite={isFavourite || favouriteCheck}
+              isFavourite={isFavourite || isFavouriteInitially}
               alt="bookmark recipe"
               className="heart-icon"
             />
@@ -300,6 +300,7 @@ const InstructionsSection = styled.section`
       margin-left: 0%;
       width: 100%;
     }
+  }
 `
 
 const StyledParagraph = styled.p`

@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, getByPlaceholderText } from '@testing-library/react'
+import { render, getByPlaceholderText } from '@testing-library/react'
 import ProfilePage from './ProfilePage'
 import { MemoryRouter } from 'react-router-dom'
 import recipeData from '../RecipeList.json'
