@@ -15,7 +15,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
   const [isFavourite, setIsFavourite] = useState(
     user && user.favourites.some((favourite) => favourite === recipe.id)
   )
-  let favouriteCheck =
+  let isFavouriteInitially =
     user && user.favourites.some((favourite) => favourite === recipe.id)
 
   return (
@@ -56,7 +56,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               onClick={() => {
                 toggleHeartIcon(recipe)
               }}
-              isFavourite={isFavourite || favouriteCheck}
+              isFavourite={isFavourite || isFavouriteInitially}
               alt="bookmark recipe"
               className="heart-icon"
             />
@@ -242,12 +242,14 @@ const IngredientsSelectionSpan = styled.span`
   cursor: default;
   background: ${(props) =>
     props.recipeDetails === 'ingredients'
-      ? 'var(--primary-background)'
+      ? 'var(--secondary-background)'
       : 'rgba(255, 255, 255, 0.4)'};
   color: ${(props) =>
     props.recipeDetails === 'ingredients'
       ? 'var(--primary)'
       : 'var(--primary-opaque)'};
+  font-weight: ${(props) =>
+    props.recipeDetails === 'ingredients' ? '300' : '200'};
 `
 
 const InstructionsSelectionSpan = styled.span`
@@ -257,12 +259,14 @@ const InstructionsSelectionSpan = styled.span`
   cursor: default;
   background: ${(props) =>
     props.recipeDetails === 'instructions'
-      ? 'var(--primary-background)'
+      ? 'var(--secondary-background)'
       : 'rgba(255, 255, 255, 0.4)'};
   color: ${(props) =>
     props.recipeDetails === 'instructions'
       ? 'var(--primary)'
       : 'var(--primary-opaque)'};
+  font-weight: ${(props) =>
+    props.recipeDetails === 'instructions' ? '300' : '200'};
 `
 
 const IngredientsSection = styled.section`
@@ -300,6 +304,7 @@ const InstructionsSection = styled.section`
       margin-left: 0%;
       width: 100%;
     }
+  }
 `
 
 const StyledParagraph = styled.p`
