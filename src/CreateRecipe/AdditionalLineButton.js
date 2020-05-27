@@ -4,12 +4,11 @@ import { RiAddLine } from 'react-icons/ri'
 export default styled(RiAddLine)`
   height: 28px;
   width: 28px;
-  z-index: 2;
   color: var(--primary);
   padding: 2px;
   background: white;
   border: 1px solid var(--primary);
   border-radius: 24px;
   display: block;
-  margin-left: 40%;
+  margin-left: 140px;
 `

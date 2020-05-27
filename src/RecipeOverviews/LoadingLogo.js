@@ -9,6 +9,6 @@ const LoadingImg = styled.img`
   height: 50px;
   width: 50px;
   position: absolute;
-  top: 40%;
-  right: 40%;
+  top: 267px;
+  right: 150px;
 `

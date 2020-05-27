@@ -130,23 +130,23 @@ export default function CreateRecipe({ recipes, setRecipes }) {
     let tagsTrimmed = tags.map((tag) => tag.trim())
     let timehour = formData.timehour.padStart(2, '0')
     let timeminutes = formData.timeminutes.padStart(2, '0')
-    let imageForUpload
+    let imageLink
     imageAsUrl.imageUrl === ''
-      ? (imageForUpload =
+      ? (imageLink =
           'https://firebasestorage.googleapis.com/v0/b/get-cooking.appspot.com/o/images%2Fdefault.png?alt=media&token=c009d7d1-ba9f-44b1-93ee-4c984c244a97')
-      : (imageForUpload = imageAsUrl.imageUrl)
+      : (imageLink = imageAsUrl.imageUrl)
 
     let newRecipe = {
       title: formData.title,
       tags: tagsTrimmed,
-      image: imageForUpload,
+      image: imageLink,
       serving: formData.serving,
-      timehour: timehour,
-      timeminutes: timeminutes,
-      ingredients: ingredients,
-      instructions: instructions,
       isFavourite: false,
       userId: currentUser,
+      timehour,
+      timeminutes,
+      ingredients,
+      instructions,
     }
     let newId
     db.collection('recipes')

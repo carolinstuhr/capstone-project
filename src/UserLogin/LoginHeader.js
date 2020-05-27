@@ -25,10 +25,10 @@ const LogoStyled = styled.img`
   top: 16px;
 `
 const LogoLeftStyled = styled(LogoStyled)`
-  left: 16%;
+  left: 58px;
 `
 const LogoRightStyled = styled(LogoStyled)`
-  right: 15%;
+  right: 56px;
 `
 const TitleStyled = styled.h4`
   font-family: 'Nanum Myeongjo', serif;

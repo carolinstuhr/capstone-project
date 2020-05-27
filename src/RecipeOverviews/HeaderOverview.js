@@ -1,5 +1,5 @@
 import React from 'react'
-import ProfileIcon from '../UserProfile/ProfileIcon'
+import ProfileIcon from './ProfileIcon'
 import Header from '../Shared/Header'
 
 export default function HeaderOverview() {

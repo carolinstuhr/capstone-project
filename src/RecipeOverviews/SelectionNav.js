@@ -4,7 +4,7 @@ import styled from 'styled-components/macro'
 
 export default function DisplaySelection() {
   return (
-    <SelectionSection>
+    <SectionStyled>
       <NavItem exact to="/" activeClassName="selected">
         all
       </NavItem>
@@ -15,11 +15,11 @@ export default function DisplaySelection() {
       >
         favourites
       </NavItem>
-    </SelectionSection>
+    </SectionStyled>
   )
 }
 
-const SelectionSection = styled.section`
+const SectionStyled = styled.section`
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 20px;

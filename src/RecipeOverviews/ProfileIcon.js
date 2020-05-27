@@ -13,11 +13,10 @@ export default function ProfileIcon() {
 const ProfileImage = styled(FaRegUser)`
   height: 36px;
   width: 36px;
-  z-index: 2;
   color: var(--primary);
   position: fixed;
-  top: 1%;
-  left: 84%;
+  top: 6px;
+  right: 16px;
   padding: 6px;
   border: 1px solid var(--primary);
   border-radius: 50%;
