@@ -13,7 +13,7 @@ export default function ProfileHeader({ setUserStatus }) {
         <ArrowIconStyled alt="return" />
       </Link>
       profile
-      <LogoutButton onClick={logoutUser} alt="logout" />
+      <LogoutButton onClick={logoutUser} alt="logout" data-testid="logout" />
     </Header>
   )
   function logoutUser(event) {
