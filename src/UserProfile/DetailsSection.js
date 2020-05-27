@@ -46,12 +46,12 @@ export default function DetailsSection({ user }) {
             name="restaurant"
             onChange={storeDetails}
           />
-          <ButtonSaveStyled
+          <ButtonStyled
             onClick={() => addDetails(user)}
             className="save-button"
           >
             save
-          </ButtonSaveStyled>
+          </ButtonStyled>
           <ButtonCancelStyled
             onClick={() => setEditProfile(false)}
             className="cancel-button"
@@ -89,9 +89,9 @@ export default function DetailsSection({ user }) {
           {user.details.internationalCuisine === '' &&
             user.details.childhoodDish === '' &&
             user.details.restaurant === '' && (
-              <NoUserInput>
+              <ParagraphStyled>
                 you haven't provided any additional information yet
-              </NoUserInput>
+              </ParagraphStyled>
             )}
           <ButtonEditStyled
             onClick={() => changeEditMode()}
@@ -136,16 +136,18 @@ const LabelStyled = styled.label`
   font-size: 16px;
   margin-top: 12px;
 `
-const Title = styled.p`
-  font-weight: 400;
+const ParagraphStyled = styled.p`
   font-size: 16px;
+  font-weight: 200;
+`
+
+const Title = styled(ParagraphStyled)`
+  font-weight: 400;
   margin-top: 12px;
   margin-bottom: 4px;
 `
 
-const UserInput = styled.p`
-  font-weight: 200;
-  font-size: 16px;
+const UserInput = styled(ParagraphStyled)`
   margin-top: 0;
 `
 
@@ -163,19 +165,12 @@ const ButtonStyled = styled.button`
   font-weight: 200;
   background: var(--primary-background);
   margin-top: 12px;
+  width: 50px;
 `
 const ButtonEditStyled = styled(ButtonStyled)`
   width: 85px;
 `
-const ButtonSaveStyled = styled(ButtonStyled)`
-  width: 50px;
-`
 const ButtonCancelStyled = styled(ButtonStyled)`
-  width: 50px;
   margin-left: 4px;
   padding: 2px;
-`
-const NoUserInput = styled.p`
-  font-weight: 200;
-  font-size: 16px;
 `

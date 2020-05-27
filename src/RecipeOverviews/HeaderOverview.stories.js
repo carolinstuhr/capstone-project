@@ -1,15 +1,13 @@
 import React from 'react'
-import Header from './Header'
-import { withKnobs, text } from '@storybook/addon-knobs'
+import HeaderOverview from './HeaderOverview'
 
 export default {
-  component: Header,
-  title: 'Header',
-  decorators: [withKnobs],
+  component: HeaderOverview,
+  title: 'HeaderOverview',
 }
 
 export const recipes = () => (
-  <Header
+  <HeaderOverview
     style={{
       textAlign: 'center',
       fontSize: 32,
@@ -17,7 +15,5 @@ export const recipes = () => (
       fontFamily: 'Nanum Myeongjo',
       fontWeight: 400,
     }}
-  >
-    {text('Children', 'recipes')}
-  </Header>
+  />
 )

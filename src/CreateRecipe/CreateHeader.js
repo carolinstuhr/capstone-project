@@ -2,15 +2,16 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import { RiArrowLeftSLine } from 'react-icons/ri'
+import Header from '../Shared/Header'
 
-export default function CreateHeader({ children }) {
+export default function CreateHeader() {
   return (
-    <header>
+    <Header>
       <Link exact to="/">
         <ArrowIconStyled alt="return" />
       </Link>
-      <h1>{children}</h1>
-    </header>
+      create
+    </Header>
   )
 }
 

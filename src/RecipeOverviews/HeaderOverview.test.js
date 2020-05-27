@@ -1,15 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Header from './Header'
+import HeaderOverview from './HeaderOverview'
 import { MemoryRouter } from 'react-router-dom'
 
 test('renders Recipe in Header', () => {
   const container = document.createElement('div')
   ReactDOM.render(
     <MemoryRouter>
-      <Header>Recipe</Header>
+      <HeaderOverview />
     </MemoryRouter>,
     container
   )
-  expect(container.textContent).toBe('Recipe')
+  expect(container.textContent).toBe('recipes')
 })

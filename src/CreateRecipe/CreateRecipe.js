@@ -7,7 +7,7 @@ import { db } from '../firebaseConfig'
 import UploadImage from './UploadImage'
 import TagSection from './TagSection'
 import CreateHeader from './CreateHeader'
-import GridArea from '../GridArea'
+import GridArea from '../Shared/GridArea'
 
 export default function CreateRecipe({ recipes, setRecipes }) {
   const titleRef = useRef()
@@ -39,7 +39,7 @@ export default function CreateRecipe({ recipes, setRecipes }) {
 
   return (
     <GridArea>
-      <CreateHeader>create</CreateHeader>
+      <CreateHeader />
       <MainStyled>
         <form onSubmit={saveNewRecipetoLocalStorage}>
           <LabelStyled htmlFor="title">Title</LabelStyled>
