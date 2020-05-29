@@ -57,4 +57,5 @@ test('on LogoutClick should remove from localStorage', () => {
   const logoutButton = getByTestId('logout')
   userEvent.click(logoutButton)
   expect(localStorage.removeItem).toHaveBeenCalled()
+  expect(localStorage.removeItem).toHaveBeenCalledTimes(4)
 })

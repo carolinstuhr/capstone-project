@@ -20,27 +20,21 @@ Take a look at the get cooking app [here](https://get-cooking.web.app/)
 ## Some impressions of the app
 
 <div align="center">
-  <img src="images/../src/images/carolin_stuhr_get-cooking.gif"
+  <img src="images/../src/images/get-cooking_gif.gif"
      height="400px"/>
 </div>
 <div align="center">
-  <img src="images/../src/images/caro_stuhr_get-cooking1.png"
+  <img src="images/../src/images/get-cooking_login.png"
      height="400px"/>
-  <img src="images/../src/images/caro_stuhr_get-cooking2.png"
-     height="400px"/>
-  <img src="images/../src/images/caro_stuhr_get-cooking3.png"
-     height="400px"/>
-  <img src="images/../src/images/caro_stuhr_get-cooking4.png"
+  <img src="images/../src/images/get-cooking_overview.png"
      height="400px"/>
 </div>
-<div align="center">
-  <img src="images/../src/images/caro_stuhr_get-cooking5.png"
+<div align="center">     
+  <img src="images/../src/images/get-cooking_details.png"
      height="400px"/>
-  <img src="images/../src/images/caro_stuhr_get-cooking6.png"
+  <img src="images/../src/images/get-cooking_create.png"
      height="400px"/>
-  <img src="images/../src/images/caro_stuhr_get-cooking7.png"
-     height="400px"/>
-  <img src="images/../src/images/caro_stuhr_get-cooking8.png"
+  <img src="images/../src/images/get-cooking_profile.png"
      height="400px"/>
 </div>
 
