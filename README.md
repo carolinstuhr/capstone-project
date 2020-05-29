@@ -7,7 +7,7 @@
 
 ## Get Cooking
 
-Not matter whether your're a pro or an absolute beginner at cooking, 'get cooking' will become your best friend in the kitchen. You can easily bookmark your favourite recipes that were created by members of the community and also create and submit your own recipes which in turn might inspire others to try out new recipes.
+No matter whether your're a pro or an absolute beginner at cooking, 'get cooking' will become your best friend in the kitchen. You can easily bookmark your favourite recipes that were created by members of the community and also create and submit your own recipes which in turn might inspire others to try out new recipes.
 
 This app was developed as my capstone project during the final four weeks of the neuefische Web Development Bootcamp in May, 2020.
 

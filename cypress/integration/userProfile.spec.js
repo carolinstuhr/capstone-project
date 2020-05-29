@@ -6,7 +6,7 @@ describe('user can visit profile page', () => {
     cy.get('.Porridge').click()
     cy.get('.instructions-selector').click()
     cy.get('.ingredients-selector').click()
-    cy.get('.return-profile').click()
+    cy.get('.return').click()
   })
 
   it('changes detail information', () => {
