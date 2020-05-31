@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { auth } from './firebaseConfig'
 import styled from 'styled-components/macro'
 import chefsHat from './images/chefs-hat.png'
+import { saveToStorage } from './services'
 
 export const AuthContext = React.createContext()
 
@@ -13,7 +14,7 @@ export const AuthProvider = ({ children, history }) => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         setCurrentUser(user)
-        localStorage.setItem('uid', user.uid)
+        saveToStorage('uid', user.uid)
 
         setTimeout(() => {
           setPending(false)

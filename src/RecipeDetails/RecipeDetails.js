@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import LeftArrow from '../images/left-arrow.svg'
 import FavouritesBookmark from './FavouritesBookmark'
 import { Link, useParams } from 'react-router-dom'
 import { db } from '../firebaseConfig'
+import ReturnIcon from './ReturnIcon'
 
 export default function RecipeDetails({ user, recipes, previousPage }) {
   const params = useParams()
@@ -25,30 +25,28 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
           <ImageSectionStyled>
             {previousPage === 'All' && (
               <Link exact to="/">
-                <ArrowIconStyled
-                  src={LeftArrow}
-                  alt="return to all recipes"
+                <ReturnIcon
+                  alt="return"
                   onClick={() => setRecipeDetails('ingredients')}
-                  className="return-all"
+                  className="return"
                 />
               </Link>
             )}
             {previousPage === 'Favourites' && (
-              <Link exact to="/favourites">
-                <ArrowIconStyled
-                  src={LeftArrow}
-                  alt="return to favourite recipes"
+              <Link to="/favourites">
+                <ReturnIcon
+                  alt="return"
                   onClick={() => setRecipeDetails('ingredients')}
+                  className="return"
                 />
               </Link>
             )}
             {previousPage === 'Profile' && (
               <Link to="/profile">
-                <ArrowIconStyled
-                  src={LeftArrow}
-                  alt="return to profile page"
+                <ReturnIcon
+                  alt="return"
                   onClick={() => setRecipeDetails('ingredients')}
-                  className="return-profile"
+                  className="return"
                 />
               </Link>
             )}
@@ -92,10 +90,10 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
             <IngredientsSection>
               {recipe.ingredients.map((ingredient, index) => (
                 <>
-                  <StyledParagraph key={index}>
+                  <ParagraphStyled key={index}>
                     {ingredient.amount}
-                  </StyledParagraph>
-                  <StyledParagraph>{ingredient.name}</StyledParagraph>
+                  </ParagraphStyled>
+                  <ParagraphStyled>{ingredient.name}</ParagraphStyled>
                 </>
               ))}
             </IngredientsSection>
@@ -103,8 +101,8 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
             <InstructionsSection>
               {recipe.instructions.map((instruction, index) => (
                 <>
-                  <StyledParagraph key={index}>{index + 1}.</StyledParagraph>
-                  <StyledParagraph>{instruction}</StyledParagraph>
+                  <ParagraphStyled key={index}>{index + 1}.</ParagraphStyled>
+                  <ParagraphStyled>{instruction}</ParagraphStyled>
                 </>
               ))}
             </InstructionsSection>
@@ -143,6 +141,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
           )
   }
 }
+
 const MainStyled = styled.main`
   overflow-x: hidden;
   padding-top: 0;
@@ -151,17 +150,6 @@ const MainStyled = styled.main`
 const ImageSectionStyled = styled.section`
   height: 288px;
   position: relative;
-`
-
-const ArrowIconStyled = styled.img`
-  background: var(--primary-backgroundopaque);
-  border-radius: 4px;
-  height: 32px;
-  width: 32px;
-  position: absolute;
-  left: 12px;
-  top: 12px;
-  padding: 4px;
 `
 
 const ImageStyled = styled.img`
@@ -307,6 +295,6 @@ const InstructionsSection = styled.section`
   }
 `
 
-const StyledParagraph = styled.p`
+const ParagraphStyled = styled.p`
   margin-top: 4px;
 `

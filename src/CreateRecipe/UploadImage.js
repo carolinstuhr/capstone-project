@@ -61,7 +61,7 @@ const InputHidden = styled.input`
 `
 
 const UploadImageLabel = styled.label`
-  font-weight: 200;
+  font-weight: 300;
   font-size: 14px;
   padding: 8px;
   border-radius: 4px;

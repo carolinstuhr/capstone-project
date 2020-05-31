@@ -7,7 +7,6 @@ export default styled.button`
   justify-self: center;
   margin-top: 18px;
   border-radius: 4px;
-
   font-size: 16px;
   font-weight: 300;
   background: ${(props) =>

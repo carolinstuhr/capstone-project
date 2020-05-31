@@ -5,9 +5,9 @@ describe('user can add recipes to his favourites and remove them', () => {
 
     cy.get('.recipe20').click()
     cy.get('.heart-icon').click()
-    cy.get('.return-all').click()
+    cy.get('.return').click()
     cy.get('.favourite-recipes').click()
-    cy.get('.recipe3').should('be.visible')
+    cy.get('.recipe4').should('be.visible')
   })
   it('removes recipe from favourites', () => {
     cy.visit('/')
@@ -15,8 +15,8 @@ describe('user can add recipes to his favourites and remove them', () => {
 
     cy.get('.recipe20').click()
     cy.get('.heart-icon').click()
-    cy.get('.return-all').click()
+    cy.get('.return').click()
     cy.get('.favourite-recipes').click()
-    cy.get('.recipe3').should('not.be.visible')
+    cy.get('.recipe5').should('not.be.visible')
   })
 })

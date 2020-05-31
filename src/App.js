@@ -9,11 +9,12 @@ import SignUp from './UserLogin/SignUp'
 import SignIn from './UserLogin/SignIn'
 import PrivateRoute from './PrivateRoute'
 import ProfilePage from './UserProfile/ProfilePage'
+import { loadFromStorage } from './services'
 
 export default function App() {
   const [recipes, setRecipes] = useState([])
   const [pending, setPending] = useState(true)
-  const [users, setUsers] = useState('')
+  // const [users, setUsers] = useState('')
   const [user, setUser] = useState('')
   const [previousPage, setPreviousPage] = useState('All')
   const [userStatus, setUserStatus] = useState(false)
@@ -34,9 +35,9 @@ export default function App() {
         id: doc.id,
         ...doc.data(),
       }))
-      setUsers(users)
+      // setUsers(users)
       const userObject = users.find(
-        (user) => user.id === localStorage.getItem('uid')
+        (user) => user.id === loadFromStorage('uid')
       )
       setUser(userObject)
       setPending(false)

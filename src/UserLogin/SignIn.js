@@ -99,7 +99,6 @@ const InputStyled = styled.input`
   margin-bottom: 18px;
   justify-self: center;
   grid-column: 1 / 3;
-  border-radius: 4px;
   height: 32px;
   width: 200px;
   font-size: 16px;

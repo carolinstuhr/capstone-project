@@ -1,9 +1,10 @@
 import React from 'react'
-import { render, getByPlaceholderText } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import ProfilePage from './ProfilePage'
 import { MemoryRouter } from 'react-router-dom'
 import recipeData from '../RecipeList.json'
 import userEvent from '@testing-library/user-event'
+import ProfileHeader from './ProfileHeader'
 
 const user = {
   id: 1,
@@ -45,4 +46,16 @@ test('onClick render user details and onClick edit details', () => {
   userEvent.click(editButton)
   const inputField = getByPlaceholderText(/e.g. mexican/i)
   expect(inputField).toBeInTheDocument()
+})
+
+test('on LogoutClick should remove from localStorage', () => {
+  const { getByTestId } = render(
+    <MemoryRouter>
+      <ProfileHeader />
+    </MemoryRouter>
+  )
+  const logoutButton = getByTestId('logout')
+  userEvent.click(logoutButton)
+  expect(localStorage.removeItem).toHaveBeenCalled()
+  expect(localStorage.removeItem).toHaveBeenCalledTimes(4)
 })

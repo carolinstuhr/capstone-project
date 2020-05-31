@@ -3,12 +3,12 @@ import styled from 'styled-components/macro'
 import FilterRecipes from './FilterRecipes'
 import SelectionNav from './SelectionNav'
 import RecipeList from './RecipeList'
-import CreateRecipeButton from '../CreateRecipe/CreateRecipeButton'
+import CreateRecipeButton from './CreateRecipeButton'
 import { Link } from 'react-router-dom'
-import GridArea from '../GridArea'
-import Header from './Header'
+import GridArea from '../Shared/GridArea'
+import HeaderOverview from './HeaderOverview'
 import LoadingLogo from './LoadingLogo'
-import { filterUserRecipes } from '../services'
+import { filterUserRecipes } from './useFilterRecipes'
 
 export default function FavouriteRecipes({
   setPreviousPage,
@@ -25,7 +25,7 @@ export default function FavouriteRecipes({
 
   return (
     <GridArea>
-      <Header>recipes</Header>
+      <HeaderOverview />
       {pending ? (
         <LoadingLogo />
       ) : (

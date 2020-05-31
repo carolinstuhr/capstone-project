@@ -1,0 +1,324 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders page with recipe id 1 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <main
+        class="RecipeDetails__MainStyled-sc-1urzn0d-0 jPLzOO"
+      >
+        <section
+          class="RecipeDetails__ImageSectionStyled-sc-1urzn0d-1 bCFoki"
+        >
+          <svg
+            alt="bookmark recipe"
+            class="FavouritesBookmark-sc-18jcs1h-0 ihnwd heart-icon"
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
+            />
+          </svg>
+          <img
+            alt=""
+            class="RecipeDetails__ImageStyled-sc-1urzn0d-2 hjcPyA"
+            src="./images/chocolate_chip_cookies.jpg"
+          />
+        </section>
+        <section
+          class="RecipeDetails__RecipeInfoSectionStyled-sc-1urzn0d-3 dESenH"
+        >
+          <h3
+            class="RecipeDetails__TitleStyled-sc-1urzn0d-4 kJqMjz"
+          >
+            Chocolate chip cookies
+          </h3>
+          <section
+            class="RecipeDetails__InfoSection-sc-1urzn0d-5 loEyfe"
+          >
+            <span>
+              serves: 
+              10
+            </span>
+            <span>
+              time: 
+              0
+              :
+              40
+            </span>
+          </section>
+          <div
+            class="RecipeDetails__DetailSelectionStyled-sc-1urzn0d-6 iXWNBS"
+          >
+            <span
+              class="RecipeDetails__IngredientsSelectionSpan-sc-1urzn0d-7 bVnKZl ingredients-selector"
+            >
+              Ingredients
+            </span>
+            <span
+              class="RecipeDetails__InstructionsSelectionSpan-sc-1urzn0d-8 kmaLsl instructions-selector"
+              data-testid="instructionsButton"
+            >
+              Instructions
+            </span>
+          </div>
+        </section>
+        <section
+          class="RecipeDetails__IngredientsSection-sc-1urzn0d-9 dgqXzX"
+        >
+          <p
+            class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+          >
+            200 g
+          </p>
+          <p
+            class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+          >
+            flour
+          </p>
+          <p
+            class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+          >
+            100 ml
+          </p>
+          <p
+            class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+          >
+            milk
+          </p>
+          <p
+            class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+          >
+            250 g
+          </p>
+          <p
+            class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+          >
+            sugar
+          </p>
+          <p
+            class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+          >
+            2
+          </p>
+          <p
+            class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+          >
+            eggs
+          </p>
+          <p
+            class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+          >
+            1 tsp
+          </p>
+          <p
+            class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+          >
+            baking powder
+          </p>
+          <p
+            class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+          >
+            100 g
+          </p>
+          <p
+            class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+          >
+            chocolate chips
+          </p>
+        </section>
+      </main>
+    </div>
+  </body>,
+  "container": <div>
+    <main
+      class="RecipeDetails__MainStyled-sc-1urzn0d-0 jPLzOO"
+    >
+      <section
+        class="RecipeDetails__ImageSectionStyled-sc-1urzn0d-1 bCFoki"
+      >
+        <svg
+          alt="bookmark recipe"
+          class="FavouritesBookmark-sc-18jcs1h-0 ihnwd heart-icon"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 512 512"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
+          />
+        </svg>
+        <img
+          alt=""
+          class="RecipeDetails__ImageStyled-sc-1urzn0d-2 hjcPyA"
+          src="./images/chocolate_chip_cookies.jpg"
+        />
+      </section>
+      <section
+        class="RecipeDetails__RecipeInfoSectionStyled-sc-1urzn0d-3 dESenH"
+      >
+        <h3
+          class="RecipeDetails__TitleStyled-sc-1urzn0d-4 kJqMjz"
+        >
+          Chocolate chip cookies
+        </h3>
+        <section
+          class="RecipeDetails__InfoSection-sc-1urzn0d-5 loEyfe"
+        >
+          <span>
+            serves: 
+            10
+          </span>
+          <span>
+            time: 
+            0
+            :
+            40
+          </span>
+        </section>
+        <div
+          class="RecipeDetails__DetailSelectionStyled-sc-1urzn0d-6 iXWNBS"
+        >
+          <span
+            class="RecipeDetails__IngredientsSelectionSpan-sc-1urzn0d-7 bVnKZl ingredients-selector"
+          >
+            Ingredients
+          </span>
+          <span
+            class="RecipeDetails__InstructionsSelectionSpan-sc-1urzn0d-8 kmaLsl instructions-selector"
+            data-testid="instructionsButton"
+          >
+            Instructions
+          </span>
+        </div>
+      </section>
+      <section
+        class="RecipeDetails__IngredientsSection-sc-1urzn0d-9 dgqXzX"
+      >
+        <p
+          class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+        >
+          200 g
+        </p>
+        <p
+          class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+        >
+          flour
+        </p>
+        <p
+          class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+        >
+          100 ml
+        </p>
+        <p
+          class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+        >
+          milk
+        </p>
+        <p
+          class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+        >
+          250 g
+        </p>
+        <p
+          class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+        >
+          sugar
+        </p>
+        <p
+          class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+        >
+          2
+        </p>
+        <p
+          class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+        >
+          eggs
+        </p>
+        <p
+          class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+        >
+          1 tsp
+        </p>
+        <p
+          class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+        >
+          baking powder
+        </p>
+        <p
+          class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+        >
+          100 g
+        </p>
+        <p
+          class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
+        >
+          chocolate chips
+        </p>
+      </section>
+    </main>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

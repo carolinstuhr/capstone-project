@@ -7,6 +7,6 @@ export default styled(RiLogoutCircleRLine)`
   z-index: 2;
   color: var(--primary);
   position: fixed;
-  top: 8px;
-  right: 4%;
+  top: 6px;
+  right: 16px;
 `

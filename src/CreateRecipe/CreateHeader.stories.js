@@ -1,6 +1,6 @@
 import React from 'react'
 import CreateHeader from './CreateHeader'
-import { withKnobs, color, text } from '@storybook/addon-knobs'
+import { withKnobs, color } from '@storybook/addon-knobs'
 
 export default {
   component: CreateHeader,
@@ -21,8 +21,5 @@ export const ColorButton = () => (
       fontWeight: 400,
     }}
     color={color(label, defaultValue)}
-  >
-    {' '}
-    {text('Children', 'create')}
-  </CreateHeader>
+  />
 )

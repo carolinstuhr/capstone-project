@@ -6,4 +6,5 @@ export default {
   title: 'TagSection',
 }
 
-export const simple = () => <TagSection tags={['', '', '']} />
+export const oneTag = () => <TagSection tags={['quick']} />
+export const threeTags = () => <TagSection tags={['quick', 'easy', 'summer']} />

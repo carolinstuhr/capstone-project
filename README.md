@@ -7,7 +7,7 @@
 
 ## Get Cooking
 
-Not matter whether your're a pro or an absolute beginner at cooking, 'get cooking' will become your best friend in the kitchen. You can easily bookmark your favourite recipes that were created by members of the community and also create and submit your own recipes which in turn might inspire others to try out new recipes.
+No matter whether your're a pro or an absolute beginner at cooking, 'get cooking' will become your best friend in the kitchen. You can easily bookmark your favourite recipes that were created by members of the community and also create and submit your own recipes which in turn might inspire others to try out new recipes.
 
 This app was developed as my capstone project during the final four weeks of the neuefische Web Development Bootcamp in May, 2020.
 
@@ -20,27 +20,21 @@ Take a look at the get cooking app [here](https://get-cooking.web.app/)
 ## Some impressions of the app
 
 <div align="center">
-  <img src="images/../src/images/carolin_stuhr_get-cooking.gif"
+  <img src="images/../src/images/get-cooking_gif.gif"
      height="400px"/>
 </div>
 <div align="center">
-  <img src="images/../src/images/caro_stuhr_get-cooking1.png"
+  <img src="images/../src/images/get-cooking_login.png"
      height="400px"/>
-  <img src="images/../src/images/caro_stuhr_get-cooking2.png"
-     height="400px"/>
-  <img src="images/../src/images/caro_stuhr_get-cooking3.png"
-     height="400px"/>
-  <img src="images/../src/images/caro_stuhr_get-cooking4.png"
+  <img src="images/../src/images/get-cooking_overview.png"
      height="400px"/>
 </div>
-<div align="center">
-  <img src="images/../src/images/caro_stuhr_get-cooking5.png"
+<div align="center">     
+  <img src="images/../src/images/get-cooking_details.png"
      height="400px"/>
-  <img src="images/../src/images/caro_stuhr_get-cooking6.png"
+  <img src="images/../src/images/get-cooking_create.png"
      height="400px"/>
-  <img src="images/../src/images/caro_stuhr_get-cooking7.png"
-     height="400px"/>
-  <img src="images/../src/images/caro_stuhr_get-cooking8.png"
+  <img src="images/../src/images/get-cooking_profile.png"
      height="400px"/>
 </div>
 

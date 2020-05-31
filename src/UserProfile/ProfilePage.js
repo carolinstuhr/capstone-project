@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { auth } from '../firebaseConfig'
-import CreateHeader from '../CreateRecipe/CreateHeader'
+
 import styled from 'styled-components/macro'
-import LogoutButton from './LogoutButton'
-import GridArea from '../GridArea'
+
+import GridArea from '../Shared/GridArea'
 import ChefsHat from '../images/chefs-hat.png'
 import { Link } from 'react-router-dom'
 import DetailsSection from './DetailsSection'
+import ProfileHeader from './ProfileHeader'
 
 export default function ProfilePage({
   recipes,
@@ -22,7 +22,7 @@ export default function ProfilePage({
 
   return (
     <GridArea>
-      <CreateHeader>profile</CreateHeader>
+      <ProfileHeader setUserStatus={setUserStatus} />
       {user && (
         <main>
           <TopSection>
@@ -67,22 +67,10 @@ export default function ProfilePage({
             </>
           )}
           {displayElement === 'userDetails' && <DetailsSection user={user} />}
-          <LogoutButton onClick={logoutUser} alt="logout" />
         </main>
       )}
     </GridArea>
   )
-
-  function logoutUser(event) {
-    event.preventDefault()
-    auth
-      .signOut()
-      .then(() => {
-        localStorage.removeItem('uid')
-        setUserStatus(false)
-      })
-      .catch((err) => console.log(err))
-  }
 }
 
 const TopSection = styled.section`
