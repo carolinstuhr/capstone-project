@@ -33,7 +33,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               </Link>
             )}
             {previousPage === 'Favourites' && (
-              <Link exact to="/favourites">
+              <Link to="/favourites">
                 <ReturnIcon
                   alt="return"
                   onClick={() => setRecipeDetails('ingredients')}
@@ -141,6 +141,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
           )
   }
 }
+
 const MainStyled = styled.main`
   overflow-x: hidden;
   padding-top: 0;

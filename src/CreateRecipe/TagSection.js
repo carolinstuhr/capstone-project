@@ -10,7 +10,7 @@ export default function Tags({ tags, setTags, tag, setTag }) {
           tags.map((tag, index) => (
             <TagItem key={index}>
               {tag}
-              <DeleteTag onClick={() => deleteTag(index)} />
+              <DeleteIcon onClick={() => deleteTag(index)} />
             </TagItem>
           ))}
         {tags.length < 3 && (
@@ -67,7 +67,7 @@ const TagsInput = styled.input`
   width: 100%;
   align-self: center;
 `
-const DeleteTag = styled(TiDelete)`
+const DeleteIcon = styled(TiDelete)`
   height: 16px;
   width: 16px;
   align-self: center;

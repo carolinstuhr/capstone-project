@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import GridArea from '../Shared/GridArea'
 import HeaderOverview from './HeaderOverview'
 import LoadingLogo from './LoadingLogo'
-import { filterUserRecipes } from '../services'
+import { filterUserRecipes } from './useFilterRecipes'
 
 export default function AllRecipes({ setPreviousPage, recipes, pending }) {
   const [userFilterInput, setUserFilterInput] = useState('')

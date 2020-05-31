@@ -7,6 +7,4 @@ export default {
   title: 'AdditionalLineButton',
 }
 
-export const click = () => (
-  <AdditionalLineButton addAdditionalLine={action('clicked')} />
-)
+export const click = () => <AdditionalLineButton onClick={action('clicked')} />

@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
-export default function DisplaySelection() {
+export default function SelectionNav() {
   return (
     <SectionStyled>
       <NavItem exact to="/" activeClassName="selected">

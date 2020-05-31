@@ -9,13 +9,20 @@ export default {
   decorators: [withKnobs],
 }
 
-export const ToggleHeart = () => (
-  <FavouritesBookmark onClick={action('changed')} />
+const label = 'Color'
+const noFavourite = 'white'
+const favourite = '#c82a1a'
+
+export const NotFavourite = () => (
+  <FavouritesBookmark
+    color={color(label, noFavourite)}
+    onClick={action('changed')}
+  />
 )
 
-const label = 'Color'
-const defaultValue = 'white'
-
-export const FavouritesColor = () => (
-  <FavouritesBookmark color={color(label, defaultValue)} />
+export const Favourite = () => (
+  <FavouritesBookmark
+    color={color(label, favourite)}
+    onClick={action('changed')}
+  />
 )

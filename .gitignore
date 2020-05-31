@@ -32,5 +32,3 @@ firestore-debug.log
 cypress/videos
 cypress/screenshots
 
-#jest
-__snapshots__

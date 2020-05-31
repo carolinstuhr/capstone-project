@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { RiArrowLeftSLine } from 'react-icons/ri'
 import { auth } from '../firebaseConfig'
 import LogoutButton from './LogoutButton'
+import { removeFromStorage } from '../services'
 
 export default function ProfileHeader({ setUserStatus }) {
   return (
@@ -21,7 +22,7 @@ export default function ProfileHeader({ setUserStatus }) {
     auth
       .signOut()
       .then(() => {
-        localStorage.removeItem('uid')
+        removeFromStorage('uid')
         setUserStatus(false)
       })
       .catch((err) => console.log(err))
