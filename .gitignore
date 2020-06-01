@@ -27,6 +27,9 @@ serviceAccountKey.json
 firebaseConfig.js
 .firebase
 firestore-debug.log
+firestore.indexes.json
+firestore.rules
+import-firestore
 
 #cypress
 cypress/videos
