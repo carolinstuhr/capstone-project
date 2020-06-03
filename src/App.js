@@ -14,7 +14,6 @@ import { loadFromStorage } from './services'
 export default function App() {
   const [recipes, setRecipes] = useState([])
   const [pending, setPending] = useState(true)
-  // const [users, setUsers] = useState('')
   const [user, setUser] = useState('')
   const [previousPage, setPreviousPage] = useState('All')
   const [userStatus, setUserStatus] = useState(false)
@@ -35,7 +34,6 @@ export default function App() {
         id: doc.id,
         ...doc.data(),
       }))
-      // setUsers(users)
       const userObject = users.find(
         (user) => user.id === loadFromStorage('uid')
       )
