@@ -100,7 +100,6 @@ export default function DetailsSection({ user }) {
           >
             edit profile
           </ButtonEditStyled>
-          {console.log(user.details)}
         </>
       )}
     </UserDetails>
@@ -111,9 +110,6 @@ export default function DetailsSection({ user }) {
 
   function changeEditMode() {
     setEditProfile(true)
-
-    console.log(details)
-
     details && setDetails(user.details)
   }
 

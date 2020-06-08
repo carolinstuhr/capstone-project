@@ -4,6 +4,7 @@ import FavouritesBookmark from './FavouritesBookmark'
 import { Link, useParams } from 'react-router-dom'
 import { db } from '../firebaseConfig'
 import ReturnIcon from './ReturnIcon'
+import RecipeRating from './RecipeRating'
 
 export default function RecipeDetails({ user, recipes, previousPage }) {
   const params = useParams()
@@ -64,6 +65,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
             <TitleStyled>{recipe.title}</TitleStyled>
             <InfoSection>
               <span>serves: {recipe.serving}</span>
+              <RecipeRating />
               <span>
                 time: {recipe.timehour}:{recipe.timeminutes}
               </span>
