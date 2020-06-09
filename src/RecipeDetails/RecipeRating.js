@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { AiOutlineStar } from 'react-icons/ai'
+import { IoMdStar } from 'react-icons/io'
 
 export default function RecipeRating({
   setIsRatingWindowVisible,
   recipeRating,
+  recipe,
 }) {
   return (
     <>
@@ -14,27 +15,31 @@ export default function RecipeRating({
         <StarIcon3 recipeRating={recipeRating} />
         <StarIcon4 recipeRating={recipeRating} />
         <StarIcon5 recipeRating={recipeRating} />
-        <ParagraphStyled>ratings</ParagraphStyled>
-        {console.log(recipeRating)}
+        <ParagraphStyled>({recipe.numberOfRatings} ratings)</ParagraphStyled>
       </FavouritesSection>
     </>
   )
 }
 const FavouritesSection = styled.section``
 
-const StarIcon1 = styled(AiOutlineStar)`
+const StarIcon = styled(IoMdStar)`
+  height: 20px;
+  width: 20px;
+`
+
+const StarIcon1 = styled(StarIcon)`
   color: ${(props) => (props.recipeRating > 0 ? '#c82a1a' : 'white')};
 `
-const StarIcon2 = styled(AiOutlineStar)`
+const StarIcon2 = styled(StarIcon)`
   color: ${(props) => (props.recipeRating > 1 ? '#c82a1a' : 'white')};
 `
-const StarIcon3 = styled(AiOutlineStar)`
+const StarIcon3 = styled(StarIcon)`
   color: ${(props) => (props.recipeRating > 2 ? '#c82a1a' : 'white')};
 `
-const StarIcon4 = styled(AiOutlineStar)`
+const StarIcon4 = styled(StarIcon)`
   color: ${(props) => (props.recipeRating > 3 ? '#c82a1a' : 'white')};
 `
-const StarIcon5 = styled(AiOutlineStar)`
+const StarIcon5 = styled(StarIcon)`
   color: ${(props) => (props.recipeRating > 4 ? '#c82a1a' : 'white')};
 `
 

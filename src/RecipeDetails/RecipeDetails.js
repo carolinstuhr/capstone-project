@@ -5,7 +5,8 @@ import { Link, useParams } from 'react-router-dom'
 import { db } from '../firebaseConfig'
 import ReturnIcon from './ReturnIcon'
 import RecipeRating from './RecipeRating'
-import { AiOutlineStar } from 'react-icons/ai'
+import { IoMdStar } from 'react-icons/io'
+import { IoIosCloseCircleOutline } from 'react-icons/io'
 
 export default function RecipeDetails({ user, recipes, previousPage }) {
   const params = useParams()
@@ -83,6 +84,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 <RecipeRating
                   setIsRatingWindowVisible={setIsRatingWindowVisible}
                   recipeRating={recipeRating}
+                  recipe={recipe}
                 />
                 <span>
                   time: {recipe.timehour}:{recipe.timeminutes}
@@ -134,6 +136,9 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
           </MainStyled>
           {isRatingWindowVisible && (
             <RatingSection>
+              <CloseRatingIcon
+                onClick={() => setIsRatingWindowVisible(false)}
+              />
               <RatingText>Please rate the recipe</RatingText>
               <StarSection>
                 <StarIcon1 onClick={() => addUserRating(1)} />
@@ -367,20 +372,32 @@ const InstructionsSection = styled.section`
 const ParagraphStyled = styled.p`
   margin-top: 4px;
 `
-const StarIcon1 = styled(AiOutlineStar)`
+const StarIcon = styled(IoMdStar)`
+  height: 30px;
+  width: 30px;
+`
+
+const StarIcon1 = styled(StarIcon)`
   color: ${(props) => (props.recipeRating > 0 ? '#c82a1a' : 'white')};
 `
-const StarIcon2 = styled(AiOutlineStar)`
+const StarIcon2 = styled(StarIcon)`
   color: ${(props) => (props.recipeRating > 1 ? '#c82a1a' : 'white')};
 `
-const StarIcon3 = styled(AiOutlineStar)`
+const StarIcon3 = styled(StarIcon)`
   color: ${(props) => (props.recipeRating > 2 ? '#c82a1a' : 'white')};
 `
-const StarIcon4 = styled(AiOutlineStar)`
+const StarIcon4 = styled(StarIcon)`
   color: ${(props) => (props.recipeRating > 3 ? '#c82a1a' : 'white')};
 `
-const StarIcon5 = styled(AiOutlineStar)`
+const StarIcon5 = styled(StarIcon)`
   color: ${(props) => (props.recipeRating > 4 ? '#c82a1a' : 'white')};
+`
+
+const CloseRatingIcon = styled(IoIosCloseCircleOutline)`
+  position: absolute;
+  left: 178px;
+  height: 20px;
+  width: 20px;
 `
 
 const RatingSection = styled.section`
@@ -389,7 +406,7 @@ const RatingSection = styled.section`
   background: var(--primary-background);
   bottom: 2px;
   width: 200px;
-  height: 80px;
+  height: 100px;
   top: 300px;
   left: 88px;
   border-radius: 4px;
@@ -402,4 +419,7 @@ const StarSection = styled.section`
 
 const RatingText = styled.p`
   text-align: center;
+  margin-top: 22px;
+  margin-bottom: 8px;
+  font-weight: 300;
 `
