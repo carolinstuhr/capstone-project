@@ -14,6 +14,9 @@ This app was developed as my capstone project during the final four weeks of the
 This app was developed and optimized for mobile usage, so please switch your browser to responsive mode (iPhone 6/7/8)
 
 Take a look at the get cooking app [here](https://get-cooking.web.app/)
+If you don't want to create a new account you can sign in with these credentials:   
+email: stuhr.test@googlemail.com   
+pw: capstone123
 
 ---
 
