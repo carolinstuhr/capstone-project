@@ -5,8 +5,10 @@ import { db } from '../firebaseConfig'
 export default function DetailsSection({ user }) {
   const [editProfile, setEditProfile] = useState(false)
 
-  const [isUserDetailsEmpty, setIsUserDetailsEmpty] = useState(Object.entries(user.details).length === 0 ? (true) : (false))
- 
+  const [isUserDetailsEmpty, setIsUserDetailsEmpty] = useState(
+    Object.entries(user.details).length === 0 ? true : false
+  )
+  console.log(isUserDetailsEmpty)
   const [details, setDetails] = useState({
     internationalCuisine: '',
     childhoodDish: '',
@@ -90,10 +92,10 @@ export default function DetailsSection({ user }) {
             </>
           )}
           {isUserDetailsEmpty && (
-              <ParagraphStyled>
-                you haven't provided any additional information yet
-              </ParagraphStyled>
-            )}
+            <ParagraphStyled>
+              you haven't provided any additional information yet
+            </ParagraphStyled>
+          )}
           <ButtonEditStyled
             onClick={() => changeEditMode()}
             className="edit-button"
@@ -119,7 +121,9 @@ export default function DetailsSection({ user }) {
       .update({ details })
       .then(() => {
         setEditProfile(false)
-        setIsUserDetailsEmpty(Object.entries(user.details).length === 0 ? (true) : (false))
+        setIsUserDetailsEmpty(
+          Object.entries(user.details).length === 0 ? true : false
+        )
       })
       .catch((err) =>
         alert('Something went wrong. Please try again later.', err)
