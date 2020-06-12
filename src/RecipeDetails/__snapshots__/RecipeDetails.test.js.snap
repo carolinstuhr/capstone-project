@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <main
-        class="RecipeDetails__MainStyled-sc-1urzn0d-0 iKHkaU"
+        class="RecipeDetails__MainStyled-sc-1urzn0d-0 dfKsYk"
       >
         <section
           class="RecipeDetails__ImageSectionStyled-sc-1urzn0d-1 bCFoki"
@@ -51,10 +51,10 @@ Object {
               class="RecipeRating__FavouritesSection-sc-4qz39f-0 dDnGBJ"
             >
               <svg
-                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon1-sc-4qz39f-2 ikeFNE"
+                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon1-sc-4qz39f-2 WXZns"
                 fill="currentColor"
                 height="1em"
-                recipeRating="NaN"
+                recipeRating="5"
                 stroke="currentColor"
                 stroke-width="0"
                 viewBox="0 0 512 512"
@@ -66,10 +66,10 @@ Object {
                 />
               </svg>
               <svg
-                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon2-sc-4qz39f-3 kIKfUq"
+                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon2-sc-4qz39f-3 fJxQjW"
                 fill="currentColor"
                 height="1em"
-                recipeRating="NaN"
+                recipeRating="5"
                 stroke="currentColor"
                 stroke-width="0"
                 viewBox="0 0 512 512"
@@ -81,10 +81,10 @@ Object {
                 />
               </svg>
               <svg
-                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon3-sc-4qz39f-4 ikPiTA"
+                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon3-sc-4qz39f-4 bwREms"
                 fill="currentColor"
                 height="1em"
-                recipeRating="NaN"
+                recipeRating="5"
                 stroke="currentColor"
                 stroke-width="0"
                 viewBox="0 0 512 512"
@@ -96,10 +96,10 @@ Object {
                 />
               </svg>
               <svg
-                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon4-sc-4qz39f-5 bMnrca"
+                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon4-sc-4qz39f-5 fCoLXG"
                 fill="currentColor"
                 height="1em"
-                recipeRating="NaN"
+                recipeRating="5"
                 stroke="currentColor"
                 stroke-width="0"
                 viewBox="0 0 512 512"
@@ -111,10 +111,10 @@ Object {
                 />
               </svg>
               <svg
-                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon5-sc-4qz39f-6 iUwzjw"
+                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon5-sc-4qz39f-6 fkryHY"
                 fill="currentColor"
                 height="1em"
-                recipeRating="NaN"
+                recipeRating="5"
                 stroke="currentColor"
                 stroke-width="0"
                 viewBox="0 0 512 512"
@@ -129,6 +129,7 @@ Object {
                 class="RecipeRating__ParagraphStyled-sc-4qz39f-7 iQWsjd"
               >
                 (
+                2
                  ratings)
               </p>
             </section>
@@ -220,121 +221,11 @@ Object {
           </p>
         </section>
       </main>
-      <section
-        class="RecipeDetails__RatingSection-sc-1urzn0d-12 izjlX"
-      >
-        <svg
-          class="RecipeDetails__CloseRatingIcon-sc-1urzn0d-19 fXIbce"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          viewBox="0 0 512 512"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M331.3 308.7L278.6 256l52.7-52.7c6.2-6.2 6.2-16.4 0-22.6-6.2-6.2-16.4-6.2-22.6 0L256 233.4l-52.7-52.7c-6.2-6.2-15.6-7.1-22.6 0-7.1 7.1-6 16.6 0 22.6l52.7 52.7-52.7 52.7c-6.7 6.7-6.4 16.3 0 22.6 6.4 6.4 16.4 6.2 22.6 0l52.7-52.7 52.7 52.7c6.2 6.2 16.4 6.2 22.6 0 6.3-6.2 6.3-16.4 0-22.6z"
-          />
-          <path
-            d="M256 76c48.1 0 93.3 18.7 127.3 52.7S436 207.9 436 256s-18.7 93.3-52.7 127.3S304.1 436 256 436c-48.1 0-93.3-18.7-127.3-52.7S76 304.1 76 256s18.7-93.3 52.7-127.3S207.9 76 256 76m0-28C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"
-          />
-        </svg>
-        <p
-          class="RecipeDetails__RatingText-sc-1urzn0d-21 bxbIPw"
-        >
-          Please rate the recipe
-        </p>
-        <section
-          class="RecipeDetails__StarSection-sc-1urzn0d-20 kEHwsF"
-        >
-          <svg
-            class="RecipeDetails__StarIcon-sc-1urzn0d-13 RecipeDetails__StarIcon1-sc-1urzn0d-14 diVOfj"
-            fill="currentColor"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            userRating="0"
-            viewBox="0 0 512 512"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
-            />
-          </svg>
-          <svg
-            class="RecipeDetails__StarIcon-sc-1urzn0d-13 RecipeDetails__StarIcon2-sc-1urzn0d-15 ewLkUx"
-            fill="currentColor"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            userRating="0"
-            viewBox="0 0 512 512"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
-            />
-          </svg>
-          <svg
-            class="RecipeDetails__StarIcon-sc-1urzn0d-13 RecipeDetails__StarIcon3-sc-1urzn0d-16 jTWiRr"
-            fill="currentColor"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            userRating="0"
-            viewBox="0 0 512 512"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
-            />
-          </svg>
-          <svg
-            class="RecipeDetails__StarIcon-sc-1urzn0d-13 RecipeDetails__StarIcon4-sc-1urzn0d-17 jQJlYZ"
-            fill="currentColor"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            userRating="0"
-            viewBox="0 0 512 512"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
-            />
-          </svg>
-          <svg
-            class="RecipeDetails__StarIcon-sc-1urzn0d-13 RecipeDetails__StarIcon5-sc-1urzn0d-18 jLDYRP"
-            fill="currentColor"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            userRating="0"
-            viewBox="0 0 512 512"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
-            />
-          </svg>
-        </section>
-        <button
-          class="RecipeDetails__RatingButton-sc-1urzn0d-22 YCwru"
-        >
-          Submit
-        </button>
-      </section>
     </div>
   </body>,
   "container": <div>
     <main
-      class="RecipeDetails__MainStyled-sc-1urzn0d-0 iKHkaU"
+      class="RecipeDetails__MainStyled-sc-1urzn0d-0 dfKsYk"
     >
       <section
         class="RecipeDetails__ImageSectionStyled-sc-1urzn0d-1 bCFoki"
@@ -379,10 +270,10 @@ Object {
             class="RecipeRating__FavouritesSection-sc-4qz39f-0 dDnGBJ"
           >
             <svg
-              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon1-sc-4qz39f-2 ikeFNE"
+              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon1-sc-4qz39f-2 WXZns"
               fill="currentColor"
               height="1em"
-              recipeRating="NaN"
+              recipeRating="5"
               stroke="currentColor"
               stroke-width="0"
               viewBox="0 0 512 512"
@@ -394,10 +285,10 @@ Object {
               />
             </svg>
             <svg
-              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon2-sc-4qz39f-3 kIKfUq"
+              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon2-sc-4qz39f-3 fJxQjW"
               fill="currentColor"
               height="1em"
-              recipeRating="NaN"
+              recipeRating="5"
               stroke="currentColor"
               stroke-width="0"
               viewBox="0 0 512 512"
@@ -409,10 +300,10 @@ Object {
               />
             </svg>
             <svg
-              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon3-sc-4qz39f-4 ikPiTA"
+              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon3-sc-4qz39f-4 bwREms"
               fill="currentColor"
               height="1em"
-              recipeRating="NaN"
+              recipeRating="5"
               stroke="currentColor"
               stroke-width="0"
               viewBox="0 0 512 512"
@@ -424,10 +315,10 @@ Object {
               />
             </svg>
             <svg
-              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon4-sc-4qz39f-5 bMnrca"
+              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon4-sc-4qz39f-5 fCoLXG"
               fill="currentColor"
               height="1em"
-              recipeRating="NaN"
+              recipeRating="5"
               stroke="currentColor"
               stroke-width="0"
               viewBox="0 0 512 512"
@@ -439,10 +330,10 @@ Object {
               />
             </svg>
             <svg
-              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon5-sc-4qz39f-6 iUwzjw"
+              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon5-sc-4qz39f-6 fkryHY"
               fill="currentColor"
               height="1em"
-              recipeRating="NaN"
+              recipeRating="5"
               stroke="currentColor"
               stroke-width="0"
               viewBox="0 0 512 512"
@@ -457,6 +348,7 @@ Object {
               class="RecipeRating__ParagraphStyled-sc-4qz39f-7 iQWsjd"
             >
               (
+              2
                ratings)
             </p>
           </section>
@@ -548,116 +440,6 @@ Object {
         </p>
       </section>
     </main>
-    <section
-      class="RecipeDetails__RatingSection-sc-1urzn0d-12 izjlX"
-    >
-      <svg
-        class="RecipeDetails__CloseRatingIcon-sc-1urzn0d-19 fXIbce"
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 512 512"
-        width="1em"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M331.3 308.7L278.6 256l52.7-52.7c6.2-6.2 6.2-16.4 0-22.6-6.2-6.2-16.4-6.2-22.6 0L256 233.4l-52.7-52.7c-6.2-6.2-15.6-7.1-22.6 0-7.1 7.1-6 16.6 0 22.6l52.7 52.7-52.7 52.7c-6.7 6.7-6.4 16.3 0 22.6 6.4 6.4 16.4 6.2 22.6 0l52.7-52.7 52.7 52.7c6.2 6.2 16.4 6.2 22.6 0 6.3-6.2 6.3-16.4 0-22.6z"
-        />
-        <path
-          d="M256 76c48.1 0 93.3 18.7 127.3 52.7S436 207.9 436 256s-18.7 93.3-52.7 127.3S304.1 436 256 436c-48.1 0-93.3-18.7-127.3-52.7S76 304.1 76 256s18.7-93.3 52.7-127.3S207.9 76 256 76m0-28C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"
-        />
-      </svg>
-      <p
-        class="RecipeDetails__RatingText-sc-1urzn0d-21 bxbIPw"
-      >
-        Please rate the recipe
-      </p>
-      <section
-        class="RecipeDetails__StarSection-sc-1urzn0d-20 kEHwsF"
-      >
-        <svg
-          class="RecipeDetails__StarIcon-sc-1urzn0d-13 RecipeDetails__StarIcon1-sc-1urzn0d-14 diVOfj"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          userRating="0"
-          viewBox="0 0 512 512"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
-          />
-        </svg>
-        <svg
-          class="RecipeDetails__StarIcon-sc-1urzn0d-13 RecipeDetails__StarIcon2-sc-1urzn0d-15 ewLkUx"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          userRating="0"
-          viewBox="0 0 512 512"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
-          />
-        </svg>
-        <svg
-          class="RecipeDetails__StarIcon-sc-1urzn0d-13 RecipeDetails__StarIcon3-sc-1urzn0d-16 jTWiRr"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          userRating="0"
-          viewBox="0 0 512 512"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
-          />
-        </svg>
-        <svg
-          class="RecipeDetails__StarIcon-sc-1urzn0d-13 RecipeDetails__StarIcon4-sc-1urzn0d-17 jQJlYZ"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          userRating="0"
-          viewBox="0 0 512 512"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
-          />
-        </svg>
-        <svg
-          class="RecipeDetails__StarIcon-sc-1urzn0d-13 RecipeDetails__StarIcon5-sc-1urzn0d-18 jLDYRP"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          userRating="0"
-          viewBox="0 0 512 512"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
-          />
-        </svg>
-      </section>
-      <button
-        class="RecipeDetails__RatingButton-sc-1urzn0d-22 YCwru"
-      >
-        Submit
-      </button>
-    </section>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

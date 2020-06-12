@@ -25,7 +25,9 @@
       "Bake for 10 minutes, until the edges are golden brown and the cookies are just set."
     ],
     "isFavourite": false,
-    "userId": 1
+    "userId": 1,
+    "accumulatedRatings": 10,
+    "numberOfRatings": 2
   },
   {
     "id": 2,
@@ -52,7 +54,9 @@
       "Let it cool of and add in the raisins."
     ],
     "isFavourite": false,
-    "userId": 1
+    "userId": 1,
+    "accumulatedRatings": 8,
+    "numberOfRatings": 2
   },
   {
     "id": 3,
@@ -81,7 +85,9 @@
       "Remove the skillet from the heat. Add toasted sesame oil, to taste.",
       "Serve the noodles in bowls with sliced green onion and a little sprinkle of sesame seeds on top."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 3,
+    "numberOfRatings": 1
   },
   {
     "id": 4,
@@ -110,7 +116,9 @@
       "Garnish with fresh mint leaves."
     ],
     "isFavourite": false,
-    "userId": 1
+    "userId": 1,
+    "accumulatedRatings": 14,
+    "numberOfRatings": 3
   },
   {
     "id": 5,
@@ -134,7 +142,9 @@
       "Cook the pancakes on their first side for about 1-2 mins or until lots of tiny bubbles start to appear and pop on the surface. Flip the pancakes over and cook for a further minute on the other side.",
       "Serve your pancakes stacked up on a plate with a drizzle of maple syrup and any of your favourite toppings."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 6,
@@ -165,7 +175,9 @@
       "Place back in the oven for 15 minutes.",
       "Top with basil leaves and drizzle with olive oil."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 7,
@@ -194,7 +206,9 @@
       "Toss the spaghetti with the sauce, squeeze in the lemon juice and add a little of the reserved cooking water if you want to loosen the sauce a bit.",
       "Serve with sea salt and black pepper"
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 8,
@@ -231,7 +245,9 @@
       "Pour in apple filling mixture and pat down.",
       "Bake pie for 50-60 minutes or until the crust is golden brown and no greyish or undercooked pastry remains."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 9,
@@ -264,7 +280,9 @@
       "While the steak is resting, warm the corn tortillas on the grill or use a gas flame to char them slightly.",
       "Cut the steak into strips, against the grain. Place steak strips in the corn tortillas and top with red onion, chopped cucumber and cilantro. Squeeze with lime juice, if desired. Serve warm."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 10,
@@ -288,7 +306,9 @@
       "Add onion wedges, water, can of tomatoes with their juices, and 1/2 teaspoon of salt. Bring to a simmer. Cook, uncovered, for about 40 minutes. Stir occasionally and add additional salt as needed.",
       "Blend the soup until smooth, and then season to taste."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 11,
@@ -315,7 +335,9 @@
       "Slice the figs in half and put them on top of the batter",
       "Bake for 60 to 70 minutes in the preheated oven, until a knife inserted into the crown of the loaf comes out clean. Let the loaves cool in the pans for at least 5 minutes, then turn out onto a cooling rack, and cool completely."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 12,
@@ -340,7 +362,9 @@
       "Place the parchment over the dough and invert the bowl to release. Dust the surface with flour and rub with your hands to coat. Using the tip of a small knife, score the dough however you wish. Use the parchment to transfer the dough into the baking pot.",
       "Place the pot on the center rack, and reduce the heat to 450°F (230°C). Bake the dough for 20 minutes, covered. Remove the lid, and continue to bake for 30 minutes, checking after 20. Lift the loaf out of the pot, and bake directly on the oven rack for the last 5 to 10 minutes. Cool on a wire rack for 1 hour before slicing."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 13,
@@ -368,7 +392,9 @@
       "Add the rice. Cook, stirring, for 1 minute. Combine the stock cubes and water and add to the pan and cook, stirring occasionally, for 15 minutes.",
       "Arrange the prawns on top of the rice. Cover and cook for 5 minutes or until the rice is tender and the prawns curl and change colour. Sprinkle with the parsley and serve with lemon wedges."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 14,
@@ -401,7 +427,9 @@
       "Spray the steamer's surface lightly with the non-stick vegetable spray to prevent sticking. Place as many dumplings as will fit into a steamer, without touching each other. Cover and steam for 10 to 12 minutes over medium heat.",
       "Remove the dumplings from the steamer to a heatproof platter and place in oven to keep warm. Repeat until all dumplings are cooked."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 15,
@@ -424,7 +452,9 @@
       "Heat a lightly oiled skillet over medium-high heat.",
       "Dunk each slice of bread in egg mixture, soaking both sides. Place in pan, and cook on both sides until golden. Serve hot."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 16,
@@ -451,7 +481,9 @@
       "Remove the pan from the heat and stir in the crème fraîche. Return the pan to the heat, bring to the boil, and simmer until the sauce has thickened. Season to taste with salt and freshly ground pepper.",
       "Meanwhile, cook the pasta in a large pan of salted boiling water, according to packet instructions. Once cooked, drain the pasta, and toss with the mushroom and spinach sauce. Serve immediately."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 17,
@@ -484,7 +516,9 @@
       "Combine 1 large beaten egg with a teaspoon or two of water and gently brush the croissants with it",
       "Bake for 15 to 20 minutes, or until puffed, golden brown, and flaky.  "
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 18,
@@ -509,7 +543,9 @@
       "Pour 700ml vegetable or chicken stock into the pan and season with salt and pepper. Bring to the boil, then simmer for 10 mins until the squash is very soft.",
       "Pour 150ml double cream into the pan, bring back to the boil, then purée with a hand blender. For an extra-velvety consistency you can pour the soup through a fine sieve."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 19,
@@ -536,7 +572,9 @@
       "Add banana, protein powder, berries, spirulina, spinach and coconut water to a blender and blend until smooth.",
       "Add the smoothie to a bowl and top with the remaining ingredients."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 20,
@@ -557,7 +595,9 @@
       "Place the oats, milk, 300ml water and salt into a pan. Bring slowly to the boil, stirring frequently with a wooden spoon. Cook the porridge slowly for a couple of minutes, then pour into a bowl.",
       "Add the topping of your choice and serve immediately."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 21,
@@ -585,7 +625,9 @@
       "Cook for 3-4 mins, or until the vegetable begins to soften.",
       "When cooked, divide the the vegetables between 2 bowls and top each with a salmon fillet and a sprinkling of freshly ground black pepper. Serve immediately"
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   },
   {
     "id": 22,
@@ -613,6 +655,8 @@
       "Add 4 tablespoons of water and stir. Stir in the chickpeas. Mash in a few of the chickpeas, cover and simmer for 5 minutes. Add the ginger and garam masala. Cook for another minute.",
       "Serve with basmati rice."
     ],
-    "isFavourite": false
+    "isFavourite": false,
+    "accumulatedRatings": 0,
+    "numberOfRatings": 0
   }
 ]

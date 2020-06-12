@@ -12,7 +12,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
   const params = useParams()
 
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
-  const [isRatingWindowVisible, setIsRatingWindowVisible] = useState(true)
+  const [isRatingWindowVisible, setIsRatingWindowVisible] = useState(false)
 
   const [recipe, setRecipe] = useState({})
   useEffect(() => {

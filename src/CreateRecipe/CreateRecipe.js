@@ -143,6 +143,8 @@ export default function CreateRecipe({ recipes, setRecipes }) {
       serving: formData.serving,
       isFavourite: false,
       userId: currentUser,
+      accumulatedRatings: 0,
+      numberOfRatings: 0,
       timehour,
       timeminutes,
       ingredients,
