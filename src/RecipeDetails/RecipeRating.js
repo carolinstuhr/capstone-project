@@ -15,7 +15,12 @@ export default function RecipeRating({
         <StarIcon3 recipeRating={recipeRating} />
         <StarIcon4 recipeRating={recipeRating} />
         <StarIcon5 recipeRating={recipeRating} />
-        <ParagraphStyled>({recipe.numberOfRatings} ratings)</ParagraphStyled>
+        {recipe.numberOfRatings !== 1 && (
+          <ParagraphStyled>({recipe.numberOfRatings} ratings)</ParagraphStyled>
+        )}
+        {recipe.numberOfRatings === 1 && (
+          <ParagraphStyled>({recipe.numberOfRatings} rating)</ParagraphStyled>
+        )}
       </FavouritesSection>
     </>
   )

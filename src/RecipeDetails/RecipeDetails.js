@@ -12,7 +12,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
   const params = useParams()
 
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
-  const [isRatingWindowVisible, setIsRatingWindowVisible] = useState(false)
+  const [isRatingWindowVisible, setIsRatingWindowVisible] = useState(true)
 
   const [recipe, setRecipe] = useState({})
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
     )
   }, [recipe])
 
-  const [userRating, setUserRating] = useState()
+  const [userRating, setUserRating] = useState(0)
 
   const [isFavourite, setIsFavourite] = useState(
     user && user.favourites.some((favourite) => favourite === recipe.id)
@@ -141,12 +141,30 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               />
               <RatingText>Please rate the recipe</RatingText>
               <StarSection>
-                <StarIcon1 onClick={() => addUserRating(1)} />
-                <StarIcon2 onClick={() => addUserRating(2)} />
-                <StarIcon3 onClick={() => addUserRating(3)} />
-                <StarIcon4 onClick={() => addUserRating(4)} />
-                <StarIcon5 onClick={() => addUserRating(5)} />
+                <StarIcon1
+                  userRating={userRating}
+                  onClick={() => setUserRating(1)}
+                />
+                <StarIcon2
+                  userRating={userRating}
+                  onClick={() => setUserRating(2)}
+                />
+                <StarIcon3
+                  userRating={userRating}
+                  onClick={() => setUserRating(3)}
+                />
+                <StarIcon4
+                  userRating={userRating}
+                  onClick={() => setUserRating(4)}
+                />
+                <StarIcon5
+                  userRating={userRating}
+                  onClick={() => setUserRating(5)}
+                />
               </StarSection>
+              <RatingButton onClick={() => addUserRating(userRating)}>
+                Submit
+              </RatingButton>
             </RatingSection>
           )}
         </>
@@ -189,10 +207,12 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
         .doc(recipe.id)
         .update({ numberOfRatings: 1, accumulatedRatings: rating })
         .then(() => {
-          setUserRating(rating)
           setRecipeRating(rating)
           setIsRatingWindowVisible(false)
         })
+        .catch((err) =>
+          alert('Something went wrong. Please try again later.', err)
+        )
     } else {
       db.collection('recipes')
         .doc(recipe.id)
@@ -201,7 +221,6 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
           accumulatedRatings: recipe.accumulatedRatings + rating,
         })
         .then(() => {
-          setUserRating(rating)
           setRecipeRating(
             Math.round(
               (recipe.accumulatedRatings + rating) /
@@ -210,6 +229,9 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
           )
           setIsRatingWindowVisible(false)
         })
+        .catch((err) =>
+          alert('Something went wrong. Please try again later.', err)
+        )
     }
   }
 }
@@ -372,25 +394,39 @@ const InstructionsSection = styled.section`
 const ParagraphStyled = styled.p`
   margin-top: 4px;
 `
+
+const RatingSection = styled.section`
+  position: absolute;
+  z-index: 2;
+  background: var(--primary-background);
+  bottom: 2px;
+  width: 200px;
+  height: 150px;
+  top: 300px;
+  left: 88px;
+  border-radius: 4px;
+  border: 1px solid var(--tertiary);
+`
+
 const StarIcon = styled(IoMdStar)`
   height: 30px;
   width: 30px;
 `
 
 const StarIcon1 = styled(StarIcon)`
-  color: ${(props) => (props.recipeRating > 0 ? '#c82a1a' : 'white')};
+  color: ${(props) => (props.userRating > 0 ? '#c82a1a' : 'white')};
 `
 const StarIcon2 = styled(StarIcon)`
-  color: ${(props) => (props.recipeRating > 1 ? '#c82a1a' : 'white')};
+  color: ${(props) => (props.userRating > 1 ? '#c82a1a' : 'white')};
 `
 const StarIcon3 = styled(StarIcon)`
-  color: ${(props) => (props.recipeRating > 2 ? '#c82a1a' : 'white')};
+  color: ${(props) => (props.userRating > 2 ? '#c82a1a' : 'white')};
 `
 const StarIcon4 = styled(StarIcon)`
-  color: ${(props) => (props.recipeRating > 3 ? '#c82a1a' : 'white')};
+  color: ${(props) => (props.userRating > 3 ? '#c82a1a' : 'white')};
 `
 const StarIcon5 = styled(StarIcon)`
-  color: ${(props) => (props.recipeRating > 4 ? '#c82a1a' : 'white')};
+  color: ${(props) => (props.userRating > 4 ? '#c82a1a' : 'white')};
 `
 
 const CloseRatingIcon = styled(IoIosCloseCircleOutline)`
@@ -400,18 +436,6 @@ const CloseRatingIcon = styled(IoIosCloseCircleOutline)`
   width: 20px;
 `
 
-const RatingSection = styled.section`
-  position: absolute;
-  z-index: 2;
-  background: var(--primary-background);
-  bottom: 2px;
-  width: 200px;
-  height: 100px;
-  top: 300px;
-  left: 88px;
-  border-radius: 4px;
-  border: 1px solid var(--tertiary);
-`
 const StarSection = styled.section`
   display: flex;
   justify-content: center;
@@ -422,4 +446,15 @@ const RatingText = styled.p`
   margin-top: 22px;
   margin-bottom: 8px;
   font-weight: 300;
+`
+
+const RatingButton = styled.button`
+  width: 60px;
+  padding: 4px;
+  margin-top: 18px;
+  margin-left: 70px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 200;
+  background: white;
 `
