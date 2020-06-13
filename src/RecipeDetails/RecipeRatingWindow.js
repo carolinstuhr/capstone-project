@@ -8,23 +8,46 @@ export default function RecipeRatingWindow({
   recipe,
   setIsRatingWindowVisible,
   setRecipeRating,
+  isRecipeRated,
+  user,
 }) {
   const [userRating, setUserRating] = useState(0)
+  console.log(isRecipeRated)
 
   return (
     <RatingSection>
       <CloseRatingIcon onClick={() => setIsRatingWindowVisible(false)} />
-      <RatingText>Please rate the recipe</RatingText>
-      <StarSection>
-        <StarIcon1 userRating={userRating} onClick={() => setUserRating(1)} />
-        <StarIcon2 userRating={userRating} onClick={() => setUserRating(2)} />
-        <StarIcon3 userRating={userRating} onClick={() => setUserRating(3)} />
-        <StarIcon4 userRating={userRating} onClick={() => setUserRating(4)} />
-        <StarIcon5 userRating={userRating} onClick={() => setUserRating(5)} />
-      </StarSection>
-      <RatingButton onClick={() => addUserRating(userRating)}>
-        Submit
-      </RatingButton>
+      {isRecipeRated || (
+        <>
+          <RatingText>Please rate the recipe</RatingText>
+          <StarSection>
+            <StarIcon1
+              userRating={userRating}
+              onClick={() => setUserRating(1)}
+            />
+            <StarIcon2
+              userRating={userRating}
+              onClick={() => setUserRating(2)}
+            />
+            <StarIcon3
+              userRating={userRating}
+              onClick={() => setUserRating(3)}
+            />
+            <StarIcon4
+              userRating={userRating}
+              onClick={() => setUserRating(4)}
+            />
+            <StarIcon5
+              userRating={userRating}
+              onClick={() => setUserRating(5)}
+            />
+          </StarSection>
+          <RatingButton onClick={() => addUserRating(userRating)}>
+            Submit
+          </RatingButton>
+        </>
+      )}
+      {isRecipeRated && <RatingText>You already rated this recipe</RatingText>}
     </RatingSection>
   )
 
@@ -33,6 +56,9 @@ export default function RecipeRatingWindow({
       db.collection('recipes')
         .doc(recipe.id)
         .update({ numberOfRatings: 1, accumulatedRatings: rating })
+      db.collection('users')
+        .doc(user.id)
+        .update({ ratedRecipes: [...user.ratedRecipes, recipe.id] })
         .then(() => {
           setRecipeRating(rating)
           setIsRatingWindowVisible(false)
@@ -47,6 +73,9 @@ export default function RecipeRatingWindow({
           numberOfRatings: recipe.numberOfRatings + 1,
           accumulatedRatings: recipe.accumulatedRatings + rating,
         })
+      db.collection('users')
+        .doc(user.id)
+        .update({ ratedRecipes: [...user.ratedRecipes, recipe.id] })
         .then(() => {
           setRecipeRating(
             Math.round(

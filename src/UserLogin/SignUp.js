@@ -97,6 +97,7 @@ function SignUp({ history, setUserStatus }) {
       email: user.email,
       name: userName,
       favourites: [],
+      ratedRecipes: [],
       details: {},
     })
   }

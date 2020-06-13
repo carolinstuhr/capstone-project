@@ -25,11 +25,18 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
     )
   }, [recipe])
 
-  const [isFavourite, setIsFavourite] = useState(
-    user && user.favourites.some((favourite) => favourite === recipe.id)
-  )
-  let isFavouriteInitially =
-    user && user.favourites.some((favourite) => favourite === recipe.id)
+  const [isFavourite, setIsFavourite] = useState()
+
+  const [isRecipeRated, setIsRecipeRated] = useState()
+
+  useEffect(() => {
+    setIsRecipeRated(
+      user && user.ratedRecipes.some((ratedRecipe) => ratedRecipe === recipe.id)
+    )
+    setIsFavourite(
+      user && user.favourites.some((favourite) => favourite === recipe.id)
+    )
+  }, [user, recipe])
 
   return (
     <>
@@ -68,10 +75,11 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 onClick={() => {
                   toggleHeartIcon(recipe)
                 }}
-                isFavourite={isFavourite || isFavouriteInitially}
+                isFavourite={isFavourite}
                 alt="bookmark recipe"
                 className="heart-icon"
               />
+              {console.log(isFavourite)}
               <ImageStyled src={recipe.image} alt="" />
             </ImageSectionStyled>
             <RecipeInfoSectionStyled>
@@ -136,6 +144,8 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               setIsRatingWindowVisible={setIsRatingWindowVisible}
               recipe={recipe}
               setRecipeRating={setRecipeRating}
+              isRecipeRated={isRecipeRated}
+              user={user}
             />
           )}
         </>
