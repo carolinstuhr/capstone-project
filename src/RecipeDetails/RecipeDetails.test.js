@@ -39,3 +39,15 @@ test('onClick renders instructions', () => {
   const instructionsElement = getByText(/Put the dry ingredients into a bowl./i)
   expect(instructionsElement).toBeInTheDocument()
 })
+
+test('ratings window opens and user can rate recipe', () => {
+  const { getByText } = render(
+    <MemoryRouter>
+      <RecipeDetails recipes={recipeData} />
+    </MemoryRouter>
+  )
+  const ratings = getByText(/rating/i)
+  userEvent.click(ratings)
+  const ratingsWindow = getByText(/Please rate the recipe/i)
+  expect(ratingsWindow).toBeInTheDocument()
+})

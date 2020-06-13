@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <main
-        class="RecipeDetails__MainStyled-sc-1urzn0d-0 jPLzOO"
+        class="RecipeDetails__MainStyled-sc-1urzn0d-0 dfKsYk"
       >
         <section
           class="RecipeDetails__ImageSectionStyled-sc-1urzn0d-1 bCFoki"
@@ -41,12 +41,98 @@ Object {
             Chocolate chip cookies
           </h3>
           <section
-            class="RecipeDetails__InfoSection-sc-1urzn0d-5 loEyfe"
+            class="RecipeDetails__InfoSection-sc-1urzn0d-5 dFyLfW"
           >
             <span>
               serves: 
               10
             </span>
+            <section
+              class="RecipeRating__FavouritesSection-sc-4qz39f-0 dDnGBJ"
+            >
+              <svg
+                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon1-sc-4qz39f-2 WXZns"
+                fill="currentColor"
+                height="1em"
+                recipeRating="5"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
+                />
+              </svg>
+              <svg
+                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon2-sc-4qz39f-3 fJxQjW"
+                fill="currentColor"
+                height="1em"
+                recipeRating="5"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
+                />
+              </svg>
+              <svg
+                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon3-sc-4qz39f-4 bwREms"
+                fill="currentColor"
+                height="1em"
+                recipeRating="5"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
+                />
+              </svg>
+              <svg
+                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon4-sc-4qz39f-5 fCoLXG"
+                fill="currentColor"
+                height="1em"
+                recipeRating="5"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
+                />
+              </svg>
+              <svg
+                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon5-sc-4qz39f-6 fkryHY"
+                fill="currentColor"
+                height="1em"
+                recipeRating="5"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
+                />
+              </svg>
+              <p
+                class="RecipeRating__ParagraphStyled-sc-4qz39f-7 iQWsjd"
+              >
+                (
+                2
+                 ratings)
+              </p>
+            </section>
             <span>
               time: 
               0
@@ -139,7 +225,7 @@ Object {
   </body>,
   "container": <div>
     <main
-      class="RecipeDetails__MainStyled-sc-1urzn0d-0 jPLzOO"
+      class="RecipeDetails__MainStyled-sc-1urzn0d-0 dfKsYk"
     >
       <section
         class="RecipeDetails__ImageSectionStyled-sc-1urzn0d-1 bCFoki"
@@ -174,12 +260,98 @@ Object {
           Chocolate chip cookies
         </h3>
         <section
-          class="RecipeDetails__InfoSection-sc-1urzn0d-5 loEyfe"
+          class="RecipeDetails__InfoSection-sc-1urzn0d-5 dFyLfW"
         >
           <span>
             serves: 
             10
           </span>
+          <section
+            class="RecipeRating__FavouritesSection-sc-4qz39f-0 dDnGBJ"
+          >
+            <svg
+              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon1-sc-4qz39f-2 WXZns"
+              fill="currentColor"
+              height="1em"
+              recipeRating="5"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
+              />
+            </svg>
+            <svg
+              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon2-sc-4qz39f-3 fJxQjW"
+              fill="currentColor"
+              height="1em"
+              recipeRating="5"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
+              />
+            </svg>
+            <svg
+              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon3-sc-4qz39f-4 bwREms"
+              fill="currentColor"
+              height="1em"
+              recipeRating="5"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
+              />
+            </svg>
+            <svg
+              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon4-sc-4qz39f-5 fCoLXG"
+              fill="currentColor"
+              height="1em"
+              recipeRating="5"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
+              />
+            </svg>
+            <svg
+              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon5-sc-4qz39f-6 fkryHY"
+              fill="currentColor"
+              height="1em"
+              recipeRating="5"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 372.686L380.83 448l-33.021-142.066L458 210.409l-145.267-12.475L256 64l-56.743 133.934L54 210.409l110.192 95.525L131.161 448z"
+              />
+            </svg>
+            <p
+              class="RecipeRating__ParagraphStyled-sc-4qz39f-7 iQWsjd"
+            >
+              (
+              2
+               ratings)
+            </p>
+          </section>
           <span>
             time: 
             0

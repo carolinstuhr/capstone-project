@@ -1,113 +1,155 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components/macro'
 import FavouritesBookmark from './FavouritesBookmark'
 import { Link, useParams } from 'react-router-dom'
 import { db } from '../firebaseConfig'
 import ReturnIcon from './ReturnIcon'
+import RecipeRating from './RecipeRating'
+import RecipeRatingWindow from './RecipeRatingWindow'
 
 export default function RecipeDetails({ user, recipes, previousPage }) {
   const params = useParams()
 
   const [recipeDetails, setRecipeDetails] = useState('ingredients')
+  const [isRatingWindowVisible, setIsRatingWindowVisible] = useState(false)
 
-  let recipe = recipes && recipes.find((recipe) => recipe.id === params.id)
+  const [recipe, setRecipe] = useState({})
+  useEffect(() => {
+    setRecipe(recipes.find((recipe) => recipe.id === params.id))
+  }, [recipes])
 
-  const [isFavourite, setIsFavourite] = useState(
-    user && user.favourites.some((favourite) => favourite === recipe.id)
-  )
-  let isFavouriteInitially =
-    user && user.favourites.some((favourite) => favourite === recipe.id)
+  const [recipeRating, setRecipeRating] = useState(0)
+  useEffect(() => {
+    setRecipeRating(
+      recipe && Math.round(recipe.accumulatedRatings / recipe.numberOfRatings)
+    )
+  }, [recipe])
+
+  const [isFavourite, setIsFavourite] = useState()
+
+  const [isRecipeRated, setIsRecipeRated] = useState()
+
+  useEffect(() => {
+    setIsRecipeRated(
+      user && user.ratedRecipes.some((ratedRecipe) => ratedRecipe === recipe.id)
+    )
+    setIsFavourite(
+      user && user.favourites.some((favourite) => favourite === recipe.id)
+    )
+  }, [user, recipe])
 
   return (
     <>
       {recipe && (
-        <MainStyled>
-          <ImageSectionStyled>
-            {previousPage === 'All' && (
-              <Link exact to="/">
-                <ReturnIcon
-                  alt="return"
-                  onClick={() => setRecipeDetails('ingredients')}
-                  className="return"
+        <>
+          <MainStyled isRatingWindowVisible={isRatingWindowVisible}>
+            <ImageSectionStyled>
+              {previousPage === 'All' && (
+                <Link exact to="/">
+                  <ReturnIcon
+                    alt="return"
+                    onClick={() => setRecipeDetails('ingredients')}
+                    className="return"
+                  />
+                </Link>
+              )}
+              {previousPage === 'Favourites' && (
+                <Link to="/favourites">
+                  <ReturnIcon
+                    alt="return"
+                    onClick={() => setRecipeDetails('ingredients')}
+                    className="return"
+                  />
+                </Link>
+              )}
+              {previousPage === 'Profile' && (
+                <Link to="/profile">
+                  <ReturnIcon
+                    alt="return"
+                    onClick={() => setRecipeDetails('ingredients')}
+                    className="return"
+                  />
+                </Link>
+              )}
+              <FavouritesBookmark
+                onClick={() => {
+                  toggleHeartIcon(recipe)
+                }}
+                isFavourite={isFavourite}
+                alt="bookmark recipe"
+                className="heart-icon"
+              />
+              {console.log(isFavourite)}
+              <ImageStyled src={recipe.image} alt="" />
+            </ImageSectionStyled>
+            <RecipeInfoSectionStyled>
+              <TitleStyled>{recipe.title}</TitleStyled>
+              <InfoSection>
+                <span>serves: {recipe.serving}</span>
+                <RecipeRating
+                  setIsRatingWindowVisible={setIsRatingWindowVisible}
+                  recipeRating={recipeRating}
+                  recipe={recipe}
                 />
-              </Link>
-            )}
-            {previousPage === 'Favourites' && (
-              <Link to="/favourites">
-                <ReturnIcon
-                  alt="return"
+                <span>
+                  time: {recipe.timehour}:{recipe.timeminutes}
+                </span>
+              </InfoSection>
+              <DetailSelectionStyled>
+                <IngredientsSelectionSpan
                   onClick={() => setRecipeDetails('ingredients')}
-                  className="return"
-                />
-              </Link>
+                  recipeDetails={recipeDetails}
+                  className="ingredients-selector"
+                >
+                  Ingredients
+                </IngredientsSelectionSpan>
+                <InstructionsSelectionSpan
+                  onClick={() => setRecipeDetails('instructions')}
+                  recipeDetails={recipeDetails}
+                  data-testid="instructionsButton"
+                  className="instructions-selector"
+                >
+                  Instructions
+                </InstructionsSelectionSpan>
+              </DetailSelectionStyled>
+            </RecipeInfoSectionStyled>
+            {recipeDetails === 'ingredients' ? (
+              <IngredientsSection>
+                {recipe.ingredients &&
+                  recipe.ingredients.map((ingredient, index) => (
+                    <>
+                      <ParagraphStyled key={index}>
+                        {ingredient.amount}
+                      </ParagraphStyled>
+                      <ParagraphStyled>{ingredient.name}</ParagraphStyled>
+                    </>
+                  ))}
+              </IngredientsSection>
+            ) : (
+              <InstructionsSection>
+                {recipe.instructions &&
+                  recipe.instructions.map((instruction, index) => (
+                    <>
+                      <ParagraphStyled key={index}>
+                        {index + 1}.
+                      </ParagraphStyled>
+                      <ParagraphStyled>{instruction}</ParagraphStyled>
+                    </>
+                  ))}
+              </InstructionsSection>
             )}
-            {previousPage === 'Profile' && (
-              <Link to="/profile">
-                <ReturnIcon
-                  alt="return"
-                  onClick={() => setRecipeDetails('ingredients')}
-                  className="return"
-                />
-              </Link>
-            )}
-            <FavouritesBookmark
-              onClick={() => {
-                toggleHeartIcon(recipe)
-              }}
-              isFavourite={isFavourite || isFavouriteInitially}
-              alt="bookmark recipe"
-              className="heart-icon"
+          </MainStyled>
+          {isRatingWindowVisible && (
+            <RecipeRatingWindow
+              setIsRatingWindowVisible={setIsRatingWindowVisible}
+              recipe={recipe}
+              setRecipeRating={setRecipeRating}
+              isRecipeRated={isRecipeRated}
+              user={user}
+              setIsRecipeRated={setIsRecipeRated}
             />
-            <ImageStyled src={recipe.image} alt="" />
-          </ImageSectionStyled>
-          <RecipeInfoSectionStyled>
-            <TitleStyled>{recipe.title}</TitleStyled>
-            <InfoSection>
-              <span>serves: {recipe.serving}</span>
-              <span>
-                time: {recipe.timehour}:{recipe.timeminutes}
-              </span>
-            </InfoSection>
-            <DetailSelectionStyled>
-              <IngredientsSelectionSpan
-                onClick={() => setRecipeDetails('ingredients')}
-                recipeDetails={recipeDetails}
-                className="ingredients-selector"
-              >
-                Ingredients
-              </IngredientsSelectionSpan>
-              <InstructionsSelectionSpan
-                onClick={() => setRecipeDetails('instructions')}
-                recipeDetails={recipeDetails}
-                data-testid="instructionsButton"
-                className="instructions-selector"
-              >
-                Instructions
-              </InstructionsSelectionSpan>
-            </DetailSelectionStyled>
-          </RecipeInfoSectionStyled>
-          {recipeDetails === 'ingredients' ? (
-            <IngredientsSection>
-              {recipe.ingredients.map((ingredient, index) => (
-                <>
-                  <ParagraphStyled key={index}>
-                    {ingredient.amount}
-                  </ParagraphStyled>
-                  <ParagraphStyled>{ingredient.name}</ParagraphStyled>
-                </>
-              ))}
-            </IngredientsSection>
-          ) : (
-            <InstructionsSection>
-              {recipe.instructions.map((instruction, index) => (
-                <>
-                  <ParagraphStyled key={index}>{index + 1}.</ParagraphStyled>
-                  <ParagraphStyled>{instruction}</ParagraphStyled>
-                </>
-              ))}
-            </InstructionsSection>
           )}
-        </MainStyled>
+        </>
       )}
     </>
   )
@@ -145,6 +187,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
 const MainStyled = styled.main`
   overflow-x: hidden;
   padding-top: 0;
+  opacity: ${(props) => (props.isRatingWindowVisible ? 0.3 : 1)};
 `
 
 const ImageSectionStyled = styled.section`
@@ -190,6 +233,7 @@ const InfoSection = styled.section`
   padding-left: 12px;
   padding-right: 12px;
   justify-content: space-between;
+  align-items: center;
   margin-top: 16px;
   margin-bottom: 12px;
   font-weight: 300;
