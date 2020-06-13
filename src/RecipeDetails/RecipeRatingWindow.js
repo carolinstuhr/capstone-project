@@ -10,16 +10,16 @@ export default function RecipeRatingWindow({
   setRecipeRating,
   isRecipeRated,
   user,
+  setIsRecipeRated,
 }) {
   const [userRating, setUserRating] = useState(0)
-  console.log(isRecipeRated)
 
   return (
-    <RatingSection>
+    <RatingSection isRecipeRated={isRecipeRated}>
       <CloseRatingIcon onClick={() => setIsRatingWindowVisible(false)} />
       {isRecipeRated || (
         <>
-          <RatingText>Please rate the recipe</RatingText>
+          <ParagraphStyled>Please rate the recipe</ParagraphStyled>
           <StarSection>
             <StarIcon1
               userRating={userRating}
@@ -47,12 +47,18 @@ export default function RecipeRatingWindow({
           </RatingButton>
         </>
       )}
-      {isRecipeRated && <RatingText>You already rated this recipe</RatingText>}
+      {isRecipeRated && (
+        <ParagraphStyled>
+          You already rated
+          <br /> this recipe.
+        </ParagraphStyled>
+      )}
     </RatingSection>
   )
 
   function addUserRating(rating) {
     if (recipe.numberOfRatings === 0) {
+      setIsRatingWindowVisible(false)
       db.collection('recipes')
         .doc(recipe.id)
         .update({ numberOfRatings: 1, accumulatedRatings: rating })
@@ -61,12 +67,13 @@ export default function RecipeRatingWindow({
         .update({ ratedRecipes: [...user.ratedRecipes, recipe.id] })
         .then(() => {
           setRecipeRating(rating)
-          setIsRatingWindowVisible(false)
+          setIsRecipeRated(true)
         })
         .catch((err) =>
           alert('Something went wrong. Please try again later.', err)
         )
     } else {
+      setIsRatingWindowVisible(false)
       db.collection('recipes')
         .doc(recipe.id)
         .update({
@@ -83,7 +90,7 @@ export default function RecipeRatingWindow({
                 (recipe.numberOfRatings + 1)
             )
           )
-          setIsRatingWindowVisible(false)
+          setIsRecipeRated(true)
         })
         .catch((err) =>
           alert('Something went wrong. Please try again later.', err)
@@ -98,7 +105,7 @@ const RatingSection = styled.section`
   background: var(--primary-background);
   bottom: 2px;
   width: 200px;
-  height: 150px;
+  height: ${(props) => (props.isRecipeRated ? '80px' : '150px')};
   top: 300px;
   left: 88px;
   border-radius: 4px;
@@ -138,7 +145,7 @@ const StarSection = styled.section`
   justify-content: center;
 `
 
-const RatingText = styled.p`
+const ParagraphStyled = styled.p`
   text-align: center;
   margin-top: 22px;
   margin-bottom: 8px;

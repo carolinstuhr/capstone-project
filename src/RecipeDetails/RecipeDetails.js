@@ -146,6 +146,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               setRecipeRating={setRecipeRating}
               isRecipeRated={isRecipeRated}
               user={user}
+              setIsRecipeRated={setIsRecipeRated}
             />
           )}
         </>
