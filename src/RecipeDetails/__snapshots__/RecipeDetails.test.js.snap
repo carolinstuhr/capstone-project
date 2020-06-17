@@ -47,11 +47,9 @@ Object {
               serves: 
               10
             </span>
-            <section
-              class="RecipeRating__FavouritesSection-sc-4qz39f-0 dDnGBJ"
-            >
+            <section>
               <svg
-                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon1-sc-4qz39f-2 WXZns"
+                class="RecipeRating__StarIcon-sc-4qz39f-0 RecipeRating__StarIcon1-sc-4qz39f-1 ewgrjH"
                 fill="currentColor"
                 height="1em"
                 recipeRating="5"
@@ -66,7 +64,7 @@ Object {
                 />
               </svg>
               <svg
-                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon2-sc-4qz39f-3 fJxQjW"
+                class="RecipeRating__StarIcon-sc-4qz39f-0 RecipeRating__StarIcon2-sc-4qz39f-2 jZbBSL"
                 fill="currentColor"
                 height="1em"
                 recipeRating="5"
@@ -81,7 +79,7 @@ Object {
                 />
               </svg>
               <svg
-                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon3-sc-4qz39f-4 bwREms"
+                class="RecipeRating__StarIcon-sc-4qz39f-0 RecipeRating__StarIcon3-sc-4qz39f-3 iQIUQD"
                 fill="currentColor"
                 height="1em"
                 recipeRating="5"
@@ -96,7 +94,7 @@ Object {
                 />
               </svg>
               <svg
-                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon4-sc-4qz39f-5 fCoLXG"
+                class="RecipeRating__StarIcon-sc-4qz39f-0 RecipeRating__StarIcon4-sc-4qz39f-4 jRSxGv"
                 fill="currentColor"
                 height="1em"
                 recipeRating="5"
@@ -111,7 +109,7 @@ Object {
                 />
               </svg>
               <svg
-                class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon5-sc-4qz39f-6 fkryHY"
+                class="RecipeRating__StarIcon-sc-4qz39f-0 RecipeRating__StarIcon5-sc-4qz39f-5 iJzQEn"
                 fill="currentColor"
                 height="1em"
                 recipeRating="5"
@@ -126,7 +124,7 @@ Object {
                 />
               </svg>
               <p
-                class="RecipeRating__ParagraphStyled-sc-4qz39f-7 iQWsjd"
+                class="RecipeRating__ParagraphStyled-sc-4qz39f-6 gNTUuM"
               >
                 (
                 2
@@ -266,11 +264,9 @@ Object {
             serves: 
             10
           </span>
-          <section
-            class="RecipeRating__FavouritesSection-sc-4qz39f-0 dDnGBJ"
-          >
+          <section>
             <svg
-              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon1-sc-4qz39f-2 WXZns"
+              class="RecipeRating__StarIcon-sc-4qz39f-0 RecipeRating__StarIcon1-sc-4qz39f-1 ewgrjH"
               fill="currentColor"
               height="1em"
               recipeRating="5"
@@ -285,7 +281,7 @@ Object {
               />
             </svg>
             <svg
-              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon2-sc-4qz39f-3 fJxQjW"
+              class="RecipeRating__StarIcon-sc-4qz39f-0 RecipeRating__StarIcon2-sc-4qz39f-2 jZbBSL"
               fill="currentColor"
               height="1em"
               recipeRating="5"
@@ -300,7 +296,7 @@ Object {
               />
             </svg>
             <svg
-              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon3-sc-4qz39f-4 bwREms"
+              class="RecipeRating__StarIcon-sc-4qz39f-0 RecipeRating__StarIcon3-sc-4qz39f-3 iQIUQD"
               fill="currentColor"
               height="1em"
               recipeRating="5"
@@ -315,7 +311,7 @@ Object {
               />
             </svg>
             <svg
-              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon4-sc-4qz39f-5 fCoLXG"
+              class="RecipeRating__StarIcon-sc-4qz39f-0 RecipeRating__StarIcon4-sc-4qz39f-4 jRSxGv"
               fill="currentColor"
               height="1em"
               recipeRating="5"
@@ -330,7 +326,7 @@ Object {
               />
             </svg>
             <svg
-              class="RecipeRating__StarIcon-sc-4qz39f-1 RecipeRating__StarIcon5-sc-4qz39f-6 fkryHY"
+              class="RecipeRating__StarIcon-sc-4qz39f-0 RecipeRating__StarIcon5-sc-4qz39f-5 iJzQEn"
               fill="currentColor"
               height="1em"
               recipeRating="5"
@@ -345,7 +341,7 @@ Object {
               />
             </svg>
             <p
-              class="RecipeRating__ParagraphStyled-sc-4qz39f-7 iQWsjd"
+              class="RecipeRating__ParagraphStyled-sc-4qz39f-6 gNTUuM"
             >
               (
               2

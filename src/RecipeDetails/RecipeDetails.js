@@ -29,14 +29,28 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
 
   const [isRecipeRated, setIsRecipeRated] = useState()
 
+  const [userRating, setUserRating] = useState()
+
   useEffect(() => {
     setIsRecipeRated(
-      user && user.ratedRecipes.some((ratedRecipe) => ratedRecipe === recipe.id)
+      user &&
+        user.ratedRecipes.some(
+          (ratedRecipe) => ratedRecipe.recipeId === recipe.id
+        )
     )
     setIsFavourite(
       user && user.favourites.some((favourite) => favourite === recipe.id)
     )
   }, [user, recipe])
+
+  useEffect(() => {
+    setUserRating(
+      isRecipeRated &&
+        user.ratedRecipes.find(
+          (ratedRecipe) => ratedRecipe.recipeId === recipe.id
+        ).rating
+    )
+  }, [isRecipeRated])
 
   return (
     <>
@@ -79,7 +93,6 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 alt="bookmark recipe"
                 className="heart-icon"
               />
-              {console.log(isFavourite)}
               <ImageStyled src={recipe.image} alt="" />
             </ImageSectionStyled>
             <RecipeInfoSectionStyled>
@@ -147,6 +160,8 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               isRecipeRated={isRecipeRated}
               user={user}
               setIsRecipeRated={setIsRecipeRated}
+              userRating={userRating}
+              setUserRating={setUserRating}
             />
           )}
         </>

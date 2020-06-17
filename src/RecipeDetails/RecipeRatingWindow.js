@@ -11,42 +11,44 @@ export default function RecipeRatingWindow({
   isRecipeRated,
   user,
   setIsRecipeRated,
+  userRating,
+  setUserRating,
 }) {
-  const [userRating, setUserRating] = useState(0)
+  const [userInput, setUserInput] = useState(0)
 
   return (
     <RatingSection isRecipeRated={isRecipeRated}>
       <CloseRatingIcon onClick={() => setIsRatingWindowVisible(false)} />
-      {isRecipeRated || (
-        <>
-          <ParagraphStyled>Please rate the recipe</ParagraphStyled>
-          <StarSection>
-            <StarIcon1
-              userRating={userRating}
-              onClick={() => setUserRating(1)}
-            />
-            <StarIcon2
-              userRating={userRating}
-              onClick={() => setUserRating(2)}
-            />
-            <StarIcon3
-              userRating={userRating}
-              onClick={() => setUserRating(3)}
-            />
-            <StarIcon4
-              userRating={userRating}
-              onClick={() => setUserRating(4)}
-            />
-            <StarIcon5
-              userRating={userRating}
-              onClick={() => setUserRating(5)}
-            />
-          </StarSection>
-          <RatingButton onClick={() => addUserRating(userRating)}>
-            Submit
-          </RatingButton>
-        </>
-      )}
+      {/* {isRecipeRated || ( */}
+      <>
+        <ParagraphStyled>Please rate the recipe</ParagraphStyled>
+        <StarSection>
+          <StarIcon1
+            onClick={() => setUserInput(1)}
+            userInput={userInput || userRating}
+          />
+          <StarIcon2
+            onClick={() => setUserInput(2)}
+            userInput={userInput || userRating}
+          />
+          <StarIcon3
+            onClick={() => setUserInput(3)}
+            userInput={userInput || userRating}
+          />
+          <StarIcon4
+            onClick={() => setUserInput(4)}
+            userInput={userInput || userRating}
+          />
+          <StarIcon5
+            onClick={() => setUserInput(5)}
+            userInput={userInput || userRating}
+          />
+        </StarSection>
+        <RatingButton onClick={() => addUserRating(userInput)}>
+          Submit
+        </RatingButton>
+      </>
+      {/* )} */}
       {isRecipeRated && (
         <ParagraphStyled>
           You already rated
@@ -64,9 +66,43 @@ export default function RecipeRatingWindow({
         .update({ numberOfRatings: 1, accumulatedRatings: rating })
       db.collection('users')
         .doc(user.id)
-        .update({ ratedRecipes: [...user.ratedRecipes, recipe.id] })
+        .update({ ratedRecipes: [{ recipeId: recipe.id, rating: rating }] })
         .then(() => {
           setRecipeRating(rating)
+          setIsRecipeRated(true)
+        })
+        .catch((err) =>
+          alert('Something went wrong. Please try again later.', err)
+        )
+    } else if (isRecipeRated) {
+      let index = user.ratedRecipes.findIndex(
+        (ratedRecipe) => ratedRecipe.recipeId === recipe.id
+      )
+      console.log(userRating)
+      console.log(rating)
+      setIsRatingWindowVisible(false)
+      db.collection('recipes')
+        .doc(recipe.id)
+        .update({
+          numberOfRatings: recipe.numberOfRatings,
+          accumulatedRatings: recipe.accumulatedRatings - userRating + rating,
+        })
+      db.collection('users')
+        .doc(user.id)
+        .update({
+          ratedRecipes: [
+            ...user.ratedRecipes.slice(0, index),
+            { recipeId: recipe.id, rating: rating },
+            ...user.ratedRecipes.slice(index + 1),
+          ],
+        })
+        .then(() => {
+          setRecipeRating(
+            Math.round(
+              (recipe.accumulatedRatings - userRating + rating) /
+                recipe.numberOfRatings
+            )
+          )
           setIsRecipeRated(true)
         })
         .catch((err) =>
@@ -82,7 +118,12 @@ export default function RecipeRatingWindow({
         })
       db.collection('users')
         .doc(user.id)
-        .update({ ratedRecipes: [...user.ratedRecipes, recipe.id] })
+        .update({
+          ratedRecipes: [
+            ...user.ratedRecipes,
+            { recipeId: recipe.id, rating: rating },
+          ],
+        })
         .then(() => {
           setRecipeRating(
             Math.round(
@@ -118,19 +159,19 @@ const StarIcon = styled(IoMdStar)`
 `
 
 const StarIcon1 = styled(StarIcon)`
-  color: ${(props) => (props.userRating > 0 ? '#c82a1a' : 'white')};
+  color: ${(props) => (props.userInput > 0 ? '#c82a1a' : 'white')};
 `
 const StarIcon2 = styled(StarIcon)`
-  color: ${(props) => (props.userRating > 1 ? '#c82a1a' : 'white')};
+  color: ${(props) => (props.userInput > 1 ? '#c82a1a' : 'white')};
 `
 const StarIcon3 = styled(StarIcon)`
-  color: ${(props) => (props.userRating > 2 ? '#c82a1a' : 'white')};
+  color: ${(props) => (props.userInput > 2 ? '#c82a1a' : 'white')};
 `
 const StarIcon4 = styled(StarIcon)`
-  color: ${(props) => (props.userRating > 3 ? '#c82a1a' : 'white')};
+  color: ${(props) => (props.userInput > 3 ? '#c82a1a' : 'white')};
 `
 const StarIcon5 = styled(StarIcon)`
-  color: ${(props) => (props.userRating > 4 ? '#c82a1a' : 'white')};
+  color: ${(props) => (props.userInput > 4 ? '#c82a1a' : 'white')};
 `
 
 const CloseRatingIcon = styled(IoIosCloseCircleOutline)`
