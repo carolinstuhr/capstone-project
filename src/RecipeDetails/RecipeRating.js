@@ -9,7 +9,7 @@ export default function RecipeRating({
 }) {
   return (
     <>
-      <FavouritesSection onClick={() => setIsRatingWindowVisible(true)}>
+      <section onClick={() => setIsRatingWindowVisible(true)}>
         <StarIcon1 recipeRating={recipeRating} />
         <StarIcon2 recipeRating={recipeRating} />
         <StarIcon3 recipeRating={recipeRating} />
@@ -21,11 +21,10 @@ export default function RecipeRating({
         {recipe.numberOfRatings === 1 && (
           <ParagraphStyled>({recipe.numberOfRatings} rating)</ParagraphStyled>
         )}
-      </FavouritesSection>
+      </section>
     </>
   )
 }
-const FavouritesSection = styled.section``
 
 const StarIcon = styled(IoMdStar)`
   height: 20px;

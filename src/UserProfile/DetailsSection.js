@@ -8,7 +8,7 @@ export default function DetailsSection({ user }) {
   const [isUserDetailsEmpty, setIsUserDetailsEmpty] = useState(
     Object.entries(user.details).length === 0 ? true : false
   )
-  console.log(isUserDetailsEmpty)
+
   const [details, setDetails] = useState({
     internationalCuisine: '',
     childhoodDish: '',
