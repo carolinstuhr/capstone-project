@@ -19,42 +19,37 @@ export default function RecipeRatingWindow({
   return (
     <RatingSection isRecipeRated={isRecipeRated}>
       <CloseRatingIcon onClick={() => setIsRatingWindowVisible(false)} />
-      {/* {isRecipeRated || ( */}
-      <>
-        <ParagraphStyled>Please rate the recipe</ParagraphStyled>
-        <StarSection>
-          <StarIcon1
-            onClick={() => setUserInput(1)}
-            userInput={userInput || userRating}
-          />
-          <StarIcon2
-            onClick={() => setUserInput(2)}
-            userInput={userInput || userRating}
-          />
-          <StarIcon3
-            onClick={() => setUserInput(3)}
-            userInput={userInput || userRating}
-          />
-          <StarIcon4
-            onClick={() => setUserInput(4)}
-            userInput={userInput || userRating}
-          />
-          <StarIcon5
-            onClick={() => setUserInput(5)}
-            userInput={userInput || userRating}
-          />
-        </StarSection>
-        <RatingButton onClick={() => addUserRating(userInput)}>
-          Submit
-        </RatingButton>
-      </>
-      {/* )} */}
-      {isRecipeRated && (
-        <ParagraphStyled>
-          You already rated
-          <br /> this recipe.
-        </ParagraphStyled>
+      {isRecipeRated || (
+        <ParagraphStyled>Please rate the recipe:</ParagraphStyled>
       )}
+      {isRecipeRated && (
+        <ParagraphStyled>Change your previous rating:</ParagraphStyled>
+      )}
+      <StarSection>
+        <StarIcon1
+          onClick={() => setUserInput(1)}
+          userInput={userInput || userRating}
+        />
+        <StarIcon2
+          onClick={() => setUserInput(2)}
+          userInput={userInput || userRating}
+        />
+        <StarIcon3
+          onClick={() => setUserInput(3)}
+          userInput={userInput || userRating}
+        />
+        <StarIcon4
+          onClick={() => setUserInput(4)}
+          userInput={userInput || userRating}
+        />
+        <StarIcon5
+          onClick={() => setUserInput(5)}
+          userInput={userInput || userRating}
+        />
+      </StarSection>
+      <RatingButton onClick={() => addUserRating(userInput)}>
+        Submit
+      </RatingButton>
     </RatingSection>
   )
 
@@ -145,8 +140,8 @@ const RatingSection = styled.section`
   z-index: 2;
   background: var(--primary-background);
   bottom: 2px;
-  width: 200px;
-  height: ${(props) => (props.isRecipeRated ? '80px' : '150px')};
+  width: ${(props) => (props.isRecipeRated ? '250px' : '250px')};
+  height: 150px;
   top: 300px;
   left: 88px;
   border-radius: 4px;
@@ -176,7 +171,7 @@ const StarIcon5 = styled(StarIcon)`
 
 const CloseRatingIcon = styled(IoIosCloseCircleOutline)`
   position: absolute;
-  left: 178px;
+  left: 228px;
   height: 20px;
   width: 20px;
 `
@@ -197,7 +192,7 @@ const RatingButton = styled.button`
   width: 60px;
   padding: 4px;
   margin-top: 18px;
-  margin-left: 70px;
+  margin-left: 95px;
   border-radius: 4px;
   font-size: 14px;
   font-weight: 200;

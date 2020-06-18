@@ -50,7 +50,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
           (ratedRecipe) => ratedRecipe.recipeId === recipe.id
         ).rating
     )
-  }, [isRecipeRated])
+  }, [isRecipeRated, user])
 
   return (
     <>
