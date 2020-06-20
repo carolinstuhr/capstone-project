@@ -7,7 +7,7 @@
 
 ## Get Cooking
 
-No matter whether your're a pro or an absolute beginner at cooking, 'get cooking' will become your best friend in the kitchen. You can easily bookmark your favourite recipes that were created by members of the community and also create and submit your own recipes which in turn might inspire others to try out new recipes.
+No matter whether your're a pro or an absolute beginner at cooking, 'get cooking' will become your best friend in the kitchen. You can easily bookmark your favourite recipes that were created by members of the community and also create and submit your own recipes which in turn might inspire others to try out new recipes. You can also rate the recipes, filter the recipes and edit your user details.
 
 This app was developed as my capstone project during the final four weeks of the neuefische Web Development Bootcamp in May, 2020.
 
@@ -23,7 +23,7 @@ pw: capstone123
 ## Some impressions of the app
 
 <div align="center">
-  <img src="images/../src/images/get-cooking_gif.gif"
+  <img src="images/../src/images/get-cooking_screenrecording.gif"
      height="400px"/>
 </div>
 <div align="center">
@@ -31,11 +31,13 @@ pw: capstone123
      height="400px"/>
   <img src="images/../src/images/get-cooking_overview.png"
      height="400px"/>
+       <img src="images/../src/images/get-cooking_create.png"
+     height="400px"/>
 </div>
 <div align="center">     
   <img src="images/../src/images/get-cooking_details.png"
      height="400px"/>
-  <img src="images/../src/images/get-cooking_create.png"
+  <img src="images/../src/images/get-cooking_rating.png"
      height="400px"/>
   <img src="images/../src/images/get-cooking_profile.png"
      height="400px"/>
