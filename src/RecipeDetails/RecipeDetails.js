@@ -6,11 +6,12 @@ import { db } from '../firebaseConfig'
 import ReturnIcon from './ReturnIcon'
 import RecipeRating from './RecipeRating'
 import RecipeRatingWindow from './RecipeRatingWindow'
+import { CSSTransition } from 'react-transition-group'
 
 export default function RecipeDetails({ user, recipes, previousPage }) {
   const params = useParams()
 
-  const [recipeDetails, setRecipeDetails] = useState('ingredients')
+  const [recipeDetails, setRecipeDetails] = useState(true)
   const [isRatingWindowVisible, setIsRatingWindowVisible] = useState(false)
 
   const [recipe, setRecipe] = useState({})
@@ -62,7 +63,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 <Link exact to="/">
                   <ReturnIcon
                     alt="return"
-                    onClick={() => setRecipeDetails('ingredients')}
+                    onClick={() => setRecipeDetails(true)}
                     className="return"
                   />
                 </Link>
@@ -71,7 +72,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 <Link to="/favourites">
                   <ReturnIcon
                     alt="return"
-                    onClick={() => setRecipeDetails('ingredients')}
+                    onClick={() => setRecipeDetails(true)}
                     className="return"
                   />
                 </Link>
@@ -80,7 +81,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 <Link to="/profile">
                   <ReturnIcon
                     alt="return"
-                    onClick={() => setRecipeDetails('ingredients')}
+                    onClick={() => setRecipeDetails(true)}
                     className="return"
                   />
                 </Link>
@@ -110,14 +111,14 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               </InfoSection>
               <DetailSelectionStyled>
                 <IngredientsSelectionSpan
-                  onClick={() => setRecipeDetails('ingredients')}
+                  onClick={() => setRecipeDetails(true)}
                   recipeDetails={recipeDetails}
                   className="ingredients-selector"
                 >
                   Ingredients
                 </IngredientsSelectionSpan>
                 <InstructionsSelectionSpan
-                  onClick={() => setRecipeDetails('instructions')}
+                  onClick={() => setRecipeDetails(false)}
                   recipeDetails={recipeDetails}
                   data-testid="instructionsButton"
                   className="instructions-selector"
@@ -126,31 +127,47 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 </InstructionsSelectionSpan>
               </DetailSelectionStyled>
             </RecipeInfoSectionStyled>
-            {recipeDetails === 'ingredients' ? (
-              <IngredientsSection>
-                {recipe.ingredients &&
-                  recipe.ingredients.map((ingredient, index) => (
-                    <>
-                      <ParagraphStyled key={index}>
-                        {ingredient.amount}
-                      </ParagraphStyled>
-                      <ParagraphStyled>{ingredient.name}</ParagraphStyled>
-                    </>
-                  ))}
-              </IngredientsSection>
-            ) : (
-              <InstructionsSection>
-                {recipe.instructions &&
-                  recipe.instructions.map((instruction, index) => (
-                    <>
-                      <ParagraphStyled key={index}>
-                        {index + 1}.
-                      </ParagraphStyled>
-                      <ParagraphStyled>{instruction}</ParagraphStyled>
-                    </>
-                  ))}
-              </InstructionsSection>
-            )}
+            <SectionStyled>
+              <CSSTransition
+                in={recipeDetails}
+                timeout={2000}
+                classNames="alert"
+                unmountOnExit
+              >
+                {/* {recipeDetails === 'ingredients' ? ( */}
+                <IngredientsSection>
+                  {recipe.ingredients &&
+                    recipe.ingredients.map((ingredient, index) => (
+                      <>
+                        <ParagraphStyled key={index}>
+                          {ingredient.amount}
+                        </ParagraphStyled>
+                        <ParagraphStyled>{ingredient.name}</ParagraphStyled>
+                      </>
+                    ))}
+                </IngredientsSection>
+              </CSSTransition>
+              {/* ) : ( */}
+              <CSSTransition
+                in={recipeDetails === false}
+                timeout={1000}
+                classNames="alert"
+                unmountOnExit
+              >
+                <InstructionsSection>
+                  {recipe.instructions &&
+                    recipe.instructions.map((instruction, index) => (
+                      <>
+                        <ParagraphStyled key={index}>
+                          {index + 1}.
+                        </ParagraphStyled>
+                        <ParagraphStyled>{instruction}</ParagraphStyled>
+                      </>
+                    ))}
+                </InstructionsSection>
+              </CSSTransition>
+              {/* )} */}
+            </SectionStyled>
           </MainStyled>
           {isRatingWindowVisible && (
             <RecipeRatingWindow
@@ -222,15 +239,6 @@ const RecipeInfoSectionStyled = styled.section`
   bottom: 12px;
   padding: 12px;
   background: var(--primary-background);
-`
-
-const TitleStyled = styled.h3`
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 8px;
-  text-transform: capitalize;
-  font-weight: 400;
-  font-size: 22px;
   animation: 1.5s slidein;
   @keyframes slidein {
     from {
@@ -242,6 +250,15 @@ const TitleStyled = styled.h3`
       width: 100%;
     }
   }
+`
+
+const TitleStyled = styled.h3`
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 8px;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 22px;
 `
 const InfoSection = styled.section`
   display: flex;
@@ -252,17 +269,6 @@ const InfoSection = styled.section`
   margin-top: 16px;
   margin-bottom: 12px;
   font-weight: 300;
-  animation: 1.5s slidein;
-  @keyframes slidein {
-    from {
-      margin-left: 100%;
-      width: 100%;
-    }
-    to {
-      margin-left: 0%;
-      width: 100%;
-    }
-  }
 `
 
 const DetailSelectionStyled = styled.div`
@@ -270,17 +276,6 @@ const DetailSelectionStyled = styled.div`
   justify-content: center;
   margin-top: 4px;
   font-weight: 300;
-  animation: 1.5s slidein;
-  @keyframes slidein {
-    from {
-      margin-left: 100%;
-      width: 100%;
-    }
-    to {
-      margin-left: 0%;
-      width: 100%;
-    }
-  }
 `
 const IngredientsSelectionSpan = styled.span`
   padding: 4px;
@@ -322,16 +317,21 @@ const IngredientsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 3fr;
   font-weight: 300;
-  animation: 1.5s slidein;
-  @keyframes slidein {
-    from {
-      margin-left: 100%;
-      width: 100%;
-    }
-    to {
-      margin-left: 0%;
-      width: 100%;
-    }
+  width: 100%;
+  /* position: absolute; */
+  &.alert-enter {
+    opacity: 0;
+  }
+  &.alert-enter-active {
+    opacity: 1;
+    transition: all 1s 1s;
+  }
+  &.alert-exit {
+    opacity: 1;
+  }
+  &.alert-exit-active {
+    opacity: 0;
+    transition: all 1s;
   }
 `
 
@@ -341,6 +341,28 @@ const InstructionsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 20fr;
   font-weight: 300;
+  width: 100%;
+  /* position: absolute; */
+  &.alert-enter {
+    opacity: 0;
+  }
+  &.alert-enter-active {
+    opacity: 1;
+    transition: opacity 1s 1s;
+  }
+  &.alert-exit {
+    opacity: 1;
+  }
+  &.alert-exit-active {
+    opacity: 0;
+    transition: opacity 1s;
+  }
+`
+
+const ParagraphStyled = styled.p`
+  margin-top: 4px;
+`
+const SectionStyled = styled.section`
   animation: 1.5s slidein;
   @keyframes slidein {
     from {
@@ -352,8 +374,4 @@ const InstructionsSection = styled.section`
       width: 100%;
     }
   }
-`
-
-const ParagraphStyled = styled.p`
-  margin-top: 4px;
 `
