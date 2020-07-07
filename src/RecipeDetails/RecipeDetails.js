@@ -11,7 +11,7 @@ import { CSSTransition } from 'react-transition-group'
 export default function RecipeDetails({ user, recipes, previousPage }) {
   const params = useParams()
 
-  const [recipeDetails, setRecipeDetails] = useState(true)
+  const [areIngredientsVisible, setAreIngredientsVisible] = useState(true)
   const [isRatingWindowVisible, setIsRatingWindowVisible] = useState(false)
 
   const [recipe, setRecipe] = useState({})
@@ -63,7 +63,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 <Link exact to="/">
                   <ReturnIcon
                     alt="return"
-                    onClick={() => setRecipeDetails(true)}
+                    onClick={() => setAreIngredientsVisible(true)}
                     className="return"
                   />
                 </Link>
@@ -72,7 +72,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 <Link to="/favourites">
                   <ReturnIcon
                     alt="return"
-                    onClick={() => setRecipeDetails(true)}
+                    onClick={() => setAreIngredientsVisible(true)}
                     className="return"
                   />
                 </Link>
@@ -81,7 +81,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 <Link to="/profile">
                   <ReturnIcon
                     alt="return"
-                    onClick={() => setRecipeDetails(true)}
+                    onClick={() => setAreIngredientsVisible(true)}
                     className="return"
                   />
                 </Link>
@@ -111,15 +111,15 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               </InfoSection>
               <DetailSelectionStyled>
                 <IngredientsSelectionSpan
-                  onClick={() => setRecipeDetails(true)}
-                  recipeDetails={recipeDetails}
+                  onClick={() => setAreIngredientsVisible(true)}
+                  areIngredientsVisible={areIngredientsVisible}
                   className="ingredients-selector"
                 >
                   Ingredients
                 </IngredientsSelectionSpan>
                 <InstructionsSelectionSpan
-                  onClick={() => setRecipeDetails(false)}
-                  recipeDetails={recipeDetails}
+                  onClick={() => setAreIngredientsVisible(false)}
+                  areIngredientsVisible={areIngredientsVisible}
                   data-testid="instructionsButton"
                   className="instructions-selector"
                 >
@@ -129,12 +129,11 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
             </RecipeInfoSectionStyled>
             <SectionStyled>
               <CSSTransition
-                in={recipeDetails}
-                timeout={2000}
+                in={areIngredientsVisible}
+                timeout={700}
                 classNames="alert"
                 unmountOnExit
               >
-                {/* {recipeDetails === 'ingredients' ? ( */}
                 <IngredientsSection>
                   {recipe.ingredients &&
                     recipe.ingredients.map((ingredient, index) => (
@@ -147,10 +146,9 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                     ))}
                 </IngredientsSection>
               </CSSTransition>
-              {/* ) : ( */}
               <CSSTransition
-                in={recipeDetails === false}
-                timeout={1000}
+                in={areIngredientsVisible === false}
+                timeout={700}
                 classNames="alert"
                 unmountOnExit
               >
@@ -166,7 +164,6 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                     ))}
                 </InstructionsSection>
               </CSSTransition>
-              {/* )} */}
             </SectionStyled>
           </MainStyled>
           {isRatingWindowVisible && (
@@ -283,15 +280,12 @@ const IngredientsSelectionSpan = styled.span`
   border-right-width: 1px;
   cursor: default;
   background: ${(props) =>
-    props.recipeDetails === 'ingredients'
+    props.areIngredientsVisible
       ? 'var(--secondary-background)'
       : 'rgba(255, 255, 255, 0.4)'};
   color: ${(props) =>
-    props.recipeDetails === 'ingredients'
-      ? 'var(--primary)'
-      : 'var(--primary-opaque)'};
-  font-weight: ${(props) =>
-    props.recipeDetails === 'ingredients' ? '300' : '200'};
+    props.areIngredientsVisible ? 'var(--primary)' : 'var(--primary-opaque)'};
+  font-weight: ${(props) => (props.areIngredientsVisible ? '300' : '200')};
 `
 
 const InstructionsSelectionSpan = styled.span`
@@ -300,15 +294,15 @@ const InstructionsSelectionSpan = styled.span`
   border-left-width: 1px;
   cursor: default;
   background: ${(props) =>
-    props.recipeDetails === 'instructions'
+    props.areIngredientsVisible === false
       ? 'var(--secondary-background)'
       : 'rgba(255, 255, 255, 0.4)'};
   color: ${(props) =>
-    props.recipeDetails === 'instructions'
+    props.areIngredientsVisible === false
       ? 'var(--primary)'
       : 'var(--primary-opaque)'};
   font-weight: ${(props) =>
-    props.recipeDetails === 'instructions' ? '300' : '200'};
+    props.areIngredientsVisible === false ? '300' : '200'};
 `
 
 const IngredientsSection = styled.section`
@@ -318,20 +312,20 @@ const IngredientsSection = styled.section`
   grid-template-columns: 1fr 3fr;
   font-weight: 300;
   width: 100%;
-  /* position: absolute; */
+  position: absolute;
   &.alert-enter {
     opacity: 0;
   }
   &.alert-enter-active {
     opacity: 1;
-    transition: all 1s 1s;
+    transition: all 700ms 700ms;
   }
   &.alert-exit {
     opacity: 1;
   }
   &.alert-exit-active {
     opacity: 0;
-    transition: all 1s;
+    transition: all 700ms;
   }
 `
 
@@ -342,20 +336,20 @@ const InstructionsSection = styled.section`
   grid-template-columns: 1fr 20fr;
   font-weight: 300;
   width: 100%;
-  /* position: absolute; */
+  position: absolute;
   &.alert-enter {
     opacity: 0;
   }
   &.alert-enter-active {
     opacity: 1;
-    transition: opacity 1s 1s;
+    transition: opacity 700ms 700ms;
   }
   &.alert-exit {
     opacity: 1;
   }
   &.alert-exit-active {
     opacity: 0;
-    transition: opacity 1s;
+    transition: opacity 700ms;
   }
 `
 
