@@ -131,7 +131,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               <CSSTransition
                 in={areIngredientsVisible}
                 timeout={700}
-                classNames="alert"
+                classNames="ingredients"
                 unmountOnExit
               >
                 <IngredientsSection>
@@ -149,7 +149,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               <CSSTransition
                 in={areIngredientsVisible === false}
                 timeout={700}
-                classNames="alert"
+                classNames="instructions"
                 unmountOnExit
               >
                 <InstructionsSection>
@@ -278,6 +278,7 @@ const IngredientsSelectionSpan = styled.span`
   padding: 4px;
   border: 2px solid white;
   border-right-width: 1px;
+  background: var(--secondary-background);
   cursor: default;
   background: ${(props) =>
     props.areIngredientsVisible
@@ -312,18 +313,19 @@ const IngredientsSection = styled.section`
   grid-template-columns: 1fr 3fr;
   font-weight: 300;
   width: 100%;
-  position: absolute;
-  &.alert-enter {
+  &.ingredients-enter {
     opacity: 0;
   }
-  &.alert-enter-active {
+  &.ingredients-enter-active {
     opacity: 1;
+    position: absolute;
     transition: all 700ms 700ms;
   }
-  &.alert-exit {
+  &.ingredients-exit {
     opacity: 1;
+    position: absolute;
   }
-  &.alert-exit-active {
+  &.ingredients-exit-active {
     opacity: 0;
     transition: all 700ms;
   }
@@ -336,18 +338,19 @@ const InstructionsSection = styled.section`
   grid-template-columns: 1fr 20fr;
   font-weight: 300;
   width: 100%;
-  position: absolute;
-  &.alert-enter {
+  &.instructions-enter {
     opacity: 0;
   }
-  &.alert-enter-active {
+  &.instructions-enter-active {
     opacity: 1;
+    position: absolute;
     transition: opacity 700ms 700ms;
   }
-  &.alert-exit {
+  &.instructions-exit {
     opacity: 1;
+    position: absolute;
   }
-  &.alert-exit-active {
+  &.instructions-exit-active {
     opacity: 0;
     transition: opacity 700ms;
   }
