@@ -6,11 +6,12 @@ import { db } from '../firebaseConfig'
 import ReturnIcon from './ReturnIcon'
 import RecipeRating from './RecipeRating'
 import RecipeRatingWindow from './RecipeRatingWindow'
+import { CSSTransition } from 'react-transition-group'
 
 export default function RecipeDetails({ user, recipes, previousPage }) {
   const params = useParams()
 
-  const [recipeDetails, setRecipeDetails] = useState('ingredients')
+  const [areIngredientsVisible, setAreIngredientsVisible] = useState(true)
   const [isRatingWindowVisible, setIsRatingWindowVisible] = useState(false)
 
   const [recipe, setRecipe] = useState({})
@@ -62,7 +63,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 <Link exact to="/">
                   <ReturnIcon
                     alt="return"
-                    onClick={() => setRecipeDetails('ingredients')}
+                    onClick={() => setAreIngredientsVisible(true)}
                     className="return"
                   />
                 </Link>
@@ -71,7 +72,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 <Link to="/favourites">
                   <ReturnIcon
                     alt="return"
-                    onClick={() => setRecipeDetails('ingredients')}
+                    onClick={() => setAreIngredientsVisible(true)}
                     className="return"
                   />
                 </Link>
@@ -80,7 +81,7 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 <Link to="/profile">
                   <ReturnIcon
                     alt="return"
-                    onClick={() => setRecipeDetails('ingredients')}
+                    onClick={() => setAreIngredientsVisible(true)}
                     className="return"
                   />
                 </Link>
@@ -110,15 +111,15 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
               </InfoSection>
               <DetailSelectionStyled>
                 <IngredientsSelectionSpan
-                  onClick={() => setRecipeDetails('ingredients')}
-                  recipeDetails={recipeDetails}
+                  onClick={() => setAreIngredientsVisible(true)}
+                  areIngredientsVisible={areIngredientsVisible}
                   className="ingredients-selector"
                 >
                   Ingredients
                 </IngredientsSelectionSpan>
                 <InstructionsSelectionSpan
-                  onClick={() => setRecipeDetails('instructions')}
-                  recipeDetails={recipeDetails}
+                  onClick={() => setAreIngredientsVisible(false)}
+                  areIngredientsVisible={areIngredientsVisible}
                   data-testid="instructionsButton"
                   className="instructions-selector"
                 >
@@ -126,31 +127,44 @@ export default function RecipeDetails({ user, recipes, previousPage }) {
                 </InstructionsSelectionSpan>
               </DetailSelectionStyled>
             </RecipeInfoSectionStyled>
-            {recipeDetails === 'ingredients' ? (
-              <IngredientsSection>
-                {recipe.ingredients &&
-                  recipe.ingredients.map((ingredient, index) => (
-                    <>
-                      <ParagraphStyled key={index}>
-                        {ingredient.amount}
-                      </ParagraphStyled>
-                      <ParagraphStyled>{ingredient.name}</ParagraphStyled>
-                    </>
-                  ))}
-              </IngredientsSection>
-            ) : (
-              <InstructionsSection>
-                {recipe.instructions &&
-                  recipe.instructions.map((instruction, index) => (
-                    <>
-                      <ParagraphStyled key={index}>
-                        {index + 1}.
-                      </ParagraphStyled>
-                      <ParagraphStyled>{instruction}</ParagraphStyled>
-                    </>
-                  ))}
-              </InstructionsSection>
-            )}
+            <SectionStyled>
+              <CSSTransition
+                in={areIngredientsVisible}
+                timeout={700}
+                classNames="ingredients"
+                unmountOnExit
+              >
+                <IngredientsSection>
+                  {recipe.ingredients &&
+                    recipe.ingredients.map((ingredient, index) => (
+                      <>
+                        <ParagraphStyled key={index}>
+                          {ingredient.amount}
+                        </ParagraphStyled>
+                        <ParagraphStyled>{ingredient.name}</ParagraphStyled>
+                      </>
+                    ))}
+                </IngredientsSection>
+              </CSSTransition>
+              <CSSTransition
+                in={areIngredientsVisible === false}
+                timeout={700}
+                classNames="instructions"
+                unmountOnExit
+              >
+                <InstructionsSection>
+                  {recipe.instructions &&
+                    recipe.instructions.map((instruction, index) => (
+                      <>
+                        <ParagraphStyled key={index}>
+                          {index + 1}.
+                        </ParagraphStyled>
+                        <ParagraphStyled>{instruction}</ParagraphStyled>
+                      </>
+                    ))}
+                </InstructionsSection>
+              </CSSTransition>
+            </SectionStyled>
           </MainStyled>
           {isRatingWindowVisible && (
             <RecipeRatingWindow
@@ -222,15 +236,6 @@ const RecipeInfoSectionStyled = styled.section`
   bottom: 12px;
   padding: 12px;
   background: var(--primary-background);
-`
-
-const TitleStyled = styled.h3`
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 8px;
-  text-transform: capitalize;
-  font-weight: 400;
-  font-size: 22px;
   animation: 1.5s slidein;
   @keyframes slidein {
     from {
@@ -242,6 +247,15 @@ const TitleStyled = styled.h3`
       width: 100%;
     }
   }
+`
+
+const TitleStyled = styled.h3`
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 8px;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 22px;
 `
 const InfoSection = styled.section`
   display: flex;
@@ -252,17 +266,6 @@ const InfoSection = styled.section`
   margin-top: 16px;
   margin-bottom: 12px;
   font-weight: 300;
-  animation: 1.5s slidein;
-  @keyframes slidein {
-    from {
-      margin-left: 100%;
-      width: 100%;
-    }
-    to {
-      margin-left: 0%;
-      width: 100%;
-    }
-  }
 `
 
 const DetailSelectionStyled = styled.div`
@@ -270,33 +273,20 @@ const DetailSelectionStyled = styled.div`
   justify-content: center;
   margin-top: 4px;
   font-weight: 300;
-  animation: 1.5s slidein;
-  @keyframes slidein {
-    from {
-      margin-left: 100%;
-      width: 100%;
-    }
-    to {
-      margin-left: 0%;
-      width: 100%;
-    }
-  }
 `
 const IngredientsSelectionSpan = styled.span`
   padding: 4px;
   border: 2px solid white;
   border-right-width: 1px;
+  background: var(--secondary-background);
   cursor: default;
   background: ${(props) =>
-    props.recipeDetails === 'ingredients'
+    props.areIngredientsVisible
       ? 'var(--secondary-background)'
       : 'rgba(255, 255, 255, 0.4)'};
   color: ${(props) =>
-    props.recipeDetails === 'ingredients'
-      ? 'var(--primary)'
-      : 'var(--primary-opaque)'};
-  font-weight: ${(props) =>
-    props.recipeDetails === 'ingredients' ? '300' : '200'};
+    props.areIngredientsVisible ? 'var(--primary)' : 'var(--primary-opaque)'};
+  font-weight: ${(props) => (props.areIngredientsVisible ? '300' : '200')};
 `
 
 const InstructionsSelectionSpan = styled.span`
@@ -305,15 +295,15 @@ const InstructionsSelectionSpan = styled.span`
   border-left-width: 1px;
   cursor: default;
   background: ${(props) =>
-    props.recipeDetails === 'instructions'
+    props.areIngredientsVisible === false
       ? 'var(--secondary-background)'
       : 'rgba(255, 255, 255, 0.4)'};
   color: ${(props) =>
-    props.recipeDetails === 'instructions'
+    props.areIngredientsVisible === false
       ? 'var(--primary)'
       : 'var(--primary-opaque)'};
   font-weight: ${(props) =>
-    props.recipeDetails === 'instructions' ? '300' : '200'};
+    props.areIngredientsVisible === false ? '300' : '200'};
 `
 
 const IngredientsSection = styled.section`
@@ -322,16 +312,22 @@ const IngredientsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 3fr;
   font-weight: 300;
-  animation: 1.5s slidein;
-  @keyframes slidein {
-    from {
-      margin-left: 100%;
-      width: 100%;
-    }
-    to {
-      margin-left: 0%;
-      width: 100%;
-    }
+  width: 100%;
+  &.ingredients-enter {
+    opacity: 0;
+  }
+  &.ingredients-enter-active {
+    opacity: 1;
+    position: absolute;
+    transition: all 700ms 700ms;
+  }
+  &.ingredients-exit {
+    opacity: 1;
+    position: absolute;
+  }
+  &.ingredients-exit-active {
+    opacity: 0;
+    transition: all 700ms;
   }
 `
 
@@ -341,6 +337,29 @@ const InstructionsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 20fr;
   font-weight: 300;
+  width: 100%;
+  &.instructions-enter {
+    opacity: 0;
+  }
+  &.instructions-enter-active {
+    opacity: 1;
+    position: absolute;
+    transition: opacity 700ms 700ms;
+  }
+  &.instructions-exit {
+    opacity: 1;
+    position: absolute;
+  }
+  &.instructions-exit-active {
+    opacity: 0;
+    transition: opacity 700ms;
+  }
+`
+
+const ParagraphStyled = styled.p`
+  margin-top: 4px;
+`
+const SectionStyled = styled.section`
   animation: 1.5s slidein;
   @keyframes slidein {
     from {
@@ -352,8 +371,4 @@ const InstructionsSection = styled.section`
       width: 100%;
     }
   }
-`
-
-const ParagraphStyled = styled.p`
-  margin-top: 4px;
 `

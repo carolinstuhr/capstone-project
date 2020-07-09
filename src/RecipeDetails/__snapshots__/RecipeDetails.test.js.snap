@@ -142,7 +142,7 @@ Object {
             class="RecipeDetails__DetailSelectionStyled-sc-1urzn0d-6 iXWNBS"
           >
             <span
-              class="RecipeDetails__IngredientsSelectionSpan-sc-1urzn0d-7 bVnKZl ingredients-selector"
+              class="RecipeDetails__IngredientsSelectionSpan-sc-1urzn0d-7 ccwdFU ingredients-selector"
             >
               Ingredients
             </span>
@@ -155,7 +155,7 @@ Object {
           </div>
         </section>
         <section
-          class="RecipeDetails__IngredientsSection-sc-1urzn0d-9 dgqXzX"
+          class="RecipeDetails__IngredientsSection-sc-1urzn0d-9 crIAyA"
         >
           <p
             class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
@@ -359,7 +359,7 @@ Object {
           class="RecipeDetails__DetailSelectionStyled-sc-1urzn0d-6 iXWNBS"
         >
           <span
-            class="RecipeDetails__IngredientsSelectionSpan-sc-1urzn0d-7 bVnKZl ingredients-selector"
+            class="RecipeDetails__IngredientsSelectionSpan-sc-1urzn0d-7 ccwdFU ingredients-selector"
           >
             Ingredients
           </span>
@@ -372,7 +372,7 @@ Object {
         </div>
       </section>
       <section
-        class="RecipeDetails__IngredientsSection-sc-1urzn0d-9 dgqXzX"
+        class="RecipeDetails__IngredientsSection-sc-1urzn0d-9 crIAyA"
       >
         <p
           class="RecipeDetails__ParagraphStyled-sc-1urzn0d-11 dWkeEu"
